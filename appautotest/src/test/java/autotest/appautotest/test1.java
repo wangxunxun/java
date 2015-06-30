@@ -4,24 +4,28 @@ package autotest.appautotest;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import autotest.appautotest.appinitialdriver;
 
-public class test1 extends appinitialdriver {
+public class test1 extends andoridtest {
 
 			
     @Test
     public void addContact() throws InterruptedException{
-    	Thread.sleep(5000);
+    	waitByTimeOut(5000);
+    	log("haha");
+        driver.getScreenshotAs(OutputType.BASE64);
 
     	gettextviews();
     	Assert.assertEquals("特别提示", returnelebyclassname("android.widget.TextView", 1).getText());
     	returnelebyclassname("android.widget.Button", 2).click();
     	Thread.sleep(5000);
-    	driver.swipe(400, 500, 50, 500, 100);
+    	swipeOfType("left");
+        System.out.println("left");
 
     	Thread.sleep(5000);
         driver.swipe(400, 500, 50, 500, 100);
