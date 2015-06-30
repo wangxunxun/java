@@ -26,7 +26,7 @@ public class test1 extends andoridtest {
     	Thread.sleep(5000);
     	swipeOfType("left");
         System.out.println("left");
-
+        driver.getScreenshotAs(OutputType.FILE);
     	Thread.sleep(5000);
         driver.swipe(400, 500, 50, 500, 100);
         gettextviews();

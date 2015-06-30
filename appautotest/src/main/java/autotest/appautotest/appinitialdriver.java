@@ -5,9 +5,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +21,7 @@ import org.testng.annotations.BeforeTest;
 
 
 public class appinitialdriver {
-	 public AppiumDriver driver;
+	 public static AppiumDriver driver;
 	 public WebDriverWait wait; 
 	 
 	    
@@ -209,5 +213,16 @@ public class appinitialdriver {
 	            e.printStackTrace();
 	        }
 	    }
+	    
+		public static void takescreenshot() throws IOException{
+			File scrFile = driver.getScreenshotAs(OutputType.FILE);
+			String dir_name = CommonTools.getCurrentPath("\\screenshot\\");
+		  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
+		  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
+		  	}
+			FileUtils.copyFile(scrFile, new File(dir_name+CommonTools.getCurrentTime()+".jpg"));
+			
+		
+		}
 	    
 }
