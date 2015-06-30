@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="28356" started-at="2015-06-30T07:46:06Z" finished-at="2015-06-30T07:46:35Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="28356" started-at="2015-06-30T07:46:06Z" finished-at="2015-06-30T07:46:35Z">
+      <class name="autotest.appautotest.test2">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.test2@16494e4a]" name="setUp" is-config="true" duration-ms="2373" started-at="2015-06-30T15:46:06Z" finished-at="2015-06-30T15:46:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="guanyubaidu()[pri:0, instance:autotest.appautotest.test2@16494e4a]" name="guanyubaidu" duration-ms="13714" started-at="2015-06-30T15:46:09Z" finished-at="2015-06-30T15:46:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- guanyubaidu -->
+        <test-method status="PASS" signature="xinwen()[pri:0, instance:autotest.appautotest.test2@16494e4a]" name="xinwen" duration-ms="10522" started-at="2015-06-30T15:46:22Z" depends-on-methods="autotest.appautotest.test2.guanyubaidu" finished-at="2015-06-30T15:46:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- xinwen -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.test2@16494e4a]" name="tearDown" is-config="true" duration-ms="1716" started-at="2015-06-30T15:46:33Z" finished-at="2015-06-30T15:46:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- autotest.appautotest.test2 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
