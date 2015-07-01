@@ -6,8 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
+
+@Listeners({ DotTestListener.class })
 public class test2 extends webtest {
 
 	
@@ -27,11 +31,10 @@ public class test2 extends webtest {
     	Thread.sleep(5000);
 		String url="http://www.baidu.com";
 		driver.get(url);
-		takescreenshot();
 		driver.findElement(By.cssSelector("#kw")).sendKeys(haha);
 		driver.findElement(By.cssSelector("#su")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#s_tab > b")));
-		Assert.assertEquals( driver.findElement(By.cssSelector("#s_tab > b")).getText(),"网页");	
+		Assert.assertEquals( driver.findElement(By.cssSelector("#s_tab > b")).getText(),"网1页");	
 		Thread.sleep(5000);
 		System.out.println("ok");
 		

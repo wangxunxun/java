@@ -11,8 +11,8 @@
     <classes>
       <class name="autotest.appautotest.test2">
       <methods>
-          <include name = "xinwen"/>
-          <include name = "guanyubaidu"/>
+          <include name = "baidu"/>
+
       </methods>
       </class>
     </classes>

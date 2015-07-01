@@ -16,8 +16,7 @@ public class test1 extends andoridtest {
 			
     @Test
     public void addContact() throws InterruptedException{
-    	waitByTimeOut(5000);
-    	log("haha");
+    	CommonTools.waitByTimeOut(2000);
         driver.getScreenshotAs(OutputType.BASE64);
 
     	gettextviews();
