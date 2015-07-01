@@ -8,13 +8,14 @@ import org.testng.annotations.BeforeTest;
 
 public class webtest extends webinitialdriver{
 	public static WebDriver driver;	
+	
     public WebDriver getDriver() {
         return driver;
     }
 	@BeforeTest
 	public void setUp(){
 		//设置 Chrome的路径
-		String dirs=CommonTools.getCurrentPath("/testresource/chromedriver.exe");
+		String dirs=tool.getCurrentPath("/testresource/chromedriver.exe");
 
 		System.setProperty("webdriver.chrome.driver", 
 				dirs);

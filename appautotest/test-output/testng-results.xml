@@ -1,33 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" total="4" passed="2">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
-    <line>
-      <![CDATA[C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112408_401_baidu.jpg]]>
-    </line>
-    <line>
-      <![CDATA[<img src="../C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112408_401_baidu.jpg"/>]]>
-    </line>
-    <line>
-      <![CDATA[C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112417_330_baidu.jpg]]>
-    </line>
-    <line>
-      <![CDATA[<img src="../C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112417_330_baidu.jpg"/>]]>
-    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="42635" started-at="2015-07-01T03:23:41Z" finished-at="2015-07-01T03:24:24Z">
+  <suite name="Default suite" duration-ms="38243" started-at="2015-07-01T15:51:45Z" finished-at="2015-07-01T15:52:24Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="42635" started-at="2015-07-01T03:23:41Z" finished-at="2015-07-01T03:24:24Z">
+    <test name="Default test" duration-ms="38243" started-at="2015-07-01T15:51:45Z" finished-at="2015-07-01T15:52:24Z">
       <class name="autotest.appautotest.test2">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.test2@65a6bc76]" name="setUp" is-config="true" duration-ms="3685" started-at="2015-07-01T11:23:41Z" finished-at="2015-07-01T11:23:45Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.test2@1e643faf]" name="setUp" is-config="true" duration-ms="7826" started-at="2015-07-01T23:51:45Z" finished-at="2015-07-01T23:51:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="guanyubaidu()[pri:0, instance:autotest.appautotest.test2@65a6bc76]" name="guanyubaidu" duration-ms="14145" started-at="2015-07-01T11:23:45Z" finished-at="2015-07-01T11:23:59Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- guanyubaidu -->
-        <test-method status="FAIL" signature="baidu(java.lang.String)[pri:0, instance:autotest.appautotest.test2@65a6bc76]" name="baidu" duration-ms="5808" started-at="2015-07-01T11:23:59Z" data-provider="input" finished-at="2015-07-01T11:24:05Z">
+        <test-method status="PASS" signature="baidu(java.lang.String)[pri:0, instance:autotest.appautotest.test2@1e643faf]" name="baidu" duration-ms="16940" started-at="2015-07-01T23:51:53Z" data-provider="input" finished-at="2015-07-01T23:52:10Z">
           <params>
             <param index="0">
               <value>
@@ -35,55 +19,10 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [网1页] but found [网页]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [网1页] but found [网页]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at autotest.appautotest.test2.baidu(test2.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
-            <line>
-              <![CDATA[C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112408_401_baidu.jpg]]>
-            </line>
-            <line>
-              <![CDATA[<img src="../C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112408_401_baidu.jpg"/>]]>
-            </line>
           </reporter-output>
         </test-method> <!-- baidu -->
-        <test-method status="FAIL" signature="baidu(java.lang.String)[pri:0, instance:autotest.appautotest.test2@65a6bc76]" name="baidu" duration-ms="5673" started-at="2015-07-01T11:24:08Z" data-provider="input" finished-at="2015-07-01T11:24:14Z">
+        <test-method status="PASS" signature="baidu(java.lang.String)[pri:0, instance:autotest.appautotest.test2@1e643faf]" name="baidu" duration-ms="10988" started-at="2015-07-01T23:52:10Z" data-provider="input" finished-at="2015-07-01T23:52:21Z">
           <params>
             <param index="0">
               <value>
@@ -91,59 +30,10 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [网1页] but found [网页]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [网1页] but found [网页]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at autotest.appautotest.test2.baidu(test2.java:37)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
-	at org.testng.TestRunner.privateRun(TestRunner.java:771)
-	at org.testng.TestRunner.run(TestRunner.java:621)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1199)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1124)
-	at org.testng.TestNG.run(TestNG.java:1032)
-	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
-            <line>
-              <![CDATA[C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112417_330_baidu.jpg]]>
-            </line>
-            <line>
-              <![CDATA[<img src="../C:\Users\xun\workspace\java\appautotest\screenshot\20150701_112417_330_baidu.jpg"/>]]>
-            </line>
           </reporter-output>
         </test-method> <!-- baidu -->
-        <test-method status="PASS" signature="xinwen()[pri:0, instance:autotest.appautotest.test2@65a6bc76]" name="xinwen" duration-ms="5002" started-at="2015-07-01T11:24:17Z" depends-on-methods="autotest.appautotest.test2.guanyubaidu" finished-at="2015-07-01T11:24:22Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- xinwen -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.test2@65a6bc76]" name="tearDown" is-config="true" duration-ms="1728" started-at="2015-07-01T11:24:22Z" finished-at="2015-07-01T11:24:24Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.test2@1e643faf]" name="tearDown" is-config="true" duration-ms="2257" started-at="2015-07-01T23:52:21Z" finished-at="2015-07-01T23:52:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

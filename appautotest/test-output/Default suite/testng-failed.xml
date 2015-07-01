@@ -5,9 +5,9 @@
     <classes>
       <class name="autotest.appautotest.test2">
         <methods>
-          <include name="baidu" invocation-numbers="0 1"/>
           <include name="tearDown"/>
           <include name="setUp"/>
+          <include name="baidu" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- autotest.appautotest.test2 -->
     </classes>

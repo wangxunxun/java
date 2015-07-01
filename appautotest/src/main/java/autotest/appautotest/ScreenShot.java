@@ -14,6 +14,7 @@ import org.testng.Reporter;
 public class ScreenShot {
     public WebDriver driver;
     public ITestResult tr;
+    CommonTools tool = new CommonTools();
  
     public ScreenShot(WebDriver driver,ITestResult tr) {
         this.driver = driver;
@@ -24,11 +25,11 @@ public class ScreenShot {
 		Thread.sleep(3000);
 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		
-		String dir_name = CommonTools.getCurrentPath("\\screenshot\\");
+		String dir_name = tool.getCurrentPath("\\screenshot\\");
 	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
 	  	}
-	  	String filepath = dir_name+CommonTools.getCurrentTime()+ "_"+ tr.getName()+  ".jpg";
+	  	String filepath = dir_name+tool.getCurrentTime()+ "_"+ tr.getName()+  ".jpg";
 		FileUtils.copyFile(scrFile, new File(filepath));
 		Reporter.setCurrentTestResult(tr);
 		Reporter.log(filepath);

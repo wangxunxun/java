@@ -2,6 +2,8 @@ package autotest.appautotest;
 
 import java.io.IOException;
 
+import jxl.read.biff.BiffException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -27,14 +29,15 @@ public class test2 extends webtest {
     
     
     @Test(dataProvider = "input")
-    public void baidu(String haha) throws InterruptedException, IOException{
+    public void baidu(String haha) throws InterruptedException, IOException, BiffException{
     	Thread.sleep(5000);
 		String url="http://www.baidu.com";
 		driver.get(url);
+		System.out.println(tool.getTestData("test.xls").length);
 		driver.findElement(By.cssSelector("#kw")).sendKeys(haha);
 		driver.findElement(By.cssSelector("#su")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#s_tab > b")));
-		Assert.assertEquals( driver.findElement(By.cssSelector("#s_tab > b")).getText(),"网1页");	
+		Assert.assertEquals( driver.findElement(By.cssSelector("#s_tab > b")).getText(),"网页");	
 		Thread.sleep(5000);
 		System.out.println("ok");
 		

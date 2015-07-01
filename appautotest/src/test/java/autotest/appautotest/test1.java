@@ -16,9 +16,9 @@ public class test1 extends andoridtest {
 			
     @Test
     public void addContact() throws InterruptedException{
-    	CommonTools.waitByTimeOut(2000);
+    	tool.waitByTimeOut(2000);
         driver.getScreenshotAs(OutputType.BASE64);
-
+        
     	gettextviews();
     	Assert.assertEquals("特别提示", returnelebyclassname("android.widget.TextView", 1).getText());
     	returnelebyclassname("android.widget.Button", 2).click();

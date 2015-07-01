@@ -10,14 +10,14 @@ import autotest.appautotest.ScreenShot;
 
 public class DotTestListener extends TestListenerAdapter {
 	 
-
+	CommonTools tool = new CommonTools();
 
 	@Override
     public void onTestFailure(ITestResult tr) {    
         try {
             webtest tb = (webtest) tr.getInstance();
             WebDriver driver = tb.getDriver();              
-            CommonTools.log(tr.getName() + " Failure");
+            tool.log(tr.getName() + " Failure");
             ScreenShot shot = new ScreenShot(driver,tr);
             shot.takescreenshot();
 
