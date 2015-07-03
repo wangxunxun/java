@@ -25,7 +25,7 @@ public class ScreenShot {
 		Thread.sleep(3000);
 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		
-		String dir_name = tool.getCurrentPath("\\screenshot\\");
+		String dir_name = tool.setCurrentPath("\\screenshot\\");
 	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
 	  	}

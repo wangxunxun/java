@@ -22,7 +22,7 @@ public class CommonTools {
         return f.format(date);
     }
     
-    public String getCurrentPath(String dirname){
+    public String setCurrentPath(String dirname){
     	String currentPath = System.getProperty("user.dir");
     	return currentPath + dirname;
     }

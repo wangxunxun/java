@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 
 
-@Listeners({ DotTestListener.class })
+
 public class test2 extends webtest {
 
 	
@@ -37,7 +37,7 @@ public class test2 extends webtest {
 		driver.findElement(By.cssSelector("#kw")).sendKeys(haha);
 		driver.findElement(By.cssSelector("#su")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#s_tab > b")));
-		Assert.assertEquals( driver.findElement(By.cssSelector("#s_tab > b")).getText(),"网页");	
+		Assert.assertEquals( driver.findElement(By.cssSelector("#s_tab > b")).getText(),"网1页");	
 		Thread.sleep(5000);
 		System.out.println("ok");
 		

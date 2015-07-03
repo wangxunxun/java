@@ -15,7 +15,7 @@ public class webtest extends webinitialdriver{
 	@BeforeTest
 	public void setUp(){
 		//设置 Chrome的路径
-		String dirs=tool.getCurrentPath("/testresource/chromedriver.exe");
+		String dirs=tool.setCurrentPath("/testresource/chromedriver.exe");
 
 		System.setProperty("webdriver.chrome.driver", 
 				dirs);
