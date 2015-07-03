@@ -25,8 +25,8 @@ public class testandroid extends androidAppInitial {
         capabilities.setCapability("deviceName","XiaoMi2");
         capabilities.setCapability("platformVersion", "4.4");
         capabilities.setCapability("app", app.getAbsolutePath());
-//        capabilities.setCapability("unicodeKeyboard", "True");
-//        capabilities.setCapability("resetKeyboard", "True");
+        capabilities.setCapability("unicodeKeyboard", "True");
+        capabilities.setCapability("resetKeyboard", "True");
         capabilities.setCapability("appPackage", "com.tencent.news");
         capabilities.setCapability("appActivity", "com.tencent.news.activity.SplashActivity");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);

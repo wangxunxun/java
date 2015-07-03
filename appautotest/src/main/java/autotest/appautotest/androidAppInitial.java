@@ -30,7 +30,7 @@ public class androidAppInitial {
 	 
 	    
 	    
-	    public void getbuttons(){
+	    public void getButton(){
 	    	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.Button");
 	    	if (eles.size()!=0){
 	    		System.out.println("The total of button is " + eles.size());
@@ -44,7 +44,7 @@ public class androidAppInitial {
 			}
     	}
 	    
-	    public void gettextviews(){
+	    public void getTextView(){
 	    	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.TextView");
 	    	if (eles.size()!=0){
 	    		System.out.println("The total of textview is " + eles.size());
@@ -60,7 +60,7 @@ public class androidAppInitial {
 			}
 	    }
 	    
-	    public void getedittexts(){
+	    public void getEditText(){
 	    	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.EditText");
 	    	if (eles.size()!=0){
 	    		System.out.println("The total of edittext is " + eles.size());
@@ -76,7 +76,7 @@ public class androidAppInitial {
 			}
 	    }
 	    
-	    public void getimageviews(){
+	    public void getImageView(){
 	    	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.ImageView");
 	    	if (eles.size()!=0){
 	    		System.out.println("The total of imageview is " + eles.size());	    		    		
@@ -88,7 +88,7 @@ public class androidAppInitial {
 	    
 	    
 	    
-	    public void getimagebuttons(){
+	    public void getImageButton(){
 	    	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.ImageButton");
 	    	if (eles.size()!=0){
 	    		System.out.println("The total of imagebutton is " + eles.size());    		    		
@@ -170,20 +170,20 @@ public class androidAppInitial {
 
 	    }
 
-	    public void clickbyid(String id){
+	    public void clickById(String id){
 	    	driver.findElementById(id).click();
 	    }
 	    
-	    public void clickbycss(String css){
+	    public void clickByCss(String css){
 	    	driver.findElementByCssSelector(css).click();
 	    }
 	    
-	    public void clickbyxpath(String xpath){
+	    public void clickByXpath(String xpath){
 	    	driver.findElementByXPath(xpath);
 	    }
 	    
 
-		public static void takescreenshot() throws IOException{
+		public static void takeScreen() throws IOException{
 			File scrFile = driver.getScreenshotAs(OutputType.FILE);
 			String dir_name = tool.setCurrentPath("\\screenshot\\");
 		  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
