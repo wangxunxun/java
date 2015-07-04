@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Default suite]">
+  <listeners>
+    <listener class-name="autotest.appautotest.DotTestListener"/>
+  </listeners>
   <test name="Default test(failed)">
     <classes>
       <class name="autotest.appautotest.test1">
         <methods>
+          <include name="test"/>
           <include name="tearDown"/>
-          <include name="addContact"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- autotest.appautotest.test1 -->

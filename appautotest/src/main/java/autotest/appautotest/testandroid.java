@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import java.io.File;
 import java.net.URL;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,6 +13,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class testandroid extends androidAppInitial {
+	
+    public AndroidDriver getDriver() {
+        return (AndroidDriver) driver;
+    }
 
 	@BeforeTest
     public void setUp() throws Exception {

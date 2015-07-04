@@ -12,18 +12,13 @@
         </run>
     </groups>
     <classes>
-      <class name="autotest.appautotest.test2">
+      <class name="autotest.appautotest.test1">
       <methods>
-          <include name = "baidu"/>
+          <include name = "test"/>
 
       </methods>
       </class>
-      <class name="autotest.appautotest.test3">
-      <methods>
-          <include name = "rrr"/>
 
-      </methods>
-      </class>
     </classes>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->

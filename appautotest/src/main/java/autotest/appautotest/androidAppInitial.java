@@ -4,8 +4,11 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
 
@@ -195,19 +198,19 @@ public class androidAppInitial {
 	    	ele.sendKeys(content);		    	    	
 	    }
 	    
-	    public void clickenter() throws IOException{
+	    public void clickEnter() throws IOException{
 	    	executeAdbShell("adb shell input keyevent 66");
 	    }
 	    
-	    public void clickback() throws IOException{
+	    public void clickBack() throws IOException{
 	    	executeAdbShell("adb shell input keyevent 4");
 	    }
 	    
-	    public void clickhome() throws IOException{
+	    public void clickHome() throws IOException{
 	    	executeAdbShell("adb shell input keyevent 3");
 	    }
 	    
-	    public void clickmenu() throws IOException{
+	    public void clickMenu() throws IOException{
 	    	executeAdbShell("adb shell input keyevent 1");
 	    }
 	    
@@ -217,6 +220,32 @@ public class androidAppInitial {
 	    
 	    public void executeAdbShell(String adbshell) throws IOException{
 	    	Runtime.getRuntime().exec(adbshell);
+	    }
+	    
+	    public String getDeviceVersion() {
+	        try {
+	            Process process = Runtime.getRuntime().exec("adb shell getprop ro.build.version.release");
+	            process.waitFor();
+
+	            InputStream is = process.getInputStream();
+	            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+	            String version = br.readLine();
+
+	            int points = 0;
+	            for (int i = 0; i < version.length(); i++) {
+	                if (version.substring(i, i + 1).equals(".")) {
+	                    points++;
+	                    if (points == 2) {
+	                        return version.substring(0, i);
+	                    }
+	                }
+	            }
+
+	            return version;
+	        } catch (Exception e) {
+	            tool.log("adb shell getprop ro.build.version.release", 2);
+	            throw new NullPointerException("get device version is null.");
+	        }
 	    }
 
 		public static void takeScreen() throws IOException{

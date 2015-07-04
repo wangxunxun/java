@@ -1,5 +1,7 @@
 package autotest.appautotest;
 
+import io.appium.java_client.android.AndroidDriver;
+
 import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
@@ -15,8 +17,11 @@ public class DotTestListener extends TestListenerAdapter {
 	@Override
     public void onTestFailure(ITestResult tr) {    
         try {
-            webtest tb = (webtest) tr.getInstance();
-            WebDriver driver = tb.getDriver();              
+        	testandroid tb = (testandroid) tr.getInstance();
+        	AndroidDriver driver = tb.getDriver();
+        	
+//            webtest tb = (webtest) tr.getInstance();
+//            WebDriver driver = tb.getDriver();              
             tool.log(tr.getName() + " Failure");
             ScreenShot shot = new ScreenShot(driver,tr);
             shot.takescreenshot();

@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
+    <line>
+      <![CDATA[F:\workplace\java\appautotest\screenshot\20150704_175712_270_test.jpg]]>
+    </line>
+    <line>
+      <![CDATA[<img src="../F:\workplace\java\appautotest\screenshot\20150704_175712_270_test.jpg"/>]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="90323" started-at="2015-07-04T05:46:13Z" finished-at="2015-07-04T05:47:43Z">
+  <suite name="Default suite" duration-ms="100937" started-at="2015-07-04T09:55:34Z" finished-at="2015-07-04T09:57:15Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="90323" started-at="2015-07-04T05:46:13Z" finished-at="2015-07-04T05:47:43Z">
+    <test name="Default test" duration-ms="100937" started-at="2015-07-04T09:55:34Z" finished-at="2015-07-04T09:57:15Z">
       <class name="autotest.appautotest.test1">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.test1@47d7938f]" name="setUp" is-config="true" duration-ms="29010" started-at="2015-07-04T13:46:13Z" finished-at="2015-07-04T13:46:42Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.test1@52aeb38d]" name="setUp" is-config="true" duration-ms="28128" started-at="2015-07-04T17:55:34Z" finished-at="2015-07-04T17:56:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="addContact()[pri:0, instance:autotest.appautotest.test1@47d7938f]" name="addContact" duration-ms="58695" started-at="2015-07-04T13:46:42Z" finished-at="2015-07-04T13:47:41Z">
+        <test-method status="FAIL" signature="test()[pri:0, instance:autotest.appautotest.test1@52aeb38d]" name="test" duration-ms="64906" started-at="2015-07-04T17:56:03Z" finished-at="2015-07-04T17:57:08Z">
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
               <![CDATA[Timed out after 10 seconds waiting for presence of element located by: By.id: com.autonavi.xmgd.navigator:id/guide_btn_end
 Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
 System info: host: 'troy-PC', ip: '192.168.235.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_79'
-Session ID: 56b184a1-e69d-4fd4-bc00-1cd49b48296f
+Session ID: 2cba4e7f-df78-464a-96b2-f5ccc441c58f
 Driver info: io.appium.java_client.android.AndroidDriver
 Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\tengxunxinwen4.7.3.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\tengxunxinwen4.7.3.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.4.4, databaseEnabled=false, platformName=Android, deviceName=158e7d3a, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]]]>
             </message>
@@ -25,13 +31,13 @@ Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\ap
               <![CDATA[org.openqa.selenium.TimeoutException: Timed out after 10 seconds waiting for presence of element located by: By.id: com.autonavi.xmgd.navigator:id/guide_btn_end
 Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
 System info: host: 'troy-PC', ip: '192.168.235.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_79'
-Session ID: 56b184a1-e69d-4fd4-bc00-1cd49b48296f
+Session ID: 2cba4e7f-df78-464a-96b2-f5ccc441c58f
 Driver info: io.appium.java_client.android.AndroidDriver
 Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\tengxunxinwen4.7.3.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\tengxunxinwen4.7.3.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.4.4, databaseEnabled=false, platformName=Android, deviceName=158e7d3a, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
-	at autotest.appautotest.androidAppInitial.waitDisplayById(androidAppInitial.java:215)
-	at autotest.appautotest.test1.addContact(test1.java:58)
+	at autotest.appautotest.androidAppInitial.waitDisplayById(androidAppInitial.java:218)
+	at autotest.appautotest.test1.test(test1.java:63)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -57,12 +63,12 @@ Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\ap
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 Caused by: org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 605 milliseconds
+Command duration or timeout: 268 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
 System info: host: 'troy-PC', ip: '192.168.235.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_79'
 *** Element info: {Using=id, value=com.autonavi.xmgd.navigator:id/guide_btn_end}
-Session ID: 56b184a1-e69d-4fd4-bc00-1cd49b48296f
+Session ID: 2cba4e7f-df78-464a-96b2-f5ccc441c58f
 Driver info: io.appium.java_client.android.AndroidDriver
 Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\tengxunxinwen4.7.3.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\tengxunxinwen4.7.3.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.4.4, databaseEnabled=false, platformName=Android, deviceName=158e7d3a, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
@@ -95,9 +101,15 @@ Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\ap
             </full-stacktrace>
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
+            <line>
+              <![CDATA[F:\workplace\java\appautotest\screenshot\20150704_175712_270_test.jpg]]>
+            </line>
+            <line>
+              <![CDATA[<img src="../F:\workplace\java\appautotest\screenshot\20150704_175712_270_test.jpg"/>]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- addContact -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.test1@47d7938f]" name="tearDown" is-config="true" duration-ms="2585" started-at="2015-07-04T13:47:41Z" finished-at="2015-07-04T13:47:43Z">
+        </test-method> <!-- test -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.test1@52aeb38d]" name="tearDown" is-config="true" duration-ms="3605" started-at="2015-07-04T17:57:12Z" finished-at="2015-07-04T17:57:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

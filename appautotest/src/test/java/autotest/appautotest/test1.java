@@ -19,7 +19,7 @@ public class test1 extends testandroid {
 
 			
     @Test
-    public void addContact() throws InterruptedException, IOException{
+    public void test() throws InterruptedException, IOException{
     	tool.waitByTimeOut(8000);   
     	swipeOfType("left");
     	tool.waitByTimeOut(1000);
@@ -27,15 +27,20 @@ public class test1 extends testandroid {
     	returnelebyclassname("ImageView", 1).click();
     	tool.waitByTimeOut(2000);
     	returnelebyclassname("TextView", 2).click();
+    	
     	tool.waitByTimeOut(2000);
     	swipeOfType("down");
+    	
+    	System.out.println(returnelebyclassname("ImageView", 0).getLocation());
+    	
+    	tool.log(getDeviceVersion());
     	returnelebyclassname("ImageView", 0).click();
     	clickById("com.tencent.news:id/user_center_search");    	
     	tool.waitByTimeOut(2000);    	
     	inputById("共和国", "com.tencent.news:id/inputSearch");
     	tool.waitByTimeOut(2000);
 
-    	clickmenu();
+    	driver.tap(1, driver.findElementById("com.tencent.news:id/inputSearch"), 3000);
     	
 
 
