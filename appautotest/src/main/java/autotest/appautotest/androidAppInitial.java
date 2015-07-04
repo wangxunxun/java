@@ -10,13 +10,16 @@ import java.net.URL;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+
 import autotest.appautotest.CommonTools;
 
 
@@ -182,6 +185,39 @@ public class androidAppInitial {
 	    	driver.findElementByXPath(xpath);
 	    }
 	    
+	    public void inputById(String content,String id){
+	    	AndroidElement ele = (AndroidElement) driver.findElementById(id);
+	    	int i=1;	    	
+	    	while (i<3){
+	    		ele.clear();
+	    		i++;
+	    	}
+	    	ele.sendKeys(content);		    	    	
+	    }
+	    
+	    public void clickenter() throws IOException{
+	    	executeAdbShell("adb shell input keyevent 66");
+	    }
+	    
+	    public void clickback() throws IOException{
+	    	executeAdbShell("adb shell input keyevent 4");
+	    }
+	    
+	    public void clickhome() throws IOException{
+	    	executeAdbShell("adb shell input keyevent 3");
+	    }
+	    
+	    public void clickmenu() throws IOException{
+	    	executeAdbShell("adb shell input keyevent 1");
+	    }
+	    
+	    public void waitDisplayById(String id){
+	    	wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+	    }
+	    
+	    public void executeAdbShell(String adbshell) throws IOException{
+	    	Runtime.getRuntime().exec(adbshell);
+	    }
 
 		public static void takeScreen() throws IOException{
 			File scrFile = driver.getScreenshotAs(OutputType.FILE);

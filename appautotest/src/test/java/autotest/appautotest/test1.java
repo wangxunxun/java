@@ -3,10 +3,12 @@ package autotest.appautotest;
 
 
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,8 +19,8 @@ public class test1 extends testandroid {
 
 			
     @Test
-    public void addContact() throws InterruptedException{
-    	tool.waitByTimeOut(4000);   
+    public void addContact() throws InterruptedException, IOException{
+    	tool.waitByTimeOut(8000);   
     	swipeOfType("left");
     	tool.waitByTimeOut(1000);
     	swipeOfType("left");
@@ -28,14 +30,22 @@ public class test1 extends testandroid {
     	tool.waitByTimeOut(2000);
     	swipeOfType("down");
     	returnelebyclassname("ImageView", 0).click();
-    	clickById("com.tencent.news:id/user_center_search");
+    	clickById("com.tencent.news:id/user_center_search");    	
+    	tool.waitByTimeOut(2000);    	
+    	inputById("共和国", "com.tencent.news:id/inputSearch");
+    	tool.waitByTimeOut(2000);
+
+    	clickmenu();
+    	
+
+
+
+
+    	
+
     	
     	tool.waitByTimeOut(2000);
-    	
-//    	clickbyid("com.tencent.news:id/inputSearch");
-    	driver.findElementById("com.tencent.news:id/inputSearch").sendKeys("ererer");
-    	
-    	tool.waitByTimeOut(2000);
+
 
 
 
@@ -45,7 +55,8 @@ public class test1 extends testandroid {
   
         tool.waitByTimeOut(3000);
         
-//        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("com.autonavi.xmgd.navigator:id/guide_btn_end")));
+        waitDisplayById("com.autonavi.xmgd.navigator:id/guide_btn_end");
+        
         System.out.println("ok");
 
     }
