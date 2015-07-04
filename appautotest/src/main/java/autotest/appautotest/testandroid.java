@@ -14,8 +14,8 @@ import org.testng.annotations.BeforeTest;
 
 public class testandroid extends androidAppInitial {
 	
-    public AndroidDriver getDriver() {
-        return (AndroidDriver) driver;
+    public WebDriver getDriver() {
+        return driver;
     }
 
 	@BeforeTest

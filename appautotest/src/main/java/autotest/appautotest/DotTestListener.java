@@ -13,12 +13,13 @@ import autotest.appautotest.ScreenShot;
 public class DotTestListener extends TestListenerAdapter {
 	 
 	CommonTools tool = new CommonTools();
+	
 
 	@Override
     public void onTestFailure(ITestResult tr) {    
         try {
         	testandroid tb = (testandroid) tr.getInstance();
-        	AndroidDriver driver = tb.getDriver();
+        	WebDriver driver = tb.getDriver();
         	
 //            webtest tb = (webtest) tr.getInstance();
 //            WebDriver driver = tb.getDriver();              
