@@ -63,15 +63,19 @@ public class CommonTools {
             e.printStackTrace();
         }
     }
-    public Map<String,String>[] getTestData(String excelpath) throws BiffException, IOException{
+    public Map<String,String>[] getTestData(String classname ,String excelpath) throws BiffException, IOException{
     	String currentPath = System.getProperty("user.dir");
     	String path = currentPath+"\\"+excelpath;
     	jxl.Workbook readwb = null;   
 		InputStream instream = new FileInputStream(path);   
 		readwb = Workbook.getWorkbook(instream);   
-		Sheet readsheet = readwb.getSheet(0);   
+		Sheet readsheet = readwb.getSheet(classname);   
 		int rsColumns = readsheet.getColumns();   
 		int rsRows = readsheet.getRows();   
+		if (rsRows==0){
+			throw new IllegalStateException("There is now row found in excel file [" + excelpath + "], can't "
+					+ "generate map from column name to column index. ");
+		}
 
 		String key[] = new String[rsColumns];   
 		Map<String,String> data[]= new Map[rsRows-1];
@@ -94,5 +98,11 @@ public class CommonTools {
 		}    
 		readwb.close();  
 		return data;	          	            			
+    }
+    public static void main(String[] args) throws BiffException, IOException {
+    	CommonTools eee = new CommonTools();
+    	System.out.println(eee.getTestData("Sheet1", "test.xls")[1]);
+    	
+    	
     }
 }

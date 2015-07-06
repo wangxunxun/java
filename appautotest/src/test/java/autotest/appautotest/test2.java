@@ -33,7 +33,7 @@ public class test2 extends webtest {
     	Thread.sleep(5000);
 		String url="http://www.baidu.com";
 		driver.get(url);
-		System.out.println(tool.getTestData("test.xls").length);
+		System.out.println(tool.getTestData("Sheet1","test.xls").length);
 		driver.findElement(By.cssSelector("#kw")).sendKeys(haha);
 		driver.findElement(By.cssSelector("#su")).click();
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#s_tab > b")));
