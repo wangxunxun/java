@@ -1,5 +1,6 @@
 package autotest.appautotest;
 import java.io.IOException;
+import utils.ReadElementData;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.testng.annotations.Test;
 
 import utils.CommonTools;
 import utils.ReadTestData;
+import utils.ReadElementData;
 
 
 import base.WebApp;
@@ -25,6 +27,10 @@ import base.WebApp;
 public class testweb extends WebApp {
 	static CommonTools tool = new CommonTools();
 	static ReadTestData readtestdata = new ReadTestData();
+	static String excelpath = "F:\\workplace\\java\\appautotest\\testresource\\test.xls";
+	static String sheet = "Sheet1";
+	public static ReadElementData elementdata = new ReadElementData(excelpath, sheet);
+	
 	@BeforeTest
 	public void setUp(){
 		//设置 Chrome的路径
@@ -46,6 +52,7 @@ public class testweb extends WebApp {
 		driver.quit();
 	}
 	@Test
+	
     public void test() throws InterruptedException, BiffException, IOException{
     	String url="http://www.baidu.com";
 		enterUrl(url);
@@ -53,7 +60,8 @@ public class testweb extends WebApp {
 		List<Map<String, String>> data = readtestdata.getTestData("testresource\\test.xls", "Sheet2");
 		System.out.println(data);
 		tool.log("4545");
-		Assert.assertEquals("444", "5555");
+		System.out.println(elementdata.readData());
+//		Assert.assertEquals("444", "5555");
 //		Assert.assertEquals(driver.findElement(By.cssSelector("#nav > li.li6 > a")).getText(), "联系我们");
 		Thread.sleep(5000);
 		
