@@ -1,5 +1,11 @@
 package base;
+import java.io.File;
+import java.io.IOException;
 
-public class WebApp {
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+
+import core.UI;
+public class WebApp extends UI{
 
 }

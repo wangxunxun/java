@@ -12,32 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-import autotest.appautotest.CommonTools;
-import autotest.appautotest.webinitialdriver;
 
 public class Initial {
-	public static WebDriver driver;	
+	public static ChromeDriver driver;	
 	public WebDriverWait wait; 
-	static CommonTools tool = new CommonTools();
+
 	
-	@BeforeTest
-	public void setUp(){
-		//设置 Chrome的路径
-		String dirs=tool.setCurrentPath("/testresource/chromedriver.exe");
 
-		System.setProperty("webdriver.chrome.driver", 
-				dirs);
-		
-		driver=new ChromeDriver();
-		wait = new WebDriverWait(driver,10);
-	}
-
-
-		
-	@AfterTest
-	
-	public void tearDown() {
-		// TODO Auto-generated method stub
-		driver.quit();
-	}
 }
