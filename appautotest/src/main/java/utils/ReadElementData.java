@@ -42,13 +42,13 @@ public class ReadElementData {
 		Sheet readsheet = readwb.getSheet(sheet); 
 		this.readsheet = readsheet;
 	}
-	public List readTable(){
+	public List<List<Object>> readTable(){
 		List<String> header =new ArrayList<String>();
 		int rsColumns = readsheet.getColumns();   
 		int rsRows = readsheet.getRows();   
-		List elements = new ArrayList();
-		List pages = new ArrayList();
-		List tabledata = new ArrayList();
+		List<Object> elements = new ArrayList<Object>();
+		List<Object> pages = new ArrayList<Object>();
+		List<List<Object>> tabledata = new ArrayList<List<Object>>();
 		if (rsRows==0){
 			throw new IllegalStateException("There is now row found in excel file [" + excelpath + "], can't "
 					+ "generate map from column name to column index. ");
@@ -62,7 +62,7 @@ public class ReadElementData {
 
 		for(int i = 1;i<rsRows;i++){
 			Cell[] cells = readsheet.getRow(i);
-			List element = new ArrayList();
+			List<Object> element = new ArrayList<Object>();
 			if(cells[0].getContents()!=""&cells[1].getContents()!=""){
 				Map<String,String> location = new HashMap<String,String>();
 				location.put(header.get(2), cells[2].getContents());
@@ -107,22 +107,22 @@ public class ReadElementData {
 		int second = 0;
 		for (int i = 0;i<start;i++){
 			if (readsheet.getCell(1, i).getContents()!=""){
-//				System.out.println(readsheet.getCell(1, i).getContents());
+
 				first= first+1;
 			}
 		}
 		for (int j = 0;j<end;j++){
 			if (readsheet.getCell(1, j).getContents()!=""){
-//				System.out.println(readsheet.getCell(1, j).getContents());
+
 				second = second +1;
 			}		
 		}		
 		return second - first;	
 	}
 	
-	public List realPage(){
+	public List<Integer> realPage(){
 		List<Integer> dis = getPageDis();
-		List pagecount = new ArrayList();
+		List<Integer> pagecount = new ArrayList<Integer>();
 		for(int i = 0;i<dis.size()-1;i++){		
 			int count = count(dis.get(i),dis.get(i+1));
 			pagecount.add(count);
@@ -130,9 +130,9 @@ public class ReadElementData {
 		return pagecount;		
 	}
 	
-	public List real(){
+	public List<Integer> real(){
 		List<Integer> data = realPage();
-		List r = new ArrayList();
+		List<Integer> r = new ArrayList<Integer>();
 		r.add(0);
 		for (int i = 0; i<data.size();i++){
 			int c = 0;
@@ -146,11 +146,11 @@ public class ReadElementData {
 	}
 	
 	public Map<String,Map<String,Map<String,String>>> getdata(){
-		List tabledata = readTable();
+		List<List<Object>> tabledata = readTable();
 		List<Integer> real = real();
-		List data = new ArrayList();
-		List tabledata1 = (List) tabledata.get(1);
-		List tabledata0 = (List) tabledata.get(0);
+		List<List<Object>> data = new ArrayList<List<Object>>();
+		List<Object> tabledata1 = (List<Object>) tabledata.get(1);
+		List<Object> tabledata0 = (List<Object>) tabledata.get(0);
 
 		
 		for (int i = 0;i <real.size()-1;i++){
@@ -162,9 +162,9 @@ public class ReadElementData {
 
 		for(int j =0;j<real.size()-1;j++){
 			Map<String,Map<String,String>> a = new HashMap<String,Map<String,String>>();
-				for (int l =0;l<((List) data.get(j)).size();l++){
-					String kk = (String) ((List) ((List) data.get(j)).get(l)).get(0);
-					Map<String,String> vv = (Map<String, String>) ((List) ((List) data.get(j)).get(l)).get(1);
+				for (int l =0;l<data.get(j).size();l++){
+					String kk = (String) ((List<?>) ((List<?>) data.get(j)).get(l)).get(0);
+					Map<String,String> vv = (Map<String, String>) ((List<?>) ((List) data.get(j)).get(l)).get(1);
 					a.put(kk,vv);					
 				}				
 			d.put((String) tabledata0.get(j), a);

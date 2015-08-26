@@ -1,6 +1,8 @@
 package autotest.appautotest;
 import java.io.IOException;
+
 import utils.ReadElementData;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +32,7 @@ public class testweb extends WebApp {
 	static String excelpath = "F:\\workplace\\java\\appautotest\\testresource\\test.xls";
 	static String sheet = "Sheet1";
 	public static ReadElementData elementdata = new ReadElementData(excelpath, sheet);
+	private Map<String, Map<String, Map<String, String>>> ele;
 	
 	@BeforeTest
 	public void setUp(){
@@ -41,6 +44,7 @@ public class testweb extends WebApp {
 		
 		driver=new ChromeDriver();
 		wait = new WebDriverWait(driver,10);
+		this.ele = elementdata.getdata();
 	}
 
 
@@ -64,7 +68,7 @@ public class testweb extends WebApp {
 //		System.out.println(elementdata.count(1, 3));
 //		System.out.println(elementdata.realPage());
 //		System.out.println(elementdata.real());
-		System.out.println(elementdata.getdata());
+		System.out.println(ele);
 //		Assert.assertEquals("444", "5555");
 //		Assert.assertEquals(driver.findElement(By.cssSelector("#nav > li.li6 > a")).getText(), "联系我们");
 		Thread.sleep(5000);
