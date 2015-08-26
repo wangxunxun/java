@@ -133,6 +133,7 @@ public class ReadElementData {
 	public List real(){
 		List<Integer> data = realPage();
 		List r = new ArrayList();
+		r.add(0);
 		for (int i = 0; i<data.size();i++){
 			int c = 0;
 			for (int j=0;j<=i;j++){
@@ -144,21 +145,32 @@ public class ReadElementData {
 
 	}
 	
-	public List getdata(){
+	public Map<String,Map<String,Map<String,String>>> getdata(){
 		List tabledata = readTable();
 		List<Integer> real = real();
 		List data = new ArrayList();
 		List tabledata1 = (List) tabledata.get(1);
+		List tabledata0 = (List) tabledata.get(0);
+
+		
 		for (int i = 0;i <real.size()-1;i++){
 			data.add(tabledata1.subList(real.get(i), real.get(i+1)));
 		}
-		System.out.println(data);
-		Map d = new HashMap();
-		for (int j =0;j<real.size()-1;j++){
-			Map a = new HashMap();
 
-			}
-		return data;
+	
+		Map<String,Map<String,Map<String,String>>> d = new HashMap<String, Map<String, Map<String, String>>>();
+
+		for(int j =0;j<real.size()-1;j++){
+			Map<String,Map<String,String>> a = new HashMap<String,Map<String,String>>();
+				for (int l =0;l<((List) data.get(j)).size();l++){
+					String kk = (String) ((List) ((List) data.get(j)).get(l)).get(0);
+					Map<String,String> vv = (Map<String, String>) ((List) ((List) data.get(j)).get(l)).get(1);
+					a.put(kk,vv);					
+				}				
+			d.put((String) tabledata0.get(j), a);
+		}
+		
+		return d;
 		}
 
 
