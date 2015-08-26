@@ -27,7 +27,7 @@ import base.WebApp;
 public class testweb extends WebApp {
 	static CommonTools tool = new CommonTools();
 	static ReadTestData readtestdata = new ReadTestData();
-	static String excelpath = "F:\\workplace\\java\\appautotest\\testresource\\test.xls";
+	static String excelpath = "C:\\Users\\xun\\workspace\\java\\appautotest\\testresource\\test.xls";
 	static String sheet = "Sheet1";
 	public static ReadElementData elementdata = new ReadElementData(excelpath, sheet);
 	
@@ -60,7 +60,11 @@ public class testweb extends WebApp {
 		List<Map<String, String>> data = readtestdata.getTestData("testresource\\test.xls", "Sheet2");
 		System.out.println(data);
 		tool.log("4545");
-		System.out.println(elementdata.readData());
+		System.out.println(elementdata.getPageDis());
+		System.out.println(elementdata.count(1, 3));
+		System.out.println(elementdata.realPage());
+		System.out.println(elementdata.real());
+		System.out.println(elementdata.getdata());
 //		Assert.assertEquals("444", "5555");
 //		Assert.assertEquals(driver.findElement(By.cssSelector("#nav > li.li6 > a")).getText(), "联系我们");
 		Thread.sleep(5000);
