@@ -12,7 +12,6 @@ public class WebApp extends Initial{
 	
 	
 	public WebElement findelement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		System.out.println(eledata);
 		String selecttype = eledata.get(page).get(name).get("SelectType");
 		String location = eledata.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){

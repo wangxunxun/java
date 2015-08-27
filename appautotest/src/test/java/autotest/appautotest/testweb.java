@@ -59,8 +59,10 @@ public class testweb extends WebApp {
     	String url="https://www.baidu.com/";
 //    	String url="http://69.164.202.55/testlink/login.php";
     	driver.get(url);
+    	System.out.println(1);
     	findelement(eledata, "主页", "搜索输入框").sendKeys("33333");
     	Thread.sleep(5000);
+    	System.out.println(2);
     	findelement(eledata, "登录页", "用户名").sendKeys("admin");
     	findelement(eledata, "登录页", "密码").sendKeys("admin");
     	findelement(eledata, "登录页", "登录").click();
