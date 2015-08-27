@@ -1,22 +1,17 @@
 package core;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 
+import utils.ReadElementData;
 
 public class Initial {
-	public static ChromeDriver driver;	
-	public WebDriverWait wait; 
 
+	public Map<String, Map<String, Map<String, String>>> initialeledata(String excelpath,String sheetname){
+		ReadElementData elementdata = new ReadElementData(excelpath, sheetname);	
+		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
+		return eledata;
+	}
 	
 
 }

@@ -1,11 +1,32 @@
 package base;
-import java.io.File;
-import java.io.IOException;
+import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import core.UI;
-public class WebApp extends UI{
-
+import core.Initial;
+public class WebApp extends Initial{
+	public static ChromeDriver driver;	
+	public WebDriverWait wait; 
+	
+	
+	public WebElement findelement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+		System.out.println(eledata);
+		String selecttype = eledata.get(page).get(name).get("SelectType");
+		String location = eledata.get(page).get(name).get("Location");
+		if (selecttype.equals("css")){
+			return driver.findElementByCssSelector(location);
+		}
+		if (selecttype.equals("id")){
+			return driver.findElementById(location);
+		}
+		if (selecttype.equals("xpath")){
+			return driver.findElementByXPath(location);
+		}
+		else{
+			System.out.println("Can not find the element.");
+		}
+		return null;
+	}
 }

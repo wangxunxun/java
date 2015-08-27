@@ -28,11 +28,10 @@ import base.WebApp;
 
 public class testweb extends WebApp {
 	static CommonTools tool = new CommonTools();
-	static ReadTestData readtestdata = new ReadTestData();
-	static String excelpath = "F:\\workplace\\java\\appautotest\\testresource\\test.xls";
-	static String sheet = "Sheet1";
-	public static ReadElementData elementdata = new ReadElementData(excelpath, sheet);
-	private Map<String, Map<String, Map<String, String>>> ele;
+	static String excelpath = "testresource\\test.xls";
+	static String sheet = "元素信息";
+	private Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, sheet);
+	
 	
 	@BeforeTest
 	public void setUp(){
@@ -44,7 +43,6 @@ public class testweb extends WebApp {
 		
 		driver=new ChromeDriver();
 		wait = new WebDriverWait(driver,10);
-		this.ele = elementdata.getdata();
 	}
 
 
@@ -58,20 +56,14 @@ public class testweb extends WebApp {
 	@Test
 	
     public void test() throws InterruptedException, BiffException, IOException{
-    	String url="http://www.baidu.com";
-		enterUrl(url);
-		driver.findElement(By.cssSelector("#lh > a:nth-child(3)")).click();
-		List<Map<String, String>> data = readtestdata.getTestData("testresource\\test.xls", "Sheet2");
-		System.out.println(data);
-		tool.log("4545");
-//		System.out.println(elementdata.getPageDis());
-//		System.out.println(elementdata.count(1, 3));
-//		System.out.println(elementdata.realPage());
-//		System.out.println(elementdata.real());
-		System.out.println(ele);
-//		Assert.assertEquals("444", "5555");
-//		Assert.assertEquals(driver.findElement(By.cssSelector("#nav > li.li6 > a")).getText(), "联系我们");
-		Thread.sleep(5000);
-		
+    	String url="https://www.baidu.com/";
+//    	String url="http://69.164.202.55/testlink/login.php";
+    	driver.get(url);
+    	findelement(eledata, "主页", "搜索输入框").sendKeys("33333");
+    	Thread.sleep(5000);
+    	findelement(eledata, "登录页", "用户名").sendKeys("admin");
+    	findelement(eledata, "登录页", "密码").sendKeys("admin");
+    	findelement(eledata, "登录页", "登录").click();
+    	Thread.sleep(5000);
     }
 }

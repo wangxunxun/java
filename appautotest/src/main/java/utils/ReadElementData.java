@@ -20,7 +20,8 @@ public class ReadElementData {
 	private Sheet readsheet;
 
 	public ReadElementData(String excelpath,String sheet) {
-		this.excelpath = excelpath;
+    	String currentPath = System.getProperty("user.dir");
+    	this.excelpath = currentPath+"\\"+excelpath;
 		this.sheet = sheet;
     	jxl.Workbook readwb = null;   
 		InputStream instream = null;
@@ -169,7 +170,6 @@ public class ReadElementData {
 				}				
 			d.put((String) tabledata0.get(j), a);
 		}
-		
 		return d;
 		}
 

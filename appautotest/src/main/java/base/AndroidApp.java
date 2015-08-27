@@ -15,12 +15,14 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.CommonTools;
-import core.UI;
+import core.Initial;
 
-public class AndroidApp extends UI{
+public class AndroidApp extends Initial{
 	public static AndroidDriver driver;
+	public WebDriverWait wait; 
 	static CommonTools tool =new CommonTools();
 	
 	
