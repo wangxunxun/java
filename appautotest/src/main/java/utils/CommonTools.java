@@ -56,49 +56,13 @@ public class CommonTools {
         log(content, 1);
     }
     
-    public void waitByTimeOut(int millis) {
+    public void sleep(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
-    public Map<String,String>[] getTestData(String excelpath,String tablename) throws BiffException, IOException{
-    	String currentPath = System.getProperty("user.dir");
-    	String path = currentPath+"\\"+excelpath;
-    	jxl.Workbook readwb = null;   
-		InputStream instream = new FileInputStream(path);   
-		readwb = Workbook.getWorkbook(instream);   
-		Sheet readsheet = readwb.getSheet(tablename);   
-		int rsColumns = readsheet.getColumns();   
-		int rsRows = readsheet.getRows();   
-		if (rsRows==0){
-			throw new IllegalStateException("There is now row found in excel file [" + excelpath + "], can't "
-					+ "generate map from column name to column index. ");
-		}
 
-		String key[] = new String[rsColumns];   
-		Map<String,String> data[]= new Map[rsRows-1];
-		for (int j = 0; j < rsColumns; j++){
-			Cell cell = readsheet.getCell(j, 0);        	  
-			key[j] = cell.getContents();	        	  
-		}   	          
-	  
-		for (int i = 1; i < rsRows; i++)   
-	
-		{   if (readsheet.getCell(0, i).getContents()!=""){
-				Map<String,String> map=new HashMap<String,String>();
-					for (int j = 0; j < rsColumns; j++)   
-					{   
-						Cell cell = readsheet.getCell(j, i);   
-						map.put(key[j], cell.getContents());  
-					}   
-					
-					data[i-1] = map;	
-			}    
-		}
-		readwb.close();  
-		return data;	          	            			
-    }
 
 }
