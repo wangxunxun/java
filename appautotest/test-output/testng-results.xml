@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="56815" started-at="2015-08-28T10:08:39Z" finished-at="2015-08-28T10:09:36Z">
+  <suite name="Default suite" duration-ms="41174" started-at="2015-08-28T13:22:24Z" finished-at="2015-08-28T13:23:05Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="56815" started-at="2015-08-28T10:08:39Z" finished-at="2015-08-28T10:09:36Z">
-      <class name="autotest.appautotest.testweb">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testweb@32788733]" name="setUp" is-config="true" duration-ms="15022" started-at="2015-08-28T18:08:39Z" finished-at="2015-08-28T18:08:54Z">
+    <test name="Default test" duration-ms="41174" started-at="2015-08-28T13:22:24Z" finished-at="2015-08-28T13:23:05Z">
+      <class name="autotest.appautotest.testand">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testand@4ff85c27]" name="setUp" is-config="true" duration-ms="17434" started-at="2015-08-28T21:22:24Z" finished-at="2015-08-28T21:22:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test()[pri:0, instance:autotest.appautotest.testweb@32788733]" name="test" duration-ms="38916" started-at="2015-08-28T18:08:54Z" finished-at="2015-08-28T18:09:33Z">
+        <test-method status="PASS" signature="test()[pri:0, instance:autotest.appautotest.testand@4ff85c27]" name="test" duration-ms="21675" started-at="2015-08-28T21:22:41Z" finished-at="2015-08-28T21:23:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testweb@32788733]" name="tearDown" is-config="true" duration-ms="2877" started-at="2015-08-28T18:09:33Z" finished-at="2015-08-28T18:09:36Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testand@4ff85c27]" name="tearDown" is-config="true" duration-ms="2042" started-at="2015-08-28T21:23:03Z" finished-at="2015-08-28T21:23:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- autotest.appautotest.testweb -->
+      </class> <!-- autotest.appautotest.testand -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

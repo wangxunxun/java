@@ -29,36 +29,7 @@ public class UI extends Initial{
 	public WebDriverWait wait; 
 	public static CommonTools tool = new CommonTools();
 
-	
-    
-    public void get(String url){
-    	driver.get(url);
-    }
-    
-    public void close(){
-    	driver.close();
-    }
-    
-    public void getTitle(){
-    	driver.getTitle();
-    }
-    
-    public void quit(){
-    	driver.quit();
-    }
-    
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
-    
-    public Set<String> getWindowHandles() {
-        return driver.getWindowHandles();
-    }
 
-
-    public String getCurrentWindow() {
-        return driver.getWindowHandle();
-    }
     
     public void clickElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
     	findElement(eledata, page, name).click();
@@ -68,8 +39,8 @@ public class UI extends Initial{
     	findElement(eledata, page, name).sendKeys(value);
     }
     
-    public String getElementValue(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	String value = findElement(eledata, page, name).getAttribute("value");
+    public String getElementText(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+    	String value = findElement(eledata, page, name).getText();
     	if(value !=null){
     		return value;
     	}
@@ -82,7 +53,6 @@ public class UI extends Initial{
     protected void executeJavaScript(String js, WebElement element) {
         ((JavascriptExecutor) driver).executeScript(js, element);
     }
-    
     
     public void assertEquals(String actual, String expected){
     	Assert.assertEquals(actual, expected);
@@ -102,6 +72,8 @@ public class UI extends Initial{
     	return findElement(eledata, page, name).isEnabled();
     }
     
+
+
 	public WebElement findElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
 		String selecttype = eledata.get(page).get(name).get("SelectType");
 		String location = eledata.get(page).get(name).get("Location");
@@ -122,7 +94,7 @@ public class UI extends Initial{
 		}
 		return null;
 	}
-		
+	
     public void waitDisplay(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
 		String selecttype = eledata.get(page).get(name).get("SelectType");
 		String location = eledata.get(page).get(name).get("Location");
@@ -140,35 +112,5 @@ public class UI extends Initial{
 			System.out.println("Can not find the element.");
 		}
     }
-    
-    public static void getScreen(String filename)
-    {
-
-
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String dir_name = tool.setCurrentPath("\\screenshot\\");
-	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
-	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
-	  	}
-		String filepath = dir_name+tool.getCurrentTime()+ "_"+ filename+  ".jpg";
-		try {
-			System.out.println("save snapshot path is:"+dir_name+filename);
-			FileUtils.copyFile(scrFile, new File(filepath));
-		   	} 
-		catch (IOException e) {
-			System.out.println("Can't save screenshot");
-			e.printStackTrace();
-		} 
-		finally{
-		     System.out.println("screen shot finished");
-		}
-	}
-    
-    public static void getScreen()
-    {
-    	getScreen("");
-	}
-
-    
 
 }

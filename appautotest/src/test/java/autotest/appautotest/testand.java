@@ -1,12 +1,15 @@
 package autotest.appautotest;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,6 +21,9 @@ import org.testng.annotations.Test;
 import base.AndroidApp;
 
 public class testand extends AndroidApp{
+	static String excelpath = "testresource\\test.xls";
+	static String sheet = "testapp";
+	private Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, sheet);
 	@BeforeTest
     public void setUp() throws Exception {
         // set up appium
@@ -43,14 +49,29 @@ public class testand extends AndroidApp{
  
     @AfterTest
     public void tearDown() throws Exception {
-    	driver.quit();
+    	quit();
     }
     
     @Test
     public void test() throws InterruptedException, IOException{
     	getButtons();
+    	tool.sleep(2000);    	
+    	clickElement(eledata, "首页", "about");
+    	clickBack();
+    	waitDisplay(eledata, "首页", "layout");
+    	isDisplayed(eledata, "首页", "layout");
+    	String a =getElementText(eledata, "首页", "layout");
+    	tool.log(a);
+    	clickElement(eledata, "首页", "layout");
+    	clickBack();
+    	clickElement(eledata, "首页", "textview");
+    	clickBack();
+    	clickElement(eledata, "首页", "edittext");
+    	sendKeys(eledata, "edittext", "昵称", "好样");
+    	tool.sleep(5000);
+    	clickBack();
+//    	assertEquals("77", "333");
 
-    	Assert.assertEquals("444", "555");
-		Thread.sleep(5000);
+
     }
 }

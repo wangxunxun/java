@@ -39,11 +39,11 @@ public class testweb extends WebApp {
 		//设置 Chrome的路径
 		String dirs=tool.setCurrentPath("/testresource/chromedriver.exe");
 
-//		System.setProperty("webdriver.chrome.driver", dirs);
-//		driver=new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", dirs);
+		driver=new ChromeDriver();
 
-		System.setProperty("webdriver.firefox.bin", "E:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");   
-		driver = new FirefoxDriver();
+//		System.setProperty("webdriver.firefox.bin", "E:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");   
+//		driver = new FirefoxDriver();
 		
 //		System.setProperty("webdriver.ie.driver", "D:\\IEDriverServer.exe");
 //		WebDriver driver = new InternetExplorerDriver();

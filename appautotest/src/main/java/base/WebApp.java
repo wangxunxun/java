@@ -24,8 +24,78 @@ import org.testng.Assert;
 import utils.CommonTools;
 import core.UI;
 public class WebApp extends UI{
+
 	protected static String main_window;
 	
+	
+    public void get(String url){
+    	driver.get(url);
+    }
+    
+    public void close(){
+    	driver.close();
+    }
+    
+    public void getTitle(){
+    	driver.getTitle();
+    }
+    
+    public void quit(){
+    	driver.quit();
+    }
+    
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+    
+    public Set<String> getWindowHandles() {
+        return driver.getWindowHandles();
+    }
+
+
+    public String getCurrentWindow() {
+        return driver.getWindowHandle();
+    }
+
+    public String getElementValue(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+    	String value = findElement(eledata, page, name).getAttribute("value");
+    	if(value !=null){
+    		return value;
+    	}
+    	else{
+    		tool.log(name+":No text.");
+    	}
+    	return null;
+    }
+    		    
+    public static void getScreen(String filename)
+    {
+
+
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String dir_name = tool.setCurrentPath("\\screenshot\\");
+	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
+	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
+	  	}
+		String filepath = dir_name+tool.getCurrentTime()+ "_"+ filename+  ".jpg";
+		try {
+			System.out.println("save snapshot path is:"+dir_name+filename);
+			FileUtils.copyFile(scrFile, new File(filepath));
+		   	} 
+		catch (IOException e) {
+			System.out.println("Can't save screenshot");
+			e.printStackTrace();
+		} 
+		finally{
+		     System.out.println("screen shot finished");
+		}
+	}
+    
+    public static void getScreen()
+    {
+    	getScreen("");
+	}
+
     
     public boolean isAlertPresent(){
         tool.sleep(500);

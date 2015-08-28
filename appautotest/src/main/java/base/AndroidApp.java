@@ -3,28 +3,30 @@ package base;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.AndroidDriver;
 
-import java.io.BufferedReader;
+
+
+
+
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
+
+
+
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import utils.CommonTools;
 import core.UI;
-import base.WebApp;
+
 
 public class AndroidApp extends UI{
-	public static AndroidDriver driver;
-	public WebDriverWait wait; 
-	static CommonTools tool =new CommonTools();
+	public static AndroidDriver<AndroidElement> driver;
+
 	
 	
     public void getButtons(){
@@ -197,19 +199,44 @@ public class AndroidApp extends UI{
     	Runtime.getRuntime().exec(adbshell);
     }
     
-    public void waitDisplayById(String id){
-    	wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
-    }
     
 
-	public static void takeScreen() throws IOException{ 
+	public static void getScreen(String filename) throws IOException{ 
 		File scrFile = driver.getScreenshotAs(OutputType.FILE);
 		String dir_name = tool.setCurrentPath("\\screenshot\\");
 	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		FileUtils.copyFile(scrFile, new File(dir_name+tool.getCurrentTime()+".jpg"));
-		
-		
+		FileUtils.copyFile(scrFile, new File(dir_name+tool.getCurrentTime()+ "_"+ filename+".jpg"));		
 	}
+	
+	public static void getScreen() throws IOException{ 
+		getScreen("");
+	}
+	
+	public AndroidElement findElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+		String selecttype = eledata.get(page).get(name).get("SelectType");
+		String location = eledata.get(page).get(name).get("Location");
+		if (selecttype.equals("css")){
+			return driver.findElement(By.cssSelector(location));
+//			return driver.findElementByCssSelector(location);
+		}
+		else if (selecttype.equals("id")){
+			return driver.findElement(By.id(location));
+//			return driver.findElementById(location);
+		}
+		else if (selecttype.equals("xpath")){
+			return driver.findElement(By.xpath(location));
+//			return driver.findElementByXPath(location);
+		}
+		else{
+			System.out.println("Can not find the element.");
+		}
+		return null;
+	}
+		
+	   public void quit(){
+	    	driver.quit();
+	    }
+	
 }
