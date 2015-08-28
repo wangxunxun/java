@@ -18,9 +18,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.CommonTools;
-import core.Initial;
+import core.UI;
+import base.WebApp;
 
-public class AndroidApp extends Initial{
+public class AndroidApp extends UI{
 	public static AndroidDriver driver;
 	public WebDriverWait wait; 
 	static CommonTools tool =new CommonTools();

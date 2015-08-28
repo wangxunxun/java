@@ -5,6 +5,7 @@
     <classes>
       <class name="autotest.appautotest.testweb">
         <methods>
+          <include name="tearDown"/>
           <include name="test"/>
           <include name="setUp"/>
         </methods>
