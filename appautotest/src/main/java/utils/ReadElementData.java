@@ -62,28 +62,26 @@ public class ReadElementData {
 		}   
 
 		for(int i = 1;i<rsRows;i++){
-			Cell[] cells = readsheet.getRow(i);
-			List<Object> element = new ArrayList<Object>();
-			if(cells[0].getContents()!=""&cells[1].getContents()!=""){
-				System.out.println(cells[0].getContents());
-				System.out.println(cells[1].getContents());
-				System.out.println(rsRows);
-				Map<String,String> location = new HashMap<String,String>();
-				location.put(header.get(2), cells[2].getContents());
-				location.put(header.get(3), cells[3].getContents());
-				element.add(cells[1].getContents());
-				element.add(location);
-				elements.add(element);
-				pages.add(cells[0].getContents());
-			}
-			if(cells[0].getContents()==""&cells[1].getContents()!=""){
-				Map<String,String> location = new HashMap<String,String>();
-				location.put(header.get(2), cells[2].getContents());
-				location.put(header.get(3), cells[3].getContents());
-				element.add(cells[1].getContents());
-				element.add(location);
-				elements.add(element);
-			}	
+
+				List<Object> element = new ArrayList<Object>();
+				if(readsheet.getCell(0, i).getContents()!=""&readsheet.getCell(1, i).getContents()!=""){
+					Map<String,String> location = new HashMap<String,String>();
+					location.put(header.get(2), readsheet.getCell(2, i).getContents());
+					location.put(header.get(3), readsheet.getCell(3, i).getContents());
+					element.add(readsheet.getCell(1, i).getContents());
+					element.add(location);
+					elements.add(element);
+					pages.add(readsheet.getCell(0, i).getContents());
+				}
+				if(readsheet.getCell(0, i).getContents()==""&readsheet.getCell(1, i).getContents()!=""){
+					Map<String,String> location = new HashMap<String,String>();
+					location.put(header.get(2), readsheet.getCell(2, i).getContents());
+					location.put(header.get(3), readsheet.getCell(3, i).getContents());
+					element.add(readsheet.getCell(1, i).getContents());
+					element.add(location);
+					elements.add(element);
+				}	
+
 
 			
 		}
