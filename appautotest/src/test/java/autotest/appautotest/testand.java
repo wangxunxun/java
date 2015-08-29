@@ -1,11 +1,13 @@
 package autotest.appautotest;
 
+import io.appium.java_client.SwipeElementDirection;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -22,8 +24,10 @@ import base.AndroidApp;
 
 public class testand extends AndroidApp{
 	static String excelpath = "testresource\\test.xls";
-	static String sheet = "testapp";
-	private Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, sheet);
+	static String sheettestapp = "testapp";
+	static String zhuce1 = "注册";
+	private Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, sheettestapp);
+	List<Map<String, String>> zhuce = getTestData(excelpath, zhuce1);
 	@BeforeTest
     public void setUp() throws Exception {
         // set up appium
@@ -41,7 +45,7 @@ public class testand extends AndroidApp{
         capabilities.setCapability("appPackage", "com.example.testandroid");
         capabilities.setCapability("appActivity", "com.example.testandroid.MainActivity");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        wait = new WebDriverWait(driver,10);
+        wait = new WebDriverWait(driver,20);
         
 //        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         
@@ -56,7 +60,7 @@ public class testand extends AndroidApp{
     public void test() throws InterruptedException, IOException{
     	getButtons();
     	tool.sleep(2000);    	
-    	clickElement(eledata, "首页", "about");
+/*    	clickElement(eledata, "首页", "about");
     	clickBack();
     	waitDisplay(eledata, "首页", "layout");
     	isDisplayed(eledata, "首页", "layout");
@@ -67,9 +71,51 @@ public class testand extends AndroidApp{
     	clickElement(eledata, "首页", "textview");
     	clickBack();
     	clickElement(eledata, "首页", "edittext");
-    	sendKeys(eledata, "edittext", "昵称", "好样");
-    	tool.sleep(5000);
+    	for(Map<String, String> data : zhuce){
+    		sendKeys(eledata, "edittext", "昵称", data.get("会员昵称"));
+    		clickBack();
+    		waitDisplay(eledata, "首页", "edittext");
+    		clickElement(eledata, "首页", "edittext");
+    	}
     	clickBack();
+    	tool.sleep(5000);*/
+/*    	clickElement(eledata, "首页", "checkbox");
+    	clickElement(eledata, "checkbox页", "体育");
+    	clickElement(eledata, "checkbox页", "提交");
+    	clickBack();
+    	tool.sleep(1000);
+    	swipeOfType("up");
+    	swipeOfType("up");
+    	clickElement(eledata, "首页", "spinner");
+    	clickElement(eledata, "spinner页", "spinner");
+    	clickElement(eledata, "spinner页", "工作证");
+    	clickBack();*/
+    	swipeOfType("up");
+    	swipeOfType("up");
+    	swipeOfType("up");
+//    	clickElement(eledata, "首页", "seekbar");
+//    	clickElement(eledata, "首页", "tabhost");
+    	tool.sleep(5000);
+//    	clickElement(eledata, "tabhost", "已接来电");
+//    	clickElement(eledata, "首页", "gridview");
+//    	clickElement(eledata, "gridview", "林间小路");
+    	clickElement(eledata, "首页", "alertdialog");
+    	tool.sleep(1000);
+    	clickElement(eledata, "alertdialog", "多选列表");
+    	clickElement(eledata, "alertdialog", "超级玛丽");
+    	System.out.println(findElement(eledata, "alertdialog", "确定").getCoordinates().toString());
+    	System.out.println(findElement(eledata, "alertdialog", "确定").getLocation());
+    	System.out.println(findElement(eledata, "alertdialog", "确定").getId());
+    	System.out.println(findElement(eledata, "alertdialog", "确定").getCenter());
+    	clickElement(eledata, "alertdialog", "确定");
+    	
+//		driver.findElementByClassName("android.widget.SeekBar").swipe(SwipeElementDirection.RIGHT, 20000);
+    	
+//    	waitDisplay(eledata, "首页", "seekbar");
+//    	clickElement(eledata, "首页", "seekbar");
+    	
+    	tool.sleep(5000);
+    	
 //    	assertEquals("77", "333");
 
 

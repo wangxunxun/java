@@ -219,15 +219,20 @@ public class AndroidApp extends UI{
 		String location = eledata.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
 			return driver.findElement(By.cssSelector(location));
-//			return driver.findElementByCssSelector(location);
 		}
 		else if (selecttype.equals("id")){
 			return driver.findElement(By.id(location));
-//			return driver.findElementById(location);
 		}
 		else if (selecttype.equals("xpath")){
 			return driver.findElement(By.xpath(location));
-//			return driver.findElementByXPath(location);
+		}
+		else if (selecttype.equals("name")){
+			return driver.findElement(By.name(location));
+
+		}
+		else if (selecttype.equals("linktext")){
+			return driver.findElement(By.linkText(location));
+
 		}
 		else{
 			System.out.println("Can not find the element.");

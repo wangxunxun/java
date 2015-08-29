@@ -65,6 +65,9 @@ public class ReadElementData {
 			Cell[] cells = readsheet.getRow(i);
 			List<Object> element = new ArrayList<Object>();
 			if(cells[0].getContents()!=""&cells[1].getContents()!=""){
+				System.out.println(cells[0].getContents());
+				System.out.println(cells[1].getContents());
+				System.out.println(rsRows);
 				Map<String,String> location = new HashMap<String,String>();
 				location.put(header.get(2), cells[2].getContents());
 				location.put(header.get(3), cells[3].getContents());
@@ -80,7 +83,8 @@ public class ReadElementData {
 				element.add(cells[1].getContents());
 				element.add(location);
 				elements.add(element);
-			}			
+			}	
+
 			
 		}
 		tabledata.add(pages);

@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -14,12 +15,26 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 public class ReadTestData {
-    public List<Map<String, String>> getTestData(String excelpath,String tablename) throws BiffException, IOException{
+    public List<Map<String, String>> getTestData(String excelpath,String tablename){
     	String currentPath = System.getProperty("user.dir");
     	String path = currentPath+"\\"+excelpath;
     	jxl.Workbook readwb = null;   
-		InputStream instream = new FileInputStream(path);   
-		readwb = Workbook.getWorkbook(instream);   
+		InputStream instream = null;
+		try {
+			instream = new FileInputStream(path);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   
+		try {
+			readwb = Workbook.getWorkbook(instream);
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}   
 		Sheet readsheet = readwb.getSheet(tablename);   
 		int rsColumns = readsheet.getColumns();   
 		int rsRows = readsheet.getRows();   

@@ -1,9 +1,12 @@
 package core;
 
+import java.util.List;
 import java.util.Map;
 
 
+
 import utils.ReadElementData;
+import utils.ReadTestData;
 
 public class Initial {
 
@@ -13,5 +16,10 @@ public class Initial {
 		return eledata;
 	}
 	
-
+	public List<Map<String, String>> getTestData(String excelpath,String sheetname){
+		ReadTestData readtestdata = new ReadTestData();
+		List<Map<String, String>> data = readtestdata.getTestData(excelpath, sheetname);
+		return data;
+	}
+	
 }
