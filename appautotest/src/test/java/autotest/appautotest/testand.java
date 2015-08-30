@@ -23,6 +23,8 @@ import org.testng.annotations.Test;
 import base.AndroidApp;
 
 public class testand extends AndroidApp{
+	
+
 	static String excelpath = "testresource\\test.xls";
 	static String sheettestapp = "testapp";
 	static String zhuce1 = "注册";
@@ -93,21 +95,30 @@ public class testand extends AndroidApp{
     	swipeOfType("up");
     	swipeOfType("up");
     	swipeOfType("up");
-//    	clickElement(eledata, "首页", "seekbar");
+//    	scrollToClick("图片浏览");
+    	tool.sleep(2000);
+    	clickElement(eledata, "首页", "seekbar");
 //    	clickElement(eledata, "首页", "tabhost");
-    	tool.sleep(5000);
+//    	tool.sleep(5000);
 //    	clickElement(eledata, "tabhost", "已接来电");
 //    	clickElement(eledata, "首页", "gridview");
 //    	clickElement(eledata, "gridview", "林间小路");
-    	clickElement(eledata, "首页", "alertdialog");
+/*    	clickElement(eledata, "首页", "alertdialog");
     	tool.sleep(1000);
     	clickElement(eledata, "alertdialog", "多选列表");
     	clickElement(eledata, "alertdialog", "超级玛丽");
+        int windowlenX = driver.manage().window().getSize().getWidth();
+        int windowlenY = driver.manage().window().getSize().getHeight();
+        System.out.println(windowlenX);
+        System.out.println(windowlenY);
     	System.out.println(findElement(eledata, "alertdialog", "确定").getCoordinates().toString());
     	System.out.println(findElement(eledata, "alertdialog", "确定").getLocation());
     	System.out.println(findElement(eledata, "alertdialog", "确定").getId());
     	System.out.println(findElement(eledata, "alertdialog", "确定").getCenter());
-    	clickElement(eledata, "alertdialog", "确定");
+    	longTab(360, 976);*/
+    	swipe(360, 226, 500, 226, 1000);
+//    	driver.tap(1, 360, 976, 1000);
+//    	clickElement(eledata, "alertdialog", "确定");
     	
 //		driver.findElementByClassName("android.widget.SeekBar").swipe(SwipeElementDirection.RIGHT, 20000);
     	

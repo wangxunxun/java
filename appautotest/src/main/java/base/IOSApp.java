@@ -8,6 +8,5 @@ import core.Initial;
 
 public class IOSApp extends Initial {
 	public static IOSDriver driver;
-	public WebDriverWait wait; 
-	static CommonTools tool =new CommonTools();
+
 }

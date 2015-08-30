@@ -7,6 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -26,6 +27,7 @@ import core.UI;
 
 public class AndroidApp extends UI{
 	public static AndroidDriver<AndroidElement> driver;
+
 
 	
 	
@@ -103,7 +105,6 @@ public class AndroidApp extends UI{
     }
     
     public void swipeOfType(String type) {
-
         int windowlenX = driver.manage().window().getSize().getWidth();
         int windowlenY = driver.manage().window().getSize().getHeight();
         String swipeLeft = "left";
@@ -243,5 +244,44 @@ public class AndroidApp extends UI{
 	   public void quit(){
 	    	driver.quit();
 	    }
+	   
+	   public void tab(int fingers, int x, int y, int duration ){
+
+		   float a = x/basicwindowx;
+		   float b = y/basicwindowy;
+		   int newx = (int) (a*driver.manage().window().getSize().getWidth());
+		   int newy = (int) (b*driver.manage().window().getSize().getHeight());		   
+		   driver.tap(fingers, newx, newy, duration);
+	   }
+	   
+	   public void tab(int x, int y){
+		   tab(1, x, y, 500);
+	   }
+	   
+	   public void longTab(int x, int y){
+		   tab(1, x, y, 3000);
+	   }
+	   
+	   public void swipe (int startx, int starty, int endx, int endy, int duration){
+		   float a = startx/basicwindowx;
+		   float b = starty/basicwindowy;
+		   int newstartx = (int) (a*driver.manage().window().getSize().getWidth());
+		   int newstarty = (int) (b*driver.manage().window().getSize().getHeight());	
+		   float c = endx/basicwindowx;
+		   float d = endy/basicwindowy;
+		   int newendx = (int) (c*driver.manage().window().getSize().getWidth());
+		   int newsendy = (int) (d*driver.manage().window().getSize().getHeight());
+		   driver.swipe(newstartx, newstarty, newendx, newsendy, duration);
+		   
+	   }
+	   
+	   public void scrollTo(String text){
+		   driver.scrollTo(text);
+	   }
+	   
+	   public void scrollToClick(String text){
+		   scrollTo(text);
+		   driver.findElementByName(text).click();
+	   }
 	
 }

@@ -24,12 +24,6 @@ import org.testng.Assert;
 import utils.CommonTools;
 import core.Initial;
 public class UI extends Initial{
-	public static WebDriver driver;	
-//	public static ChromeDriver driver;
-	public WebDriverWait wait; 
-	public static CommonTools tool = new CommonTools();
-
-
     
     public void clickElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
     	findElement(eledata, page, name).click();

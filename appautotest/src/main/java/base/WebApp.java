@@ -24,9 +24,6 @@ import org.testng.Assert;
 import utils.CommonTools;
 import core.UI;
 public class WebApp extends UI{
-
-	protected static String main_window;
-	
 	
     public void get(String url){
     	driver.get(url);
