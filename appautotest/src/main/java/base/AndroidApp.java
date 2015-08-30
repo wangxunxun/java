@@ -8,6 +8,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -19,8 +20,8 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
+
 
 import core.UI;
 
@@ -229,10 +230,21 @@ public class AndroidApp extends UI{
 		}
 		else if (selecttype.equals("name")){
 			return driver.findElement(By.name(location));
-
+		}
+		else if (selecttype.equals("scrollname")){
+			return driver.scrollTo(location);
 		}
 		else if (selecttype.equals("linktext")){
 			return driver.findElement(By.linkText(location));
+
+		}
+		else if (selecttype.equals("index")){
+			String[] sourceStrArray = location.split(",");
+			String classname = sourceStrArray[0];
+			String index = sourceStrArray[1];
+			int in=Integer.parseInt(index);
+			return findElementByClassNameIndex(classname, in);
+
 
 		}
 		else{

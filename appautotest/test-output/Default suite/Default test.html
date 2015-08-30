@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Aug 30 11:31:09 CST 2015</td>
+<td>Started on:</td><td>Sun Aug 30 16:23:44 CST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>110 seconds (110577 ms)</td>
+<tr><td>Total time:</td><td>76 seconds (76609 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,40 +75,17 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='autotest.appautotest.testand.test()'><b>test</b><br>Test class: autotest.appautotest.testand</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 871 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+<td title='autotest.appautotest.testtenxunxinwen.test()'><b>test</b><br>Test class: autotest.appautotest.testtenxunxinwen</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for presence of element located by: By.id: title_btn_share
 Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
 System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.235.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_79&apos;
-*** Element info: {Using=id, value=seekbar}
-Session ID: 78da86ce-2e9f-4327-95d6-9539dcee671e
+Session ID: fa30a1c2-1327-4b7e-9772-a0d71210b039
 Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\MainActivity.apk, javascriptEnabled=true, appActivity=com.example.testandroid.MainActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\MainActivity.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.example.testandroid.MainActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.example.testandroid}, locationContextEnabled=false, appPackage=com.example.testandroid, platformVersion=4.2.2, databaseEnabled=false, platformName=Android, deviceName=emulator-5554, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:358)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:399)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:47)
-	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
-	at org.openqa.selenium.By$ById.findElement(By.java:215)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:37)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at base.AndroidApp.findElement(AndroidApp.java:225)
-	at base.AndroidApp.findElement(AndroidApp.java:1)
-	at core.UI.clickElement(UI.java:29)
-	at autotest.appautotest.testand.test(testand.java:100)
+Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.3, databaseEnabled=false, platformName=Android, deviceName=02a59885, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at core.UI.waitDisplay(UI.java:96)
+	at autotest.appautotest.testtenxunxinwen.test(testtenxunxinwen.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -133,18 +110,16 @@ Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\ap
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1817220332", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1817220332'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 871 milliseconds
+Caused by: org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.40 seconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
 System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.235.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_79&apos;
-*** Element info: {Using=id, value=seekbar}
-Session ID: 78da86ce-2e9f-4327-95d6-9539dcee671e
+*** Element info: {Using=id, value=title_btn_share}
+Session ID: fa30a1c2-1327-4b7e-9772-a0d71210b039
 Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\MainActivity.apk, javascriptEnabled=true, appActivity=com.example.testandroid.MainActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\MainActivity.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.example.testandroid.MainActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.example.testandroid}, locationContextEnabled=false, appPackage=com.example.testandroid, platformVersion=4.2.2, databaseEnabled=false, platformName=Android, deviceName=emulator-5554, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.3, databaseEnabled=false, platformName=Android, deviceName=02a59885, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
+	at sun.reflect.GeneratedConstructorAccessor11.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
 	at java.lang.reflect.Constructor.newInstance(Unknown Source)
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
@@ -163,10 +138,23 @@ Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\ap
 	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:37)
 	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
 	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at base.AndroidApp.findElement(AndroidApp.java:225)
-	at base.AndroidApp.findElement(AndroidApp.java:1)
-	at core.UI.clickElement(UI.java:29)
-	at autotest.appautotest.testand.test(testand.java:100)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:809)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:41)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:181)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:178)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
+	... 26 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace41689990", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace41689990'><pre>org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for presence of element located by: By.id: title_btn_share
+Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
+System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.235.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_79&apos;
+Session ID: fa30a1c2-1327-4b7e-9772-a0d71210b039
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.3, databaseEnabled=false, platformName=Android, deviceName=02a59885, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
+	at core.UI.waitDisplay(UI.java:96)
+	at autotest.appautotest.testtenxunxinwen.test(testtenxunxinwen.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -191,9 +179,43 @@ Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\ap
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 1.40 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
+System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.235.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_79&apos;
+*** Element info: {Using=id, value=title_btn_share}
+Session ID: fa30a1c2-1327-4b7e-9772-a0d71210b039
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{platform=LINUX, app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, javascriptEnabled=true, appActivity=com.tencent.news.activity.SplashActivity, browserName=, networkConnectionEnabled=true, desired={app=F:\workplace\java\appautotest\testresource\apps\com.tencent.news_054632.apk, platformVersion=4.4, deviceName=XiaoMi2, platformName=Android, appActivity=com.tencent.news.activity.SplashActivity, browserName=, unicodeKeyboard=true, resetKeyboard=true, appPackage=com.tencent.news}, locationContextEnabled=false, appPackage=com.tencent.news, platformVersion=4.3, databaseEnabled=false, platformName=Android, deviceName=02a59885, webStorageEnabled=false, unicodeKeyboard=true, resetKeyboard=true, warnings={}, takesScreenshot=true}]
+	at sun.reflect.GeneratedConstructorAccessor11.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:358)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:399)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:47)
+	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ById.findElement(By.java:215)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:37)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:809)
+	at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:41)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:181)
+	at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:178)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:209)
+	... 26 more
 </pre></div></td>
-<td>59</td>
-<td>autotest.appautotest.testand@6ada7c9a</td></tr>
+<td>52</td>
+<td>autotest.appautotest.testtenxunxinwen@50a492cb</td></tr>
 </table><p>
 </body>
 </html>

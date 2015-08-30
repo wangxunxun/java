@@ -1,8 +1,8 @@
 package autotest.appautotest;
 
-import io.appium.java_client.SwipeElementDirection;
+
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +10,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -23,8 +21,6 @@ import org.testng.annotations.Test;
 import base.AndroidApp;
 
 public class testand extends AndroidApp{
-	
-
 	static String excelpath = "testresource\\test.xls";
 	static String sheettestapp = "testapp";
 	static String zhuce1 = "注册";
@@ -48,8 +44,7 @@ public class testand extends AndroidApp{
         capabilities.setCapability("appActivity", "com.example.testandroid.MainActivity");
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         wait = new WebDriverWait(driver,20);
-        
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         
     }
  
@@ -95,28 +90,24 @@ public class testand extends AndroidApp{
     	swipeOfType("up");
     	swipeOfType("up");
     	swipeOfType("up");
+    	swipeOfType("up");
+    	System.out.println(driver.manage().window().getSize().getWidth());
+    	System.out.println(driver.manage().window().getSize().getHeight());
 //    	scrollToClick("图片浏览");
     	tool.sleep(2000);
-    	clickElement(eledata, "首页", "seekbar");
+//    	clickElement(eledata, "首页", "seekbar");
 //    	clickElement(eledata, "首页", "tabhost");
 //    	tool.sleep(5000);
 //    	clickElement(eledata, "tabhost", "已接来电");
 //    	clickElement(eledata, "首页", "gridview");
 //    	clickElement(eledata, "gridview", "林间小路");
-/*    	clickElement(eledata, "首页", "alertdialog");
+    	clickElement(eledata, "首页", "alertdialog");
     	tool.sleep(1000);
     	clickElement(eledata, "alertdialog", "多选列表");
     	clickElement(eledata, "alertdialog", "超级玛丽");
-        int windowlenX = driver.manage().window().getSize().getWidth();
-        int windowlenY = driver.manage().window().getSize().getHeight();
-        System.out.println(windowlenX);
-        System.out.println(windowlenY);
-    	System.out.println(findElement(eledata, "alertdialog", "确定").getCoordinates().toString());
-    	System.out.println(findElement(eledata, "alertdialog", "确定").getLocation());
-    	System.out.println(findElement(eledata, "alertdialog", "确定").getId());
-    	System.out.println(findElement(eledata, "alertdialog", "确定").getCenter());
-    	longTab(360, 976);*/
-    	swipe(360, 226, 500, 226, 1000);
+
+    	longTab(360, 976);
+//    	swipe(360, 226, 500, 226, 1000); 
 //    	driver.tap(1, 360, 976, 1000);
 //    	clickElement(eledata, "alertdialog", "确定");
     	
