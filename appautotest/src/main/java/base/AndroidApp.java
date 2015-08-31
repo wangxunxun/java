@@ -244,13 +244,27 @@ public class AndroidApp extends UI{
 			String index = sourceStrArray[1];
 			int in=Integer.parseInt(index);
 			return findElementByClassNameIndex(classname, in);
-
-
-		}
+		}		
 		else{
 			System.out.println("Can not find the element.");
 		}
 		return null;
+	}
+	
+	public void clickCoordinate(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+		String selecttype = eledata.get(page).get(name).get("SelectType");
+		String location = eledata.get(page).get(name).get("Location");
+		if (selecttype.equals("coordinate")){
+			String[] sourceStrArray = location.split(",");
+			String x = sourceStrArray[0];
+			String y = sourceStrArray[1];
+			int newx=Integer.parseInt(x);
+			int newy=Integer.parseInt(y);
+			tab(newx, newy);
+		}
+		else{
+			System.out.println("Please provide coordinate.");
+		}
 	}
 		
 	   public void quit(){
