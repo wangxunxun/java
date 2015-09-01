@@ -105,8 +105,8 @@ public class testand extends AndroidApp{
     	tool.sleep(1000);
     	clickElement(eledata, "alertdialog", "多选列表");
     	clickElement(eledata, "alertdialog", "超级玛丽");
-
-    	longTab(360, 976);
+    	clickCoordinate(eledata, "alertdialog", "确定c");
+//    	longTab(360, 976);
 //    	swipe(360, 226, 500, 226, 1000); 
 //    	driver.tap(1, 360, 976, 1000);
 //    	clickElement(eledata, "alertdialog", "确定");
