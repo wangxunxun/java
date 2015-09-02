@@ -4,13 +4,11 @@ import java.util.Map;
 
 
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import org.testng.Assert;
 
 import core.Initial;
@@ -79,6 +77,12 @@ public class UI extends Initial{
 			return driver.findElement(By.linkText(location));
 
 		}
+		else if (selecttype.equals("partiallinktext")){
+			return driver.findElement(By.partialLinkText(location));
+		}
+		else if (selecttype.equals("tagname")){
+			return driver.findElement(By.tagName(location));
+		}
 		else{
 			System.out.println("Can not find the element.");
 		}
@@ -98,6 +102,25 @@ public class UI extends Initial{
 		else if (selecttype.equals("xpath")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(location)));
 		}
+		else if (selecttype.equals("linktext")){
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(location)));
+		}
+		else if (selecttype.equals("name")){
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.name(location)));
+		}
+		else if (selecttype.equals("partiallinktext")){
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(location)));
+		}
+		else if (selecttype.equals("tagname")){
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(location)));
+		}
+		else if (selecttype.equals("index")){
+			String[] sourceStrArray = location.split(",");
+			String classname = sourceStrArray[0];
+			String index = sourceStrArray[1];
+			int in=Integer.parseInt(index);
+			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className(classname)));
+		}	
 		else {
 			System.out.println("Can not find the element.");
 		}

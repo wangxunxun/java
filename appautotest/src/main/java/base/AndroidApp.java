@@ -101,7 +101,7 @@ public class AndroidApp extends UI{
     }
     
     public AndroidElement findElementByClassNameIndex(String classname,int index){
-    	List<AndroidElement> eles= driver.findElementsByClassName("android.widget."+classname);
+    	List<AndroidElement> eles= driver.findElementsByClassName(classname);
     	return eles.get(index);
     }
     
@@ -170,14 +170,6 @@ public class AndroidApp extends UI{
         }
 
     }
-    public void sendKeysByElement(String content,AndroidElement ele){
-    	int i=1;	    	
-    	while (i<3){
-    		ele.clear();
-    		i++;
-    	}
-    	ele.sendKeys(content);		    	    	
-    }
     
     public void clickEnter() throws IOException{
     	executeAdbShell("adb shell input keyevent 66");
@@ -231,12 +223,18 @@ public class AndroidApp extends UI{
 		else if (selecttype.equals("name")){
 			return driver.findElement(By.name(location));
 		}
-		else if (selecttype.equals("scrollname")){
-			return driver.scrollTo(location);
-		}
+
 		else if (selecttype.equals("linktext")){
 			return driver.findElement(By.linkText(location));
-
+		}
+		else if (selecttype.equals("partiallinktext")){
+			return driver.findElement(By.partialLinkText(location));
+		}
+		else if (selecttype.equals("tagname")){
+			return driver.findElement(By.tagName(location));
+		}
+		else if (selecttype.equals("scrollname")){
+			return driver.scrollTo(location);
 		}
 		else if (selecttype.equals("index")){
 			String[] sourceStrArray = location.split(",");
@@ -251,7 +249,7 @@ public class AndroidApp extends UI{
 		return null;
 	}
 	
-	public void tapElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+	public void tabElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
 		String selecttype = eledata.get(page).get(name).get("SelectType");
 		String location = eledata.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
@@ -267,7 +265,7 @@ public class AndroidApp extends UI{
 		}
 	}
 	
-	public void longTapElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+	public void longTabElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
 		String selecttype = eledata.get(page).get(name).get("SelectType");
 		String location = eledata.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){

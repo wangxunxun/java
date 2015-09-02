@@ -59,31 +59,41 @@ public class testtenxunxinwen extends AndroidApp{
 //    	findElementByClassNameIndex("ImageView", 1).click();
 
     	tool.sleep(2000);    
-    	swipeOfType("down");
-    	swipe(500, 100, 200, 100, 1000);
-//    	clickElement(eledata, "新闻", "民生");
-//    	tab(578, 100);
-//    	clickElement(eledata, "新闻", "娱乐");
-//    	clickElement(eledata, "新闻", "汽车");
+//    	swipeOfType("down");
+
+
+
+    	clickElement(eledata, "新闻", "娱乐");
+
     	tool.sleep(2000);    
-    	tab(579, 100);
-    	waitDisplay(eledata, "新闻详情", "分享");
+
     	tab(360, 500);
-    	tool.sleep(500);
-    	clickElement(eledata, "新闻详情", "分享");
+    	tool.sleep(5000);
+    	tab(360, 500);
+    	waitDisplay(eledata, "新闻详情", "图片分享");
+    	clickElement(eledata, "新闻详情", "图片分享");
+    	waitDisplay(eledata, "新闻详情", "收藏");
     	clickElement(eledata, "新闻详情", "收藏");
     	waitDisplay(eledata, "新闻详情", "用户");
 
     	sendKeys(eledata, "新闻详情", "用户","59853844");
-    	sendKeys(eledata, "新闻详情", "密码","xunlovehua");
+    	sendKeys(eledata, "新闻详情", "密码","xunlovehu");
     	clickElement(eledata, "新闻详情", "登录");
-    	waitDisplay(eledata, "新闻详情", "分享");
-    	clickElement(eledata, "新闻详情", "返回");
+    	waitDisplay(eledata, "新闻详情", "图片分享");
+    	waitDisplay(eledata, "新闻详情", "图片返回");
+    	clickElement(eledata, "新闻详情", "图片返回");
     	clickElement(eledata, "公共", "头像");
     	clickElement(eledata, "左侧栏", "更多");
     	clickElement(eledata, "设置", "正文字号");
     	clickElement(eledata, "设置", "特大");
-    	clickElement(eledata, "设置", "应用推荐");
+    	clickElement(eledata, "设置", "意见反馈");
+    	waitDisplay(eledata, "意见反馈", "我来说一下");
+    	tool.sleep(20000);
+    	clickElement(eledata, "意见反馈", "我来说一下");
+    	sendKeys(eledata, "意见反馈", "输入框", "test");
+    	tabElement(eledata, "意见反馈", "选择图片按钮");
+    	clickElement(eledata, "意见反馈", "选择图片");
+//    	clickElement(eledata, "设置", "应用推荐");
 //    	clickElement(eledata, "左侧栏", "搜索");
 //    	sendKeys(eledata, "搜索", "搜索输入框","成龙");
 //    	clickEnter();

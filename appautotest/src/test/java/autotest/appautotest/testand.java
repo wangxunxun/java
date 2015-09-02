@@ -55,8 +55,10 @@ public class testand extends AndroidApp{
     
     @Test
     public void test() throws InterruptedException, IOException{
-    	getButtons();
-    	tool.sleep(2000);    	
+//    	getButtons();
+    	tool.sleep(2000);    
+//    	clickElement(eledata, "首页", "listview");
+//    	clickElement(eledata, "listview", "程序管理");
 /*    	clickElement(eledata, "首页", "about");
     	clickBack();
     	waitDisplay(eledata, "首页", "layout");
@@ -91,11 +93,19 @@ public class testand extends AndroidApp{
     	swipeOfType("up");
     	swipeOfType("up");
 //    	swipeOfType("up");
-    	System.out.println(driver.manage().window().getSize().getWidth());
-    	System.out.println(driver.manage().window().getSize().getHeight());
+    	clickElement(eledata, "首页", "ratingbar");
+    	tabElement(eledata, "ratingbar", "三颗星");
+    	clickElement(eledata, "ratingbar", "提交");
+    	tool.log("22");
+    	getScreen();
+
+    	
+//    	System.out.println(driver.manage().window().getSize().getWidth());
+//    	System.out.println(driver.manage().window().getSize().getHeight());
 //    	scrollToClick("图片浏览");
-    	tool.sleep(2000);
-    	clickElement(eledata, "首页", "seekbar");
+//    	tool.sleep(2000);
+//    	clickElement(eledata, "首页", "seekbar");
+
 //    	clickElement(eledata, "首页", "tabhost");
 //    	tool.sleep(5000);
 //    	clickElement(eledata, "tabhost", "已接来电");
@@ -108,7 +118,7 @@ public class testand extends AndroidApp{
 //    	longTapElement(eledata, "alertdialog", "确定c");
 //    	tapElement(eledata, "alertdialog", "确定c");
 //    	longTab(360, 976);
-    	swipeElement(eledata, "seekbar", "进度条");
+ //   	swipeElement(eledata, "seekbar", "进度条");
 //    	swipe(360, 226, 500, 226, 1000); 
 //    	driver.tap(1, 360, 976, 1000);
 //    	clickElement(eledata, "alertdialog", "确定");
