@@ -251,16 +251,51 @@ public class AndroidApp extends UI{
 		return null;
 	}
 	
-	public void clickCoordinate(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+	public void tapElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
 		String selecttype = eledata.get(page).get(name).get("SelectType");
 		String location = eledata.get(page).get(name).get("Location");
-		if (selecttype.equals("coordinate")){
+		if (selecttype.equals("tab")){
 			String[] sourceStrArray = location.split(",");
 			String x = sourceStrArray[0];
 			String y = sourceStrArray[1];
 			int newx=Integer.parseInt(x);
 			int newy=Integer.parseInt(y);
 			tab(newx, newy);
+		}
+		else{
+			System.out.println("Please provide coordinate.");
+		}
+	}
+	
+	public void longTapElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+		String selecttype = eledata.get(page).get(name).get("SelectType");
+		String location = eledata.get(page).get(name).get("Location");
+		if (selecttype.equals("tab")){
+			String[] sourceStrArray = location.split(",");
+			String x = sourceStrArray[0];
+			String y = sourceStrArray[1];
+			int newx=Integer.parseInt(x);
+			int newy=Integer.parseInt(y);
+			longTab(newx, newy);
+		}
+		else{
+			System.out.println("Please provide coordinate.");
+		}
+	}
+	public void swipeElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
+		String selecttype = eledata.get(page).get(name).get("SelectType");
+		String location = eledata.get(page).get(name).get("Location");
+		if (selecttype.equals("swipe")){
+			String[] sourceStrArray = location.split(",");
+			String startx = sourceStrArray[0];
+			String starty = sourceStrArray[1];
+			String endx = sourceStrArray[2];
+			String endy = sourceStrArray[3];
+			int startnewx=Integer.parseInt(startx);
+			int startnewy=Integer.parseInt(starty);
+			int endnewx=Integer.parseInt(endx);
+			int endnewy=Integer.parseInt(endy);
+			swipe(startnewx, startnewy, endnewx, endnewy, 1000);
 		}
 		else{
 			System.out.println("Please provide coordinate.");
