@@ -4,6 +4,7 @@ package autotest.appautotest;
 import io.appium.java_client.android.AndroidDriver;
 
 
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -13,7 +14,6 @@ import java.util.Map;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -96,8 +96,15 @@ public class testand extends AndroidApp{
     	clickElement(eledata, "首页", "ratingbar");
     	tabElement(eledata, "ratingbar", "三颗星");
     	clickElement(eledata, "ratingbar", "提交");
-    	tool.log("22");
-    	getScreen();
+    	String a = driver.currentActivity();
+    	tool.log(a);
+    	System.out.println(driver.getAppStrings());
+//    	driver.startActivity("com.tencent.news", "com.tencent.news.activity.SplashActivity");
+//    	tool.sleep(10000);
+//    	driver.startActivity("com.example.testandroid", "com.example.testandroid.EditTextActivity");
+//    	tool.sleep(10000);
+//    	tool.log("22");
+//    	getScreen();
 
     	
 //    	System.out.println(driver.manage().window().getSize().getWidth());

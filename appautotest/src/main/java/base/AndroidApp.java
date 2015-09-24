@@ -9,8 +9,10 @@ import io.appium.java_client.android.AndroidDriver;
 
 
 
+
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 
@@ -23,6 +25,10 @@ import org.openqa.selenium.OutputType;
 
 
 
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import core.UI;
 
 
@@ -30,6 +36,79 @@ public class AndroidApp extends UI{
 	public static AndroidDriver<AndroidElement> driver;
 
 
+    public void setUp(String apkName,String appPackage,String mainActivity) throws Exception {
+        // set up appium
+    	String deviceName = "meizu";
+    	Integer waitTime = 20;
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "/testresource/apps");
+        File app = new File(appDir, apkName);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("unicodeKeyboard", "True");
+        capabilities.setCapability("resetKeyboard", "True");
+        capabilities.setCapability("appPackage", appPackage);
+        capabilities.setCapability("appActivity", mainActivity);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        wait = new WebDriverWait(driver,waitTime);
+
+        
+    }
+    public void setUp(String apkName,String appPackage,String mainActivity,String deviceName) throws Exception {
+        // set up appium
+    	Integer waitTime = 20;
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "/testresource/apps");
+        File app = new File(appDir, apkName);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("unicodeKeyboard", "True");
+        capabilities.setCapability("resetKeyboard", "True");
+        capabilities.setCapability("appPackage", appPackage);
+        capabilities.setCapability("appActivity", mainActivity);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        wait = new WebDriverWait(driver,waitTime);
+
+        
+    }
+    public void setUp(String apkName,String appPackage,String mainActivity,String deviceName,Integer waitTime) throws Exception {
+        // set up appium
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "/testresource/apps");
+        File app = new File(appDir, apkName);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("unicodeKeyboard", "True");
+        capabilities.setCapability("resetKeyboard", "True");
+        capabilities.setCapability("appPackage", appPackage);
+        capabilities.setCapability("appActivity", mainActivity);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        wait = new WebDriverWait(driver,waitTime);
+
+        
+    }
+    
+    public void setUp(String apkName,String appPackage,String mainActivity,Integer waitTime) throws Exception {
+        // set up appium
+    	String deviceName = "meizu";
+        File classpathRoot = new File(System.getProperty("user.dir"));
+        File appDir = new File(classpathRoot, "/testresource/apps");
+        File app = new File(appDir, apkName);
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("unicodeKeyboard", "True");
+        capabilities.setCapability("resetKeyboard", "True");
+        capabilities.setCapability("appPackage", appPackage);
+        capabilities.setCapability("appActivity", mainActivity);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        wait = new WebDriverWait(driver,waitTime);
+
+        
+    }
 	
 	
     public void getButtons(){

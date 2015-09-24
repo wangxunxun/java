@@ -12,9 +12,11 @@
         </run>
     </groups>
     <classes>
-      <class name="autotest.appautotest.testand">
+      <class name="autotest.appautotest.testpiaowuandroid">
       <methods>
-          <include name = "test"/>
+          <include name = "enterMainPage"/>
+          <include name = "login"/>
+          <include name = "searchzz"/>
 
       </methods>
       </class>
