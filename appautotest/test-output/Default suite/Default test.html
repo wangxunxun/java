@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Sep 26 00:17:27 CST 2015</td>
+<td>Started on:</td><td>Sat Sep 26 00:23:53 CST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>52 seconds (52839 ms)</td>
+<tr><td>Total time:</td><td>52 seconds (52752 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,12 +76,11 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='autotest.appautotest.testa.login()'><b>login</b><br>Test class: autotest.appautotest.testa</td>
-<td><div><pre>java.lang.IllegalArgumentException: &apos;appPackage&apos; and &apos;appActivity&apos; are required.
-	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:125)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:174)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:201)
-	at base.AndroidApp.startActivity(AndroidApp.java:365)
-	at base.AndroidApp.runTestCase(AndroidApp.java:450)
+<td><div><pre>java.lang.NullPointerException
+	at base.AndroidApp.findElement(AndroidApp.java:229)
+	at base.AndroidApp.findElement(AndroidApp.java:1)
+	at core.UI.clickElement(UI.java:18)
+	at base.AndroidApp.runTestCase(AndroidApp.java:389)
 	at autotest.appautotest.testa.login(testa.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -107,13 +106,12 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace194707680", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace194707680'><pre>java.lang.IllegalArgumentException: &apos;appPackage&apos; and &apos;appActivity&apos; are required.
-	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:125)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:174)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:201)
-	at base.AndroidApp.startActivity(AndroidApp.java:365)
-	at base.AndroidApp.runTestCase(AndroidApp.java:450)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1374066265", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1374066265'><pre>java.lang.NullPointerException
+	at base.AndroidApp.findElement(AndroidApp.java:229)
+	at base.AndroidApp.findElement(AndroidApp.java:1)
+	at core.UI.clickElement(UI.java:18)
+	at base.AndroidApp.runTestCase(AndroidApp.java:389)
 	at autotest.appautotest.testa.login(testa.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -140,8 +138,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
-<td>27</td>
-<td>autotest.appautotest.testa@5abca1e0</td></tr>
+<td>28</td>
+<td>autotest.appautotest.testa@60c6f5b</td></tr>
 </table><p>
 </body>
 </html>

@@ -148,6 +148,8 @@ public class ReadElementData {
 
 	}
 	
+
+	@SuppressWarnings("unchecked")
 	public Map<String,Map<String,Map<String,String>>> getdata(){
 		List<List<Object>> tabledata = readTable();
 		List<Integer> real = real();
@@ -167,7 +169,7 @@ public class ReadElementData {
 			Map<String,Map<String,String>> a = new HashMap<String,Map<String,String>>();
 				for (int l =0;l<data.get(j).size();l++){
 					String kk = (String) ((List<?>) ((List<?>) data.get(j)).get(l)).get(0);
-					Map<String,String> vv = (Map<String, String>) ((List<?>) ((List) data.get(j)).get(l)).get(1);
+					Map<String,String> vv = (Map<String, String>) ((List<?>) ((List<?>) data.get(j)).get(l)).get(1);
 					a.put(kk,vv);					
 				}				
 			d.put((String) tabledata0.get(j), a);

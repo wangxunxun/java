@@ -366,7 +366,8 @@ public class AndroidApp extends UI{
 	   }
 	   
 	   public void runTestCase(Map<String, Object>testCaseData,Map<String, Map<String, Map<String, String>>> elementData,String testCase){
-		   	List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
+		   	@SuppressWarnings("unchecked")
+			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			String page = null;
 			String name = null;	   
 		  

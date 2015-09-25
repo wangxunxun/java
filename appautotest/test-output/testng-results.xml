@@ -2,27 +2,23 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="52839" started-at="2015-09-25T16:17:27Z" finished-at="2015-09-25T16:18:20Z">
+  <suite name="Default suite" duration-ms="52752" started-at="2015-09-25T16:23:53Z" finished-at="2015-09-25T16:24:46Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="52839" started-at="2015-09-25T16:17:27Z" finished-at="2015-09-25T16:18:20Z">
+    <test name="Default test" duration-ms="52752" started-at="2015-09-25T16:23:53Z" finished-at="2015-09-25T16:24:46Z">
       <class name="autotest.appautotest.testa">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@5abca1e0]" name="setUp" is-config="true" duration-ms="21678" started-at="2015-09-26T00:17:27Z" finished-at="2015-09-26T00:17:49Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@60c6f5b]" name="setUp" is-config="true" duration-ms="21447" started-at="2015-09-26T00:23:53Z" finished-at="2015-09-26T00:24:15Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@5abca1e0]" name="login" duration-ms="27252" started-at="2015-09-26T00:17:49Z" finished-at="2015-09-26T00:18:16Z">
-          <exception class="java.lang.IllegalArgumentException">
-            <message>
-              <![CDATA['appPackage' and 'appActivity' are required.]]>
-            </message>
+        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@60c6f5b]" name="login" duration-ms="28923" started-at="2015-09-26T00:24:15Z" finished-at="2015-09-26T00:24:44Z">
+          <exception class="java.lang.NullPointerException">
             <full-stacktrace>
-              <![CDATA[java.lang.IllegalArgumentException: 'appPackage' and 'appActivity' are required.
-	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:125)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:174)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:201)
-	at base.AndroidApp.startActivity(AndroidApp.java:365)
-	at base.AndroidApp.runTestCase(AndroidApp.java:450)
+              <![CDATA[java.lang.NullPointerException
+	at base.AndroidApp.findElement(AndroidApp.java:229)
+	at base.AndroidApp.findElement(AndroidApp.java:1)
+	at core.UI.clickElement(UI.java:18)
+	at base.AndroidApp.runTestCase(AndroidApp.java:389)
 	at autotest.appautotest.testa.login(testa.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -50,11 +46,11 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.IllegalArgumentException -->
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@5abca1e0]" name="tearDown" is-config="true" duration-ms="3891" started-at="2015-09-26T00:18:16Z" finished-at="2015-09-26T00:18:20Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@60c6f5b]" name="tearDown" is-config="true" duration-ms="2365" started-at="2015-09-26T00:24:44Z" finished-at="2015-09-26T00:24:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

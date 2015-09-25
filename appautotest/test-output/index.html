@@ -48,7 +48,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
-                    <span>C:\Users\troy\AppData\Local\Temp\testng-eclipse-1504588136\testng-customsuite.xml</span>
+                    <span>C:\Users\troy\AppData\Local\Temp\testng-eclipse-1926204532\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -127,12 +127,11 @@
                   <a name="login">
                   </a> <!-- login -->
                   <span class="method-name">login</span>
-                  <div class="stack-trace">java.lang.IllegalArgumentException: &apos;appPackage&apos; and &apos;appActivity&apos; are required.
-	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:125)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:174)
-	at io.appium.java_client.android.AndroidDriver.startActivity(AndroidDriver.java:201)
-	at base.AndroidApp.startActivity(AndroidApp.java:365)
-	at base.AndroidApp.runTestCase(AndroidApp.java:450)
+                  <div class="stack-trace">java.lang.NullPointerException
+	at base.AndroidApp.findElement(AndroidApp.java:229)
+	at base.AndroidApp.findElement(AndroidApp.java:1)
+	at core.UI.clickElement(UI.java:18)
+	at base.AndroidApp.runTestCase(AndroidApp.java:389)
 	at autotest.appautotest.testa.login(testa.java:50)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -167,7 +166,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\troy\AppData\Local\Temp\testng-eclipse-1504588136\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\troy\AppData\Local\Temp\testng-eclipse-1926204532\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -220,12 +219,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'login')
 data.setCell(0, 2, 'autotest.appautotest.testa')
-data.setCell(0, 3, 27252);
+data.setCell(0, 3, 28923);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 27 seconds</span>
+              <span class="suite-total-time">Total running time: 28 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -260,11 +259,11 @@ return data;
                 <img src="failed.png">
                 </img>
                 <span class="method-name">login</span>
-                <span class="method-start">21678 ms</span>
+                <span class="method-start">21447 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">48933 ms</span>
+                <span class="method-start">50376 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
