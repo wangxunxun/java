@@ -20,7 +20,7 @@ public class testa{
 
 
 	private Map<String, Map<String, Map<String, String>>> eledata = ticketApp.eledata;
-	private Map<String, Object> testCaseData = ticketApp.testData;
+	private Map<String, Object> testCaseData = ticketApp.testCaseData;
 	@BeforeMethod
 	public void setUp() throws Exception{
 		ticketApp.runApp();
@@ -47,7 +47,7 @@ public class testa{
 
     @Test
     public void login(){
-    	ticketApp.runTestCase(testCaseData, eledata,"test2");
+    	ticketApp.runTestCase(testCaseData, eledata,"登录");
 
     	
 

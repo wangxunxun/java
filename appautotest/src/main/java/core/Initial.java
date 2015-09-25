@@ -51,6 +51,9 @@ public class Initial {
 	protected boolean resetKeyboard = true;
 	protected String deviceName = "meizu";
 	protected Integer waitTime = 20;
+	protected String apkName = null;
+	protected String appPackage = null;
+	protected String mainActivity = null;
 	
 	//截屏存放目录
 	protected String dir_name = tool.setPath("\\screenshot\\");

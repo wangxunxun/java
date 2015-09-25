@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class AndroidApp extends UI{
 	public static AndroidDriver<AndroidElement> driver;
 
 		 
-    public void setUp(String apkName,String appPackage,String mainActivity) throws Exception {
+    public void setUp(){
         // set up appium
 
     	appDir = new File(classpathRoot, "/testresource/apps");
@@ -34,7 +35,12 @@ public class AndroidApp extends UI{
         capabilities.setCapability("resetKeyboard", resetKeyboard);
         capabilities.setCapability("appPackage", appPackage);
         capabilities.setCapability("appActivity", mainActivity);
-        driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        try {
+			driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         wait = new WebDriverWait(driver,waitTime);
         
 
@@ -435,7 +441,15 @@ public class AndroidApp extends UI{
 				else if (action.equals("assert")){
 					actual = getElementText(eledata, page, name);
 					assertEquals(actual, expected);
+					
 				}
+				else if (action.equals("runTestCase")){
+					runTestCase(testCaseData, eledata, value);
+				}
+				else if (action.equals("startActivity")){
+					startActivity(appPackage, value);
+				}
+
 				else{
 					tool.log("Can not run the action");
 

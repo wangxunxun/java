@@ -7,6 +7,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class testand extends AndroidApp{
 	private Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, sheettestapp);
 	List<Map<String, String>> zhuce = getTestData(excelpath, zhuce1);
 	@BeforeTest
-    public void setUp() throws Exception {
+    public void setUp(){
         // set up appium
         File classpathRoot = new File(System.getProperty("user.dir"));
         File appDir = new File(classpathRoot, "/testresource/apps");
@@ -42,7 +43,12 @@ public class testand extends AndroidApp{
         capabilities.setCapability("resetKeyboard", "True");
         capabilities.setCapability("appPackage", "com.example.testandroid");
         capabilities.setCapability("appActivity", "com.example.testandroid.MainActivity");
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        try {
+			driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         wait = new WebDriverWait(driver,20);
 
         

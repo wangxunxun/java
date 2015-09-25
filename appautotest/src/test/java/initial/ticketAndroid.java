@@ -13,8 +13,11 @@ public class ticketAndroid extends AndroidApp{
 	public String S_activityMore = "cn.beyondsoft.wicket.more.MoreActivity";
 	public String S_appPackage = "cn.beyondsoft.wicket";
 	public Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, elesheet);
-	public Map<String, Object> testData = initialTestCaseData(excelpath, sheetname);
+	public Map<String, Object> testCaseData = initialTestCaseData(excelpath, sheetname);
 	public void runApp() throws Exception{
-		setUp("ticketingsystem.apk","cn.beyondsoft.wicket","cn.beyondsoft.wicket.LoddingActivity");
+		apkName = "ticketingsystem.apk";
+		appPackage = "cn.beyondsoft.wicket";
+		mainActivity = "cn.beyondsoft.wicket.LoddingActivity";
+		setUp();
 	}
 }
