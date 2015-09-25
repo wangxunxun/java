@@ -3,29 +3,15 @@ package base;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.AndroidDriver;
 
-
-
-
-
-
-
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-
-
-
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
-
-
-
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -35,80 +21,26 @@ import core.UI;
 public class AndroidApp extends UI{
 	public static AndroidDriver<AndroidElement> driver;
 
-
+		 
     public void setUp(String apkName,String appPackage,String mainActivity) throws Exception {
         // set up appium
-    	String deviceName = "meizu";
-    	Integer waitTime = 20;
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        File appDir = new File(classpathRoot, "/testresource/apps");
+
+    	appDir = new File(classpathRoot, "/testresource/apps");
         File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",deviceName);
         capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("unicodeKeyboard", "True");
-        capabilities.setCapability("resetKeyboard", "True");
+        capabilities.setCapability("unicodeKeyboard", unicodeKeyboard);
+        capabilities.setCapability("resetKeyboard", resetKeyboard);
         capabilities.setCapability("appPackage", appPackage);
         capabilities.setCapability("appActivity", mainActivity);
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         wait = new WebDriverWait(driver,waitTime);
+        
 
         
     }
-    public void setUp(String apkName,String appPackage,String mainActivity,String deviceName) throws Exception {
-        // set up appium
-    	Integer waitTime = 20;
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        File appDir = new File(classpathRoot, "/testresource/apps");
-        File app = new File(appDir, apkName);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName",deviceName);
-        capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("unicodeKeyboard", "True");
-        capabilities.setCapability("resetKeyboard", "True");
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", mainActivity);
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        wait = new WebDriverWait(driver,waitTime);
 
-        
-    }
-    public void setUp(String apkName,String appPackage,String mainActivity,String deviceName,Integer waitTime) throws Exception {
-        // set up appium
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        File appDir = new File(classpathRoot, "/testresource/apps");
-        File app = new File(appDir, apkName);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName",deviceName);
-        capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("unicodeKeyboard", "True");
-        capabilities.setCapability("resetKeyboard", "True");
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", mainActivity);
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        wait = new WebDriverWait(driver,waitTime);
-
-        
-    }
-    
-    public void setUp(String apkName,String appPackage,String mainActivity,Integer waitTime) throws Exception {
-        // set up appium
-    	String deviceName = "meizu";
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        File appDir = new File(classpathRoot, "/testresource/apps");
-        File app = new File(appDir, apkName);
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName",deviceName);
-        capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("unicodeKeyboard", "True");
-        capabilities.setCapability("resetKeyboard", "True");
-        capabilities.setCapability("appPackage", appPackage);
-        capabilities.setCapability("appActivity", mainActivity);
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-        wait = new WebDriverWait(driver,waitTime);
-
-        
-    }
 	
 	
     public void getButtons(){
@@ -179,7 +111,7 @@ public class AndroidApp extends UI{
    		}
     }
     
-    public AndroidElement findElementByClassNameIndex(String classname,int index){
+    protected AndroidElement findElementByClassNameIndex(String classname,int index){
     	List<AndroidElement> eles= driver.findElementsByClassName(classname);
     	return eles.get(index);
     }
@@ -274,16 +206,16 @@ public class AndroidApp extends UI{
     
     
 
-	public static void getScreen(String filename) throws IOException{ 
+	public void getScreen(String filename) throws IOException{ 
 		File scrFile = driver.getScreenshotAs(OutputType.FILE);
-		String dir_name = tool.setCurrentPath("\\screenshot\\");
+
 	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
 	  	}
 		FileUtils.copyFile(scrFile, new File(dir_name+tool.getCurrentTime()+ "_"+ filename+".jpg"));		
 	}
 	
-	public static void getScreen() throws IOException{ 
+	public void getScreen() throws IOException{ 
 		getScreen("");
 	}
 	
@@ -422,4 +354,43 @@ public class AndroidApp extends UI{
 		   driver.findElementByName(text).click();
 	   }
 	
+	   
+	   public void startActivity(String appPackage,String appActivity){
+		   driver.startActivity(appPackage, appActivity);
+	   }
+	   
+	   public void runTestCase(Map<String, Object>testCaseData,String testCase,Map<String, Map<String, Map<String, String>>> eledata){
+		   	List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
+			String page = null;
+			String name = null;	   
+		  
+			for (int i = 0;i <cases.size();i++){
+
+				String action = cases.get(i).get("Action");
+				String element = cases.get(i).get("Element");
+				String value = cases.get(i).get("Value");
+				String actual = cases.get(i).get("Actual");
+				String expect = cases.get(i).get("Expect");
+				tool.log(action);
+				if (element !=""){
+				String[] sourceStrArray = element.split("//");
+				page = sourceStrArray[0];
+				name = sourceStrArray[1];
+				}
+				tool.log(action);
+				if (action.equals("click")){
+					tool.log("234323232323233");
+					clickElement(eledata, page, name);
+				}
+				else if (action.equals("sleep")){
+					tool.log("sleep34343434");
+					tool.sleep(20000);
+				}
+				else{
+					tool.log("faile");
+
+				}
+
+			}
+	   }
 }

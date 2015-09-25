@@ -1,21 +1,22 @@
 package base;
 import java.awt.Robot;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.interactions.Actions;
 
 import core.UI;
+
 public class WebApp extends UI{
+	protected String main_window;
 	
     public void get(String url){
     	driver.get(url);
@@ -57,12 +58,11 @@ public class WebApp extends UI{
     	return null;
     }
     		    
-    public static void getScreen(String filename)
+    public void getScreen(String filename)
     {
 
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String dir_name = tool.setCurrentPath("\\screenshot\\");
 	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
 	  	}
@@ -80,7 +80,7 @@ public class WebApp extends UI{
 		}
 	}
     
-    public static void getScreen()
+    public void getScreen()
     {
     	getScreen("");
 	}

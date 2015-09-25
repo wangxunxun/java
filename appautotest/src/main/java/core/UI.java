@@ -117,8 +117,6 @@ public class UI extends Initial{
 		else if (selecttype.equals("index")){
 			String[] sourceStrArray = location.split(",");
 			String classname = sourceStrArray[0];
-			String index = sourceStrArray[1];
-			int in=Integer.parseInt(index);
 			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className(classname)));
 		}	
 		else {

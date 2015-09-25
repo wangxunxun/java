@@ -12,13 +12,13 @@ public class CommonTools {
         return f.format(date);
     }
     
-    public String setCurrentPath(String dirname){
+    public String setPath(String dirname){
     	String currentPath = System.getProperty("user.dir");
     	return currentPath + dirname;
     }
 
     
-    protected void log(String content, Integer type) {
+    protected void log(Object content, Integer type) {
 
         switch (type) {
         case 1: {
@@ -41,7 +41,7 @@ public class CommonTools {
 
     }
 	
-    public void log(String content) {
+    public void log(Object content) {
 
         log(content, 1);
     }
