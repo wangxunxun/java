@@ -215,19 +215,19 @@ public class AndroidApp extends UI{
 	public void getScreen(String filename) throws IOException{ 
 		File scrFile = driver.getScreenshotAs(OutputType.FILE);
 
-	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
-	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
+	  	if (!(new File(dirName).isDirectory())) {  // 判断是否存在该目录
+	  		new File(dirName).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		FileUtils.copyFile(scrFile, new File(dir_name+tool.getCurrentTime()+ "_"+ filename+".jpg"));		
+		FileUtils.copyFile(scrFile, new File(dirName+tool.getCurrentTime()+ "_"+ filename+".jpg"));		
 	}
 	
 	public void getScreen() throws IOException{ 
 		getScreen("");
 	}
 	
-	public AndroidElement findElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		String selecttype = eledata.get(page).get(name).get("SelectType");
-		String location = eledata.get(page).get(name).get("Location");
+	public AndroidElement findElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+		String selecttype = elementData.get(page).get(name).get("SelectType");
+		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
 			return driver.findElement(By.cssSelector(location));
 		}
@@ -266,9 +266,9 @@ public class AndroidApp extends UI{
 		return null;
 	}
 	
-	public void tabElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		String selecttype = eledata.get(page).get(name).get("SelectType");
-		String location = eledata.get(page).get(name).get("Location");
+	public void tabElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+		String selecttype = elementData.get(page).get(name).get("SelectType");
+		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
 			String[] sourceStrArray = location.split(",");
 			String x = sourceStrArray[0];
@@ -282,9 +282,9 @@ public class AndroidApp extends UI{
 		}
 	}
 	
-	public void longTabElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		String selecttype = eledata.get(page).get(name).get("SelectType");
-		String location = eledata.get(page).get(name).get("Location");
+	public void longTabElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+		String selecttype = elementData.get(page).get(name).get("SelectType");
+		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
 			String[] sourceStrArray = location.split(",");
 			String x = sourceStrArray[0];
@@ -297,9 +297,9 @@ public class AndroidApp extends UI{
 			System.out.println("Please provide coordinate.");
 		}
 	}
-	public void swipeElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		String selecttype = eledata.get(page).get(name).get("SelectType");
-		String location = eledata.get(page).get(name).get("Location");
+	public void swipeElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+		String selecttype = elementData.get(page).get(name).get("SelectType");
+		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("swipe")){
 			String[] sourceStrArray = location.split(",");
 			String startx = sourceStrArray[0];
@@ -323,8 +323,8 @@ public class AndroidApp extends UI{
 	   
 	   public void tab(int fingers, int x, int y, int duration ){
 
-		   float a = x/basicwindowx;
-		   float b = y/basicwindowy;
+		   float a = x/basicWindowx;
+		   float b = y/basicWindowy;
 		   int newx = (int) (a*driver.manage().window().getSize().getWidth());
 		   int newy = (int) (b*driver.manage().window().getSize().getHeight());		   
 		   driver.tap(fingers, newx, newy, duration);
@@ -339,12 +339,12 @@ public class AndroidApp extends UI{
 	   }
 	   
 	   public void swipe (int startx, int starty, int endx, int endy, int duration){
-		   float a = startx/basicwindowx;
-		   float b = starty/basicwindowy;
+		   float a = startx/basicWindowx;
+		   float b = starty/basicWindowy;
 		   int newstartx = (int) (a*driver.manage().window().getSize().getWidth());
 		   int newstarty = (int) (b*driver.manage().window().getSize().getHeight());	
-		   float c = endx/basicwindowx;
-		   float d = endy/basicwindowy;
+		   float c = endx/basicWindowx;
+		   float d = endy/basicWindowy;
 		   int newendx = (int) (c*driver.manage().window().getSize().getWidth());
 		   int newsendy = (int) (d*driver.manage().window().getSize().getHeight());
 		   driver.swipe(newstartx, newstarty, newendx, newsendy, duration);
@@ -365,7 +365,7 @@ public class AndroidApp extends UI{
 		   driver.startActivity(appPackage, appActivity);
 	   }
 	   
-	   public void runTestCase(Map<String, Object>testCaseData,Map<String, Map<String, Map<String, String>>> eledata,String testCase){
+	   public void runTestCase(Map<String, Object>testCaseData,Map<String, Map<String, Map<String, String>>> elementData,String testCase){
 		   	List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			String page = null;
 			String name = null;	   
@@ -385,20 +385,20 @@ public class AndroidApp extends UI{
 				}
 
 				if (action.equals("click")){
-					clickElement(eledata, page, name);
+					clickElement(elementData, page, name);
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
 					tool.sleep(v);
 				}
 				else if (action.equals("waitDisplay")){
-					waitDisplay(eledata, page, name);
+					waitDisplay(elementData, page, name);
 				}
 				else if (action.equals("tap")){
-					tabElement(eledata, page, name);
+					tabElement(elementData, page, name);
 				}
 				else if (action.equals("longTap")){
-					longTabElement(eledata, page, name);
+					longTabElement(elementData, page, name);
 				}
 				else if (action.equals("back")){
 					try {
@@ -436,15 +436,15 @@ public class AndroidApp extends UI{
 					swipeOfType(value);
 				}
 				else if (action.equals("sendKey")){
-					sendKeys(eledata, page, name, value);
+					sendKeys(elementData, page, name, value);
 				}
 				else if (action.equals("assert")){
-					actual = getElementText(eledata, page, name);
+					actual = getElementText(elementData, page, name);
 					assertEquals(actual, expected);
 					
 				}
 				else if (action.equals("runTestCase")){
-					runTestCase(testCaseData, eledata, value);
+					runTestCase(testCaseData, elementData, value);
 				}
 				else if (action.equals("startActivity")){
 					startActivity(appPackage, value);

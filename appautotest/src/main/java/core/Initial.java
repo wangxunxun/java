@@ -42,8 +42,8 @@ public class Initial {
 	public CommonTools tool = new CommonTools();
 
 	//屏幕分辨率设置
-	protected float basicwindowx =720;
-	protected float basicwindowy =1280;	
+	protected float basicWindowx =720;
+	protected float basicWindowy =1280;	
 	//andorid配置信息
 	protected File classpathRoot = new File(System.getProperty("user.dir"));
 	protected File appDir = new File(classpathRoot, "/testresource/apps");
@@ -56,11 +56,11 @@ public class Initial {
 	protected String mainActivity = null;
 	
 	//截屏存放目录
-	protected String dir_name = tool.setPath("\\screenshot\\");
+	protected String dirName = tool.setPath("\\screenshot\\");
 	
 	
 	
-	public Map<String, Map<String, Map<String, String>>> initialeledata(String excelpath,String sheetname){
+	public Map<String, Map<String, Map<String, String>>> getElementData(String excelpath,String sheetname){
 		ReadElementData elementdata = new ReadElementData(excelpath, sheetname);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
 		return eledata;
@@ -72,7 +72,7 @@ public class Initial {
 		return data;
 	}
 	
-	public Map<String, Object> initialTestCaseData(String excelpath,String sheetname){
+	public Map<String, Object> getTestCaseData(String excelpath,String sheetname){
 		ReadTestCasesData testCaseData = new ReadTestCasesData(excelpath, sheetname);
 //		List<List<Object>> data = testCaseData.readTable();
 		Map<String, Object> data = testCaseData.getdata();

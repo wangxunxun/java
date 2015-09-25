@@ -47,8 +47,8 @@ public class WebApp extends UI{
         return driver.getWindowHandle();
     }
 
-    public String getElementValue(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	String value = findElement(eledata, page, name).getAttribute("value");
+    public String getElementValue(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	String value = findElement(elementData, page, name).getAttribute("value");
     	if(value !=null){
     		return value;
     	}
@@ -63,12 +63,12 @@ public class WebApp extends UI{
 
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
-	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
+	  	if (!(new File(dirName).isDirectory())) {  // 判断是否存在该目录
+	  		new File(dirName).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		String filepath = dir_name+tool.getCurrentTime()+ "_"+ filename+  ".jpg";
+		String filepath = dirName+tool.getCurrentTime()+ "_"+ filename+  ".jpg";
 		try {
-			System.out.println("save snapshot path is:"+dir_name+filename);
+			System.out.println("save snapshot path is:"+dirName+filename);
 			FileUtils.copyFile(scrFile, new File(filepath));
 		   	} 
 		catch (IOException e) {
@@ -121,23 +121,23 @@ public class WebApp extends UI{
         }
     }
     
-    public void srollToElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	executeJavaScript("arguments[0].scrollIntoView()", findElement(eledata, page, name));
+    public void srollToElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	executeJavaScript("arguments[0].scrollIntoView()", findElement(elementData, page, name));
     }
     
-    public void clickElementByJS(Map<String, Map<String, Map<String, String>>> eledata,String page,String name) {
+    public void clickElementByJS(Map<String, Map<String, Map<String, String>>> elementData,String page,String name) {
 
         // String locator = uiMapElementLocator(elementName);
-        WebElement element = findElement(eledata, page, name);
+        WebElement element = findElement(elementData, page, name);
         executeJavaScript("arguments[0].click();", element);
     }
     
 
 
     
-    public void moveMouseOn(Map<String, Map<String, Map<String, String>>> eledata,String page,String name) {
+    public void moveMouseOn(Map<String, Map<String, Map<String, String>>> elementData,String page,String name) {
 
-        WebElement element = findElement(eledata, page, name);
+        WebElement element = findElement(elementData, page, name);
         tool.log("Moving mouse to element: " + name + ".");
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();

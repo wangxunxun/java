@@ -22,7 +22,7 @@ import base.WebApp;
 public class testweb extends WebApp {
 	static String excelpath = "testresource\\test.xls";
 	static String sheet = "12306";
-	private Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, sheet);
+	private Map<String, Map<String, Map<String, String>>> eledata = getElementData(excelpath, sheet);
 	
 	@BeforeTest
 	public void setUp(){

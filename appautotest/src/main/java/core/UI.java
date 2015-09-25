@@ -14,16 +14,16 @@ import org.testng.Assert;
 import core.Initial;
 public class UI extends Initial{
     
-    public void clickElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	findElement(eledata, page, name).click();
+    public void clickElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	findElement(elementData, page, name).click();
     }
     
-    public void sendKeys(Map<String, Map<String, Map<String, String>>> eledata,String page,String name,String value){
-    	findElement(eledata, page, name).sendKeys(value);
+    public void sendKeys(Map<String, Map<String, Map<String, String>>> elementData,String page,String name,String value){
+    	findElement(elementData, page, name).sendKeys(value);
     }
     
-    public String getElementText(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	String value = findElement(eledata, page, name).getText();
+    public String getElementText(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	String value = findElement(elementData, page, name).getText();
     	if(value !=null){
     		return value;
     	}
@@ -43,23 +43,23 @@ public class UI extends Initial{
     
 
     
-    public boolean isSlected(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	return findElement(eledata, page, name).isSelected();
+    public boolean isSlected(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	return findElement(elementData, page, name).isSelected();
     }
     
-    public boolean isDisplayed(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	return findElement(eledata, page, name).isDisplayed();
+    public boolean isDisplayed(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	return findElement(elementData, page, name).isDisplayed();
     }
     
-    public boolean isEnabled(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-    	return findElement(eledata, page, name).isEnabled();
+    public boolean isEnabled(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+    	return findElement(elementData, page, name).isEnabled();
     }
     
 
 
-	public WebElement findElement(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		String selecttype = eledata.get(page).get(name).get("SelectType");
-		String location = eledata.get(page).get(name).get("Location");
+	public WebElement findElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+		String selecttype = elementData.get(page).get(name).get("SelectType");
+		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
 			return driver.findElement(By.cssSelector(location));
 		}
@@ -89,9 +89,9 @@ public class UI extends Initial{
 		return null;
 	}
 	
-    public void waitDisplay(Map<String, Map<String, Map<String, String>>> eledata,String page,String name){
-		String selecttype = eledata.get(page).get(name).get("SelectType");
-		String location = eledata.get(page).get(name).get("Location");
+    public void waitDisplay(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+		String selecttype = elementData.get(page).get(name).get("SelectType");
+		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(location)));
 
