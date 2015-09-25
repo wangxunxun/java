@@ -359,7 +359,7 @@ public class AndroidApp extends UI{
 		   driver.startActivity(appPackage, appActivity);
 	   }
 	   
-	   public void runTestCase(Map<String, Object>testCaseData,String testCase,Map<String, Map<String, Map<String, String>>> eledata){
+	   public void runTestCase(Map<String, Object>testCaseData,Map<String, Map<String, Map<String, String>>> eledata,String testCase){
 		   	List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			String page = null;
 			String name = null;	   
@@ -370,24 +370,74 @@ public class AndroidApp extends UI{
 				String element = cases.get(i).get("Element");
 				String value = cases.get(i).get("Value");
 				String actual = cases.get(i).get("Actual");
-				String expect = cases.get(i).get("Expect");
-				tool.log(action);
+				String expected = cases.get(i).get("Expected");
+
 				if (element !=""){
-				String[] sourceStrArray = element.split("//");
+				String[] sourceStrArray = element.split("/");
 				page = sourceStrArray[0];
 				name = sourceStrArray[1];
 				}
-				tool.log(action);
+
 				if (action.equals("click")){
-					tool.log("234323232323233");
 					clickElement(eledata, page, name);
 				}
 				else if (action.equals("sleep")){
-					tool.log("sleep34343434");
-					tool.sleep(20000);
+					int v=Integer.parseInt(value);
+					tool.sleep(v);
+				}
+				else if (action.equals("waitDisplay")){
+					waitDisplay(eledata, page, name);
+				}
+				else if (action.equals("tap")){
+					tabElement(eledata, page, name);
+				}
+				else if (action.equals("longTap")){
+					longTabElement(eledata, page, name);
+				}
+				else if (action.equals("back")){
+					try {
+						clickBack();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if (action.equals("enter")){
+					try {
+						clickEnter();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					};
+				}
+				else if (action.equals("home")){
+					try {
+						clickHome();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if (action.equals("menu")){
+					try {
+						clickMenu();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				else if (action.equals("swipeOfType")){
+					swipeOfType(value);
+				}
+				else if (action.equals("sendKey")){
+					sendKeys(eledata, page, name, value);
+				}
+				else if (action.equals("assert")){
+					actual = getElementText(eledata, page, name);
+					assertEquals(actual, expected);
 				}
 				else{
-					tool.log("faile");
+					tool.log("Can not run the action");
 
 				}
 

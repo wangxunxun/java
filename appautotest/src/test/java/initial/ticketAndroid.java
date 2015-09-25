@@ -9,7 +9,7 @@ import base.AndroidApp;;
 public class ticketAndroid extends AndroidApp{
 	String excelpath = "testresource\\test.xls";
 	String elesheet = "票务系统";
-	String sheetname = "Sheet1";
+	String sheetname = "票务系统测试用例";
 	public String S_activityMore = "cn.beyondsoft.wicket.more.MoreActivity";
 	public String S_appPackage = "cn.beyondsoft.wicket";
 	public Map<String, Map<String, Map<String, String>>> eledata = initialeledata(excelpath, elesheet);

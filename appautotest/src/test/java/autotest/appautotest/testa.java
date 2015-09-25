@@ -47,23 +47,8 @@ public class testa{
 
     @Test
     public void login(){
-//    	this.enterMainPage();
-    	ticketApp.tool.sleep(10000);
-    	ticketApp.runTestCase(testCaseData, "test1", eledata);
-/*    	ticketApp.clickElement(eledata, "更多", "帮助中心");
-    	ticketApp.clickElement(eledata, "标题栏", "返回");
-    	ticketApp.clickElement(eledata, "更多", "免责声明");
-    	ticketApp.clickElement(eledata, "标题栏", "返回");
-    	ticketApp.clickElement(eledata, "更多", "关于我们");
-    	ticketApp.clickElement(eledata, "标题栏", "返回");
-    	ticketApp.clickElement(eledata, "更多", "版本更新");   
-    	String a = ticketApp.getElementText(eledata, "更多", "帮助中心");
-    	ticketApp.assertEquals(a, "帮助中心");
-    	ticketApp.tool.log(a);
-    	ticketApp.clickElement(eledata, "首页", "登录");
-    	ticketApp.sendKeys(eledata, "登录", "账户", "18627802681");
-    	ticketApp.sendKeys(eledata, "登录", "密码", "18627802681");
-    	ticketApp.clickElement(eledata, "登录", "普通登录按钮");*/
+    	ticketApp.runTestCase(testCaseData, eledata,"test2");
+
     	
 
     }
