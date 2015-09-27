@@ -22,7 +22,7 @@ import base.WebApp;
 public class testweb extends WebApp {
 	static String excelpath = "testresource\\test.xls";
 	static String sheet = "12306";
-	private Map<String, Map<String, Map<String, String>>> eledata = getElementData(excelpath, sheet);
+//	private Map<String, Map<String, Map<String, String>>> eledata = getElementData(excelpath, sheet);
 	
 	@BeforeTest
 	public void setUp(){
@@ -57,7 +57,7 @@ public class testweb extends WebApp {
 //    	String url="http://baidu.com";
 		String url="http://www.12306.cn/mormhweb/";
     	get(url);
-    	tool.sleep(5000);
+/*    	tool.sleep(5000);
 
     	waitDisplay(eledata, "首页", "客运服务");
     	clickElement(eledata, "首页", "客运服务");
@@ -75,7 +75,7 @@ public class testweb extends WebApp {
 //    	sendKeys(eledata, "客运服务", "目的地","深圳");
     	waitDisplay(eledata, "客运服务", "查询");
     	clickElement(eledata, "客运服务", "查询");
-    	tool.sleep(15000);
+    	tool.sleep(15000);*/
 /*    	waitDisplay(eledata, "首页", "登录链接");
     	clickElement(eledata, "首页", "登录链接");
     	waitDisplay(eledata, "首页", "账号");

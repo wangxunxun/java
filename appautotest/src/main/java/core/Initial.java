@@ -58,25 +58,36 @@ public class Initial {
 	//截屏存放目录
 	protected String dirName = tool.setPath("\\screenshot\\");
 	
+	//测试数据路径变量
+	protected String testExcelPath = null;
+	protected String elementSheet = null;
+	protected String testCaseSheet = null;
+	protected String testDataSheet = null;
 	
-	
-	public Map<String, Map<String, Map<String, String>>> getElementData(String excelpath,String sheetname){
-		ReadElementData elementdata = new ReadElementData(excelpath, sheetname);	
+	public Map<String, Map<String, Map<String, String>>> getElementData(){
+		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
 		return eledata;
 	}
 	
-	public List<Map<String, String>> getTestData(String excelpath,String sheetname){
+	public List<Map<String, String>> getTestData(){
 		ReadTestData readtestdata = new ReadTestData();
-		List<Map<String, String>> data = readtestdata.getTestData(excelpath, sheetname);
+		List<Map<String, String>> data = readtestdata.getTestData(testExcelPath, testDataSheet);
 		return data;
 	}
 	
-	public Map<String, Object> getTestCaseData(String excelpath,String sheetname){
-		ReadTestCasesData testCaseData = new ReadTestCasesData(excelpath, sheetname);
+	public Map<String, Object> getTestCaseData(){
+		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 //		List<List<Object>> data = testCaseData.readTable();
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
+		
+	}
+	
+	public void initialTestData(){
+		
+	}
+	public void runApp() {
 		
 	}
 }

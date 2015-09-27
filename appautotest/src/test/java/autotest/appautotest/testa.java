@@ -19,8 +19,8 @@ public class testa{
 
 
 
-	private Map<String, Map<String, Map<String, String>>> elementData = ticketApp.elementData;
-	private Map<String, Object> testCaseData = ticketApp.testCaseData;
+	private Map<String, Map<String, Map<String, String>>> elementData = ticketApp.getElementData();
+	private Map<String, Object> testCaseData = ticketApp.getTestCaseData();
 	@BeforeMethod
 	public void setUp() throws Exception{
 		ticketApp.runApp();

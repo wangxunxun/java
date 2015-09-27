@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -370,7 +371,7 @@ public class AndroidApp extends UI{
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			String page = null;
 			String name = null;	   
-		  
+			Map<String,String> testResult = new HashMap<String,String>();
 			for (int i = 0;i <cases.size();i++){
 
 				String action = cases.get(i).get("Action");
@@ -378,6 +379,7 @@ public class AndroidApp extends UI{
 				String value = cases.get(i).get("Value");
 				String actual = cases.get(i).get("Actual");
 				String expected = cases.get(i).get("Expected");
+				String row = cases.get(i).get("row");
 
 				if (element !=""){
 				String[] sourceStrArray = element.split("/");
@@ -387,23 +389,29 @@ public class AndroidApp extends UI{
 
 				if (action.equals("click")){
 					clickElement(elementData, page, name);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
 					tool.sleep(v);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("waitDisplay")){
 					waitDisplay(elementData, page, name);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("tap")){
 					tabElement(elementData, page, name);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("longTap")){
 					longTabElement(elementData, page, name);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("back")){
 					try {
 						clickBack();
+						testResult.put(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -412,6 +420,7 @@ public class AndroidApp extends UI{
 				else if (action.equals("enter")){
 					try {
 						clickEnter();
+						testResult.put(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -420,6 +429,7 @@ public class AndroidApp extends UI{
 				else if (action.equals("home")){
 					try {
 						clickHome();
+						testResult.put(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -428,6 +438,7 @@ public class AndroidApp extends UI{
 				else if (action.equals("menu")){
 					try {
 						clickMenu();
+						testResult.put(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -435,20 +446,25 @@ public class AndroidApp extends UI{
 				}
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("sendKey")){
 					sendKeys(elementData, page, name, value);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("assert")){
 					actual = getElementText(elementData, page, name);
 					assertEquals(actual, expected);
+					testResult.put(row, "P");
 					
 				}
 				else if (action.equals("runTestCase")){
 					runTestCase(testCaseData, elementData, value);
+					testResult.put(row, "P");
 				}
 				else if (action.equals("startActivity")){
 					startActivity(appPackage, value);
+					testResult.put(row, "P");
 				}
 
 				else{
@@ -457,5 +473,6 @@ public class AndroidApp extends UI{
 				}
 
 			}
+			tool.log(testResult);
 	   }
 }

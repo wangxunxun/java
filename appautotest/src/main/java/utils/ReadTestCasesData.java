@@ -71,6 +71,7 @@ public class ReadTestCasesData {
 					action.put(header.get(3), readsheet.getCell(3, i).getContents());
 					action.put(header.get(4), readsheet.getCell(4, i).getContents());
 					action.put(header.get(5), readsheet.getCell(5, i).getContents());
+					action.put("row", Integer.toString(i));
 
 					actions.add(action);
 					testCases.add(readsheet.getCell(0, i).getContents());
@@ -82,7 +83,7 @@ public class ReadTestCasesData {
 					action.put(header.get(3), readsheet.getCell(3, i).getContents());
 					action.put(header.get(4), readsheet.getCell(4, i).getContents());
 					action.put(header.get(5), readsheet.getCell(5, i).getContents());
-
+					action.put("row", Integer.toString(i));
 					actions.add(action);
 				}	
 
