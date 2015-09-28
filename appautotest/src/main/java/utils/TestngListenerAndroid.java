@@ -6,25 +6,33 @@ import java.io.File;
 import java.io.IOException;
 
 
+import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
-
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
 
-import utils.CommonTools;
 
+import utils.CommonTools;
 import base.AndroidApp;
+
 public class TestngListenerAndroid extends TestListenerAdapter {
 
 	CommonTools tool = new CommonTools();
+	AndroidApp a = new AndroidApp();
+	
+	
+	
 
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
 		tool.log(tr.getName() + " Failure");
+		Map<String, String> result = a.getTestResult();
+		tool.log(result);
 		try {
 			takeScreenShot(tr);
 		} catch (InterruptedException e) {

@@ -16,18 +16,22 @@ import initial.ticketAndroid;
 
 public class testa{
 	ticketAndroid ticketApp = new ticketAndroid();
-
-
-
-	private Map<String, Map<String, Map<String, String>>> elementData = ticketApp.getElementData();
-	private Map<String, Object> testCaseData = ticketApp.getTestCaseData();
+	protected String testExcelPath = "testresource\\test.xls";;
+	protected String elementSheet = "票务系统";
+	protected String testCaseSheet = "票务系统测试用例";
+	protected String testDataSheet = null;
+	
+	private Map<String, Map<String, Map<String, String>>> elementData = ticketApp.getElementData(testExcelPath, elementSheet);
+	private Map<String, Object> testCaseData = ticketApp.getTestCaseData(testExcelPath, testCaseSheet);
 	@BeforeMethod
-	public void setUp() throws Exception{
-		ticketApp.runApp();
+	public void setUp(){
+		ticketApp.initialTestData();
+		
+		ticketApp.runAndroidApp();
 	}
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown(){
 
     	ticketApp.quit();
     }
