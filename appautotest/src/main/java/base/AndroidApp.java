@@ -504,7 +504,6 @@ public class AndroidApp extends UI{
 				}
 
 			}
-			tool.log(testResult);
 	   }
 		public Map<String, String> getTestResult(){
 			return this.testResult;
