@@ -491,7 +491,5 @@ public class AndroidApp extends UI{
 
 			}
 	   }
-		public Map<String, String> getTestResult(){
-			return this.testResult;
-		}
+
 }

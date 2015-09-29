@@ -31,8 +31,7 @@ public class TestngListenerAndroid extends TestListenerAdapter {
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
 		tool.log(tr.getName() + " Failure");
-		Map<String, String> result = a.getTestResult();
-		tool.log(result);
+
 		try {
 			takeScreenShot(tr);
 		} catch (InterruptedException e) {

@@ -2,29 +2,29 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="168228" started-at="2015-09-29T07:24:45Z" finished-at="2015-09-29T07:27:34Z">
+  <suite name="Default suite" duration-ms="101094" started-at="2015-09-29T14:27:22Z" finished-at="2015-09-29T14:29:03Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="168228" started-at="2015-09-29T07:24:45Z" finished-at="2015-09-29T07:27:34Z">
+    <test name="Default test" duration-ms="101094" started-at="2015-09-29T14:27:22Z" finished-at="2015-09-29T14:29:03Z">
       <class name="autotest.appautotest.testa">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@235674a4]" name="setUp" is-config="true" duration-ms="88166" started-at="2015-09-29T15:24:45Z" finished-at="2015-09-29T15:26:13Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="setUp" is-config="true" duration-ms="22271" started-at="2015-09-29T22:27:22Z" finished-at="2015-09-29T22:27:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@235674a4]" name="login" duration-ms="78031" started-at="2015-09-29T15:26:13Z" finished-at="2015-09-29T15:27:32Z">
+        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="login" duration-ms="76440" started-at="2015-09-29T22:27:44Z" finished-at="2015-09-29T22:29:00Z">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [ç™»å½•33] but found [ç™»å½•]]]>
+              <![CDATA[expected [µÇÂ¼33] but found [µÇÂ¼]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [ç™»å½•33] but found [ç™»å½•]
+              <![CDATA[java.lang.AssertionError: expected [µÇÂ¼33] but found [µÇÂ¼]
 	at org.testng.Assert.fail(Assert.java:94)
 	at org.testng.Assert.failNotEquals(Assert.java:496)
 	at org.testng.Assert.assertEquals(Assert.java:125)
 	at org.testng.Assert.assertEquals(Assert.java:178)
 	at org.testng.Assert.assertEquals(Assert.java:188)
 	at core.UI.assertEquals(UI.java:41)
-	at base.AndroidApp.runTestCase(AndroidApp.java:481)
+	at base.AndroidApp.runTestCase(AndroidApp.java:470)
 	at autotest.appautotest.testa.login(testa.java:55)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -56,7 +56,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@235674a4]" name="tearDown" is-config="true" duration-ms="2000" started-at="2015-09-29T15:27:32Z" finished-at="2015-09-29T15:27:34Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="tearDown" is-config="true" duration-ms="2368" started-at="2015-09-29T22:29:00Z" finished-at="2015-09-29T22:29:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
