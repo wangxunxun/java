@@ -103,9 +103,7 @@ public class Initial {
 	
 
 	
-	protected void setTestResult(String k,String v){
-		this.testResult.put(k, v);
-	}
+
 	
 
 

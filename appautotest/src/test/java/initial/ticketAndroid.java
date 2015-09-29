@@ -17,7 +17,7 @@ public class ticketAndroid extends AndroidApp{
 	public String S_appPackage = "cn.beyondsoft.wicket";
 	public Map<String, Map<String, Map<String, String>>> elementData = getElementData(excelpath, elesheet);
 	public Map<String, Object> testCaseData = getTestCaseData(excelpath, sheetname);*/
-	
+
 	public void initialTestData(){
 		apkName = "ticketingsystem.apk";
 		appPackage = "cn.beyondsoft.wicket";

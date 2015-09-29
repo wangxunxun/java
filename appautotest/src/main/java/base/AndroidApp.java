@@ -392,40 +392,34 @@ public class AndroidApp extends UI{
 				if (action.equals("click")){
 					clickElement(elementData, page, name);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
 					tool.sleep(v);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("waitDisplay")){
 					waitDisplay(elementData, page, name);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("tap")){
 					tabElement(elementData, page, name);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("longTap")){
 					longTabElement(elementData, page, name);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("back")){
 					try {
 						clickBack();
-//						this.testResult.put(row, "P");
 						writeResult(rowin, 6, "P");
-//						setTestResult(row, "P");
+
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -435,8 +429,7 @@ public class AndroidApp extends UI{
 					try {
 						clickEnter();
 						writeResult(rowin, 6, "P");
-//						this.testResult.put(row, "P");
-//						setTestResult(row, "P");
+
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -446,8 +439,7 @@ public class AndroidApp extends UI{
 					try {
 						clickHome();
 						writeResult(rowin, 6, "P");
-//						this.testResult.put(row, "P");
-//						setTestResult(row, "P");
+
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -457,8 +449,7 @@ public class AndroidApp extends UI{
 					try {
 						clickMenu();
 						writeResult(rowin, 6, "P");
-//						this.testResult.put(row, "P");
-//						setTestResult(row, "P");
+
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -467,34 +458,29 @@ public class AndroidApp extends UI{
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("sendKey")){
 					sendKeys(elementData, page, name, value);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("assert")){
 					actual = getElementText(elementData, page, name);
 					assertEquals(actual, expected);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 					
 				}
 				else if (action.equals("runTestCase")){
 					runTestCase(testCaseData, elementData, value);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 				}
 				else if (action.equals("startActivity")){
 					startActivity(appPackage, value);
 					writeResult(rowin, 6, "P");
-//					this.testResult.put(row, "P");
-//					setTestResult(row, "P");
+
 
 				}
 
