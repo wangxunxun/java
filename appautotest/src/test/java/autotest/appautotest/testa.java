@@ -11,12 +11,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import core.Initial;
 import initial.ticketAndroid;
 
 
 public class testa{
 	ticketAndroid ticketApp = new ticketAndroid();
-	protected String testExcelPath = "testresource\\test.xls";;
+	protected String testExcelPath = Initial.setPath("testresource\\test.xls");;
 	protected String elementSheet = "票务系统";
 	protected String testCaseSheet = "票务系统测试用例";
 	protected String testDataSheet = null;

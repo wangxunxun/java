@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="101094" started-at="2015-09-29T14:27:22Z" finished-at="2015-09-29T14:29:03Z">
+  <suite name="Default suite" duration-ms="101590" started-at="2015-09-29T15:07:10Z" finished-at="2015-09-29T15:08:52Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="101094" started-at="2015-09-29T14:27:22Z" finished-at="2015-09-29T14:29:03Z">
+    <test name="Default test" duration-ms="101590" started-at="2015-09-29T15:07:10Z" finished-at="2015-09-29T15:08:52Z">
       <class name="autotest.appautotest.testa">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="setUp" is-config="true" duration-ms="22271" started-at="2015-09-29T22:27:22Z" finished-at="2015-09-29T22:27:44Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="setUp" is-config="true" duration-ms="20650" started-at="2015-09-29T23:07:10Z" finished-at="2015-09-29T23:07:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="login" duration-ms="76440" started-at="2015-09-29T22:27:44Z" finished-at="2015-09-29T22:29:00Z">
+        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="login" duration-ms="77589" started-at="2015-09-29T23:07:31Z" finished-at="2015-09-29T23:08:48Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [µÇÂ¼33] but found [µÇÂ¼]]]>
@@ -25,7 +25,7 @@
 	at org.testng.Assert.assertEquals(Assert.java:188)
 	at core.UI.assertEquals(UI.java:41)
 	at base.AndroidApp.runTestCase(AndroidApp.java:470)
-	at autotest.appautotest.testa.login(testa.java:55)
+	at autotest.appautotest.testa.login(testa.java:56)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -56,7 +56,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="tearDown" is-config="true" duration-ms="2368" started-at="2015-09-29T22:29:00Z" finished-at="2015-09-29T22:29:03Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@1e397ed7]" name="tearDown" is-config="true" duration-ms="3333" started-at="2015-09-29T23:08:48Z" finished-at="2015-09-29T23:08:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

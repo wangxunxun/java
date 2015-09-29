@@ -51,12 +51,11 @@ public class Initial {
 	protected String dirName = tool.setPath("\\screenshot\\");
 	
 	//测试数据变量
-	protected static String testExcelPath = "testresource\\test.xls";
+	protected static String testExcelPath = null;
 	protected static String elementSheet = "票务系统";
 	protected static String testCaseSheet = "票务系统测试用例";
 	protected static String testDataSheet = null;
-	protected Map<String,String> testResult = new HashMap<String, String>();
-	protected WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
+
 	
 	public Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
@@ -79,6 +78,7 @@ public class Initial {
 	}
 	
 	public void writeResult(Integer row,Integer cow,String result){
+		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {
 			try {
 				writeTestResult.write(row, cow, result);
@@ -97,11 +97,15 @@ public class Initial {
 			e.printStackTrace();
 		}
 		
+
 		 
 	}
 	
 
-	
+	public static String setPath(String path){
+		Initial.testExcelPath = path;
+		return Initial.testExcelPath;
+	}
 
 	
 
