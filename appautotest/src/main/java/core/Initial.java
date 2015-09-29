@@ -25,8 +25,7 @@ import utils.ReadTestCasesData;
 import utils.ReadTestData;
 import utils.WriteTestResult;
 public class Initial {
-	private static final Integer Integer = null;
-	private static final String String = null;
+
 	public static WebDriver driver;		
 	protected WebDriverWait wait; 
 	
@@ -52,10 +51,10 @@ public class Initial {
 	protected String dirName = tool.setPath("\\screenshot\\");
 	
 	//测试数据变量
-	protected String testExcelPath = "testresource\\test.xls";;
-	protected String elementSheet = "票务系统";
-	protected String testCaseSheet = "票务系统测试用例";
-	protected String testDataSheet = null;
+	protected static String testExcelPath = "testresource\\test.xls";
+	protected static String elementSheet = "票务系统";
+	protected static String testCaseSheet = "票务系统测试用例";
+	protected static String testDataSheet = null;
 	protected Map<String,String> testResult = new HashMap<String, String>();
 	protected WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 	
