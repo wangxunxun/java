@@ -17,6 +17,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utils.WriteTestResult;
 import core.UI;
 
 
@@ -380,6 +381,7 @@ public class AndroidApp extends UI{
 				String actual = cases.get(i).get("Actual");
 				String expected = cases.get(i).get("Expected");
 				String row = cases.get(i).get("row");
+				int rowin=Integer.parseInt(row);
 
 				if (element !=""){
 				String[] sourceStrArray = element.split("/");
@@ -389,34 +391,40 @@ public class AndroidApp extends UI{
 
 				if (action.equals("click")){
 					clickElement(elementData, page, name);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
 					tool.sleep(v);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("waitDisplay")){
 					waitDisplay(elementData, page, name);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("tap")){
 					tabElement(elementData, page, name);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("longTap")){
 					longTabElement(elementData, page, name);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("back")){
 					try {
 						clickBack();
-						this.testResult.put(row, "P");
+//						this.testResult.put(row, "P");
+						writeResult(rowin, 6, "P");
 //						setTestResult(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -426,7 +434,8 @@ public class AndroidApp extends UI{
 				else if (action.equals("enter")){
 					try {
 						clickEnter();
-						this.testResult.put(row, "P");
+						writeResult(rowin, 6, "P");
+//						this.testResult.put(row, "P");
 //						setTestResult(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -436,7 +445,8 @@ public class AndroidApp extends UI{
 				else if (action.equals("home")){
 					try {
 						clickHome();
-						this.testResult.put(row, "P");
+						writeResult(rowin, 6, "P");
+//						this.testResult.put(row, "P");
 //						setTestResult(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -446,7 +456,8 @@ public class AndroidApp extends UI{
 				else if (action.equals("menu")){
 					try {
 						clickMenu();
-						this.testResult.put(row, "P");
+						writeResult(rowin, 6, "P");
+//						this.testResult.put(row, "P");
 //						setTestResult(row, "P");
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -455,29 +466,34 @@ public class AndroidApp extends UI{
 				}
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("sendKey")){
 					sendKeys(elementData, page, name, value);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("assert")){
 					actual = getElementText(elementData, page, name);
 					assertEquals(actual, expected);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 					
 				}
 				else if (action.equals("runTestCase")){
 					runTestCase(testCaseData, elementData, value);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 				}
 				else if (action.equals("startActivity")){
 					startActivity(appPackage, value);
-					this.testResult.put(row, "P");
+					writeResult(rowin, 6, "P");
+//					this.testResult.put(row, "P");
 //					setTestResult(row, "P");
 
 				}

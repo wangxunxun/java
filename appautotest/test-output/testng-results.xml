@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
-    <line>
-      <![CDATA[D:\workplace\java\appautotest\screenshot\20150928_111842_719_login.jpg]]>
-    </line>
-    <line>
-      <![CDATA[<img src="../D:\workplace\java\appautotest\screenshot\20150928_111842_719_login.jpg"/>]]>
-    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="99365" started-at="2015-09-28T03:17:10Z" finished-at="2015-09-28T03:18:50Z">
+  <suite name="Default suite" duration-ms="97072" started-at="2015-09-29T02:52:36Z" finished-at="2015-09-29T02:54:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="99365" started-at="2015-09-28T03:17:10Z" finished-at="2015-09-28T03:18:50Z">
+    <test name="Default test" duration-ms="97072" started-at="2015-09-29T02:52:36Z" finished-at="2015-09-29T02:54:13Z">
       <class name="autotest.appautotest.testa">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@467743d7]" name="setUp" is-config="true" duration-ms="21992" started-at="2015-09-28T11:17:10Z" finished-at="2015-09-28T11:17:32Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@6e840613]" name="setUp" is-config="true" duration-ms="17420" started-at="2015-09-29T10:52:36Z" finished-at="2015-09-29T10:52:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@467743d7]" name="login" duration-ms="64783" started-at="2015-09-28T11:17:32Z" finished-at="2015-09-28T11:18:37Z">
+        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@6e840613]" name="login" duration-ms="76844" started-at="2015-09-29T10:52:53Z" finished-at="2015-09-29T10:54:10Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [登录33] but found [登录]]]>
@@ -30,7 +24,7 @@
 	at org.testng.Assert.assertEquals(Assert.java:178)
 	at org.testng.Assert.assertEquals(Assert.java:188)
 	at core.UI.assertEquals(UI.java:41)
-	at base.AndroidApp.runTestCase(AndroidApp.java:468)
+	at base.AndroidApp.runTestCase(AndroidApp.java:481)
 	at autotest.appautotest.testa.login(testa.java:55)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -60,15 +54,9 @@
             </full-stacktrace>
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
-            <line>
-              <![CDATA[D:\workplace\java\appautotest\screenshot\20150928_111842_719_login.jpg]]>
-            </line>
-            <line>
-              <![CDATA[<img src="../D:\workplace\java\appautotest\screenshot\20150928_111842_719_login.jpg"/>]]>
-            </line>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@467743d7]" name="tearDown" is-config="true" duration-ms="7593" started-at="2015-09-28T11:18:42Z" finished-at="2015-09-28T11:18:50Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@6e840613]" name="tearDown" is-config="true" duration-ms="2801" started-at="2015-09-29T10:54:10Z" finished-at="2015-09-29T10:54:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

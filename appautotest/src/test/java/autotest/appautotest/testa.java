@@ -28,6 +28,7 @@ public class testa{
 		ticketApp.initialTestData();
 		
 		ticketApp.runAndroidApp();
+
 	}
 
     @AfterMethod
