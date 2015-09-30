@@ -3,7 +3,6 @@ import java.awt.Robot;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -47,8 +46,8 @@ public class WebApp extends UI{
         return driver.getWindowHandle();
     }
 
-    public String getElementValue(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
-    	String value = findElement(elementData, page, name).getAttribute("value");
+    public String getElementValue(String page,String name){
+    	String value = findElement(page, name).getAttribute("value");
     	if(value !=null){
     		return value;
     	}
@@ -121,23 +120,23 @@ public class WebApp extends UI{
         }
     }
     
-    public void srollToElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
-    	executeJavaScript("arguments[0].scrollIntoView()", findElement(elementData, page, name));
+    public void srollToElement(String page,String name){
+    	executeJavaScript("arguments[0].scrollIntoView()", findElement(page, name));
     }
     
-    public void clickElementByJS(Map<String, Map<String, Map<String, String>>> elementData,String page,String name) {
+    public void clickElementByJS(String page,String name) {
 
         // String locator = uiMapElementLocator(elementName);
-        WebElement element = findElement(elementData, page, name);
+        WebElement element = findElement( page, name);
         executeJavaScript("arguments[0].click();", element);
     }
     
 
 
     
-    public void moveMouseOn(Map<String, Map<String, Map<String, String>>> elementData,String page,String name) {
+    public void moveMouseOn(String page,String name) {
 
-        WebElement element = findElement(elementData, page, name);
+        WebElement element = findElement(page, name);
         tool.log("Moving mouse to element: " + name + ".");
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();

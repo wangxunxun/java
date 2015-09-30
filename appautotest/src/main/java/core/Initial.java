@@ -2,15 +2,8 @@ package core;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
-
-
-
-
 
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
@@ -51,10 +44,10 @@ public class Initial {
 	protected String dirName = tool.setPath("\\screenshot\\");
 	
 	//测试数据变量
-	protected static String testExcelPath = null;
-	protected static String elementSheet = "票务系统";
-	protected static String testCaseSheet = "票务系统测试用例";
-	protected static String testDataSheet = null;
+	protected String testExcelPath = null;
+	protected String elementSheet = null;
+	protected String testCaseSheet = null;
+	protected String testDataSheet = null;
 
 	
 	public Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
@@ -71,7 +64,6 @@ public class Initial {
 	
 	public Map<String, Object> getTestCaseData(String testExcelPath,String testCaseSheet){
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
-//		List<List<Object>> data = testCaseData.readTable();
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
 		
@@ -102,10 +94,6 @@ public class Initial {
 	}
 	
 
-	public static String setPath(String path){
-		Initial.testExcelPath = path;
-		return Initial.testExcelPath;
-	}
 
 	
 

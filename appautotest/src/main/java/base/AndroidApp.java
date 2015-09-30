@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import utils.WriteTestResult;
 import core.UI;
 
 
@@ -227,7 +225,8 @@ public class AndroidApp extends UI{
 		getScreen("");
 	}
 	
-	public AndroidElement findElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+	public AndroidElement findElement(String page,String name){
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
@@ -268,7 +267,8 @@ public class AndroidApp extends UI{
 		return null;
 	}
 	
-	public void tabElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+	public void tabElement(String page,String name){
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
@@ -284,7 +284,8 @@ public class AndroidApp extends UI{
 		}
 	}
 	
-	public void longTabElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+	public void longTabElement(String page,String name){
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
@@ -299,7 +300,8 @@ public class AndroidApp extends UI{
 			System.out.println("Please provide coordinate.");
 		}
 	}
-	public void swipeElement(Map<String, Map<String, Map<String, String>>> elementData,String page,String name){
+	public void swipeElement(String page,String name){
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("swipe")){
@@ -367,8 +369,10 @@ public class AndroidApp extends UI{
 		   driver.startActivity(appPackage, appActivity);
 	   }
 	   
-	   public void runTestCase(Map<String, Object>testCaseData,Map<String, Map<String, Map<String, String>>> elementData,String testCase){
-		   	@SuppressWarnings("unchecked")
+	   @SuppressWarnings({ "unchecked" })
+	   public void runTestCase(String testCase){
+
+		    Map<String, Object> testCaseData = getTestCaseData(testExcelPath, testCaseSheet);
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			String page = null;
 			String name = null;	   
@@ -390,7 +394,7 @@ public class AndroidApp extends UI{
 				}
 
 				if (action.equals("click")){
-					clickElement(elementData, page, name);
+					clickElement(page, name);
 					writeResult(rowin, 6, "P");
 
 				}
@@ -401,17 +405,17 @@ public class AndroidApp extends UI{
 
 				}
 				else if (action.equals("waitDisplay")){
-					waitDisplay(elementData, page, name);
+					waitDisplay(page, name);
 					writeResult(rowin, 6, "P");
 
 				}
 				else if (action.equals("tap")){
-					tabElement(elementData, page, name);
+					tabElement(page, name);
 					writeResult(rowin, 6, "P");
 
 				}
 				else if (action.equals("longTap")){
-					longTabElement(elementData, page, name);
+					longTabElement(page, name);
 					writeResult(rowin, 6, "P");
 
 				}
@@ -461,19 +465,19 @@ public class AndroidApp extends UI{
 
 				}
 				else if (action.equals("sendKey")){
-					sendKeys(elementData, page, name, value);
+					sendKeys(page, name, value);
 					writeResult(rowin, 6, "P");
 
 				}
 				else if (action.equals("assert")){
-					actual = getElementText(elementData, page, name);
+					actual = getElementText(page, name);
 					assertEquals(actual, expected);
 					writeResult(rowin, 6, "P");
 
 					
 				}
 				else if (action.equals("runTestCase")){
-					runTestCase(testCaseData, elementData, value);
+					runTestCase(value);
 					writeResult(rowin, 6, "P");
 
 				}

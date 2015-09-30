@@ -17,13 +17,6 @@ import initial.ticketAndroid;
 
 public class testa{
 	ticketAndroid ticketApp = new ticketAndroid();
-	protected String testExcelPath = Initial.setPath("testresource\\test.xls");;
-	protected String elementSheet = "票务系统";
-	protected String testCaseSheet = "票务系统测试用例";
-	protected String testDataSheet = null;
-	
-	private Map<String, Map<String, Map<String, String>>> elementData = ticketApp.getElementData(testExcelPath, elementSheet);
-	private Map<String, Object> testCaseData = ticketApp.getTestCaseData(testExcelPath, testCaseSheet);
 	@BeforeMethod
 	public void setUp(){
 		ticketApp.initialTestData();
@@ -53,7 +46,7 @@ public class testa{
 
     @Test
     public void login(){
-    	ticketApp.runTestCase(testCaseData, elementData,"登录");
+    	ticketApp.runTestCase("登录");
 
     	
 
