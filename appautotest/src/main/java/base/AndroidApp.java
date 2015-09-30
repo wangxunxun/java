@@ -487,6 +487,16 @@ public class AndroidApp extends UI{
 
 
 				}
+				else if (action.equals("swipe")){
+					swipeElement(page, name);
+
+
+				}
+				else if (action.equals("scrollToClick")){
+					scrollToClick(value);
+
+
+				}
 
 				else{
 					tool.log("Can not run the action");
