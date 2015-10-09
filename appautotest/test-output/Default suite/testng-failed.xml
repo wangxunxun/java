@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="autotest.appautotest.testa">
+      <class name="autotest.appautotest.testweb">
         <methods>
-          <include name="setUp"/>
-          <include name="login"/>
+          <include name="test"/>
           <include name="tearDown"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- autotest.appautotest.testa -->
+      </class> <!-- autotest.appautotest.testweb -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

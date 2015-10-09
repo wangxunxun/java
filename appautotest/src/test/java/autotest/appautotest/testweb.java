@@ -13,17 +13,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-
+import utils.ReadTestData;
 
 import base.WebApp;
 
 public class testweb extends WebApp {
 	static String excelpath = "testresource\\test.xls";
 	static String sheet = "12306";
+	static String testSheet = "注册";
+	static ReadTestData dd = new ReadTestData();
 //	private Map<String, Map<String, Map<String, String>>> eledata = getElementData(excelpath, sheet);
-	
+	@DataProvider(name="dataprovider1")
+	public static Object[][] dataProvider1(){
+		return dd.getTestDataForTestNG(excelpath, testSheet);
+	}
 	@BeforeTest
 	public void setUp(){
 		//设置 Chrome的路径
@@ -50,13 +56,22 @@ public class testweb extends WebApp {
 		// TODO Auto-generated method stub
 		quit();
 	}
-	@Test
+	@Test(dataProvider="dataprovider1")
 	
-    public void test() throws InterruptedException, BiffException, IOException{
+    public void test(String testdatas,String testdatas1,String testdatas2,String testdatas3) throws InterruptedException, BiffException, IOException{
 //    	String url="http://wh.58.com";
 //    	String url="http://baidu.com";
 		String url="http://www.12306.cn/mormhweb/";
     	get(url);
+    	tool.log(dd.getData(excelpath, testSheet));
+    	tool.log(dd.getTestDataForTestNG(excelpath, testSheet));
+    	tool.log(testdatas);
+    	Object[][] a = dd.getTestDataForTestNG(excelpath, testSheet);
+    	for(int i =0;i<a.length;i++){
+    		for(int j =0; j<a[i].length;j++){
+    			tool.log(a[i][j]);
+    		}
+    	}
 /*    	tool.sleep(5000);
 
     	waitDisplay(eledata, "首页", "客运服务");
