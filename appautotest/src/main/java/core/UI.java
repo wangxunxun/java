@@ -22,6 +22,10 @@ public class UI extends Initial{
     	findElement(page, name).sendKeys(value);
     }
     
+    public void clear(String page,String name){
+    	findElement(page, name).clear();
+    }
+    
     public String getElementText(String page,String name){
     	String value = findElement(page, name).getText();
     	if(value !=null){

@@ -2,34 +2,29 @@ package autotest.appautotest;
 import java.io.IOException;
 
 
-import java.util.Map;
+
 
 import jxl.read.biff.BiffException;
 
 
-import org.openqa.selenium.chrome.ChromeDriver;
 
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import utils.ReadTestData;
 
-import base.WebApp;
 import initial.piaoWuWebTest;
 public class testweb {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
-	String excelpath = "testresource\\test.xls";
-	String sheet = "12306";
-	String testSheet = "注册";
-	ReadTestData dd = new ReadTestData();
+	String excelpath = "testresource\\票务.xls";
+	String sheet1 = "添加汽车车站";
 
-	@DataProvider(name="dataprovider1")
+
+	@DataProvider(name="addqichezhan")
 	public Object[][] dataProvider1(){		
-		return piaoWuWebApp.getTestDataForTestNG(excelpath, sheet);
+		return piaoWuWebApp.getTestDataForTestNG(excelpath, sheet1);
 	}
 	
 	@BeforeTest
@@ -45,10 +40,8 @@ public class testweb {
 		piaoWuWebApp.quit();
 	}
 
-	@Test
-    public void test() throws InterruptedException, BiffException, IOException{
-//    	String url="http://wh.58.com";
-//    	String url="http://baidu.com";
+	@Test(dataProvider="addqichezhan")
+    public void test(String address,String name,String pinyin,String longitude,String latitude,String bashi,String phone,String from,String to,String city) throws InterruptedException, BiffException, IOException{
 		String url="http://120.24.255.213:5000/Server/Auth/Login?next=%2F";
 		piaoWuWebApp.tool.sleep(2000);
 		piaoWuWebApp.get(url);
@@ -58,8 +51,22 @@ public class testweb {
 		piaoWuWebApp.clickElement("侧边栏", "长途售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "汽车车站维护");
 		piaoWuWebApp.clickElement("汽车车站维护", "添加车站");
-		piaoWuWebApp.waitDisplay("添加车站", "车站地址");
-		piaoWuWebApp.sendKeys("添加车站", "车站地址","eeee"); 
+		piaoWuWebApp.tool.sleep(2000);
+		piaoWuWebApp.switchToFrame("xubox_iframe1");
+
+
+		piaoWuWebApp.sendKeys("添加车站", "车站地址",address); 
+		piaoWuWebApp.sendKeys("添加车站", "车站名称",name); 
+		piaoWuWebApp.sendKeys("添加车站", "拼音",pinyin); 
+		piaoWuWebApp.sendKeys("添加车站", "经度",longitude); 
+		piaoWuWebApp.sendKeys("添加车站", "纬度",latitude); 
+		piaoWuWebApp.clear("添加车站", "途径巴士");
+		piaoWuWebApp.sendKeys("添加车站", "途径巴士",bashi); 
+		piaoWuWebApp.sendKeys("添加车站", "车站电话",phone); 
+
+		piaoWuWebApp.sendKeys("添加车站", "营业时间从",from); 
+		piaoWuWebApp.sendKeys("添加车站", "营业时间到",to); 
+		piaoWuWebApp.sendKeys("添加车站", "车站所在城市",city); 
 		piaoWuWebApp.tool.sleep(20000);
 
 

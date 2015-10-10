@@ -1,9 +1,6 @@
 package initial;
 
-import java.util.Map;
 
-import utils.ReadElementData;
-import core.Initial;
 import base.AndroidApp;;
 
 public class ticketAndroid extends AndroidApp{

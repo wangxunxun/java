@@ -178,7 +178,21 @@ public class WebApp extends UI{
     	wait = new WebDriverWait(driver,waitTime);
     }
      
-  
+    public void switchToFrame(String nameOrId){
+    	driver.switchTo().frame(nameOrId);
+    }
+    
+    public void switchToFrame(int index){
+    	driver.switchTo().frame(index);
+    }
+    
+    public void switchToFrame(WebElement frameElement){
+    	driver.switchTo().frame(frameElement);
+    }
+
+    public void switchToDefaultContent(){
+    	driver.switchTo().defaultContent();
+    }
     
 
     
