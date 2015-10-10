@@ -20,7 +20,7 @@ import utils.ReadTestData;
 
 import base.WebApp;
 import initial.piaoWuWebTest;
-public class testweb extends WebApp {
+public class testweb {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
 	String excelpath = "testresource\\test.xls";
 	String sheet = "12306";
@@ -42,7 +42,7 @@ public class testweb extends WebApp {
 		
 	@AfterTest	
 	public void tearDown() {
-		quit();
+		piaoWuWebApp.quit();
 	}
 
 	@Test
@@ -58,6 +58,7 @@ public class testweb extends WebApp {
 		piaoWuWebApp.clickElement("侧边栏", "长途售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "汽车车站维护");
 		piaoWuWebApp.clickElement("汽车车站维护", "添加车站");
+		piaoWuWebApp.waitDisplay("添加车站", "车站地址");
 		piaoWuWebApp.sendKeys("添加车站", "车站地址","eeee"); 
 		piaoWuWebApp.tool.sleep(20000);
 
