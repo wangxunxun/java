@@ -65,7 +65,7 @@ public class ReadTestData {
 		readwb.close();  
 		return data;	          	            			
     }
-    public List<List<String>> getData(String excelpath,String tablename){
+    private List<List<String>> getData(String excelpath,String tablename){
     	String currentPath = System.getProperty("user.dir");
     	String path = currentPath+"\\"+excelpath;
     	jxl.Workbook readwb = null;   

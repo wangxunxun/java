@@ -1,6 +1,5 @@
 package base;
 import java.awt.Robot;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Set;
@@ -10,7 +9,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import core.UI;
 
@@ -170,6 +171,12 @@ public class WebApp extends UI{
         }
     }    
 
+    public void runChormeApp(){
+		String dirs=tool.setPath("/testresource/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", dirs);
+    	driver=new ChromeDriver();
+    	wait = new WebDriverWait(driver,waitTime);
+    }
      
   
     
