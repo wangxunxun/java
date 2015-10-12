@@ -26,7 +26,7 @@ public class AndroidApp extends UI{
     public void runAndroidApp(){
         // set up appium
 
-    	appDir = new File(classpathRoot, "/testresource/apps");
+
         File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",deviceName);
