@@ -68,6 +68,12 @@ public class Initial {
 		return data;
 	}
 	
+	public Object[][] getTestDataForTestNG(String testDataSheet){
+		ReadTestData readtestdata = new ReadTestData();
+		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
+		return data;
+	}
+	
 	public Map<String, Object> getTestCaseData(String testExcelPath,String testCaseSheet){
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
