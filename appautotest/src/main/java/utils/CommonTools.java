@@ -7,15 +7,7 @@ import java.util.Properties;
 
 
 public class CommonTools {
-	Properties PROPERTIES = new Properties(System.getProperties());
-	
-    public String getLineSeparator(){
-        return PROPERTIES.getProperty("line.separator");
-    }
-	
-    public String getPathSeparator(){
-        return PROPERTIES.getProperty("path.separator");
-    }
+	Properties PROPERTIES = new Properties(System.getProperties());	
     
     public String getOSName(){
     	return PROPERTIES.getProperty("os.name");

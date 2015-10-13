@@ -15,8 +15,9 @@
       <class name="autotest.appautotest.testweb">
       <methods>
 
-          <include name = "addBaShiStation"/>
-
+			<!--<include name = "addBaShiStation"/> -->
+			<!-- <include name = "addQiCheZhan"/> -->
+			<include name = "addBaShiXianLu"/>
 
       </methods>
       </class>
