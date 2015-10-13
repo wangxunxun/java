@@ -67,7 +67,9 @@ public class testweb {
 		piaoWuWebApp.sendKeys("添加车站", "营业时间从",from); 
 		piaoWuWebApp.sendKeys("添加车站", "营业时间到",to); 
 		piaoWuWebApp.sendKeys("添加车站", "车站所在城市",city); 
-		piaoWuWebApp.tool.sleep(20000);
+		piaoWuWebApp.clickElement("添加车站", "车站地址");
+		piaoWuWebApp.clickElement("添加车站", "提交");
+		piaoWuWebApp.tool.sleep(5000);
 
 
 
