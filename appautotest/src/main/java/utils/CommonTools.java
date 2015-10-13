@@ -3,9 +3,24 @@ package utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 
 public class CommonTools {
+	Properties PROPERTIES = new Properties(System.getProperties());
+	
+    public String getLineSeparator(){
+        return PROPERTIES.getProperty("line.separator");
+    }
+	
+    public String getPathSeparator(){
+        return PROPERTIES.getProperty("path.separator");
+    }
+    
+    public String getOSName(){
+    	return PROPERTIES.getProperty("os.name");
+    }
+    
     public String getCurrentTime() {
         Date date = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");

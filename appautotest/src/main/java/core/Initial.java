@@ -41,7 +41,7 @@ public class Initial {
 	protected String mainActivity = null;
 	
 	//截屏存放目录
-	protected String dirName = tool.setPath("\\screenshot\\");
+	protected String dirName = tool.setPath("/screenshot/");
 	
 	//测试数据变量
 	protected String testExcelPath = null;

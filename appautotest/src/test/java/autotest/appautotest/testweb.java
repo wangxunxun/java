@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
 import initial.piaoWuWebTest;
 public class testweb {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
-	String excelpath = "testresource\\票务.xls";
+	String excelpath = "testresource/票务.xls";
 	String sheet1 = "添加汽车车站";
 
 
@@ -42,7 +42,7 @@ public class testweb {
 
 	@Test(dataProvider="addqichezhan")
     public void test(String address,String name,String pinyin,String longitude,String latitude,String bashi,String phone,String from,String to,String city) throws InterruptedException, BiffException, IOException{
-		String url="http://120.24.255.213:5000/Server/Auth/Login?next=%2F";
+		String url="http://106.185.47.124:5000/Server/Auth/Login?next=%2F";
 		piaoWuWebApp.tool.sleep(2000);
 		piaoWuWebApp.get(url);
 		piaoWuWebApp.sendKeys("登录页", "登录输入框", "admin");

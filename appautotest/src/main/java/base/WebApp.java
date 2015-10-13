@@ -172,7 +172,15 @@ public class WebApp extends UI{
     }    
 
     public void runChormeApp(){
-		String dirs=tool.setPath("\\testresource\\chromedriver.exe");
+    	String dirs =null;
+    	if(tool.getOSName().matches("Mac OS X")){
+    		dirs=tool.setPath("/testresource/chromedriver");
+    	}
+    	else{
+    		dirs=tool.setPath("/testresource/chromedriver.exe");
+    	}
+	
+		
 		System.setProperty("webdriver.chrome.driver", dirs);
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);

@@ -16,7 +16,7 @@ public class WriteTestResult {
 
 	public WriteTestResult(String excelpath,String sheet){
     	String currentPath = System.getProperty("user.dir");
-    	this.excelpath = currentPath+"\\"+excelpath;
+    	this.excelpath = currentPath+"/"+excelpath;
 		this.sheet = sheet;
 
  
