@@ -92,7 +92,11 @@ public class ReadTestData {
 			throw new IllegalStateException("There is now row found in excel file [" + excelpath + "], can't "
 					+ "generate map from column name to column index. ");
 		}
-
+		for (int i = 1; i < rsRows; i++){
+			if (readsheet.getCell(0, i).getContents()==""){
+				rsRows = i;
+			}
+		}
   
 		List<List<String>> data= new ArrayList<List<String>>();
 	          

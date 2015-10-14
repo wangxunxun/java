@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Default suite]">
+  <listeners>
+    <listener class-name="utils.TestngListenerWeb"/>
+  </listeners>
   <test name="Default test(failed)">
     <classes>
       <class name="autotest.appautotest.testweb">
         <methods>
+          <include name="addSiJi"/>
           <include name="tearDown"/>
-          <include name="addBaShiLuDuan"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- autotest.appautotest.testweb -->

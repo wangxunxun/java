@@ -17,7 +17,8 @@
 
 			<!--<include name = "addBaShiStation"/> -->
 			<!-- <include name = "addQiCheZhan"/> -->
-			<include name = "addBaShiXianLu"/>
+<!-- 			<include name = "addSiJi"/> -->
+			<include name = "addCheLiang"/>
 
       </methods>
       </class>

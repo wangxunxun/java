@@ -1,269 +1,443 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="12" passed="12">
+<testng-results skipped="0" failed="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="90129" started-at="2015-10-14T05:41:28Z" finished-at="2015-10-14T05:42:58Z">
+  <suite name="Default suite" duration-ms="44706" started-at="2015-10-14T15:40:46Z" finished-at="2015-10-14T15:41:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="90129" started-at="2015-10-14T05:41:28Z" finished-at="2015-10-14T05:42:58Z">
+    <test name="Default test" duration-ms="44706" started-at="2015-10-14T15:40:46Z" finished-at="2015-10-14T15:41:31Z">
       <class name="autotest.appautotest.testweb">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="setUp" is-config="true" duration-ms="2674" started-at="2015-10-14T13:41:28Z" finished-at="2015-10-14T13:41:30Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="setUp" is-config="true" duration-ms="2151" started-at="2015-10-14T23:40:46Z" finished-at="2015-10-14T23:40:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="16403" started-at="2015-10-14T13:41:31Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:41:47Z">
+        <test-method status="PASS" signature="addCheLiang(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="addCheLiang" duration-ms="10448" started-at="2015-10-14T23:40:49Z" data-provider="addCheLiang" finished-at="2015-10-14T23:41:00Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[鍗楀北]]>
+                <![CDATA[Troy13]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[1]]>
+                <![CDATA[Troy车队]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[2]]>
+                <![CDATA[大巴]]>
               </value>
             </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6338" started-at="2015-10-14T13:41:47Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:41:53Z">
-          <params>
-            <param index="0">
+            <param index="3">
               <value>
-                <![CDATA[鍖轰氦閫氬眬]]>
+                <![CDATA[--非包车类型--]]>
               </value>
             </param>
-            <param index="1">
+            <param index="4">
               <value>
-                <![CDATA[2]]>
+                <![CDATA[Troy]]>
               </value>
             </param>
-            <param index="2">
+            <param index="5">
+              <value>
+                <![CDATA[18627802681]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="8">
               <value>
                 <![CDATA[5]]>
               </value>
             </param>
+            <param index="9">
+              <value>
+                <![CDATA[鄂A12357]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[2014-01]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[123468]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[奔驰]]>
+              </value>
+            </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6311" started-at="2015-10-14T13:41:53Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:00Z">
+        </test-method> <!-- addCheLiang -->
+        <test-method status="PASS" signature="addCheLiang(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="addCheLiang" duration-ms="5968" started-at="2015-10-14T23:41:00Z" data-provider="addCheLiang" finished-at="2015-10-14T23:41:06Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[浜よ涓夊ぇ闃焆]>
+                <![CDATA[Troy14]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[4.1]]>
+                <![CDATA[Troy车队]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[9]]>
+                <![CDATA[大巴]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[--非包车类型--]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Troy]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[18627802681]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[鄂A12358]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[2014-02]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[123469]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[奔驰]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6713" started-at="2015-10-14T13:42:00Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:06Z">
+        </test-method> <!-- addCheLiang -->
+        <test-method status="PASS" signature="addCheLiang(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="addCheLiang" duration-ms="6088" started-at="2015-10-14T23:41:06Z" data-provider="addCheLiang" finished-at="2015-10-14T23:41:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[澶х晥]]>
+                <![CDATA[Troy15]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[5.1]]>
+                <![CDATA[Troy车队]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[12]]>
+                <![CDATA[大巴]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[--非包车类型--]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Troy]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[18627802681]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[鄂A12359]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[2014-03]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[123470]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[奔驰]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="5627" started-at="2015-10-14T13:42:06Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:12Z">
+        </test-method> <!-- addCheLiang -->
+        <test-method status="PASS" signature="addCheLiang(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="addCheLiang" duration-ms="5799" started-at="2015-10-14T23:41:12Z" data-provider="addCheLiang" finished-at="2015-10-14T23:41:18Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[鍖烘斂搴淽]>
+                <![CDATA[Troy16]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[6.6]]>
+                <![CDATA[Troy车队]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[16]]>
+                <![CDATA[大巴]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[--非包车类型--]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Troy]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[18627802681]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[鄂A12360]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[2014-04]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[123471]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[奔驰]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="5808" started-at="2015-10-14T13:42:12Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:18Z">
+        </test-method> <!-- addCheLiang -->
+        <test-method status="PASS" signature="addCheLiang(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="addCheLiang" duration-ms="5781" started-at="2015-10-14T23:41:18Z" data-provider="addCheLiang" finished-at="2015-10-14T23:41:23Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[鍖烘灄涓氬眬]]>
+                <![CDATA[Troy17]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[8.8]]>
+                <![CDATA[Troy车队]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[21]]>
+                <![CDATA[大巴]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[--非包车类型--]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Troy]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[18627802681]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[鄂A12361]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[2014-05]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[123472]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[奔驰]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6296" started-at="2015-10-14T13:42:18Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:24Z">
+        </test-method> <!-- addCheLiang -->
+        <test-method status="PASS" signature="addCheLiang(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="addCheLiang" duration-ms="5718" started-at="2015-10-14T23:41:23Z" data-provider="addCheLiang" finished-at="2015-10-14T23:41:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[榛勮穿灏忓]]>
+                <![CDATA[Troy18]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[10.2]]>
+                <![CDATA[Troy车队]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[28]]>
+                <![CDATA[大巴]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[--非包车类型--]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Troy]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[18627802681]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[65]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[60]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[鄂A12362]]>
+              </value>
+            </param>
+            <param index="10">
+              <value>
+                <![CDATA[2014-06]]>
+              </value>
+            </param>
+            <param index="11">
+              <value>
+                <![CDATA[123473]]>
+              </value>
+            </param>
+            <param index="12">
+              <value>
+                <![CDATA[奔驰]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="7045" started-at="2015-10-14T13:42:24Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:31Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[娼滃北鍟嗕笟琛梋]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[13.8]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[32]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6043" started-at="2015-10-14T13:42:31Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:37Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[鍗楀矝鍜栧暋]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[18]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[36]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6898" started-at="2015-10-14T13:42:37Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:44Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[娓╂硥绗竴琛梋]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[23]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[39]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6130" started-at="2015-10-14T13:42:44Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[閲戝彾灏忓尯]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[26]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[44]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="addBaShiLuDuan(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="addBaShiLuDuan" duration-ms="6710" started-at="2015-10-14T13:42:50Z" data-provider="addBaShiLuDuan" finished-at="2015-10-14T13:42:57Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[浜よ涓�澶ч槦]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[28]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[47]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addBaShiLuDuan -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testweb@7a0ac6e3]" name="tearDown" is-config="true" duration-ms="681" started-at="2015-10-14T13:42:57Z" finished-at="2015-10-14T13:42:58Z">
+        </test-method> <!-- addCheLiang -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testweb@3f3afe78]" name="tearDown" is-config="true" duration-ms="1779" started-at="2015-10-14T23:41:29Z" finished-at="2015-10-14T23:41:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
