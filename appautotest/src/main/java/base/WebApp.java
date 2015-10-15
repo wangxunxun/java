@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import core.UI;
@@ -202,8 +204,36 @@ public class WebApp extends UI{
     	driver.switchTo().defaultContent();
     }
     
-
+    public String getTableRowLocationByCss(String location,int index){
+		
+		StringBuffer sb = new StringBuffer(location);		
+		int i = location.indexOf("tr:nth-child");
+		sb.deleteCharAt(i+13);
+		sb.insert(i+13,index);
+		return sb.toString();
+    }
     
+    public void clickByCss(String selector){
+    	driver.findElement(By.cssSelector(selector)).click();
+    }
     
+    public void clickByXpath(String xpathExpression){
+    	driver.findElement(By.xpath(xpathExpression)).click();
+    }
+    
+    public void sendKeysByCss(String selector,String keysToSend){
+    	driver.findElement(By.cssSelector(selector)).sendKeys(keysToSend);
+    }
+    
+    public void sendKeysByXpath(String xpathExpression,String keysToSend){
+    	driver.findElement(By.xpath(xpathExpression)).sendKeys(keysToSend);
+    }
+    
+    public void waitDisplayByCss(String selector){
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(selector)));
+    }
 
+    public void waitDisplayByXpath(String xpathExpression){
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathExpression)));
+    }
 }

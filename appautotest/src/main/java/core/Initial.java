@@ -49,7 +49,14 @@ public class Initial {
 	protected String testCaseSheet = null;
 	protected String testDataSheet = null;
 
-	
+    public void sleep(int millis){
+    	tool.sleep(millis);
+    }
+    
+    public void log(Object content){
+    	tool.log(content);
+    }
+    
 	public Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();

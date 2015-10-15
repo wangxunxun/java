@@ -7,6 +7,7 @@ import java.io.IOException;
 import jxl.read.biff.BiffException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -140,10 +141,19 @@ public class baShi {
 			String loc2 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(4) > input";
 			String loc3 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(5) > input";
 			String loc4 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(6) > input";
-			WebApp.driver.findElement(By.cssSelector(loc1)).sendKeys("2");
-			WebApp.driver.findElement(By.cssSelector(loc2)).sendKeys("1");
-			WebApp.driver.findElement(By.cssSelector(loc3)).sendKeys("0.02");
-			WebApp.driver.findElement(By.cssSelector(loc4)).sendKeys("0.01");
+			WebElement a1 = WebApp.driver.findElement(By.cssSelector(loc1));
+			WebElement a2 = WebApp.driver.findElement(By.cssSelector(loc2));
+			WebElement a3 = WebApp.driver.findElement(By.cssSelector(loc3));
+			WebElement a4 = WebApp.driver.findElement(By.cssSelector(loc4));
+			a1.clear();
+			a1.sendKeys("2");
+			a2.clear();
+			a2.sendKeys("1");
+			a3.clear();
+			a3.sendKeys("0.02");
+			a4.clear();
+			a4.sendKeys("0.01");
+		
 		}
 
 		piaoWuWebApp.sleep(1000);
