@@ -45,7 +45,9 @@ public class UI extends Initial{
     	Assert.assertEquals(actual, expected);
     }
     
-
+    public void sleep(int millis){
+    	tool.sleep(millis);
+    }
     
     public boolean isSlected(String page,String name){
     	return findElement(page, name).isSelected();

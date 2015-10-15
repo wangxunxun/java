@@ -5,18 +5,27 @@ import java.io.IOException;
 
 
 
+
+
+
 import jxl.read.biff.BiffException;
 
 
 
 
 
+
+
+
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import base.WebApp;
+import core.Initial;
 import initial.piaoWuWebTest;
 public class testweb {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
@@ -255,6 +264,41 @@ public class testweb {
 
 
 		piaoWuWebApp.clickElement("添加司机", "提交");
+		piaoWuWebApp.tool.sleep(2000);
+
+    }
+	@Test
+    public void editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
+
+
+		piaoWuWebApp.get(url);
+		piaoWuWebApp.sendKeys("登录页", "登录输入框", "admin");
+		piaoWuWebApp.sendKeys("登录页", "密码输入框", "admin");
+		piaoWuWebApp.clickElement("登录页", "登录");
+		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
+		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
+
+		
+		piaoWuWebApp.waitDisplay("巴士线路维护", "票价");
+		piaoWuWebApp.clickElement("巴士线路维护", "票价");
+		piaoWuWebApp.switchToFrame("xubox_iframe1");
+		for (int i=1;i<=91;i++){
+			String loc1 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(3) > input";
+			String loc2 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(4) > input";
+			String loc3 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(5) > input";
+			String loc4 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(6) > input";
+			WebApp.driver.findElement(By.cssSelector(loc1)).sendKeys("2");
+			WebApp.driver.findElement(By.cssSelector(loc2)).sendKeys("1");
+			WebApp.driver.findElement(By.cssSelector(loc3)).sendKeys("0.02");
+			WebApp.driver.findElement(By.cssSelector(loc4)).sendKeys("0.01");
+		}
+
+		piaoWuWebApp.sleep(1000);
+		piaoWuWebApp.clickElement("巴士-票价", "提交");
+		
+		
+
 		piaoWuWebApp.tool.sleep(2000);
 
     }

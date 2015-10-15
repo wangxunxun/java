@@ -8,8 +8,8 @@
     <classes>
       <class name="autotest.appautotest.testweb">
         <methods>
-          <include name="addSiJi"/>
           <include name="tearDown"/>
+          <include name="editBaShiPiaoJia"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- autotest.appautotest.testweb -->
