@@ -219,7 +219,7 @@ public class testweb {
     }
 	
 	@Test(dataProvider="addSiJi")
-    public void addSiJi(String number,String name,String cheDui,String phone,String idCard,String workNo,String licenseNo,String driverYear,String driverType) throws InterruptedException, BiffException, IOException{
+    public void addSiJi(String number,String name,String cheDui,String phone,String xingBie,String idCard,String workNo,String licenseNo,String driverYear,String driverType) throws InterruptedException, BiffException, IOException{
 
 
 		piaoWuWebApp.get(url);
@@ -237,7 +237,16 @@ public class testweb {
 		piaoWuWebApp.sendKeys("添加司机", "姓名",name); 
 		piaoWuWebApp.sendKeys("添加司机", "所属车队",cheDui); 
 		piaoWuWebApp.sendKeys("添加司机", "手机号",phone); 
-		piaoWuWebApp.clickElement("添加司机", "性别-男");
+		if (xingBie.matches("男")){
+			piaoWuWebApp.clickElement("添加司机", "性别-男");
+		}
+		else if (xingBie.matches("女")){
+			piaoWuWebApp.clickElement("添加司机", "性别-女");
+		}
+		else{
+			piaoWuWebApp.clickElement("添加司机", "性别-保密");
+		}
+		
 		piaoWuWebApp.sendKeys("添加司机", "身份证号",idCard); 
 		piaoWuWebApp.sendKeys("添加司机", "从业资格证",workNo); 
 		piaoWuWebApp.sendKeys("添加司机", "驾驶证号",licenseNo); 
