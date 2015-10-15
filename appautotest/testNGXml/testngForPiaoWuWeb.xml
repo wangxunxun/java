@@ -12,13 +12,22 @@
         </run>
     </groups>
     <classes>
-      <class name="autotest.appautotest.testweb">
+<!--       <class name="autotest.appautotest.testweb"> -->
+<!--       <methods> -->
+
+<!-- 			<include name = "addBaShiStation"/> -->
+<!-- 			<include name = "addQiCheZhan"/> -->
+<!-- 			<include name = "addSiJi"/> -->
+<!-- 			<include name = "addCheLiang"/> -->
+<!-- 			<include name = "editBaShiPiaoJia"/> -->
+
+<!--       </methods> -->
+<!--       </class> -->
+      
+      <class name="testTicketWeb.baShi">
       <methods>
 
 			<!--<include name = "addBaShiStation"/> -->
-			<!-- <include name = "addQiCheZhan"/> -->
-<!-- 			<include name = "addSiJi"/> -->
-<!-- 			<include name = "addCheLiang"/> -->
 			<include name = "editBaShiPiaoJia"/>
 
       </methods>
