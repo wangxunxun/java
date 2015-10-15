@@ -21,7 +21,7 @@ public class baShi {
 	String addBaShiLuDuan = "巴士线路添加路段";
 
 	
-	String url="http://106.185.47.124:5000/Server/Auth/Login?next=%2F";
+	
 
 
 	
@@ -59,7 +59,7 @@ public class baShi {
 	@Test(dataProvider="addBaShiStation")
     public void test001addBaShiStation(String name,String longitude,String latitude) throws InterruptedException, BiffException, IOException{
 
-		piaoWuWebApp.enterHomePage(url);
+		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "巴士车站维护");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士车站维护");
@@ -78,7 +78,7 @@ public class baShi {
     public void test002addBaShiXianLu(String name,String city,String qidian,String zhongdian,String km,String time,String sellNum,String sellDay,String effectiveData) throws InterruptedException, BiffException, IOException{
 
 
-		piaoWuWebApp.enterHomePage(url);
+		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
@@ -105,7 +105,7 @@ public class baShi {
     public void test003addBaShiLuDuan(String station,String km,String time) throws InterruptedException, BiffException, IOException{
 
 
-		piaoWuWebApp.enterHomePage(url);
+		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
@@ -126,7 +126,7 @@ public class baShi {
     public void test004editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
 
 
-		piaoWuWebApp.enterHomePage(url);
+		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");

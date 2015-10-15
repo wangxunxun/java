@@ -20,7 +20,7 @@ public class qiChe {
 	String addqichezhan = "添加汽车车站";
 
 	
-	String url="http://106.185.47.124:5000/Server/Auth/Login?next=%2F";
+	
 
 	@DataProvider(name="addqichezhan")
 	public Object[][] dataProvider1(){		
@@ -43,7 +43,7 @@ public class qiChe {
 	@Test(dataProvider="addqichezhan")
     public void addQiCheZhan(String address,String name,String pinyin,String longitude,String latitude,String bashi,String phone,String from,String to,String city) throws InterruptedException, BiffException, IOException{
 		
-		piaoWuWebApp.enterHomePage(url);
+		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "长途售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "汽车车站维护");
 		piaoWuWebApp.waitDisplay("汽车车站维护", "添加车站");
