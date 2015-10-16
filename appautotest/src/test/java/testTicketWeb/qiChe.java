@@ -82,40 +82,36 @@ public class qiChe {
 
 
 		
-		String luDuan = "#table_main > tbody > tr:nth-child(1) > td:nth-child(13) > a:nth-child(3)";
+		String piaojia = piaoWuWebApp.qiChePiaoJia;
 
-		String newLuDuan = piaoWuWebApp.getTableRowLocationByCss(luDuan, 6);
-		piaoWuWebApp.log(newLuDuan);
+		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaojia, 6);
+		piaoWuWebApp.log(newPiaoJia);
 		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "长途售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "汽车线路管理");
 		piaoWuWebApp.clickElement("侧边栏", "汽车线路管理");
-		piaoWuWebApp.waitDisplayByCss(newLuDuan);
-		piaoWuWebApp.clickByCss(newLuDuan);
-		piaoWuWebApp.sleep(50000);
+		piaoWuWebApp.waitDisplayByCss(newPiaoJia);
+		piaoWuWebApp.clickByCss(newPiaoJia);
+		piaoWuWebApp.sleep(2000);
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
 		for (int i=1;i<=91;i++){
 			String loc1 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(3) > input";
 			String loc2 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(4) > input";
 			String loc3 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(5) > input";
 			String loc4 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(6) > input";
-			WebElement a1 = WebApp.driver.findElement(By.cssSelector(loc1));
-			WebElement a2 = WebApp.driver.findElement(By.cssSelector(loc2));
-			WebElement a3 = WebApp.driver.findElement(By.cssSelector(loc3));
-			WebElement a4 = WebApp.driver.findElement(By.cssSelector(loc4));
-			a1.clear();
-			a1.sendKeys("2");
-			a2.clear();
-			a2.sendKeys("1");
-			a3.clear();
-			a3.sendKeys("0.02");
-			a4.clear();
-			a4.sendKeys("0.01");
+			piaoWuWebApp.clearByCss(loc1);
+			piaoWuWebApp.sendKeysByCss(loc1, "2");
+			piaoWuWebApp.clearByCss(loc2);
+			piaoWuWebApp.sendKeysByCss(loc2, "1");
+			piaoWuWebApp.clearByCss(loc3);
+			piaoWuWebApp.sendKeysByCss(loc3, "0.01");
+			piaoWuWebApp.clearByCss(loc4);
+			piaoWuWebApp.sendKeysByCss(loc4, "0.01");
 		
 		}
 
 		piaoWuWebApp.sleep(1000);
-		piaoWuWebApp.clickElement("巴士-票价", "提交");
+		piaoWuWebApp.clickElement("汽车-票价", "提交");
 		
 		
 

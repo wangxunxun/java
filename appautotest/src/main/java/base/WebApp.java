@@ -236,4 +236,12 @@ public class WebApp extends UI{
     public void waitDisplayByXpath(String xpathExpression){
     	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathExpression)));
     }
+    
+    public void clearByCss(String selector){
+    	driver.findElement(By.cssSelector(selector)).clear();
+    }
+    
+    public void clearByXpath(String xpathExpression){
+    	driver.findElement(By.xpath(xpathExpression)).clear();
+    }
 }
