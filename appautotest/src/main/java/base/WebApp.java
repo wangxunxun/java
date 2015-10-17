@@ -25,9 +25,7 @@ public class WebApp extends UI{
     	driver.get(url);
     }
     
-    public void close(){
-    	driver.close();
-    }
+
     
     public void getTitle(){
     	driver.getTitle();

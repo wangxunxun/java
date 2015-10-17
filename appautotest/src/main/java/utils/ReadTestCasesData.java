@@ -20,8 +20,7 @@ public class ReadTestCasesData {
 	private Sheet readsheet;
 
 	public ReadTestCasesData(String excelpath,String sheet) {
-    	String currentPath = System.getProperty("user.dir");
-    	this.excelpath = currentPath+excelpath;
+		this.excelpath = CommonTools.setPath(excelpath);
 		this.sheet = sheet;
     	jxl.Workbook readwb = null;   
 		InputStream instream = null;

@@ -20,8 +20,7 @@ public class ReadElementData {
 	private Sheet readsheet;
 
 	public ReadElementData(String excelpath,String sheet) {
-    	String currentPath = System.getProperty("user.dir");
-    	this.excelpath = currentPath+excelpath;
+		this.excelpath = CommonTools.setPath(excelpath);
 		this.sheet = sheet;
     	jxl.Workbook readwb = null;   
 		InputStream instream = null;

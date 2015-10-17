@@ -1,19 +1,22 @@
 package initial;
 
 
-import base.AndroidApp;;
+import base.AndroidApp;
+import utils.CommonTools;;
 
 public class ticketAndroid extends AndroidApp{
 
 	
 
 	public void initialTestData(){
-		apkName = "ticketingsystem.apk";
-		appPackage = "cn.beyondsoft.wicket";
-		mainActivity = "cn.beyondsoft.wicket.LoddingActivity";
-		testExcelPath = "/testresource/项目/票务Android.xls";
-		elementSheet = "票务系统Android";
-		testCaseSheet = "票务系统测试用例";
+		configFileName = "/config/ticketSystem/configAndroid.properties";
+		apkName = getProperties("apkName");
+		appPackage = getProperties("appPackage");
+		mainActivity = getProperties("mainActivity");
+		testExcelPath = getProperties("testExcelPath");
+		elementSheet = getProperties("elementSheet");
+		testCaseSheet = getProperties("testCaseSheet");
+
 
 
 	}

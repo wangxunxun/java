@@ -23,9 +23,6 @@ public class Initial {
 	protected WebDriverWait wait; 
 	
 	
-	
-
-	
 	protected String configFileName;
 
 	//屏幕分辨率设置

@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 
 import initial.ticketAndroid;
+import utils.CommonTools;
 
 
 public class testa{
@@ -44,9 +45,9 @@ public class testa{
 
     @Test
     public void login(){
+
     	ticketApp.runTestCase("登录");
 
-    	
 
     }
 
