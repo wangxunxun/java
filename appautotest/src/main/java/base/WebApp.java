@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import core.UI;
+import utils.CommonTools;
 
 public class WebApp extends UI{
 	protected String main_window;
@@ -55,7 +56,7 @@ public class WebApp extends UI{
     		return value;
     	}
     	else{
-    		tool.log(name+":No text.");
+    		CommonTools.log(name+":No text.");
     	}
     	return null;
     }
@@ -68,7 +69,7 @@ public class WebApp extends UI{
 	  	if (!(new File(dirName).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dirName).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		String filepath = dirName+tool.getCurrentTime()+ "_"+ filename+  ".jpg";
+		String filepath = dirName+CommonTools.getCurrentTime()+ "_"+ filename+  ".jpg";
 		try {
 			System.out.println("save snapshot path is:"+dirName+filename);
 			FileUtils.copyFile(scrFile, new File(filepath));
@@ -89,7 +90,7 @@ public class WebApp extends UI{
 
     
     public boolean isAlertPresent(){
-        tool.sleep(500);
+        CommonTools.sleep(500);
         try {
             driver.switchTo().alert().accept();
             return true;
@@ -140,7 +141,7 @@ public class WebApp extends UI{
     public void moveMouseOn(String page,String name) {
 
         WebElement element = findElement(page, name);
-        tool.log("Moving mouse to element: " + name + ".");
+        CommonTools.log("Moving mouse to element: " + name + ".");
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();
     }
@@ -175,11 +176,11 @@ public class WebApp extends UI{
 
     public void runChormeApp(){
     	String dirs =null;
-    	if(tool.getOSName().matches("Mac OS X")){
-    		dirs=tool.setPath("/testresource/chromedriver");
+    	if(CommonTools.getOSName().matches("Mac OS X")){
+    		dirs=CommonTools.setPath("/testresource/chromedriver");
     	}
     	else{
-    		dirs=tool.setPath("/testresource/chromedriver.exe");
+    		dirs=CommonTools.setPath("/testresource/chromedriver.exe");
     	}
 	
 		

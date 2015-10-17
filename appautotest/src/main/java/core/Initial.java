@@ -24,7 +24,7 @@ public class Initial {
 	
 	
 	
-	public CommonTools tool = new CommonTools();
+
 	
 	protected String configFileName;
 
@@ -43,7 +43,7 @@ public class Initial {
 	protected String mainActivity = null;
 	
 	//截屏存放目录
-	protected String dirName = tool.setPath("/screenshot/");
+	protected String dirName = CommonTools.setPath("/screenshot/");
 	
 	//测试数据变量
 	protected String testExcelPath = null;
@@ -51,15 +51,9 @@ public class Initial {
 	protected String testCaseSheet = null;
 
 
-    public void sleep(int millis){
-    	tool.sleep(millis);
-    }
+
     
-    public void log(Object content){
-    	tool.log(content);
-    }
-    
-	public Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
+    protected Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
 		return eledata;
@@ -71,7 +65,7 @@ public class Initial {
 		return data;
 	}
 	
-	public Object[][] getTestDataForTestNG(String testExcelPath,String testDataSheet){
+	protected Object[][] getTestDataForTestNG(String testExcelPath,String testDataSheet){
 		ReadTestData readtestdata = new ReadTestData();
 		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
 		return data;
@@ -83,14 +77,14 @@ public class Initial {
 		return data;
 	}
 	
-	public Map<String, Object> getTestCaseData(String testExcelPath,String testCaseSheet){
+	protected Map<String, Object> getTestCaseData(String testExcelPath,String testCaseSheet){
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
 		
 	}
 	
-	public void writeResult(Integer row,Integer cow,String result){
+	protected void writeResult(Integer row,Integer cow,String result){
 		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {
 			try {
@@ -112,7 +106,7 @@ public class Initial {
 	}
 	
 	public String getProperties(String name){
-		return tool.getProperties(configFileName, name);
+		return CommonTools.getProperties(configFileName, name);
 	}
 
 	

@@ -6,14 +6,12 @@ import java.io.IOException;
 
 import jxl.read.biff.BiffException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import base.WebApp;
 
 public class baShi {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
@@ -28,19 +26,19 @@ public class baShi {
 	
 	@DataProvider(name="addBaShiStation")
 	public Object[][] dataProvider2(){		
-		String addBaShiStation = piaoWuWebApp.getProperties("添加巴士站点");
+		String addBaShiStation = piaoWuWebApp.getProperties("addBaShiStation");
 		return piaoWuWebApp.getTestDataForTestNG(addBaShiStation);
 	}
 	
 	@DataProvider(name="addBaShiXianLu")
 	public Object[][] dataProvider3(){		
-		String addBaShiXianLu = piaoWuWebApp.getProperties("巴士添加线路");
+		String addBaShiXianLu = piaoWuWebApp.getProperties("addBaShiXianLu");
 		return piaoWuWebApp.getTestDataForTestNG(addBaShiXianLu);
 	}
 	
 	@DataProvider(name="addBaShiLuDuan")
 	public Object[][] dataProvider4(){		
-		String addBaShiLuDuan = piaoWuWebApp.getProperties("巴士线路添加路段");
+		String addBaShiLuDuan = piaoWuWebApp.getProperties("addBaShiLuDuan");
 		return piaoWuWebApp.getTestDataForTestNG(addBaShiLuDuan);
 	}
 	
@@ -60,7 +58,7 @@ public class baShi {
 
 
 	
-//	@Test(dataProvider="addBaShiStation")
+	@Test(dataProvider="addBaShiStation")
     public void test001addBaShiStation(String name,String longitude,String latitude) throws InterruptedException, BiffException, IOException{
 
 		piaoWuWebApp.enterHomePage();
@@ -74,7 +72,7 @@ public class baShi {
 		piaoWuWebApp.sendKeys("巴士-添加车站", "经度",longitude); 
 		piaoWuWebApp.sendKeys("巴士-添加车站", "纬度",latitude); 
 		piaoWuWebApp.clickElement("巴士-添加车站", "提交");
-		piaoWuWebApp.tool.sleep(1000);
+
 
     }
 	
@@ -101,7 +99,7 @@ public class baShi {
 		piaoWuWebApp.sendKeys("巴士-添加线路", "生效日期",effectiveData); 
 		piaoWuWebApp.clickElement("巴士-添加线路", "提前预售天数");
 		piaoWuWebApp.clickElement("巴士-添加线路", "提交");
-		piaoWuWebApp.tool.sleep(1000);
+
 
     }
 	
@@ -129,11 +127,10 @@ public class baShi {
 		piaoWuWebApp.sendKeys("巴士-编辑路段", "距起始站时间",time); 
 
 		piaoWuWebApp.clickElement("巴士-编辑路段", "添加");
-		piaoWuWebApp.tool.sleep(2000);
 
     }
 
-	@Test
+//	@Test
     public void test004editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
 
 		String piaoJia = piaoWuWebApp.getProperties("baShiPiaoJia");
@@ -149,7 +146,7 @@ public class baShi {
 //		piaoWuWebApp.waitDisplay("巴士线路维护", "票价");
 //		piaoWuWebApp.clickElement("巴士线路维护", "票价");
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
-		piaoWuWebApp.sleep(2000);
+
 		for (int i=1;i<=105;i++){
 			String loc1 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(3) > input";
 			String loc2 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(4) > input";
@@ -168,12 +165,10 @@ public class baShi {
 		
 		}
 
-		piaoWuWebApp.sleep(1000);
+
 		piaoWuWebApp.clickElement("巴士-票价", "提交");
 		
-		
 
-		piaoWuWebApp.tool.sleep(2000);
 
     }
 }

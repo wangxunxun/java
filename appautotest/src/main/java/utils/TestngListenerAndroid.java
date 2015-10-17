@@ -28,7 +28,7 @@ public class TestngListenerAndroid extends TestListenerAdapter {
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
-		tool.log(tr.getName() + " Failure");
+		CommonTools.log(tr.getName() + " Failure");
 
 		try {
 			takeScreenShot(tr);
@@ -43,11 +43,11 @@ public class TestngListenerAndroid extends TestListenerAdapter {
 	private void takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		File scrFile = AndroidApp.driver.getScreenshotAs(OutputType.FILE);		
-		String dir_name = tool.setPath("\\screenshot\\");
+		String dir_name = CommonTools.setPath("\\screenshot\\");
 	  	if (!(new File(dir_name).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dir_name).mkdir();  // 如果不存在则新建一个目录
 	  	}
-	  	String filepath = dir_name+tool.getCurrentTime()+ "_"+ tr.getName()+  ".jpg";
+	  	String filepath = dir_name+CommonTools.getCurrentTime()+ "_"+ tr.getName()+  ".jpg";
 		FileUtils.copyFile(scrFile, new File(filepath));
 		Reporter.setCurrentTestResult(tr);
 		Reporter.log(filepath);

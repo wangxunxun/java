@@ -10,25 +10,25 @@ import java.util.Properties;
 
 
 public class CommonTools {
-	Properties PROPERTIES = new Properties(System.getProperties());	
+	static Properties PROPERTIES = new Properties(System.getProperties());	
     
-    public String getOSName(){
+    public static String getOSName(){
     	return PROPERTIES.getProperty("os.name");
     }
     
-    public String getCurrentTime() {
+    public static String getCurrentTime() {
         Date date = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");
         return f.format(date);
     }
     
-    public String setPath(String dirname){
+    public static String setPath(String dirname){
     	String currentPath = System.getProperty("user.dir");
     	return currentPath + dirname;
     }
 
     
-    protected void log(Object content, Integer type) {
+    protected static void log(Object content, Integer type) {
 
         switch (type) {
         case 1: {
@@ -51,12 +51,12 @@ public class CommonTools {
 
     }
 	
-    public void log(Object content) {
+    public static void log(Object content) {
 
         log(content, 1);
     }
     
-    public void sleep(int millis) {
+    public static void sleep(int millis) {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
@@ -64,7 +64,7 @@ public class CommonTools {
         }
     }
     
-    private Properties getConfigFormatData(String configFileName) {
+    private static Properties getConfigFormatData(String configFileName) {
         try {
             Properties pro = new Properties();
             FileInputStream fis = new FileInputStream(configFileName);
@@ -78,7 +78,7 @@ public class CommonTools {
         }
     }
 
-	public String getProperties(String configFileName,String name){  
+	public static String getProperties(String configFileName,String name){  
 		
     	String currentPath = System.getProperty("user.dir");
     	configFileName = currentPath+configFileName;

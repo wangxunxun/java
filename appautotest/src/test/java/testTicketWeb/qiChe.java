@@ -6,8 +6,6 @@ import java.io.IOException;
 
 import jxl.read.biff.BiffException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 
 import org.testng.annotations.BeforeClass;
@@ -15,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import base.WebApp;
+
 
 
 public class qiChe {
@@ -27,8 +25,9 @@ public class qiChe {
 
 	@DataProvider(name="addqichezhan")
 	public Object[][] dataProvider1(){	
-		String addqichezhan = piaoWuWebApp.getProperties("添加汽车车站");
-		return piaoWuWebApp.getTestDataForTestNG(addqichezhan);
+		String addQiCheZhan = piaoWuWebApp.getProperties("addQiCheZhan");
+
+		return piaoWuWebApp.getTestDataForTestNG(addQiCheZhan);
 	}
 	
 
@@ -44,7 +43,7 @@ public class qiChe {
 	public void tearDown() {
 		piaoWuWebApp.quit();
 	}
-//	@Test(dataProvider="addqichezhan")
+	@Test(dataProvider="addqichezhan")
     public void test004addQiCheZhan(String address,String name,String pinyin,String longitude,String latitude,String bashi,String phone,String from,String to,String city) throws InterruptedException, BiffException, IOException{
 		
 		piaoWuWebApp.enterHomePage();
@@ -70,13 +69,13 @@ public class qiChe {
 		piaoWuWebApp.sendKeys("汽车-添加车站", "车站所在城市",city); 
 		piaoWuWebApp.clickElement("汽车-添加车站", "车站地址");
 		piaoWuWebApp.clickElement("汽车-添加车站", "提交");
-		piaoWuWebApp.tool.sleep(1000);
+
 
 
 
     }
 
-	@Test
+//	@Test
     public void test002editQiChePiaoJia() throws InterruptedException, BiffException, IOException{
 		
 		
@@ -86,14 +85,14 @@ public class qiChe {
 		String piaojia = piaoWuWebApp.getProperties("qiChePiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaojia, 6);
-		piaoWuWebApp.log(newPiaoJia);
+
 		piaoWuWebApp.enterHomePage();
 		piaoWuWebApp.clickElement("侧边栏", "长途售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "汽车线路管理");
 		piaoWuWebApp.clickElement("侧边栏", "汽车线路管理");
 		piaoWuWebApp.waitDisplayByCss(newPiaoJia);
 		piaoWuWebApp.clickByCss(newPiaoJia);
-		piaoWuWebApp.sleep(2000);
+
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
 		for (int i=1;i<=91;i++){
 			String loc1 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(3) > input";
@@ -111,12 +110,12 @@ public class qiChe {
 		
 		}
 
-		piaoWuWebApp.sleep(1000);
+
 		piaoWuWebApp.clickElement("汽车-票价", "提交");
 		
 		
 
-		piaoWuWebApp.tool.sleep(2000);
+
 
     }
 

@@ -5,8 +5,8 @@
     <classes>
       <class name="testTicketWeb.qiChe">
         <methods>
+          <include name="test004addQiCheZhan"/>
           <include name="setUp"/>
-          <include name="test002editQiChePiaoJia"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- testTicketWeb.qiChe -->

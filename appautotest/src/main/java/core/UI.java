@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import core.Initial;
+import utils.CommonTools;
 public class UI extends Initial{
     
     public void clickElement(String page,String name){
@@ -32,7 +33,7 @@ public class UI extends Initial{
     		return value;
     	}
     	else{
-    		tool.log(name+":No text.");
+    		CommonTools.log(name+":No text.");
     	}
     	return null;
     }

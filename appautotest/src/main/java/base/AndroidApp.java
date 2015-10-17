@@ -1,6 +1,7 @@
 package base;
 
 import io.appium.java_client.android.AndroidElement;
+import utils.CommonTools;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
@@ -218,7 +219,7 @@ public class AndroidApp extends UI{
 	  	if (!(new File(dirName).isDirectory())) {  // 判断是否存在该目录
 	  		new File(dirName).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		FileUtils.copyFile(scrFile, new File(dirName+tool.getCurrentTime()+ "_"+ filename+".jpg"));		
+		FileUtils.copyFile(scrFile, new File(dirName+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));		
 	}
 	
 	public void getScreen() throws IOException{ 
@@ -400,7 +401,7 @@ public class AndroidApp extends UI{
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
-					tool.sleep(v);
+					CommonTools.sleep(v);
 					writeResult(rowin, 6, "P");
 
 				}
@@ -499,7 +500,7 @@ public class AndroidApp extends UI{
 				}
 
 				else{
-					tool.log("Can not run the action");
+					CommonTools.log("Can not run the action");
 
 				}
 

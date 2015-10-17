@@ -27,13 +27,13 @@ public class cheDuiAndCheLiang {
 	
 	@DataProvider(name="addCheLiang")
 	public Object[][] dataProvider5(){		
-		String addCheLiang = piaoWuWebApp.getProperties("添加车辆");
+		String addCheLiang = piaoWuWebApp.getProperties("addCheLiang");
 		return piaoWuWebApp.getTestDataForTestNG(addCheLiang);
 	}
 	
 	@DataProvider(name="addSiJi")
 	public Object[][] dataProvider6(){		
-		String addSiJi = piaoWuWebApp.getProperties("添加司机");
+		String addSiJi = piaoWuWebApp.getProperties("addSiJi");
 		return piaoWuWebApp.getTestDataForTestNG(addSiJi);
 	}
 	
@@ -50,7 +50,7 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.quit();
 	}
 
-	@Test(dataProvider="addCheLiang")
+//	@Test(dataProvider="addCheLiang")
     public void addCheLiang(String siJi,String cheDui,String carType,String zuCheType,String car_owner,String phone_number,String seat_num,String max_seat_num,String add_seat_num,String plate_number,String buy_year,String engine_number,String brand  ) throws InterruptedException, BiffException, IOException{
 
 
@@ -79,7 +79,7 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.clickElement("添加车辆", "品牌");
 
 		piaoWuWebApp.clickElement("添加车辆", "提交");
-		piaoWuWebApp.tool.sleep(2000);
+
 
     }
 	
@@ -117,7 +117,7 @@ public class cheDuiAndCheLiang {
 
 
 		piaoWuWebApp.clickElement("添加司机", "提交");
-		piaoWuWebApp.tool.sleep(2000);
+
 
     }
 

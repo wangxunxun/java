@@ -4,7 +4,7 @@ import base.WebApp;
 public class piaoWuWebTest extends WebApp{
 
 	public void initialTestData(){
-		configFileName = "/config/ticketSystem/config.properties";
+		configFileName = "/config/ticketSystem/configWeb.properties";
 		testExcelPath = getProperties("testExcelPath");
 		elementSheet = getProperties("elementSheet");
 
