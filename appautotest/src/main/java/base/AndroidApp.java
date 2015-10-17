@@ -375,7 +375,6 @@ public class AndroidApp extends UI{
 
 		    Map<String, Object> testCaseData = getTestCaseData(testExcelPath, testCaseSheet);
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
-			CommonTools.log(cases);
 			String page = null;
 			String name = null;	   
 			

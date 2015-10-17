@@ -2,29 +2,50 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="81787" started-at="2015-10-17T15:22:52Z" finished-at="2015-10-17T15:24:13Z">
+  <suite name="Default suite" duration-ms="44507" started-at="2015-10-17T15:54:38Z" finished-at="2015-10-17T15:55:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="81787" started-at="2015-10-17T15:22:52Z" finished-at="2015-10-17T15:24:13Z">
+    <test name="Default test" duration-ms="44507" started-at="2015-10-17T15:54:38Z" finished-at="2015-10-17T15:55:23Z">
       <class name="autotest.appautotest.testa">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="setUp" is-config="true" duration-ms="14227" started-at="2015-10-17T23:22:52Z" finished-at="2015-10-17T23:23:06Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="setUp" is-config="true" duration-ms="26781" started-at="2015-10-17T23:54:38Z" finished-at="2015-10-17T23:55:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="login" duration-ms="65287" started-at="2015-10-17T23:23:06Z" finished-at="2015-10-17T23:24:11Z">
-          <exception class="java.lang.AssertionError">
+        <test-method status="FAIL" signature="login()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="login" duration-ms="14175" started-at="2015-10-17T23:55:05Z" finished-at="2015-10-17T23:55:19Z">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[expected [µÇÂ¼33] but found [µÇÂ¼]]]>
+              <![CDATA[An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 35 milliseconds
+Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
+System info: host: 'troy-PC', ip: '192.168.0.234', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=02a59885, platform=LINUX, appActivity=cn.beyondsoft.wicket.LoddingActivity, desired={app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, appActivity=cn.beyondsoft.wicket.LoddingActivity, unicodeKeyboard=true, platformName=Android, deviceName=meizu, resetKeyboard=true}, platformVersion=4.3, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, unicodeKeyboard=true, platformName=Android, resetKeyboard=true}]
+Session ID: 9da29787-609c-43c5-8a66-8d223caa8ac9]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [µÇÂ¼33] but found [µÇÂ¼]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at core.UI.assertEquals(UI.java:46)
-	at base.AndroidApp.runTestCase(AndroidApp.java:476)
+              <![CDATA[org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 35 milliseconds
+Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
+System info: host: 'troy-PC', ip: '192.168.0.234', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=02a59885, platform=LINUX, appActivity=cn.beyondsoft.wicket.LoddingActivity, desired={app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, appActivity=cn.beyondsoft.wicket.LoddingActivity, unicodeKeyboard=true, platformName=Android, deviceName=meizu, resetKeyboard=true}, platformVersion=4.3, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, unicodeKeyboard=true, platformName=Android, resetKeyboard=true}]
+Session ID: 9da29787-609c-43c5-8a66-8d223caa8ac9
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at io.appium.java_client.AppiumDriver.performTouchAction(AppiumDriver.java:380)
+	at io.appium.java_client.TouchAction.perform(TouchAction.java:302)
+	at io.appium.java_client.AppiumDriver.swipe(AppiumDriver.java:435)
+	at base.AndroidApp.swipeOfType(AndroidApp.java:140)
+	at base.AndroidApp.runTestCase(AndroidApp.java:465)
+	at base.AndroidApp.runTestCase(AndroidApp.java:482)
 	at autotest.appautotest.testa.login(testa.java:49)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
@@ -52,11 +73,11 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="tearDown" is-config="true" duration-ms="2256" started-at="2015-10-17T23:24:11Z" finished-at="2015-10-17T23:24:13Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="tearDown" is-config="true" duration-ms="3527" started-at="2015-10-17T23:55:19Z" finished-at="2015-10-17T23:55:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
