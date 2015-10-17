@@ -1,6 +1,9 @@
 package utils;
 
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -60,6 +63,28 @@ public class CommonTools {
             e.printStackTrace();
         }
     }
+    
+    private Properties getConfigFormatData(String configFileName) {
+        try {
+            Properties pro = new Properties();
+            FileInputStream fis = new FileInputStream(configFileName);
+            InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+            BufferedReader brProp = new BufferedReader(isr);
+            pro.load(brProp);
+            brProp.close();
+            return pro;
+        } catch (Exception e) {
+            throw new IllegalStateException("Can't locate config file " + configFileName, e);
+        }
+    }
 
+	public String getProperties(String configFileName,String name){  
+		
+    	String currentPath = System.getProperty("user.dir");
+    	configFileName = currentPath+configFileName;
+		Properties properties = getConfigFormatData(configFileName); 
+		return properties.getProperty(name);
+
+    }  
 
 }

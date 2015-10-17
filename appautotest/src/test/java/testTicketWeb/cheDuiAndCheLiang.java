@@ -18,8 +18,8 @@ import org.testng.annotations.Test;
 public class cheDuiAndCheLiang {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
 
-	String addCheLiang = "添加车辆";
-	String addSiJi = "添加司机";
+	
+	
 	
 	
 
@@ -27,11 +27,13 @@ public class cheDuiAndCheLiang {
 	
 	@DataProvider(name="addCheLiang")
 	public Object[][] dataProvider5(){		
+		String addCheLiang = piaoWuWebApp.getProperties("添加车辆");
 		return piaoWuWebApp.getTestDataForTestNG(addCheLiang);
 	}
 	
 	@DataProvider(name="addSiJi")
 	public Object[][] dataProvider6(){		
+		String addSiJi = piaoWuWebApp.getProperties("添加司机");
 		return piaoWuWebApp.getTestDataForTestNG(addSiJi);
 	}
 	

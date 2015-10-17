@@ -25,6 +25,8 @@ public class Initial {
 	
 	
 	public CommonTools tool = new CommonTools();
+	
+	protected String configFileName;
 
 	//屏幕分辨率设置
 	protected float basicWindowx =720;
@@ -47,7 +49,7 @@ public class Initial {
 	protected String testExcelPath = null;
 	protected String elementSheet = null;
 	protected String testCaseSheet = null;
-	protected String testDataSheet = null;
+
 
     public void sleep(int millis){
     	tool.sleep(millis);
@@ -106,13 +108,12 @@ public class Initial {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-
-		 
+		}		 
 	}
 	
-
+	public String getProperties(String name){
+		return tool.getProperties(configFileName, name);
+	}
 
 	
 

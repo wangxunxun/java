@@ -17,7 +17,7 @@ import jxl.read.biff.BiffException;
 public class ReadTestData {
     public List<Map<String, String>> getTestData(String excelpath,String tablename){
     	String currentPath = System.getProperty("user.dir");
-    	String path = currentPath+"\\"+excelpath;
+    	String path = currentPath+excelpath;
     	jxl.Workbook readwb = null;   
 		InputStream instream = null;
 		try {

@@ -20,13 +20,14 @@ import base.WebApp;
 
 public class qiChe {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
-	String addqichezhan = "添加汽车车站";
+	
 
 	
 	
 
 	@DataProvider(name="addqichezhan")
-	public Object[][] dataProvider1(){		
+	public Object[][] dataProvider1(){	
+		String addqichezhan = piaoWuWebApp.getProperties("添加汽车车站");
 		return piaoWuWebApp.getTestDataForTestNG(addqichezhan);
 	}
 	
@@ -81,8 +82,8 @@ public class qiChe {
 		
 
 
-		
-		String piaojia = piaoWuWebApp.qiChePiaoJia;
+
+		String piaojia = piaoWuWebApp.getProperties("qiChePiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaojia, 6);
 		piaoWuWebApp.log(newPiaoJia);

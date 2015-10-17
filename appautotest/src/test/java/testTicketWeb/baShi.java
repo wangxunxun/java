@@ -17,9 +17,9 @@ import base.WebApp;
 
 public class baShi {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
-	String addBaShiStation = "添加巴士站点";
-	String addBaShiXianLu = "巴士添加线路";
-	String addBaShiLuDuan = "巴士线路添加路段";
+	
+	
+	
 
 	
 	
@@ -28,16 +28,19 @@ public class baShi {
 	
 	@DataProvider(name="addBaShiStation")
 	public Object[][] dataProvider2(){		
+		String addBaShiStation = piaoWuWebApp.getProperties("添加巴士站点");
 		return piaoWuWebApp.getTestDataForTestNG(addBaShiStation);
 	}
 	
 	@DataProvider(name="addBaShiXianLu")
 	public Object[][] dataProvider3(){		
+		String addBaShiXianLu = piaoWuWebApp.getProperties("巴士添加线路");
 		return piaoWuWebApp.getTestDataForTestNG(addBaShiXianLu);
 	}
 	
 	@DataProvider(name="addBaShiLuDuan")
 	public Object[][] dataProvider4(){		
+		String addBaShiLuDuan = piaoWuWebApp.getProperties("巴士线路添加路段");
 		return piaoWuWebApp.getTestDataForTestNG(addBaShiLuDuan);
 	}
 	
@@ -104,7 +107,7 @@ public class baShi {
 	
 //	@Test(dataProvider="addBaShiLuDuan")
     public void test003addBaShiLuDuan(String station,String km,String time) throws InterruptedException, BiffException, IOException{
-		String luDuan = piaoWuWebApp.baShiLuDuan;
+		String luDuan = piaoWuWebApp.getProperties("baShiLuDuan");
 
 		String newLuDuan = piaoWuWebApp.getTableRowLocationByCss(luDuan, 6);
 
@@ -133,7 +136,7 @@ public class baShi {
 	@Test
     public void test004editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
 
-		String piaoJia = piaoWuWebApp.baShiPiaoJia;
+		String piaoJia = piaoWuWebApp.getProperties("baShiPiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaoJia, 6);
 		piaoWuWebApp.enterHomePage();
