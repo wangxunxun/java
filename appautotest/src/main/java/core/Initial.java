@@ -50,12 +50,10 @@ public class Initial {
 
 
     
-    protected Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
+    protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		if (configFileName != null){
 			testExcelPath = getProperties("testExcelPath");
 			elementSheet = getProperties("elementSheet");
-			CommonTools.log(testExcelPath);
-			CommonTools.log(elementSheet);
 		}
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
@@ -68,11 +66,7 @@ public class Initial {
 		return data;
 	}
 	
-	protected Object[][] getTestDataForTestNG(String testExcelPath,String testDataSheet){
-		ReadTestData readtestdata = new ReadTestData();
-		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
-		return data;
-	}
+
 	
 	public Object[][] getTestDataForTestNG(String testDataSheet){
 		if (configFileName != null){
@@ -83,8 +77,11 @@ public class Initial {
 		return data;
 	}
 	
-	protected Map<String, Object> getTestCaseData(String testExcelPath,String testCaseSheet){
-
+	protected Map<String, Object> getTestCaseData(){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			testCaseSheet = getProperties("testCaseSheet");
+		}
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
@@ -94,6 +91,7 @@ public class Initial {
 	protected void writeResult(Integer row,Integer cow,String result){
 		if (configFileName != null){
 			testExcelPath = getProperties("testExcelPath");
+			testCaseSheet = getProperties("testCaseSheet");
 		}
 		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {

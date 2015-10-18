@@ -227,11 +227,8 @@ public class AndroidApp extends UI{
 	}
 	
 	public AndroidElement findElement(String page,String name){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			elementSheet = getProperties("elementSheet");
-		}
-		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
+
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData();
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
@@ -273,11 +270,8 @@ public class AndroidApp extends UI{
 	}
 	
 	public void tabElement(String page,String name){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			elementSheet = getProperties("elementSheet");
-		}
-		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
+
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData();
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
@@ -294,11 +288,8 @@ public class AndroidApp extends UI{
 	}
 	
 	public void longTabElement(String page,String name){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			elementSheet = getProperties("elementSheet");
-		}
-		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
+
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData();
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
@@ -314,11 +305,8 @@ public class AndroidApp extends UI{
 		}
 	}
 	public void swipeElement(String page,String name){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			elementSheet = getProperties("elementSheet");
-		}
-		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
+
+		Map<String, Map<String, Map<String, String>>> elementData = getElementData();
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("swipe")){
@@ -388,12 +376,8 @@ public class AndroidApp extends UI{
 	   
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
-			if (configFileName != null){
-				testExcelPath = getProperties("testExcelPath");
-				testCaseSheet = getProperties("testCaseSheet");
-			}
 
-		    Map<String, Object> testCaseData = getTestCaseData(testExcelPath, testCaseSheet);
+		    Map<String, Object> testCaseData = getTestCaseData();
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			String page = null;
 			String name = null;	   
