@@ -70,6 +70,7 @@ public class ReadTestCasesData {
 					action.put(header.get(3), readsheet.getCell(3, i).getContents());
 					action.put(header.get(4), readsheet.getCell(4, i).getContents());
 					action.put(header.get(5), readsheet.getCell(5, i).getContents());
+					action.put(header.get(6), readsheet.getCell(6, i).getContents());
 					action.put("row", Integer.toString(i));
 
 					actions.add(action);
@@ -82,6 +83,7 @@ public class ReadTestCasesData {
 					action.put(header.get(3), readsheet.getCell(3, i).getContents());
 					action.put(header.get(4), readsheet.getCell(4, i).getContents());
 					action.put(header.get(5), readsheet.getCell(5, i).getContents());
+					action.put(header.get(6), readsheet.getCell(6, i).getContents());
 					action.put("row", Integer.toString(i));
 					actions.add(action);
 				}	
@@ -91,6 +93,7 @@ public class ReadTestCasesData {
 		}
 		tabledata.add(testCases);
 		tabledata.add(actions);	
+		CommonTools.log(tabledata);
 		return tabledata;
 		
 		
@@ -170,7 +173,7 @@ public class ReadTestCasesData {
 		for(int j =0;j<real.size()-1;j++){
 			testData.put((String) tabledata0.get(j), data.get(j));
 		}
-		
+		CommonTools.log(testData);
 		return testData;
 		}
 

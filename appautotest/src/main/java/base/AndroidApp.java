@@ -386,24 +386,18 @@ public class AndroidApp extends UI{
 
 
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
-			String page = null;
-			String name = null;	   
 			
 			for (int i = 0;i <cases.size();i++){
 
 				String action = cases.get(i).get("Action");
-				String element = cases.get(i).get("Element");
+				String page = cases.get(i).get("Page");
+				String name = cases.get(i).get("Element");
 				String value = cases.get(i).get("Value");
 				String actual = cases.get(i).get("Actual");
 				String expected = cases.get(i).get("Expected");
 				String row = cases.get(i).get("row");
 				int rowin=Integer.parseInt(row);
 
-				if (element !=""){
-				String[] sourceStrArray = element.split("/");
-				page = sourceStrArray[0];
-				name = sourceStrArray[1];
-				}
 
 				if (action.equals("click")){
 					clickElement(page, name);
