@@ -7,7 +7,9 @@ public class piaoWuWebTest extends WebApp{
 		configFileName = "/config/ticketSystem/configWeb.properties";
 //		testExcelPath = "/testresource/projects/ticketWeb.xls";
 //		elementSheet = "elements";
-		
+//		writeScript=false;
+//		testCaseSheet = "testCase";
+//		appClass = "piaoWuWebApp";
 	}
 	
 	public void enterHomePage(){

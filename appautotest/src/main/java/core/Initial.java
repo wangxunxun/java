@@ -48,7 +48,8 @@ public class Initial {
 	protected String testCaseSheet = null;
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
-
+	protected String appClass;
+	protected boolean writeScript;
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		if (configFileName != null){
@@ -130,5 +131,20 @@ public class Initial {
 	}
 	
 
+	
+	protected void writeScript(Integer row,Integer cow,String script){
+
+		if(configFileName !=null){
+			if (getProperties("writeScript").matches("true")){
+				writeResult(row, cow, script);
+			}
+
+		}
+		else{
+			if(writeScript==true){
+				writeResult(row, cow, script);
+			}
+		}
+	}
 
 }

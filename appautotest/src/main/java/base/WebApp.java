@@ -188,9 +188,9 @@ public class WebApp extends UI{
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
     	elementData =getElementData();
-    	if(getProperties("testCaseSheet")!=null){
-    		testCaseData = getTestCaseData();
-    	}
+
+		testCaseData = getTestCaseData();
+
     	
     }
      
@@ -251,79 +251,107 @@ public class WebApp extends UI{
     	driver.findElement(By.xpath(xpathExpression)).clear();
     }
     
-	   @SuppressWarnings({ "unchecked" })
-	   public void runTestCase(String testCase){
+    @SuppressWarnings({ "unchecked" })
+    public void runTestCase(String testCase){
+    	if(configFileName !=null){
+    		appClass = getProperties("appClass");
+    	}
+    	if(appClass ==null){
+    		appClass = "app";
+    	}
+    			
+    	List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
+		String page = null;
+		String name = null;	   
+		
+		for (int i = 0;i <cases.size();i++){
 
+			String action = cases.get(i).get("Action");
+			String element = cases.get(i).get("Element");
+			String value = cases.get(i).get("Value");
+			String actual = cases.get(i).get("Actual");
+			String expected = cases.get(i).get("Expected");
+			String row = cases.get(i).get("row");
+			int rowin=Integer.parseInt(row);
 
-			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
-			String page = null;
-			String name = null;	   
-			
-			for (int i = 0;i <cases.size();i++){
+			if (element !=""){
+			String[] sourceStrArray = element.split("/");
+			page = sourceStrArray[0];
+			name = sourceStrArray[1];
+			}
 
-				String action = cases.get(i).get("Action");
-				String element = cases.get(i).get("Element");
-				String value = cases.get(i).get("Value");
-				String actual = cases.get(i).get("Actual");
-				String expected = cases.get(i).get("Expected");
-				String row = cases.get(i).get("row");
-				int rowin=Integer.parseInt(row);
+			if (action.equals("click")){
+				clickElement(page, name);
+				writeResult(rowin, 6, "P");
+				String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
+				writeScript(rowin, 8, script);
 
-				if (element !=""){
-				String[] sourceStrArray = element.split("/");
-				page = sourceStrArray[0];
-				name = sourceStrArray[1];
-				}
-
-				if (action.equals("click")){
-					clickElement(page, name);
-					writeResult(rowin, 6, "P");
-
-				}
-				else if (action.equals("sleep")){
-					int v=Integer.parseInt(value);
-					CommonTools.sleep(v);
-					writeResult(rowin, 6, "P");
-
-				}
-				else if (action.equals("waitDisplay")){
-					waitDisplay(page, name);
-					writeResult(rowin, 6, "P");
-
-				}
-
-
-
-				else if (action.equals("sendKey")){
-					sendKeys(page, name, value);
-					writeResult(rowin, 6, "P");
-
-				}
-				else if (action.equals("assert")){
-					actual = getElementText(page, name);
-					assertEquals(actual, expected);
-					writeResult(rowin, 6, "P");
-
-					
-				}
-				else if (action.equals("get")){
-					get(value);
-
-					
-				}
-				else if (action.equals("runTestCase")){
-					runTestCase(value);
-					writeResult(rowin, 6, "P");
-
-				}
-
-
-
-				else{
-					CommonTools.log("Can not run the action");
-
-				}
 
 			}
-	   }
+			else if (action.equals("sleep")){
+				int v=Integer.parseInt(value);
+				CommonTools.sleep(v);
+				writeResult(rowin, 6, "P");
+				String script = "CommonTools.sleep("+v+");";
+				writeScript(rowin, 8, script);
+
+			}
+			else if (action.equals("waitDisplay")){
+				waitDisplay(page, name);
+				writeResult(rowin, 6, "P");
+				String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
+				writeScript(rowin, 8, script);
+			}
+			else if (action.equals("clear")){
+				clear(page, name);
+				writeResult(rowin, 6, "P");
+				String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
+				writeScript(rowin, 8, script);
+			}
+
+
+			else if (action.equals("sendKey")){
+				sendKeys(page, name, value);
+				writeResult(rowin, 6, "P");
+				String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
+				writeScript(rowin, 8, script);
+				
+
+			}
+			else if (action.equals("assert")){
+				actual = getElementText(page, name);
+				assertEquals(actual, expected);
+				writeResult(rowin, 6, "P");
+				String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
+				writeScript(rowin, 8, script);
+				
+			}
+			else if (action.equals("get")){
+				get(value);
+				String script = appClass+"."+"get(\""+value+"\");";
+				writeScript(rowin, 8, script);
+				
+			}
+			else if (action.equals("switchToFrame")){
+				switchToFrame(value);
+				writeResult(rowin, 6, "P");				
+				String script = appClass+"."+"switchToFrame(\""+value+"\");";
+				writeScript(rowin, 8, script);
+			}
+			else if (action.equals("runTestCase")){
+				runTestCase(value);
+				writeResult(rowin, 6, "P");
+				String script = appClass+"."+"runTestCase(\""+value+"\");";
+				writeScript(rowin, 8, script);
+			}
+
+
+
+			else{
+				CommonTools.log("Can not run the action");
+
+			}
+
+		}
+   }
 }

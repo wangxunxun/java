@@ -49,9 +49,9 @@ public class AndroidApp extends UI{
 		}
         wait = new WebDriverWait(driver,waitTime);
         elementData = getElementData();
-    	if(getProperties("testCaseSheet")!=null){
-    		testCaseData = getTestCaseData();
-    	}
+
+    	testCaseData = getTestCaseData();
+
 
         
     }
