@@ -26,6 +26,11 @@ public class AndroidApp extends UI{
 		 
     public void runAndroidApp(){
         // set up appium
+    	if (configFileName != null){
+    		apkName = getProperties("apkName");
+    		appPackage = getProperties("appPackage");
+    		mainActivity = getProperties("mainActivity");
+    	}
 
 
         File app = new File(appDir, apkName);
