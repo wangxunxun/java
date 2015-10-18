@@ -63,6 +63,11 @@ public class UI extends Initial{
 
 
 	public WebElement findElement(String page,String name){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+		}
+
 		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
@@ -96,6 +101,10 @@ public class UI extends Initial{
 	}
 	
     public void waitDisplay(String page,String name){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+		}
     	Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");

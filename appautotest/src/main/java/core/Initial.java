@@ -23,7 +23,7 @@ public class Initial {
 	protected WebDriverWait wait; 
 	
 	
-	protected String configFileName;
+	protected String configFileName = null;
 
 	//屏幕分辨率设置
 	protected float basicWindowx =720;
@@ -51,6 +51,12 @@ public class Initial {
 
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(String testExcelPath,String elementSheet){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+			CommonTools.log(testExcelPath);
+			CommonTools.log(elementSheet);
+		}
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
 		return eledata;
@@ -69,12 +75,16 @@ public class Initial {
 	}
 	
 	public Object[][] getTestDataForTestNG(String testDataSheet){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+		}
 		ReadTestData readtestdata = new ReadTestData();
 		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
 		return data;
 	}
 	
 	protected Map<String, Object> getTestCaseData(String testExcelPath,String testCaseSheet){
+
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
@@ -82,6 +92,9 @@ public class Initial {
 	}
 	
 	protected void writeResult(Integer row,Integer cow,String result){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+		}
 		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {
 			try {

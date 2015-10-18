@@ -227,6 +227,10 @@ public class AndroidApp extends UI{
 	}
 	
 	public AndroidElement findElement(String page,String name){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+		}
 		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
@@ -269,6 +273,10 @@ public class AndroidApp extends UI{
 	}
 	
 	public void tabElement(String page,String name){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+		}
 		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
@@ -286,6 +294,10 @@ public class AndroidApp extends UI{
 	}
 	
 	public void longTabElement(String page,String name){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+		}
 		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
@@ -302,6 +314,10 @@ public class AndroidApp extends UI{
 		}
 	}
 	public void swipeElement(String page,String name){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+			elementSheet = getProperties("elementSheet");
+		}
 		Map<String, Map<String, Map<String, String>>> elementData = getElementData(testExcelPath, elementSheet);
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
@@ -372,6 +388,10 @@ public class AndroidApp extends UI{
 	   
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
+			if (configFileName != null){
+				testExcelPath = getProperties("testExcelPath");
+				testCaseSheet = getProperties("testCaseSheet");
+			}
 
 		    Map<String, Object> testCaseData = getTestCaseData(testExcelPath, testCaseSheet);
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);

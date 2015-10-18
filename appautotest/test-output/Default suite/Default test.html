@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/0/1</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Oct 17 23:54:38 CST 2015</td>
+<td>Started on:</td><td>Sun Oct 18 14:25:51 CST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>44 seconds (44507 ms)</td>
+<tr><td>Total time:</td><td>6 seconds (6640 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,47 +67,21 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='autotest.appautotest.testa.login()'><b>login</b><br>Test class: autotest.appautotest.testa</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 35 milliseconds
-Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
-System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.0.234&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_60&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=02a59885, platform=LINUX, appActivity=cn.beyondsoft.wicket.LoddingActivity, desired={app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, appActivity=cn.beyondsoft.wicket.LoddingActivity, unicodeKeyboard=true, platformName=Android, deviceName=meizu, resetKeyboard=true}, platformVersion=4.3, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, unicodeKeyboard=true, platformName=Android, resetKeyboard=true}]
-Session ID: 9da29787-609c-43c5-8a66-8d223caa8ac9
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at io.appium.java_client.AppiumDriver.performTouchAction(AppiumDriver.java:380)
-	at io.appium.java_client.TouchAction.perform(TouchAction.java:302)
-	at io.appium.java_client.AppiumDriver.swipe(AppiumDriver.java:435)
-	at base.AndroidApp.swipeOfType(AndroidApp.java:140)
-	at base.AndroidApp.runTestCase(AndroidApp.java:465)
-	at base.AndroidApp.runTestCase(AndroidApp.java:482)
-	at autotest.appautotest.testa.login(testa.java:49)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
+<td title='testTicketWeb.qiChe.test004addQiCheZhan()'><b>test004addQiCheZhan</b><br>Test class: testTicketWeb.qiChe</td>
+<td><div><pre>java.lang.RuntimeException: java.lang.NullPointerException
+	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:162)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:441)
+	at org.testng.internal.Invoker.handleParameters(Invoker.java:1300)
+	at org.testng.internal.Invoker.createParameters(Invoker.java:1015)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1104)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
 	at org.testng.TestRunner.privateRun(TestRunner.java:771)
@@ -124,39 +98,28 @@ Session ID: 9da29787-609c-43c5-8a66-8d223caa8ac9
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1855610584", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1855610584'><pre>org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 35 milliseconds
-Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
-System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.0.234&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_60&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities [{app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=02a59885, platform=LINUX, appActivity=cn.beyondsoft.wicket.LoddingActivity, desired={app=F:\workspace\java\appautotest\testresource\apps\ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, appActivity=cn.beyondsoft.wicket.LoddingActivity, unicodeKeyboard=true, platformName=Android, deviceName=meizu, resetKeyboard=true}, platformVersion=4.3, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, unicodeKeyboard=true, platformName=Android, resetKeyboard=true}]
-Session ID: 9da29787-609c-43c5-8a66-8d223caa8ac9
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
-	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
-	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at io.appium.java_client.AppiumDriver.performTouchAction(AppiumDriver.java:380)
-	at io.appium.java_client.TouchAction.perform(TouchAction.java:302)
-	at io.appium.java_client.AppiumDriver.swipe(AppiumDriver.java:435)
-	at base.AndroidApp.swipeOfType(AndroidApp.java:140)
-	at base.AndroidApp.runTestCase(AndroidApp.java:465)
-	at base.AndroidApp.runTestCase(AndroidApp.java:482)
-	at autotest.appautotest.testa.login(testa.java:49)
+Caused by: java.lang.NullPointerException
+	at jxl.read.biff.File.&lt;init&gt;(File.java:91)
+	at jxl.Workbook.getWorkbook(Workbook.java:268)
+	at jxl.Workbook.getWorkbook(Workbook.java:253)
+	at utils.ReadTestData.getData(ReadTestData.java:79)
+	at utils.ReadTestData.getTestDataForTestNG(ReadTestData.java:122)
+	at core.Initial.getTestDataForTestNG(Initial.java:73)
+	at testTicketWeb.qiChe.dataProvider1(qiChe.java:30)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:659)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:845)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1153)
+	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:136)
+	... 20 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace960733886", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace960733886'><pre>java.lang.RuntimeException: java.lang.NullPointerException
+	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:162)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:441)
+	at org.testng.internal.Invoker.handleParameters(Invoker.java:1300)
+	at org.testng.internal.Invoker.createParameters(Invoker.java:1015)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1104)
 	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
 	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
 	at org.testng.TestRunner.privateRun(TestRunner.java:771)
@@ -173,9 +136,24 @@ Session ID: 9da29787-609c-43c5-8a66-8d223caa8ac9
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+Caused by: java.lang.NullPointerException
+	at jxl.read.biff.File.&lt;init&gt;(File.java:91)
+	at jxl.Workbook.getWorkbook(Workbook.java:268)
+	at jxl.Workbook.getWorkbook(Workbook.java:253)
+	at utils.ReadTestData.getData(ReadTestData.java:79)
+	at utils.ReadTestData.getTestDataForTestNG(ReadTestData.java:122)
+	at core.Initial.getTestDataForTestNG(Initial.java:73)
+	at testTicketWeb.qiChe.dataProvider1(qiChe.java:30)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:136)
+	... 20 more
 </pre></div></td>
-<td>14</td>
-<td>autotest.appautotest.testa@6a5fc7f7</td></tr>
+<td>0</td>
+<td>testTicketWeb.qiChe@3ac3fd8b</td></tr>
 </table><p>
 </body>
 </html>

@@ -5,8 +5,8 @@ public class piaoWuWebTest extends WebApp{
 
 	public void initialTestData(){
 		configFileName = "/config/ticketSystem/configWeb.properties";
-		testExcelPath = getProperties("testExcelPath");
-		elementSheet = getProperties("elementSheet");
+//		testExcelPath = getProperties("testExcelPath");
+//		elementSheet = getProperties("elementSheet");
 
 	}
 	
