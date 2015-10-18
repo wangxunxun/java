@@ -25,8 +25,8 @@ public class qiChe {
 
 	@DataProvider(name="addqichezhan")
 	public Object[][] dataProvider1(){	
-		String addQiCheZhan = piaoWuWebApp.getProperties("addQiCheZhan");
-
+//		String addQiCheZhan = piaoWuWebApp.getProperties("addQiCheZhan");
+		String addQiCheZhan = "addQiCheZhan";
 		return piaoWuWebApp.getTestDataForTestNG(addQiCheZhan);
 	}
 	

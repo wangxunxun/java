@@ -64,8 +64,6 @@ public class UI extends Initial{
 
 	public WebElement findElement(String page,String name){
 
-
-		Map<String, Map<String, Map<String, String>>> elementData = getElementData();
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
@@ -99,7 +97,6 @@ public class UI extends Initial{
 	
     public void waitDisplay(String page,String name){
 
-    	Map<String, Map<String, Map<String, String>>> elementData = getElementData();
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){

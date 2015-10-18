@@ -185,6 +185,11 @@ public class WebApp extends UI{
 		System.setProperty("webdriver.chrome.driver", dirs);
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
+    	elementData =getElementData();
+    	if(getProperties("testCaseSheet")!=null){
+    		testCaseData = getTestCaseData();
+    	}
+    	
     }
      
     public void switchToFrame(String nameOrId){

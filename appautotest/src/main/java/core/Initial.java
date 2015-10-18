@@ -46,8 +46,8 @@ public class Initial {
 	protected String testExcelPath = null;
 	protected String elementSheet = null;
 	protected String testCaseSheet = null;
-
-
+	protected Map<String, Map<String, Map<String, String>>> elementData;
+	protected Map<String, Object> testCaseData;
 
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
@@ -61,6 +61,9 @@ public class Initial {
 	}
 	
 	public List<Map<String, String>> getTestData(String testExcelPath,String testDataSheet){
+		if (configFileName != null){
+			testExcelPath = getProperties("testExcelPath");
+		}
 		ReadTestData readtestdata = new ReadTestData();
 		List<Map<String, String>> data = readtestdata.getTestData(testExcelPath, testDataSheet);
 		return data;
@@ -114,9 +117,17 @@ public class Initial {
 	}
 	
 	public String getProperties(String name){
-		return CommonTools.getProperties(configFileName, name);
+		if(configFileName!=null){
+			return CommonTools.getProperties(configFileName, name);
+		}
+		return null;
 	}
 
+	public String getProperties(String configFileName, String name){
+
+		return CommonTools.getProperties(configFileName, name);
+
+	}
 	
 
 
