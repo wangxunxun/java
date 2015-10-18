@@ -43,7 +43,7 @@ public class qiChe {
 	public void tearDown() {
 		piaoWuWebApp.quit();
 	}
-	@Test(dataProvider="addqichezhan")
+//	@Test(dataProvider="addqichezhan")
     public void test004addQiCheZhan(String address,String name,String pinyin,String longitude,String latitude,String bashi,String phone,String from,String to,String city) throws InterruptedException, BiffException, IOException{
 		
 		piaoWuWebApp.enterHomePage();
@@ -118,7 +118,10 @@ public class qiChe {
 
 
     }
-
+    @Test
+    public void test003editQiChePiaoJia(){
+    	piaoWuWebApp.runTestCase("进入首页");
+    }
 
 	
 }

@@ -2,6 +2,8 @@ package base;
 import java.awt.Robot;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -248,4 +250,80 @@ public class WebApp extends UI{
     public void clearByXpath(String xpathExpression){
     	driver.findElement(By.xpath(xpathExpression)).clear();
     }
+    
+	   @SuppressWarnings({ "unchecked" })
+	   public void runTestCase(String testCase){
+
+
+			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
+			String page = null;
+			String name = null;	   
+			
+			for (int i = 0;i <cases.size();i++){
+
+				String action = cases.get(i).get("Action");
+				String element = cases.get(i).get("Element");
+				String value = cases.get(i).get("Value");
+				String actual = cases.get(i).get("Actual");
+				String expected = cases.get(i).get("Expected");
+				String row = cases.get(i).get("row");
+				int rowin=Integer.parseInt(row);
+
+				if (element !=""){
+				String[] sourceStrArray = element.split("/");
+				page = sourceStrArray[0];
+				name = sourceStrArray[1];
+				}
+
+				if (action.equals("click")){
+					clickElement(page, name);
+					writeResult(rowin, 6, "P");
+
+				}
+				else if (action.equals("sleep")){
+					int v=Integer.parseInt(value);
+					CommonTools.sleep(v);
+					writeResult(rowin, 6, "P");
+
+				}
+				else if (action.equals("waitDisplay")){
+					waitDisplay(page, name);
+					writeResult(rowin, 6, "P");
+
+				}
+
+
+
+				else if (action.equals("sendKey")){
+					sendKeys(page, name, value);
+					writeResult(rowin, 6, "P");
+
+				}
+				else if (action.equals("assert")){
+					actual = getElementText(page, name);
+					assertEquals(actual, expected);
+					writeResult(rowin, 6, "P");
+
+					
+				}
+				else if (action.equals("get")){
+					get(value);
+
+					
+				}
+				else if (action.equals("runTestCase")){
+					runTestCase(value);
+					writeResult(rowin, 6, "P");
+
+				}
+
+
+
+				else{
+					CommonTools.log("Can not run the action");
+
+				}
+
+			}
+	   }
 }

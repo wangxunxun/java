@@ -5,7 +5,7 @@
     <classes>
       <class name="testTicketWeb.qiChe">
         <methods>
-          <include name="test004addQiCheZhan" invocation-numbers="0 1 2 3 4 5"/>
+          <include name="test003editQiChePiaoJia"/>
           <include name="setUp"/>
           <include name="tearDown"/>
         </methods>
