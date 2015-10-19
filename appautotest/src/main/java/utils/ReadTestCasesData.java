@@ -93,7 +93,6 @@ public class ReadTestCasesData {
 		}
 		tabledata.add(testCases);
 		tabledata.add(actions);	
-		CommonTools.log(tabledata);
 		return tabledata;
 		
 		
@@ -173,7 +172,6 @@ public class ReadTestCasesData {
 		for(int j =0;j<real.size()-1;j++){
 			testData.put((String) tabledata0.get(j), data.get(j));
 		}
-		CommonTools.log(testData);
 		return testData;
 		}
 

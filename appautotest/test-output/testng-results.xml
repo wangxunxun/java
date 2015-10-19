@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="85321" started-at="2015-10-18T13:56:12Z" finished-at="2015-10-18T13:57:37Z">
+  <suite name="Default suite" duration-ms="59137" started-at="2015-10-19T02:21:36Z" finished-at="2015-10-19T02:22:35Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="85321" started-at="2015-10-18T13:56:12Z" finished-at="2015-10-18T13:57:37Z">
+    <test name="Default test" duration-ms="59137" started-at="2015-10-19T02:21:36Z" finished-at="2015-10-19T02:22:35Z">
       <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@3ac3fd8b]" name="setUp" is-config="true" duration-ms="3059" started-at="2015-10-18T21:56:12Z" finished-at="2015-10-18T21:56:15Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@7a0ac6e3]" name="setUp" is-config="true" duration-ms="3279" started-at="2015-10-19T10:21:36Z" finished-at="2015-10-19T10:21:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test003editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@3ac3fd8b]" name="test003editQiChePiaoJia" duration-ms="80672" started-at="2015-10-18T21:56:15Z" finished-at="2015-10-18T21:57:36Z">
+        <test-method status="PASS" signature="test003editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@7a0ac6e3]" name="test003editQiChePiaoJia" duration-ms="55174" started-at="2015-10-19T10:21:40Z" finished-at="2015-10-19T10:22:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test003editQiChePiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@3ac3fd8b]" name="tearDown" is-config="true" duration-ms="1578" started-at="2015-10-18T21:57:36Z" finished-at="2015-10-18T21:57:37Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@7a0ac6e3]" name="tearDown" is-config="true" duration-ms="668" started-at="2015-10-19T10:22:35Z" finished-at="2015-10-19T10:22:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -276,6 +276,7 @@ public class WebApp extends UI{
 
 			if (action.equals("click")){
 				clickElement(page, name);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
 				writeScript(rowin, 9, script);
@@ -285,6 +286,7 @@ public class WebApp extends UI{
 			else if (action.equals("sleep")){
 				int v=Integer.parseInt(value);
 				CommonTools.sleep(v);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = "CommonTools.sleep("+v+");";
 				writeScript(rowin, 9, script);
@@ -292,12 +294,14 @@ public class WebApp extends UI{
 			}
 			else if (action.equals("waitDisplay")){
 				waitDisplay(page, name);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
 				writeScript(rowin, 9, script);
 			}
 			else if (action.equals("clear")){
 				clear(page, name);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
 				writeScript(rowin, 9, script);
@@ -306,6 +310,7 @@ public class WebApp extends UI{
 
 			else if (action.equals("sendKey")){
 				sendKeys(page, name, value);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
 				writeScript(rowin, 9, script);
@@ -315,6 +320,7 @@ public class WebApp extends UI{
 			else if (action.equals("assert")){
 				actual = getElementText(page, name);
 				assertEquals(actual, expected);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
 				writeScript(rowin, 9, script);
@@ -322,6 +328,7 @@ public class WebApp extends UI{
 			}
 			else if (action.equals("get")){
 				get(value);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"get(\""+value+"\");";
 				writeScript(rowin, 9, script);
@@ -329,12 +336,14 @@ public class WebApp extends UI{
 			}
 			else if (action.equals("switchToFrame")){
 				switchToFrame(value);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");				
 				String script = appClass+"."+"switchToFrame(\""+value+"\");";
 				writeScript(rowin, 9, script);
 			}
 			else if (action.equals("runTestCase")){
 				runTestCase(value);
+				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"runTestCase(\""+value+"\");";
 				writeScript(rowin, 9, script);

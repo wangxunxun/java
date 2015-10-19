@@ -50,6 +50,8 @@ public class Initial {
 	protected Map<String, Object> testCaseData;
 	protected String appClass;
 	protected boolean writeScript;
+	protected boolean writeResult;
+	protected boolean logResult;
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		if (configFileName != null){
@@ -92,7 +94,7 @@ public class Initial {
 		
 	}
 	
-	protected void writeResult(Integer row,Integer cow,String result){
+	protected void writeTable(Integer row,Integer cow,String content){
 		if (configFileName != null){
 			testExcelPath = getProperties("testExcelPath");
 			testCaseSheet = getProperties("testCaseSheet");
@@ -100,7 +102,7 @@ public class Initial {
 		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {
 			try {
-				writeTestResult.write(row, cow, result);
+				writeTestResult.write(row, cow, content);
 			} catch (BiffException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -129,20 +131,47 @@ public class Initial {
 		return CommonTools.getProperties(configFileName, name);
 
 	}
-	
 
+	protected void writeResult(Integer row,Integer cow,String result){
+		if(configFileName !=null){
+			if (getProperties("writeResult").matches("true")){
+				writeTable(row, cow, result);
+			}
+
+		}
+		else{
+			if(writeResult==true){
+				writeTable(row, cow, result);
+			}
+		}
+	}
+	protected void logResult(Integer row){
+		if(configFileName !=null){
+			if (getProperties("logResult").matches("true")){
+				String content = "The "+row+"th case is pass.";
+				CommonTools.log(content);
+			}
+
+		}
+		else{
+			if(logResult==true){
+				String content = "The "+row+"th case is pass.";
+				CommonTools.log(content);
+			}
+		}
+	}
 	
 	protected void writeScript(Integer row,Integer cow,String script){
 
 		if(configFileName !=null){
 			if (getProperties("writeScript").matches("true")){
-				writeResult(row, cow, script);
+				writeTable(row, cow, script);
 			}
 
 		}
 		else{
 			if(writeScript==true){
-				writeResult(row, cow, script);
+				writeTable(row, cow, script);
 			}
 		}
 	}

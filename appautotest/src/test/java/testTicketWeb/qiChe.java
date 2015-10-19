@@ -141,23 +141,6 @@ public class qiChe {
     	CommonTools.sleep(10000);*/
 
 
-    	piaoWuWebApp.get("http://106.185.47.124:5000/Server/Auth/Login?next=%2F");
-    	piaoWuWebApp.sendKeys("登录页","登录输入框","admin");
-    	piaoWuWebApp.waitDisplay("登录页","密码输入框");
-    	piaoWuWebApp.sendKeys("登录页","密码输入框","admin");
-    	piaoWuWebApp.assertEquals(piaoWuWebApp.getElementText("登录页","密码输入框"),"");
-    	piaoWuWebApp.clickElement("登录页","登录");
-    	CommonTools.sleep(2000);
-    	piaoWuWebApp.waitDisplay("侧边栏","长途售票管理");
-    	piaoWuWebApp.clickElement("侧边栏","长途售票管理");
-    	piaoWuWebApp.waitDisplay("侧边栏","汽车车站维护");
-    	piaoWuWebApp.clickElement("侧边栏","汽车车站维护");
-    	piaoWuWebApp.waitDisplay("汽车车站维护","添加车站");
-    	piaoWuWebApp.clickElement("汽车车站维护","添加车站");
-    	piaoWuWebApp.switchToFrame("xubox_iframe1");
-    	piaoWuWebApp.sendKeys("汽车-添加车站","车站地址","wrewrewrwrrrwrewr");
-    	piaoWuWebApp.clear("汽车-添加车站","车站地址");
-    	CommonTools.sleep(10000);
 
 
     	
