@@ -401,34 +401,52 @@ public class AndroidApp extends UI{
 
 				if (action.equals("click")){
 					clickElement(page, name);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
 					CommonTools.sleep(v);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = "CommonTools.sleep("+v+");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("waitDisplay")){
 					waitDisplay(page, name);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("tap")){
 					tabElement(page, name);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"tap(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("longTap")){
 					longTabElement(page, name);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"longTap(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("back")){
 					try {
 						clickBack();
-						writeResult(rowin, 6, "P");
+						logResult(rowin);
+						writeResult(rowin, 8, "P");
+						String script = appClass+"."+"clickBack();";
+						writeScript(rowin, 9, script);
 
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -438,7 +456,10 @@ public class AndroidApp extends UI{
 				else if (action.equals("enter")){
 					try {
 						clickEnter();
-						writeResult(rowin, 6, "P");
+						logResult(rowin);
+						writeResult(rowin, 8, "P");
+						String script = appClass+"."+"clickEnter();";
+						writeScript(rowin, 9, script);
 
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -448,7 +469,10 @@ public class AndroidApp extends UI{
 				else if (action.equals("home")){
 					try {
 						clickHome();
-						writeResult(rowin, 6, "P");
+						logResult(rowin);
+						writeResult(rowin, 8, "P");
+						String script = appClass+"."+"clickHome();";
+						writeScript(rowin, 9, script);
 
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -458,7 +482,10 @@ public class AndroidApp extends UI{
 				else if (action.equals("menu")){
 					try {
 						clickMenu();
-						writeResult(rowin, 6, "P");
+						logResult(rowin);
+						writeResult(rowin, 8, "P");
+						String script = appClass+"."+"clickMenu();";
+						writeScript(rowin, 9, script);
 
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
@@ -467,40 +494,61 @@ public class AndroidApp extends UI{
 				}
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"swipeOfType(\""+value+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("sendKey")){
 					sendKeys(page, name, value);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("assert")){
 					actual = getElementText(page, name);
 					assertEquals(actual, expected);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
+					writeScript(rowin, 9, script);
 
 					
 				}
 				else if (action.equals("runTestCase")){
 					runTestCase(value);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"runTestCase(\""+value+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("startActivity")){
 					startActivity(appPackage, value);
-					writeResult(rowin, 6, "P");
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"startActivity(\""+appPackage+"\""+",\""+ value+"\");";
+					writeScript(rowin, 9, script);
 
 
 				}
 				else if (action.equals("swipe")){
 					swipeElement(page, name);
-
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"swipeElement(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 				else if (action.equals("scrollToClick")){
 					scrollToClick(value);
-
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"scrollToClick(\""+value+"\");";
+					writeScript(rowin, 9, script);
 
 				}
 
