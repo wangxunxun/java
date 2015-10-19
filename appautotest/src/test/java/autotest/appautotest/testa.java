@@ -46,7 +46,8 @@ public class testa{
     @Test
     public void login(){
 
-    	ticketApp.runTestCase("登录");
+
+//    	ticketApp.runTestCase("登录");
 
 
     }

@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18769" started-at="2015-10-19T06:26:23Z" finished-at="2015-10-19T06:26:42Z">
+  <suite name="Default suite" duration-ms="67441" started-at="2015-10-19T14:00:05Z" finished-at="2015-10-19T14:01:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18769" started-at="2015-10-19T06:26:23Z" finished-at="2015-10-19T06:26:42Z">
-      <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@7a0ac6e3]" name="setUp" is-config="true" duration-ms="3399" started-at="2015-10-19T14:26:23Z" finished-at="2015-10-19T14:26:26Z">
+    <test name="Default test" duration-ms="67441" started-at="2015-10-19T14:00:05Z" finished-at="2015-10-19T14:01:13Z">
+      <class name="autotest.appautotest.testa">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="setUp" is-config="true" duration-ms="27847" started-at="2015-10-19T22:00:05Z" finished-at="2015-10-19T22:00:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test003editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@7a0ac6e3]" name="test003editQiChePiaoJia" duration-ms="14666" started-at="2015-10-19T14:26:26Z" finished-at="2015-10-19T14:26:41Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="login" duration-ms="34499" started-at="2015-10-19T22:00:33Z" finished-at="2015-10-19T22:01:08Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test003editQiChePiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@7a0ac6e3]" name="tearDown" is-config="true" duration-ms="686" started-at="2015-10-19T14:26:41Z" finished-at="2015-10-19T14:26:42Z">
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="tearDown" is-config="true" duration-ms="5074" started-at="2015-10-19T22:01:08Z" finished-at="2015-10-19T22:01:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testTicketWeb.qiChe -->
+      </class> <!-- autotest.appautotest.testa -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
