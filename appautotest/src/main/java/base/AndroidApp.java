@@ -440,6 +440,13 @@ public class AndroidApp extends UI{
 					writeScript(rowin, 9, script);
 
 				}
+				else if (action.equals("clear")){
+					clear(page, name);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
+				}
 				else if (action.equals("back")){
 					try {
 						clickBack();
