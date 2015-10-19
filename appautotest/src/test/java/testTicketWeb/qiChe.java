@@ -144,8 +144,7 @@ public class qiChe {
 
 
     	
-    	
-    	piaoWuWebApp.runTestCase("进入首页");
+    	piaoWuWebApp.runTestCase("删除检票员");
     }
 
 	

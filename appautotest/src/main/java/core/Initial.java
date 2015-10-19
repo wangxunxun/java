@@ -148,14 +148,14 @@ public class Initial {
 	protected void logResult(Integer row){
 		if(configFileName !=null){
 			if (getProperties("logResult").matches("true")){
-				String content = "The "+row+"th case is pass.";
+				String content = "The "+row+"th step is pass.";
 				CommonTools.log(content);
 			}
 
 		}
 		else{
 			if(logResult==true){
-				String content = "The "+row+"th case is pass.";
+				String content = "The "+row+"th step is pass.";
 				CommonTools.log(content);
 			}
 		}
