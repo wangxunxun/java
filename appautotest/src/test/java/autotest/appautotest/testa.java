@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 
 import initial.ticketAndroid;
-import utils.CommonTools;
+
 
 
 public class testa{

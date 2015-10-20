@@ -1,15 +1,10 @@
 package initial;
 
+import base.IOSApp;
 
-import base.AndroidApp;
-
-
-public class ticketAndroid extends AndroidApp{
-
-	
-
+public class ticketIOS extends IOSApp {
 	public void initialTestData(){
-		configFileName = "/config/ticketSystem/configAndroid.properties";
+		configFileName = "/config/ticketSystem/configIOS.properties";
 //		apkName = getProperties("apkName");
 //		appPackage = getProperties("appPackage");
 //		mainActivity = getProperties("mainActivity");
@@ -22,5 +17,4 @@ public class ticketAndroid extends AndroidApp{
 
 
 	}
-
 }
