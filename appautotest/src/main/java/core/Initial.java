@@ -39,8 +39,18 @@ public class Initial {
 	protected String appPackage = null;
 	protected String mainActivity = null;
 	
+	//IOS配置信息
+	protected String app;
+	protected String platformVersion;
+	protected String platform;
+	protected String platformName;
+	protected String browserName;
+
+
+
 	//截屏存放目录
-	protected String dirName = CommonTools.setPath("/screenshot/");
+//	protected String dirName = CommonTools.setPath("/screenshot/");
+	protected String screenPath;
 	
 	//测试数据变量
 	protected String testExcelPath = null;
@@ -91,6 +101,19 @@ public class Initial {
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
+		
+	}
+	
+	protected String getScreenPath(){
+		String path =null;
+		if (configFileName != null){
+			path = getProperties("screenPath");
+			if(path!=null){
+				return CommonTools.setPath(path);
+			}
+						
+		}
+		return CommonTools.setPath("/screenshot/");
 		
 	}
 	

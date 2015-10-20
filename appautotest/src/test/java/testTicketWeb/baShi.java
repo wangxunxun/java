@@ -5,7 +5,7 @@ import initial.piaoWuWebTest;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
-
+import utils.CommonTools;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -58,7 +58,7 @@ public class baShi {
 
 
 	
-	@Test(dataProvider="addBaShiStation")
+//	@Test(dataProvider="addBaShiStation")
     public void test001addBaShiStation(String name,String longitude,String latitude) throws InterruptedException, BiffException, IOException{
 
 		piaoWuWebApp.enterHomePage();
@@ -130,23 +130,26 @@ public class baShi {
 
     }
 
-//	@Test
+	@Test
     public void test004editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
 
 		String piaoJia = piaoWuWebApp.getProperties("baShiPiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaoJia, 6);
+		
 		piaoWuWebApp.enterHomePage();
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
 
+		
 		piaoWuWebApp.waitDisplayByCss(newPiaoJia);
 		piaoWuWebApp.clickByCss(newPiaoJia);
 //		piaoWuWebApp.waitDisplay("巴士线路维护", "票价");
 //		piaoWuWebApp.clickElement("巴士线路维护", "票价");
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
-
+		
 		for (int i=1;i<=105;i++){
 			String loc1 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(3) > input";
 			String loc2 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(4) > input";

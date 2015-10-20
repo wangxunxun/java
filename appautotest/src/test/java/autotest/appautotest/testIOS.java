@@ -13,7 +13,7 @@ public class testIOS {
 		app.initialTestData();
 		
 
-		app.setUp();
+		app.runIOSApp();;
 
 
 	}

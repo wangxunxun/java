@@ -66,12 +66,12 @@ public class WebApp extends UI{
 
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-	  	if (!(new File(dirName).isDirectory())) {  // 判断是否存在该目录
-	  		new File(dirName).mkdir();  // 如果不存在则新建一个目录
+	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
+	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		String filepath = dirName+CommonTools.getCurrentTime()+ "_"+ filename+  ".jpg";
+		String filepath = screenPath+CommonTools.getCurrentTime()+ "_"+ filename+  ".jpg";
 		try {
-			System.out.println("save snapshot path is:"+dirName+filename);
+			System.out.println("save snapshot path is:"+screenPath+filename);
 			FileUtils.copyFile(scrFile, new File(filepath));
 		   	} 
 		catch (IOException e) {
@@ -190,6 +190,9 @@ public class WebApp extends UI{
     	elementData =getElementData();
 
 		testCaseData = getTestCaseData();
+		screenPath = getScreenPath();
+		
+
 
     	
     }

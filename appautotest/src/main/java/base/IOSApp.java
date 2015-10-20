@@ -3,32 +3,47 @@ package base;
 
 
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
+import utils.CommonTools;
 import core.UI;
 
 public class IOSApp extends UI {
 
 	public static IOSDriver<IOSElement> driver;
 
-  	public void setUp(){
+  	public void runIOSApp(){
 		    // set up appium
+    	if (configFileName != null){
+    		app = getProperties("app");
+    		deviceName = getProperties("deviceName");
+    		platformVersion = getProperties("platformVersion");
+    		platform = getProperties("platform");
+    		platformName = getProperties("platformName");
+    		browserName = getProperties("browserName");
+    	}
         DesiredCapabilities capabilities = new DesiredCapabilities();
     
-        capabilities.setCapability("app", "nmi.hk.com.nextmedia.magazine.nextmediaplus.qa");
-        capabilities.setCapability("deviceName", "iPhone Simulator");
-        capabilities.setCapability("platformVersion", "7.1");
-        capabilities.setCapability("platform", "MAC");
-        capabilities.setCapability("platformName", "iOS");
+        capabilities.setCapability("app", app);
+        capabilities.setCapability("deviceName", deviceName);
+        capabilities.setCapability("platformVersion", platformVersion);
+        capabilities.setCapability("platform", platform);
+        capabilities.setCapability("platformName", platformName);
 
-        capabilities.setCapability("browserName", "");
+        capabilities.setCapability("browserName", browserName);
 
         try {
 			driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
@@ -40,6 +55,7 @@ public class IOSApp extends UI {
         elementData = getElementData();
 
     	testCaseData = getTestCaseData();
+    	screenPath = getScreenPath();
   	}
   	public void quit(){
 		driver.quit();
@@ -83,4 +99,192 @@ public class IOSApp extends UI {
 		}
 		return null;
 	}
+	
+    public void swipeOfType(String type) {
+        int windowlenX = driver.manage().window().getSize().getWidth();
+        int windowlenY = driver.manage().window().getSize().getHeight();
+        String swipeLeft = "left";
+        String swipeLeftSide = "leftSide";
+        String swipeRight = "right";
+        String swipeRightSide = "rightSide";
+        String swipeUp = "up";
+        String swipeTop = "top";
+        String swipeDown = "down";
+        String swipeBottom = "bottom";
+
+        // Sliding screen to the left
+        if (type.equalsIgnoreCase(swipeLeft)) {
+            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
+                    3000);
+        }
+
+        // From the left of screen to began to slip
+        if (type.equalsIgnoreCase(swipeLeftSide)) {
+
+            driver.swipe(1, (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5), 3000);
+        }
+
+        // Sliding screen to the right
+        if (type.equalsIgnoreCase(swipeRight)) {
+
+            driver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5),
+                    3000);
+        }
+
+        // From the right of screen to began to slip
+        if (type.equalsIgnoreCase(swipeRightSide)) {
+
+            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
+                    3000);
+        }
+
+        // Screen upward sliding
+        if (type.equalsIgnoreCase(swipeUp)) {
+
+            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.4),
+                    3000);
+        }
+
+        // From the top of screen to began to slip
+        if (type.equalsIgnoreCase(swipeTop)) {
+
+            driver.swipe((int) (windowlenX * 0.5), 0, (int) (windowlenX * 0.5), (int) (windowlenY * 0.8), 3000);
+        }
+
+        // Slide down the screen
+        if (type.equalsIgnoreCase(swipeDown)) {
+
+            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5), (int) (windowlenY * 0.9),
+                    3000);
+        }
+
+        // From the bottom of screen to began to slip
+        if (type.equalsIgnoreCase(swipeBottom)) {
+
+            driver.swipe((int) (windowlenX * 0.5), (int)(windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.1), 3000);
+        }
+
+    }
+    
+	public void getScreen(String filename){ 
+		File scrFile = driver.getScreenshotAs(OutputType.FILE);
+
+	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
+	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
+	  	}
+		try {
+			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	public void getScreen(){ 
+		getScreen("");
+	}
+	
+	   @SuppressWarnings({ "unchecked" })
+	   public void runTestCase(String testCase){
+	    	if(configFileName !=null){
+	    		appClass = getProperties("appClass");
+	    	}
+	    	if(appClass ==null){
+	    		appClass = "app";
+	    	}
+
+			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
+			
+			for (int i = 0;i <cases.size();i++){
+
+				String action = cases.get(i).get("Action");
+				String page = cases.get(i).get("Page");
+				String name = cases.get(i).get("Element");
+				String value = cases.get(i).get("Value");
+				String actual = cases.get(i).get("Actual");
+				String expected = cases.get(i).get("Expected");
+				String row = cases.get(i).get("row");
+				int rowin=Integer.parseInt(row);
+
+
+				if (action.equals("click")){
+					clickElement(page, name);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
+
+				}
+				else if (action.equals("sleep")){
+					int v=Integer.parseInt(value);
+					CommonTools.sleep(v);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = "CommonTools.sleep("+v+");";
+					writeScript(rowin, 9, script);
+
+				}
+				else if (action.equals("waitDisplay")){
+					waitDisplay(page, name);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
+
+				}
+
+
+				else if (action.equals("clear")){
+					clear(page, name);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
+					writeScript(rowin, 9, script);
+				}
+
+
+
+				else if (action.equals("swipeOfType")){
+					swipeOfType(value);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"swipeOfType(\""+value+"\");";
+					writeScript(rowin, 9, script);
+
+				}
+				else if (action.equals("sendKey")){
+					sendKeys(page, name, value);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
+					writeScript(rowin, 9, script);
+
+				}
+				else if (action.equals("assert")){
+					actual = getElementText(page, name);
+					assertEquals(actual, expected);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
+					writeScript(rowin, 9, script);
+
+					
+				}
+				else if (action.equals("runTestCase")){
+					runTestCase(value);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"runTestCase(\""+value+"\");";
+					writeScript(rowin, 9, script);
+
+				}
+
+
+				else{
+					CommonTools.log("Can not run the action");
+
+				}
+
+			}
+	   }
 }

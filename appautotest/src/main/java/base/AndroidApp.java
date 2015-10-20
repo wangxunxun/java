@@ -51,7 +51,7 @@ public class AndroidApp extends UI{
         elementData = getElementData();
 
     	testCaseData = getTestCaseData();
-
+    	screenPath = getScreenPath();
 
         
     }
@@ -197,37 +197,47 @@ public class AndroidApp extends UI{
 
     }
     
-    public void clickEnter() throws IOException{
+    public void clickEnter(){
     	executeAdbShell("adb shell input keyevent 66");
     }
     
-    public void clickBack() throws IOException{
+    public void clickBack(){
     	executeAdbShell("adb shell input keyevent 4");
     }
     
-    public void clickHome() throws IOException{
+    public void clickHome(){
     	executeAdbShell("adb shell input keyevent 3");
     }
     
-    public void clickMenu() throws IOException{
+    public void clickMenu(){
     	executeAdbShell("adb shell input keyevent 1");
     }
     
 
     
-    public void executeAdbShell(String adbshell) throws IOException{
-    	Runtime.getRuntime().exec(adbshell);
+    public void executeAdbShell(String adbshell){
+    	try {
+			Runtime.getRuntime().exec(adbshell);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     
 
-	public void getScreen(String filename) throws IOException{ 
+	public void getScreen(String filename){ 
 		File scrFile = driver.getScreenshotAs(OutputType.FILE);
 
-	  	if (!(new File(dirName).isDirectory())) {  // 判断是否存在该目录
-	  		new File(dirName).mkdir();  // 如果不存在则新建一个目录
+	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
+	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		FileUtils.copyFile(scrFile, new File(dirName+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));		
+		try {
+			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 	
 	public void getScreen() throws IOException{ 
@@ -453,56 +463,32 @@ public class AndroidApp extends UI{
 					writeScript(rowin, 9, script);
 				}
 				else if (action.equals("back")){
-					try {
-						clickBack();
-						logResult(rowin);
-						writeResult(rowin, 8, "P");
-						String script = appClass+"."+"clickBack();";
-						writeScript(rowin, 9, script);
-
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					clickBack();
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clickBack();";
+					writeScript(rowin, 9, script);
 				}
 				else if (action.equals("enter")){
-					try {
-						clickEnter();
-						logResult(rowin);
-						writeResult(rowin, 8, "P");
-						String script = appClass+"."+"clickEnter();";
-						writeScript(rowin, 9, script);
-
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					};
+					clickEnter();
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clickEnter();";
+					writeScript(rowin, 9, script);;
 				}
 				else if (action.equals("home")){
-					try {
-						clickHome();
-						logResult(rowin);
-						writeResult(rowin, 8, "P");
-						String script = appClass+"."+"clickHome();";
-						writeScript(rowin, 9, script);
-
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					clickHome();
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clickHome();";
+					writeScript(rowin, 9, script);
 				}
 				else if (action.equals("menu")){
-					try {
-						clickMenu();
-						logResult(rowin);
-						writeResult(rowin, 8, "P");
-						String script = appClass+"."+"clickMenu();";
-						writeScript(rowin, 9, script);
-
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					clickMenu();
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"clickMenu();";
+					writeScript(rowin, 9, script);
 				}
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
