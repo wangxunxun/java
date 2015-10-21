@@ -172,7 +172,7 @@ public class AndroidApp extends UI{
         // Screen upward sliding
         if (type.equalsIgnoreCase(swipeUp)) {
 
-            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.4),
+            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.8), (int) (windowlenX * 0.5), (int) (windowlenY * 0.4),
                     3000);
         }
 
@@ -391,6 +391,33 @@ public class AndroidApp extends UI{
 		   driver.startActivity(appPackage, appActivity);
 	   }
 	   
+	   public void slideToElement(String page,String name) {
+
+
+		   try {
+
+
+			   waitDisplay(page, name);
+			   CommonTools.log("found");
+
+		   
+		   }catch(Exception e){
+			   CommonTools.log("no found");
+
+			   swipeOfType("up");
+
+			   waitDisplay(page, name);
+			   CommonTools.log("found");
+			   
+
+				   
+		   }
+
+		   
+	   }
+	   
+	   
+	   
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
 	    	if(configFileName !=null){
@@ -546,6 +573,14 @@ public class AndroidApp extends UI{
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"scrollToClick(\""+value+"\");";
+					writeScript(rowin, 9, script);
+
+				}
+				else if (action.equals("slideToElement")){
+					slideToElement(page, name);
+					logResult(rowin);
+					writeResult(rowin, 8, "P");
+					String script = appClass+"."+"slideToElement(\""+page+"\",\""+name+"\");";
 					writeScript(rowin, 9, script);
 
 				}

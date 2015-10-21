@@ -47,7 +47,7 @@ public class testa{
     public void login(){
 
 
-//    	ticketApp.runTestCase("登录");
+    	ticketApp.runTestCase("预约包车");
 
 
 
