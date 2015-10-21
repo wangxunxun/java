@@ -26,21 +26,22 @@ public class testIOS {
     
     @Test
     public void login(){
-    	app.clickElement("启动页", "略过");
-    	app.waitDisplay("启动页", "关闭广告");
-    	CommonTools.sleep(1000);
-    	app.clickElement("启动页", "关闭广告");
+//    	app.waitDisplay("启动页", "略过");
+//    	app.clickElement("启动页", "略过");
+//    	app.waitDisplay("启动页", "关闭广告");
+//    	CommonTools.sleep(1000);
+//    	app.clickElement("启动页", "关闭广告");
+//
+//    	app.waitDisplay("首页", "菜单");
+//    	CommonTools.sleep(1000);
+//    	app.clickElement("首页", "菜单");
+//    	
+//    	app.waitDisplay("菜单", "爆料");
+//    	CommonTools.sleep(1000);
+//    	app.clickElement("菜单", "爆料");
+//    	CommonTools.sleep(10000);
 
-    	app.waitDisplay("首页", "菜单");
-    	CommonTools.sleep(1000);
-    	app.clickElement("首页", "菜单");
-    	
-    	app.waitDisplay("菜单", "爆料");
-    	CommonTools.sleep(1000);
-    	app.clickElement("菜单", "爆料");
-    	CommonTools.sleep(10000);
-
-
+    	app.runTestCase("进入首页");
 
     }
     

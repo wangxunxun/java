@@ -97,30 +97,38 @@ public class UI extends Initial{
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(location)));
+			CommonTools.sleep(500);
 
 		}
 		else if (selecttype.equals("id")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(location)));
+			CommonTools.sleep(500);
 		}
 		else if (selecttype.equals("xpath")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(location)));
+			CommonTools.sleep(500);
 		}
 		else if (selecttype.equals("linktext")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(location)));
+			CommonTools.sleep(500);
 		}
 		else if (selecttype.equals("name")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.name(location)));
+			CommonTools.sleep(500);
 		}
 		else if (selecttype.equals("partiallinktext")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(location)));
+			CommonTools.sleep(500);
 		}
 		else if (selecttype.equals("tagname")){
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(location)));
+			CommonTools.sleep(500);
 		}
 		else if (selecttype.equals("index")){
 			String[] sourceStrArray = location.split(",");
 			String classname = sourceStrArray[0];
 			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className(classname)));
+			CommonTools.sleep(500);
 		}	
 		else {
 			System.out.println("Can not find the element.");
