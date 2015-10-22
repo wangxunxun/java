@@ -5,7 +5,7 @@ import initial.piaoWuWebTest;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
-
+import utils.CommonTools;
 
 import org.testng.annotations.AfterClass;
 
@@ -50,11 +50,12 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.quit();
 	}
 
-//	@Test(dataProvider="addCheLiang")
-    public void addCheLiang(String siJi,String cheDui,String carType,String zuCheType,String car_owner,String phone_number,String seat_num,String max_seat_num,String add_seat_num,String plate_number,String buy_year,String engine_number,String brand  ) throws InterruptedException, BiffException, IOException{
+	@Test(dataProvider="addCheLiang")
+    public void addCheLiang(String siJi,String cheDui,String carType,String car_owner,String phone_number,String seat_num,String max_seat_num,String add_seat_num,String plate_number,String buy_year,String engine_number,String brand  ) throws InterruptedException, BiffException, IOException{
 
 
 		piaoWuWebApp.enterHomePage();
+		piaoWuWebApp.waitDisplay("侧边栏", "车队与车辆管理");
 		piaoWuWebApp.clickElement("侧边栏", "车队与车辆管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "车辆管理");
 		piaoWuWebApp.clickElement("侧边栏", "车辆管理");
@@ -65,7 +66,7 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.sendKeys("添加车辆", "选择司机",siJi); 
 		piaoWuWebApp.sendKeys("添加车辆", "所属车队",cheDui); 
 		piaoWuWebApp.sendKeys("添加车辆", "选择车类型",carType); 
-		piaoWuWebApp.sendKeys("添加车辆", "租车类型",zuCheType); 
+
 		piaoWuWebApp.sendKeys("添加车辆", "车主姓名",car_owner); 
 		piaoWuWebApp.sendKeys("添加车辆", "联系方式",phone_number); 
 		piaoWuWebApp.sendKeys("添加车辆", "乘客数量",seat_num); 
@@ -77,13 +78,15 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.clear("添加车辆", "品牌");
 		piaoWuWebApp.sendKeys("添加车辆", "品牌",brand); 
 		piaoWuWebApp.clickElement("添加车辆", "品牌");
-
 		piaoWuWebApp.clickElement("添加车辆", "提交");
 
+//		piaoWuWebApp.runTestCase("登录");
+		
 
+		
     }
 	
-	@Test(dataProvider="addSiJi")
+//	@Test(dataProvider="addSiJi")
     public void addSiJi(String number,String name,String cheDui,String phone,String xingBie,String idCard,String workNo,String licenseNo,String driverYear,String driverType) throws InterruptedException, BiffException, IOException{
 
 
