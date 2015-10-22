@@ -395,22 +395,12 @@ public class AndroidApp extends UI{
 
 
 		   try {
-
-
-			   waitDisplay(page, name);
-			   CommonTools.log("found");
-
-		   
+			   waitDisplay(page, name);		   
 		   }catch(Exception e){
-			   CommonTools.log("no found");
 
 			   swipeOfType("up");
-
 			   waitDisplay(page, name);
-			   CommonTools.log("found");
-			   
-
-				   
+			 				   
 		   }
 
 		   
