@@ -410,12 +410,13 @@ public class AndroidApp extends UI{
 	   public void slideToElement(String page,String name) {
 		   boolean statu = false;
 		   
-		   for(int i =0;i<5;i++){
+		   for(int i =1;i<5;i++){
 			   statu = verifyDisplay(page, name);
 			   if(statu==true){
 				   break;
 			   }
 			   else{
+				   log("Start to swipe up "+i+" times.");
 				   swipeOfType("up");
 			   }
 		   }	

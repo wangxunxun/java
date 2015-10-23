@@ -214,7 +214,7 @@ public class Initial {
 	}
 	
 	public void sleep(int time){
-		log("Sleep "+time+".");
+		log("Sleep "+time+" ms.");
 		CommonTools.sleep(time);
 	}
 
