@@ -34,7 +34,7 @@ public class Initial {
 	protected boolean unicodeKeyboard = true;
 	protected boolean resetKeyboard = true;
 	protected String deviceName = "meizu";
-	protected Integer waitTime = 20;
+	protected Integer waitTime = 10;
 	protected String apkName = null;
 	protected String appPackage = null;
 	protected String mainActivity = null;
@@ -61,7 +61,7 @@ public class Initial {
 	protected String appClass;
 	protected boolean writeScript;
 	protected boolean writeResult;
-	protected boolean logResult;
+	protected boolean log;
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		if (configFileName != null){
@@ -170,15 +170,29 @@ public class Initial {
 	}
 	protected void logResult(Integer row){
 		if(configFileName !=null){
-			if (getProperties("logResult").matches("true")){
+			if (getProperties("log").matches("true")){
 				String content = "The "+row+"th step is pass.";
 				CommonTools.log(content);
 			}
 
 		}
 		else{
-			if(logResult==true){
+			if(log==true){
 				String content = "The "+row+"th step is pass.";
+				CommonTools.log(content);
+			}
+		}
+	}
+	
+	protected void log(Object content){
+		if(configFileName !=null){
+			if (getProperties("log").matches("true")){
+				CommonTools.log(content);
+			}
+
+		}
+		else{
+			if(log==true){
 				CommonTools.log(content);
 			}
 		}
@@ -198,5 +212,11 @@ public class Initial {
 			}
 		}
 	}
+	
+	public void sleep(int time){
+		log("Sleep "+time+".");
+		CommonTools.sleep(time);
+	}
+
 
 }

@@ -1,6 +1,7 @@
 package core;
 
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -12,24 +13,44 @@ import utils.CommonTools;
 public class UI extends Initial{
     
     public void clickElement(String page,String name){
+    	log("Click the "+name+" element on the "+page+" page.");
     	findElement(page, name).click();
+    	
+    }
+    public void waitToclickElement(String page,String name){
+    	waitDisplay(page, name);
+    	log("Click the "+name+" element on the "+page+" page.");
+    	findElement(page, name).click();
+    	
     }
     
-    public void sendKeys(String page,String name,String value){
+    public void waitToSendKeys(String page,String name,String value){
+    	waitDisplay(page, name);
+    	log("Send the "+value+" to the "+name+" element on the "+page+" page.");
     	findElement(page, name).sendKeys(value);
     }
-    
+    public void sendKeys(String page,String name,String value){
+    	log("Send the "+value+" to the "+name+" element on the "+page+" page.");
+    	findElement(page, name).sendKeys(value);
+    }
+    public void waitToClear(String page,String name){
+    	waitDisplay(page, name);
+    	log("Clear the "+name+" element on the "+page+" page.");
+    	findElement(page, name).clear();
+    }
     public void clear(String page,String name){
+    	log("Clear the "+name+" element on the "+page+" page.");
     	findElement(page, name).clear();
     }
     
     public String getElementText(String page,String name){
+    	log("Get the text of the "+name+" element on the "+page+" page.");
     	String value = findElement(page, name).getText();
     	if(value !=null){
     		return value;
     	}
     	else{
-    		CommonTools.log(name+":No text.");
+    		log("The text is null.");
     	}
     	return null;
     }
@@ -90,48 +111,148 @@ public class UI extends Initial{
 		}
 		return null;
 	}
+	public void waitDisplay(String page,String name){
+		waitDisplay(page, name, 2);
+	}
 	
-    public void waitDisplay(String page,String name){
+	
+	public void waitDisplay(String page,String name,int count){
+		boolean statu = false;
+		for(int i = 0;i<count;i++){
+			statu = verifyDisplay(page, name);
+			if(statu==false){
+				log("Start to find the "+name+" element on the "+page+" page again.");
+				continue;
+			}	
+			else{
+				break;
+			}
+		}	
+		if(statu==false){
+			Assert.fail("Don't find the "+name+" element on the "+page+" page.");
+			
+		}
+
+
+
+
+		
+
+	}
+    public boolean verifyDisplay(String page,String name){
 
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
+		log("To find the "+name+" element on the "+page+" page.");
 		if (selecttype.equals("css")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);			
+			return true;
 
 		}
 		else if (selecttype.equals("id")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.id(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}
+			
+			
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}
 		else if (selecttype.equals("xpath")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}
+
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}
 		else if (selecttype.equals("linktext")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}
+			
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}
 		else if (selecttype.equals("name")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.name(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.name(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}
+			
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}
 		else if (selecttype.equals("partiallinktext")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}
+						
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}
 		else if (selecttype.equals("tagname")){
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(location)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(location)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}			
+
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}
 		else if (selecttype.equals("index")){
 			String[] sourceStrArray = location.split(",");
 			String classname = sourceStrArray[0];
-			wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className(classname)));
-			CommonTools.sleep(500);
+			try {
+				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className(classname)));
+			} catch (Exception e) {
+				// TODO: handle exception
+				log("The "+name+" element on the "+page+" page is not displayed.");
+				return false;
+			}	
+			log("The "+name+" element on the "+page+" page is displayed.");
+			sleep(500);
+			return true;
 		}	
 		else {
-			System.out.println("Can not find the element.");
+			log("Don't support the type.");
+			return false;
 		}
     }
 

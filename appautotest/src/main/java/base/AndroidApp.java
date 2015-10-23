@@ -16,6 +16,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import core.UI;
 
@@ -26,13 +27,14 @@ public class AndroidApp extends UI{
 		 
     public void runAndroidApp(){
         // set up appium
+    	
     	if (configFileName != null){
     		apkName = getProperties("apkName");
     		appPackage = getProperties("appPackage");
     		mainActivity = getProperties("mainActivity");
     	}
 
-
+    	log("Run "+apkName+" app.");
         File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",deviceName);
@@ -145,71 +147,76 @@ public class AndroidApp extends UI{
 
         // Sliding screen to the left
         if (type.equalsIgnoreCase(swipeLeft)) {
+        	log("Swipe left.");
             driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
                     3000);
         }
 
         // From the left of screen to began to slip
         if (type.equalsIgnoreCase(swipeLeftSide)) {
-
+        	log("Swipe left dide.");
             driver.swipe(1, (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5), 3000);
         }
 
         // Sliding screen to the right
         if (type.equalsIgnoreCase(swipeRight)) {
-
+        	log("Swipe right.");
             driver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5),
                     3000);
         }
 
         // From the right of screen to began to slip
         if (type.equalsIgnoreCase(swipeRightSide)) {
-
+        	log("Swipe right side.");
             driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
                     3000);
         }
 
         // Screen upward sliding
         if (type.equalsIgnoreCase(swipeUp)) {
-
+        	log("Swipe up.");
             driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.8), (int) (windowlenX * 0.5), (int) (windowlenY * 0.4),
                     3000);
         }
 
         // From the top of screen to began to slip
         if (type.equalsIgnoreCase(swipeTop)) {
-
+        	log("Swipe top.");
             driver.swipe((int) (windowlenX * 0.5), 0, (int) (windowlenX * 0.5), (int) (windowlenY * 0.8), 3000);
         }
 
         // Slide down the screen
         if (type.equalsIgnoreCase(swipeDown)) {
-
+        	log("Swipe down.");
             driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5), (int) (windowlenY * 0.9),
                     3000);
         }
 
         // From the bottom of screen to began to slip
         if (type.equalsIgnoreCase(swipeBottom)) {
-
+        	log("Swipe bottom.");
             driver.swipe((int) (windowlenX * 0.5), (int)(windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.1), 3000);
         }
 
     }
     
     public void clickEnter(){
+    	log("Click Enter.");
     	executeAdbShell("adb shell input keyevent 66");
     }
     
     public void clickBack(){
+    	log("Click back.");
     	executeAdbShell("adb shell input keyevent 4");
     }
     
     public void clickHome(){
+    	log("Click Home.");
     	executeAdbShell("adb shell input keyevent 3");
     }
     
     public void clickMenu(){
+    	log("Click Menu.");
     	executeAdbShell("adb shell input keyevent 1");
     }
     
@@ -217,6 +224,7 @@ public class AndroidApp extends UI{
     
     public void executeAdbShell(String adbshell){
     	try {
+    		log("executeAdbShell \"" +adbshell +"\".");
 			Runtime.getRuntime().exec(adbshell);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -233,6 +241,7 @@ public class AndroidApp extends UI{
 	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
 	  	}
 		try {
+			log("Get screen.");
 			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -288,7 +297,7 @@ public class AndroidApp extends UI{
 	
 	public void tabElement(String page,String name){
 
-
+		
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("tab")){
@@ -296,7 +305,7 @@ public class AndroidApp extends UI{
 			String x = sourceStrArray[0];
 			String y = sourceStrArray[1];
 			int newx=Integer.parseInt(x);
-			int newy=Integer.parseInt(y);
+			int newy=Integer.parseInt(y);			
 			tab(newx, newy);
 		}
 		else{
@@ -339,12 +348,13 @@ public class AndroidApp extends UI{
 			swipe(startnewx, startnewy, endnewx, endnewy, 1000);
 		}
 		else{
-			System.out.println("Please provide coordinate.");
+			log("Please provide coordinate.");
 		}
 	}
 		
 	   public void quit(){
-	    	driver.quit();
+		   log("Quit "+apkName+" app.");
+		   driver.quit();
 	    }
 	   
 	   public void tab(int fingers, int x, int y, int duration ){
@@ -357,10 +367,12 @@ public class AndroidApp extends UI{
 	   }
 	   
 	   public void tab(int x, int y){
+		   log("Tab ("+x+","+y+").");
 		   tab(1, x, y, 500);
 	   }
 	   
 	   public void longTab(int x, int y){
+		   log("Long tab ("+x+","+y+").");
 		   tab(1, x, y, 3000);
 	   }
 	   
@@ -373,37 +385,44 @@ public class AndroidApp extends UI{
 		   float d = endy/basicWindowy;
 		   int newendx = (int) (c*driver.manage().window().getSize().getWidth());
 		   int newsendy = (int) (d*driver.manage().window().getSize().getHeight());
+		   log("Swipe"+"("+startx+","+starty+","+endx+","+endy+").");
 		   driver.swipe(newstartx, newstarty, newendx, newsendy, duration);
 		   
 	   }
 	   
 	   public void scrollTo(String text){
+		   log("Scroll to "+text+".");
 		   driver.scrollTo(text);
 	   }
 	   
 	   public void scrollToClick(String text){
 		   scrollTo(text);
+		   log("Click "+text+".");
 		   driver.findElementByName(text).click();
 	   }
 	
 	   
 	   public void startActivity(String appPackage,String appActivity){
+		   log("Start to launch activity "+appActivity+".");
 		   driver.startActivity(appPackage, appActivity);
 	   }
 	   
 	   public void slideToElement(String page,String name) {
-
-
-		   try {
-			   waitDisplay(page, name);		   
-		   }catch(Exception e){
-
-			   swipeOfType("up");
-			   waitDisplay(page, name);
-			 				   
-		   }
-
+		   boolean statu = false;
 		   
+		   for(int i =0;i<5;i++){
+			   statu = verifyDisplay(page, name);
+			   if(statu==true){
+				   break;
+			   }
+			   else{
+				   swipeOfType("up");
+			   }
+		   }	
+		   if(statu ==false){
+			   log("Don't find the "+name+" element on the "+page+" page.");
+			   Assert.fail("Don't find the "+name+" element on the "+page+" page.");
+		   }
 	   }
 	   
 	   
@@ -441,10 +460,11 @@ public class AndroidApp extends UI{
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
-					CommonTools.sleep(v);
+					
+					sleep(v);
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
-					String script = "CommonTools.sleep("+v+");";
+					String script = appClass+"."+"sleep("+v+");";
 					writeScript(rowin, 9, script);
 
 				}
@@ -535,6 +555,7 @@ public class AndroidApp extends UI{
 				}
 				else if (action.equals("runTestCase")){
 					runTestCase(value);
+					log("Run the "+value+" test case.");
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"runTestCase(\""+value+"\");";
