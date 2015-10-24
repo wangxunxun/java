@@ -187,9 +187,9 @@ public class IOSApp extends UI {
 	
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
-	    	if(configFileName !=null){
-	    		appClass = getProperties("appClass");
-	    	}
+
+    		appClass = getProperties("appClass");
+
 	    	if(appClass ==null){
 	    		appClass = "app";
 	    	}

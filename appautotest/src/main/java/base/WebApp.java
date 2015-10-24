@@ -197,8 +197,18 @@ public class WebApp extends UI{
 		System.setProperty("webdriver.chrome.driver", dirs);
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
+    	
+    	
+		testExcelPath = getProperties("testExcelPath");
+		elementSheet = getProperties("elementSheet");    	
+		testCaseSheet = getProperties("testCaseSheet");
+    	
     	elementData =getElementData();
 		testCaseData = getTestCaseData();
+		
+		logPath = getlogPath();
+		screenPath = getScreenPath();
+
 
 		
 		log("Start to run the chrome browser.");
@@ -267,9 +277,9 @@ public class WebApp extends UI{
     
     @SuppressWarnings({ "unchecked" })
     public void runTestCase(String testCase){
-    	if(configFileName !=null){
-    		appClass = getProperties("appClass");
-    	}
+
+		appClass = getProperties("appClass");
+
     	if(appClass ==null){
     		appClass = "app";
     	}

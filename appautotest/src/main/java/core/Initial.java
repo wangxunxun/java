@@ -24,7 +24,7 @@ public class Initial {
 	protected WebDriverWait wait; 
 	
 	
-	protected String configFileName;
+	protected String configFileName = null;
 
 	//屏幕分辨率设置
 	protected float basicWindowx =720;
@@ -51,34 +51,36 @@ public class Initial {
 
 	//截屏存放目录
 //	protected String dirName = CommonTools.setPath("/screenshot/");
-	protected String screenPath=getScreenPath();
-	protected String logPath =getlogPath();
+	protected String screenPath;
+	protected String logPath;
 	
 	//测试数据变量
-	protected String testExcelPath = getProperties("testExcelPath");
-	protected String elementSheet = getProperties("elementSheet");
+	protected String testExcelPath = null;
+	protected String elementSheet = null;
 	protected String testCaseSheet = null;
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
+	
+	
 	protected String appClass;
 	protected boolean writeScript;
 	protected boolean writeResult;
 	protected boolean logSwitch;
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			elementSheet = getProperties("elementSheet");
-		}
+
+		testExcelPath = getProperties("testExcelPath");
+		elementSheet = getProperties("elementSheet");
+
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
 		return eledata;
 	}
 	
-	public List<Map<String, String>> getTestData(String testExcelPath,String testDataSheet){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-		}
+	public List<Map<String, String>> getTestData(String testDataSheet){
+
+		testExcelPath = getProperties("testExcelPath");
+
 		ReadTestData readtestdata = new ReadTestData();
 		List<Map<String, String>> data = readtestdata.getTestData(testExcelPath, testDataSheet);
 		return data;
@@ -87,19 +89,19 @@ public class Initial {
 
 	
 	public Object[][] getTestDataForTestNG(String testDataSheet){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-		}
+
+		testExcelPath = getProperties("testExcelPath");
+
 		ReadTestData readtestdata = new ReadTestData();
 		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
 		return data;
 	}
 	
 	protected Map<String, Object> getTestCaseData(){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			testCaseSheet = getProperties("testCaseSheet");
-		}
+
+		testExcelPath = getProperties("testExcelPath");
+		testCaseSheet = getProperties("testCaseSheet");
+
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
@@ -108,35 +110,32 @@ public class Initial {
 	
 	protected String getScreenPath(){
 		String path =null;
-		if (configFileName != null){
-			path = getProperties("screenPath");
-			if(path!=null){
-				return CommonTools.setPath(path);
-			}
-						
+
+		path = getProperties("screenPath");
+		if(path!=null){
+			return CommonTools.setPath(path);
 		}
+
 		return CommonTools.setPath("/screenshot/");
 		
 	}
 	
 	protected String getlogPath(){
-		String path =null;
-		if (configFileName != null){
-			path = getProperties("logPath");
-			if(path!=null){
-				return CommonTools.setPath(path);
-			}
-						
+
+
+		String path = getProperties("logPath");
+		if(path!=null){
+			return CommonTools.setPath(path);
 		}
-		return CommonTools.setPath("/log/");
+		return CommonTools.setPath("/logDefault/");
 		
 	}
 	
 	protected void writeTable(Integer row,Integer cow,String content){
-		if (configFileName != null){
-			testExcelPath = getProperties("testExcelPath");
-			testCaseSheet = getProperties("testCaseSheet");
-		}
+
+		testExcelPath = getProperties("testExcelPath");
+		testCaseSheet = getProperties("testCaseSheet");
+
 		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {
 			try {
@@ -171,12 +170,12 @@ public class Initial {
 	}
 
 	protected void writeResult(Integer row,Integer cow,String result){
-		if(configFileName !=null){
-			if (getProperties("writeResult").matches("true")){
-				writeTable(row, cow, result);
-			}
 
+		if (getProperties("writeResult").matches("true")){
+			writeTable(row, cow, result);
 		}
+
+
 		else{
 			if(writeResult==true){
 				writeTable(row, cow, result);
@@ -184,13 +183,13 @@ public class Initial {
 		}
 	}
 	protected void logResult(Integer row){
-		if(configFileName !=null){
-			if (getProperties("log").matches("true")){
-				String content = "The "+row+"th step is pass.";
-				CommonTools.log(content);
-			}
 
+		if (getProperties("log").matches("true")){
+			String content = "The "+row+"th step is pass.";
+			CommonTools.log(content);
 		}
+
+
 		else{
 			if(logSwitch==true){
 				String content = "The "+row+"th step is pass.";
@@ -200,13 +199,13 @@ public class Initial {
 	}
 	
 	protected void log(String content){
-		if(configFileName !=null){
-			if (getProperties("log").matches("true")){
-				CommonTools.log(content);
-				writeLog(content);
-			}
 
+		if (getProperties("log").matches("true")){
+			CommonTools.log(content);
+			writeLog(content);
 		}
+
+
 		else{
 			if(logSwitch==true){
 				CommonTools.log(content);
@@ -217,12 +216,12 @@ public class Initial {
 	
 	protected void writeScript(Integer row,Integer cow,String script){
 
-		if(configFileName !=null){
-			if (getProperties("writeScript").matches("true")){
-				writeTable(row, cow, script);
-			}
 
+		if (getProperties("writeScript").matches("true")){
+			writeTable(row, cow, script);
 		}
+
+
 		else{
 			if(writeScript==true){
 				writeTable(row, cow, script);
@@ -243,7 +242,6 @@ public class Initial {
 	private void writeLog(String fileName,String content){
 		FileWriter writer;
 		try {
-			CommonTools.log(logPath);
 		  	if (!(new File(logPath).isDirectory())) {  // 判断是否存在该目录
 		  		new File(logPath).mkdir();  // 如果不存在则新建一个目录
 		  	}
