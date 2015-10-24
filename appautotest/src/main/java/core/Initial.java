@@ -24,21 +24,21 @@ public class Initial {
 	protected WebDriverWait wait; 
 	
 	
-	protected String configFileName = null;
+	protected String configFileName;
 
 	//屏幕分辨率设置
-	protected float basicWindowx =720;
-	protected float basicWindowy =1280;	
+	protected int basicWindowX;
+	protected int basicWindowY;	
 	//andorid配置信息
 	protected File classpathRoot = new File(System.getProperty("user.dir"));
 	protected File appDir = new File(classpathRoot, "/testresource/apps");
 	protected boolean unicodeKeyboard = true;
 	protected boolean resetKeyboard = true;
-	protected String androidDeviceName = "meizu";
-	protected Integer waitTime = 10;
-	protected String apkName = null;
-	protected String appPackage = null;
-	protected String mainActivity = null;
+	protected String androidDeviceName;
+	protected int waitTime;
+	protected String apkName;
+	protected String appPackage;
+	protected String mainActivity;
 	
 	//IOS配置信息
 	protected String app;
@@ -61,12 +61,19 @@ public class Initial {
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
 	
-	
 	protected String appClass;
+	protected String testCaseClassName;
 	protected boolean writeScript;
 	protected boolean writeResult;
 	protected boolean logSwitch;
     
+	
+	public void setTestClassName(String value){
+		testCaseClassName = value;
+	}
+	public String getApkName(){
+		return apkName;
+	}
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
@@ -165,7 +172,7 @@ public class Initial {
 		}
 	}
 	
-	protected void log(String content){
+	public void log(String content){
 		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
@@ -185,8 +192,8 @@ public class Initial {
 	}
 
 	
-	private void writeLog(String content){
-		writeLog("3.txt", content);
+	protected void writeLog(String content){
+		writeLog(testCaseClassName+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
 	private void writeLog(String fileName,String content){
@@ -206,6 +213,42 @@ public class Initial {
 		
 	}
 	
+	private String getAppClass(){
+		appClass = getProperties("appClass");
+    	if(appClass ==null){
+    		return "app";
+    	}
+    	return appClass;
+
+	}
+	
+	protected int getBasicWindowX(){
+		String x = getProperties("basicWindowX");
+		
+		if(x!=null){
+			basicWindowX = Integer.parseInt(x);
+			return basicWindowX;
+		}
+		return 720;
+	}
+	
+	protected int getBasicWindowY(){
+		String y = getProperties("basicWindowY");		
+		if(y!=null){
+			basicWindowY = Integer.parseInt(y);
+			return basicWindowY;
+		}
+		return 1280;
+	}
+	protected int getWaitTime(){
+		String time = getProperties("waitTime");		
+		if(time!=null){
+			waitTime = Integer.parseInt(time);
+			return waitTime;
+		}
+		return 10;
+	}
+	
 	protected void initialData() {
 		testExcelPath = getProperties("testExcelPath");
 		elementSheet = getProperties("elementSheet");    	
@@ -213,10 +256,11 @@ public class Initial {
     	
     	elementData =getElementData();
 		testCaseData = getTestCaseData();
+		waitTime = getWaitTime();
 		
 		logPath = getlogPath();
 		screenPath = getScreenPath();
-		appClass = getProperties("appClass");
+		appClass = getAppClass();
 		
 		writeScript = Boolean.parseBoolean(getProperties("writeScript"));
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
@@ -228,6 +272,8 @@ public class Initial {
 		apkName = getProperties("apkName");
 		appPackage = getProperties("appPackage");
 		mainActivity = getProperties("mainActivity");
+		basicWindowX = getBasicWindowX();
+		basicWindowY = getBasicWindowY();
 	}
 	
 	protected void initialIOSData(){

@@ -47,7 +47,7 @@ public class IOSApp extends UI {
 			e.printStackTrace();
 		}
         wait = new WebDriverWait(driver,waitTime);
-
+    	log("Start to run "+app+" app.");
   	}
   	public void quit(){
 		driver.quit();
@@ -178,12 +178,6 @@ public class IOSApp extends UI {
 	
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
-
-    		appClass = getProperties("appClass");
-
-	    	if(appClass ==null){
-	    		appClass = "app";
-	    	}
 
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			

@@ -14,7 +14,7 @@ public class testIOS {
 
 		app.runIOSApp();;
 
-
+		app.log("Start to run "+this.getClass().getName()+".");
 	}
 
     @AfterMethod

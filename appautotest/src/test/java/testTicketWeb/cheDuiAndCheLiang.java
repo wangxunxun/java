@@ -40,7 +40,8 @@ public class cheDuiAndCheLiang {
 	@BeforeClass
 	public void setUp(){
 		piaoWuWebApp.initialTestData();
-		piaoWuWebApp.runChormeApp();				
+		piaoWuWebApp.runChormeApp();	
+		piaoWuWebApp.log("Start to run "+this.getClass().getName()+".");
 	}
 
 

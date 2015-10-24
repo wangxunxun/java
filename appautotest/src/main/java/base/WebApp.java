@@ -24,6 +24,28 @@ import utils.CommonTools;
 public class WebApp extends UI{
 	protected String main_window;
 	
+	
+    public void runChormeApp(){
+    	initialData();
+
+    	
+    	String dirs =null;
+    	if(CommonTools.getOSName().matches("Mac OS X")){
+    		dirs=CommonTools.setPath("/testresource/chromedriver");
+    	}
+    	else{
+    		dirs=CommonTools.setPath("/testresource/chromedriver.exe");
+    	}
+	
+		
+		System.setProperty("webdriver.chrome.driver", dirs);
+    	driver=new ChromeDriver();
+    	wait = new WebDriverWait(driver,waitTime);
+
+		log("Start to launch the chrome browser.");
+	
+    }
+     
     public void get(String url){
     	log("Get "+url+".");
     	driver.get(url);
@@ -183,34 +205,7 @@ public class WebApp extends UI{
         }
     }    
 
-    public void runChormeApp(){
-    	initialData();
 
-    	
-    	String dirs =null;
-    	if(CommonTools.getOSName().matches("Mac OS X")){
-    		dirs=CommonTools.setPath("/testresource/chromedriver");
-    	}
-    	else{
-    		dirs=CommonTools.setPath("/testresource/chromedriver.exe");
-    	}
-	
-		
-		System.setProperty("webdriver.chrome.driver", dirs);
-    	driver=new ChromeDriver();
-    	wait = new WebDriverWait(driver,waitTime);
-    	
-		log("Start to run the test case.");
-		log("Start to launch the chrome browser.");
-
-
-
-		
-
-
-    	
-    }
-     
     public void switchToFrame(String nameOrId){
     	log("Switch to the \""+nameOrId+"\" frame.");
     	driver.switchTo().frame(nameOrId);
@@ -272,10 +267,7 @@ public class WebApp extends UI{
     
     @SuppressWarnings({ "unchecked" })
     public void runTestCase(String testCase){
-    	if(appClass ==null){
-    		appClass = "app";
-    	}
-    			
+	
     	List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 		
 		for (int i = 0;i <cases.size();i++){

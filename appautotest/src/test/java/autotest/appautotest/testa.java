@@ -22,7 +22,8 @@ public class testa{
 		ticketApp.initialTestData();
 		
 		ticketApp.runAndroidApp();
-
+		ticketApp.setTestClassName(this.getClass().getName());
+		ticketApp.log("Start to run "+this.getClass().getName()+".");
 	}
 
     @AfterMethod

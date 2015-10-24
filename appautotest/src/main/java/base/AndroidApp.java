@@ -30,7 +30,7 @@ public class AndroidApp extends UI{
     	initialData();
     	initialAndroidData();
 
-    	log("Start to run "+apkName+" app.");
+
         File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",androidDeviceName);
@@ -46,7 +46,7 @@ public class AndroidApp extends UI{
 			e.printStackTrace();
 		}
         wait = new WebDriverWait(driver,waitTime);
-
+    	log("Start to run "+apkName+" app.");
 
         
     }
@@ -334,8 +334,8 @@ public class AndroidApp extends UI{
 	   
 	   public void tab(int fingers, int x, int y, int duration ){
 
-		   float a = x/basicWindowx;
-		   float b = y/basicWindowy;
+		   float a = x/basicWindowX;
+		   float b = y/basicWindowY;
 		   int newx = (int) (a*driver.manage().window().getSize().getWidth());
 		   int newy = (int) (b*driver.manage().window().getSize().getHeight());		   
 		   driver.tap(fingers, newx, newy, duration);
@@ -352,12 +352,12 @@ public class AndroidApp extends UI{
 	   }
 	   
 	   public void swipe (int startx, int starty, int endx, int endy, int duration){
-		   float a = startx/basicWindowx;
-		   float b = starty/basicWindowy;
+		   float a = startx/basicWindowX;
+		   float b = starty/basicWindowY;
 		   int newstartx = (int) (a*driver.manage().window().getSize().getWidth());
 		   int newstarty = (int) (b*driver.manage().window().getSize().getHeight());	
-		   float c = endx/basicWindowx;
-		   float d = endy/basicWindowy;
+		   float c = endx/basicWindowX;
+		   float d = endy/basicWindowY;
 		   int newendx = (int) (c*driver.manage().window().getSize().getWidth());
 		   int newsendy = (int) (d*driver.manage().window().getSize().getHeight());
 		   log("Swipe"+"("+startx+","+starty+","+endx+","+endy+").");
@@ -406,9 +406,6 @@ public class AndroidApp extends UI{
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
 
-	    	if(appClass ==null){
-	    		appClass = "app";
-	    	}
 
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			
