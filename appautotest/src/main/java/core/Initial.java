@@ -115,6 +115,7 @@ public class Initial {
 	}
 	
 	protected String getlogPath(){
+		logPath = getProperties("logPath");
 		if(logPath!=null){
 			return CommonTools.setPath(logPath);
 		}
