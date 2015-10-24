@@ -106,6 +106,7 @@ public class Initial {
 	}
 	
 	protected String getScreenPath(){
+		screenPath = getProperties("screenPath");
 		if(screenPath!=null){
 			return CommonTools.setPath(screenPath);
 		}
