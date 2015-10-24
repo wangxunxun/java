@@ -34,7 +34,7 @@ public class AndroidApp extends UI{
     		mainActivity = getProperties("mainActivity");
     	}
 
-    	log("Run "+apkName+" app.");
+    	log("Start to run "+apkName+" app.");
         File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",deviceName);
@@ -54,6 +54,7 @@ public class AndroidApp extends UI{
 
     	testCaseData = getTestCaseData();
     	screenPath = getScreenPath();
+    	logPath = getlogPath();
 
         
     }
@@ -63,56 +64,56 @@ public class AndroidApp extends UI{
     public void getButtons(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.Button");
     	if (eles.size()!=0){
-    		System.out.println("The total of button is " + eles.size());
+    		log("The total of button is " + eles.size());
 
     		for (int i=0;i< eles.size();i++ ){
-    			System.out.println("The "+i+" button is " +eles.get(i).getText());	    			
+    			log("The "+i+" button is " +eles.get(i).getText());	    			
     		}	    			    			    		
     	}
 		else {
-				System.out.println("There is no textview ");
+			log("There is no textview ");
 		}
 	}
     
     public void getTextViews(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.TextView");
     	if (eles.size()!=0){
-    		System.out.println("The total of textview is " + eles.size());
+    		log("The total of textview is " + eles.size());
     		int i=0;
     		for (AndroidElement ele : eles){
-    			System.out.println("The "+i+" textview is " +ele.getText());
+    			log("The "+i+" textview is " +ele.getText());
     			i++;
     			
     		}	    		    		
     	}
 		else {
-				System.out.println("There is no textview ");
+			log("There is no textview ");
 		}
     }
     
     public void getEditTexts(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.EditText");
     	if (eles.size()!=0){
-    		System.out.println("The total of edittext is " + eles.size());
+    		log("The total of edittext is " + eles.size());
     		int i=0;
     		for (AndroidElement ele : eles){
-    			System.out.println("The "+i+" edittext is " +ele.getText());
+    			log("The "+i+" edittext is " +ele.getText());
     			i++;
     			
     		}	    		    		
     	}
 		else {
-				System.out.println("There is no edittext ");
+			log("There is no edittext ");
 		}
     }
     
     public void getImageViews(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.ImageView");
     	if (eles.size()!=0){
-    		System.out.println("The total of imageview is " + eles.size());	    		    		
+    		log("The total of imageview is " + eles.size());	    		    		
     	}
 	   	else {
-	   			System.out.println("There is no imageview ");
+	   		log("There is no imageview ");
 	   	}
     }
     
@@ -121,10 +122,10 @@ public class AndroidApp extends UI{
     public void getImageButtons(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.ImageButton");
     	if (eles.size()!=0){
-    		System.out.println("The total of imagebutton is " + eles.size());    		    		
+    		log("The total of imagebutton is " + eles.size());    		    		
     	}
 	   	else {
-	   			System.out.println("There is no imagebutton ");
+	   		log("There is no imagebutton ");
    		}
     }
     
@@ -137,40 +138,29 @@ public class AndroidApp extends UI{
         int windowlenX = driver.manage().window().getSize().getWidth();
         int windowlenY = driver.manage().window().getSize().getHeight();
         String swipeLeft = "left";
-        String swipeLeftSide = "leftSide";
+
         String swipeRight = "right";
-        String swipeRightSide = "rightSide";
+
         String swipeUp = "up";
-        String swipeTop = "top";
+
         String swipeDown = "down";
-        String swipeBottom = "bottom";
+
 
         // Sliding screen to the left
         if (type.equalsIgnoreCase(swipeLeft)) {
         	log("Swipe left.");
-            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
+            driver.swipe((int) (windowlenX * 0.8), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
                     3000);
         }
 
-        // From the left of screen to began to slip
-        if (type.equalsIgnoreCase(swipeLeftSide)) {
-        	log("Swipe left dide.");
-            driver.swipe(1, (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5), 3000);
-        }
 
         // Sliding screen to the right
         if (type.equalsIgnoreCase(swipeRight)) {
         	log("Swipe right.");
-            driver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5),
+            driver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.8), (int) (windowlenY * 0.5),
                     3000);
         }
 
-        // From the right of screen to began to slip
-        if (type.equalsIgnoreCase(swipeRightSide)) {
-        	log("Swipe right side.");
-            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
-                    3000);
-        }
 
         // Screen upward sliding
         if (type.equalsIgnoreCase(swipeUp)) {
@@ -179,24 +169,14 @@ public class AndroidApp extends UI{
                     3000);
         }
 
-        // From the top of screen to began to slip
-        if (type.equalsIgnoreCase(swipeTop)) {
-        	log("Swipe top.");
-            driver.swipe((int) (windowlenX * 0.5), 0, (int) (windowlenX * 0.5), (int) (windowlenY * 0.8), 3000);
-        }
 
         // Slide down the screen
         if (type.equalsIgnoreCase(swipeDown)) {
         	log("Swipe down.");
-            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5), (int) (windowlenY * 0.9),
+            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5), (int) (windowlenY * 0.8),
                     3000);
         }
 
-        // From the bottom of screen to began to slip
-        if (type.equalsIgnoreCase(swipeBottom)) {
-        	log("Swipe bottom.");
-            driver.swipe((int) (windowlenX * 0.5), (int)(windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.1), 3000);
-        }
 
     }
     
@@ -224,7 +204,7 @@ public class AndroidApp extends UI{
     
     public void executeAdbShell(String adbshell){
     	try {
-    		log("executeAdbShell \"" +adbshell +"\".");
+    		log("Execute adb Shell \"" +adbshell +"\".");
 			Runtime.getRuntime().exec(adbshell);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -246,6 +226,8 @@ public class AndroidApp extends UI{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log("Get screen failed.");
+			Assert.fail("Get screen failed.");
 		}		
 	}
 	
@@ -309,7 +291,7 @@ public class AndroidApp extends UI{
 			tab(newx, newy);
 		}
 		else{
-			System.out.println("Please provide coordinate.");
+			log("Please provide the coordinate.");
 		}
 	}
 	
@@ -327,7 +309,7 @@ public class AndroidApp extends UI{
 			longTab(newx, newy);
 		}
 		else{
-			System.out.println("Please provide coordinate.");
+			log("Please provide the coordinate.");
 		}
 	}
 	public void swipeElement(String page,String name){
@@ -348,7 +330,7 @@ public class AndroidApp extends UI{
 			swipe(startnewx, startnewy, endnewx, endnewy, 1000);
 		}
 		else{
-			log("Please provide coordinate.");
+			log("Please provide the coordinate.");
 		}
 	}
 		
@@ -407,7 +389,7 @@ public class AndroidApp extends UI{
 		   driver.startActivity(appPackage, appActivity);
 	   }
 	   
-	   public void slideToElement(String page,String name) {
+	   public void slideUpToFindElement(String page,String name) {
 		   boolean statu = false;
 		   
 		   for(int i =1;i<5;i++){
@@ -555,8 +537,8 @@ public class AndroidApp extends UI{
 					
 				}
 				else if (action.equals("runTestCase")){
-					runTestCase(value);
 					log("Run the "+value+" test case.");
+					runTestCase(value);
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"runTestCase(\""+value+"\");";
@@ -589,16 +571,16 @@ public class AndroidApp extends UI{
 
 				}
 				else if (action.equals("slideToElement")){
-					slideToElement(page, name);
+					slideUpToFindElement(page, name);
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
-					String script = appClass+"."+"slideToElement(\""+page+"\",\""+name+"\");";
+					String script = appClass+"."+"slideUPToFindElement(\""+page+"\",\""+name+"\");";
 					writeScript(rowin, 9, script);
 
 				}
 
 				else{
-					CommonTools.log("Can not run the action");
+					log("Can not run the action");
 
 				}
 

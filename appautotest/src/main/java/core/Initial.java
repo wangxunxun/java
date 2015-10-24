@@ -1,6 +1,7 @@
 package core;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Initial {
 	protected WebDriverWait wait; 
 	
 	
-	protected String configFileName = null;
+	protected String configFileName;
 
 	//屏幕分辨率设置
 	protected float basicWindowx =720;
@@ -50,18 +51,19 @@ public class Initial {
 
 	//截屏存放目录
 //	protected String dirName = CommonTools.setPath("/screenshot/");
-	protected String screenPath;
+	protected String screenPath=getScreenPath();
+	protected String logPath =getlogPath();
 	
 	//测试数据变量
-	protected String testExcelPath = null;
-	protected String elementSheet = null;
+	protected String testExcelPath = getProperties("testExcelPath");
+	protected String elementSheet = getProperties("elementSheet");
 	protected String testCaseSheet = null;
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
 	protected String appClass;
 	protected boolean writeScript;
 	protected boolean writeResult;
-	protected boolean log;
+	protected boolean logSwitch;
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		if (configFileName != null){
@@ -114,6 +116,19 @@ public class Initial {
 						
 		}
 		return CommonTools.setPath("/screenshot/");
+		
+	}
+	
+	protected String getlogPath(){
+		String path =null;
+		if (configFileName != null){
+			path = getProperties("logPath");
+			if(path!=null){
+				return CommonTools.setPath(path);
+			}
+						
+		}
+		return CommonTools.setPath("/log/");
 		
 	}
 	
@@ -177,23 +192,25 @@ public class Initial {
 
 		}
 		else{
-			if(log==true){
+			if(logSwitch==true){
 				String content = "The "+row+"th step is pass.";
 				CommonTools.log(content);
 			}
 		}
 	}
 	
-	protected void log(Object content){
+	protected void log(String content){
 		if(configFileName !=null){
 			if (getProperties("log").matches("true")){
 				CommonTools.log(content);
+				writeLog(content);
 			}
 
 		}
 		else{
-			if(log==true){
+			if(logSwitch==true){
 				CommonTools.log(content);
+				writeLog(content);
 			}
 		}
 	}
@@ -218,5 +235,27 @@ public class Initial {
 		CommonTools.sleep(time);
 	}
 
+	
+	private void writeLog(String content){
+		writeLog("3.txt", content);
+	}
+	
+	private void writeLog(String fileName,String content){
+		FileWriter writer;
+		try {
+			CommonTools.log(logPath);
+		  	if (!(new File(logPath).isDirectory())) {  // 判断是否存在该目录
+		  		new File(logPath).mkdir();  // 如果不存在则新建一个目录
+		  	}
+			writer = new FileWriter(logPath+fileName,true);
+			writer.write(content+"\r\n");
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }

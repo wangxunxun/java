@@ -5,7 +5,6 @@ import initial.piaoWuWebTest;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
-import utils.CommonTools;
 
 import org.testng.annotations.AfterClass;
 
@@ -121,13 +120,12 @@ public class qiChe {
     }
     @Test
     public void test003editQiChePiaoJia(){
-/*    	piaoWuWebApp.get("http://106.185.47.124:5000/Server/Auth/Login?next=%2F");
+    	piaoWuWebApp.get("http://106.185.47.124:5000/Server/Auth/Login?next=%2F");
     	piaoWuWebApp.sendKeys("登录页","登录输入框","admin");
     	piaoWuWebApp.waitDisplay("登录页","密码输入框");
     	piaoWuWebApp.sendKeys("登录页","密码输入框","admin");
     	piaoWuWebApp.assertEquals(piaoWuWebApp.getElementText("登录页","密码输入框"),"");
     	piaoWuWebApp.clickElement("登录页","登录");
-    	CommonTools.sleep(2000);
     	piaoWuWebApp.waitDisplay("侧边栏","长途售票管理");
     	piaoWuWebApp.clickElement("侧边栏","长途售票管理");
     	piaoWuWebApp.waitDisplay("侧边栏","汽车车站维护");
@@ -138,13 +136,8 @@ public class qiChe {
     	piaoWuWebApp.sendKeys("汽车-添加车站","车站地址","wrewrewrwrrrwrewr");
     	piaoWuWebApp.getElementText("汽车-添加车站","车站地址");
     	piaoWuWebApp.clear("汽车-添加车站","车站地址");
-    	CommonTools.sleep(10000);*/
 
 
-
-
-    	
-    	piaoWuWebApp.runTestCase("删除检票员");
     }
 
 	

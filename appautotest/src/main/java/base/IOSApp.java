@@ -56,6 +56,7 @@ public class IOSApp extends UI {
 
     	testCaseData = getTestCaseData();
     	screenPath = getScreenPath();
+    	logPath = getlogPath();
   	}
   	public void quit(){
 		driver.quit();

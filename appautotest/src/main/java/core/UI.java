@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import core.Initial;
-import utils.CommonTools;
 public class UI extends Initial{
     
     public void clickElement(String page,String name){
@@ -30,7 +29,7 @@ public class UI extends Initial{
     	findElement(page, name).sendKeys(value);
     }
     public void sendKeys(String page,String name,String value){
-    	log("Send the "+value+" to the "+name+" element on the "+page+" page.");
+    	log("Send the \""+value+"\" value to the "+name+" element on the "+page+" page.");
     	findElement(page, name).sendKeys(value);
     }
     public void waitToClear(String page,String name){
@@ -44,9 +43,10 @@ public class UI extends Initial{
     }
     
     public String getElementText(String page,String name){
-    	log("Get the text of the "+name+" element on the "+page+" page.");
+    	log("To get the text of the "+name+" element on the "+page+" page.");
     	String value = findElement(page, name).getText();
     	if(value !=null){
+    		log("The text is \""+value+"\".");
     		return value;
     	}
     	else{
@@ -121,7 +121,9 @@ public class UI extends Initial{
 		for(int i = 0;i<count;i++){
 			statu = verifyDisplay(page, name);
 			if(statu==false){
-				log("Start to find the "+name+" element on the "+page+" page again.");
+				if(i<count-1){
+					log("Start to find the "+name+" element on the "+page+" page again.");
+				}	
 				continue;
 			}	
 			else{

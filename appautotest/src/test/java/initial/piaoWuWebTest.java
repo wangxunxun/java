@@ -5,11 +5,6 @@ public class piaoWuWebTest extends WebApp{
 
 	public void initialTestData(){
 		configFileName = "/config/ticketSystem/configWeb.properties";
-//		testExcelPath = "/testresource/projects/ticketWeb.xls";
-//		elementSheet = "elements";
-//		writeScript=false;
-//		testCaseSheet = "testCase";
-//		appClass = "piaoWuWebApp";
 	}
 	
 	public void enterHomePage(){

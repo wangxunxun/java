@@ -16,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import core.UI;
 import utils.CommonTools;
@@ -24,63 +25,66 @@ public class WebApp extends UI{
 	protected String main_window;
 	
     public void get(String url){
+    	log("Get "+url+".");
     	driver.get(url);
     }
     
 
     
     public void getTitle(){
+    	log("Get title.");
     	driver.getTitle();
     }
     
     public void quit(){
+    	log("Quit.");
     	driver.quit();
     }
     
     public String getCurrentUrl() {
+    	log("Get current url.");
         return driver.getCurrentUrl();
     }
     
     public Set<String> getWindowHandles() {
+    	log("Get window handles.");
         return driver.getWindowHandles();
     }
 
 
     public String getCurrentWindow() {
+    	log("Get current window handle.");
         return driver.getWindowHandle();
     }
 
     public String getElementValue(String page,String name){
+    	log("Get the value of "+name+" element on the "+page+"page.");
     	String value = findElement(page, name).getAttribute("value");
     	if(value !=null){
     		return value;
     	}
     	else{
-    		CommonTools.log(name+":No text.");
+    		log(name+":No text.");
     	}
     	return null;
     }
     		    
     public void getScreen(String filename)
     {
+    	File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
 	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
 	  	}
-		String filepath = screenPath+CommonTools.getCurrentTime()+ "_"+ filename+  ".jpg";
 		try {
-			System.out.println("save snapshot path is:"+screenPath+filename);
-			FileUtils.copyFile(scrFile, new File(filepath));
-		   	} 
-		catch (IOException e) {
-			System.out.println("Can't save screenshot");
+			log("Get screen.");
+			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
-		finally{
-		     System.out.println("screen shot finished");
-		}
+			log("Get screen failed.");
+			Assert.fail("Get screen failed.");
+		}	
 	}
     
     public void getScreen()
@@ -90,7 +94,7 @@ public class WebApp extends UI{
 
     
     public boolean isAlertPresent(){
-        CommonTools.sleep(500);
+        sleep(500);
         try {
             driver.switchTo().alert().accept();
             return true;
@@ -99,13 +103,14 @@ public class WebApp extends UI{
         }
     } 
     
-    public static void scrollTo(int height){  
+    public void scrollTo(int height){  
         try {  
+        	log("Scroll to "+height);
             String setscroll = "document.documentElement.scrollTop=" + height;               
             JavascriptExecutor jse=(JavascriptExecutor) driver;  
             jse.executeScript(setscroll);  
         } catch (Exception e) {  
-            System.out.println("Fail to set the scroll.");  
+            log("Fail to scroll.");  
         }             
     }   
 
@@ -117,6 +122,7 @@ public class WebApp extends UI{
 
     
     public void switchToNewWindow() {
+    	log("Switch to the new window.");
         for (String window : driver.getWindowHandles()) {
             if (!window.equals(driver.getWindowHandle())) {
             	driver.switchTo().window(window);
@@ -125,10 +131,12 @@ public class WebApp extends UI{
     }
     
     public void srollToElement(String page,String name){
+    	log("Scroll to the "+name+" element on the "+page+"page.");
     	executeJavaScript("arguments[0].scrollIntoView()", findElement(page, name));
     }
     
     public void clickElementByJS(String page,String name) {
+    	log("Click the "+name+" element on the "+page+"page by JS.");
 
         // String locator = uiMapElementLocator(elementName);
         WebElement element = findElement( page, name);
@@ -141,12 +149,13 @@ public class WebApp extends UI{
     public void moveMouseOn(String page,String name) {
 
         WebElement element = findElement(page, name);
-        CommonTools.log("Moving mouse to element: " + name + ".");
+        log("Moving mouse to element: " + name + ".");
         Actions actions = new Actions(driver);
         actions.moveToElement(element).build().perform();
     }
     
     public void switchToMainWindow() {
+    	log("Switch to the main window.");
         Set<String> getWindows = driver.getWindowHandles();
 		for (String win : getWindows) {
 			main_window = win;
@@ -175,6 +184,7 @@ public class WebApp extends UI{
     }    
 
     public void runChormeApp(){
+    	
     	String dirs =null;
     	if(CommonTools.getOSName().matches("Mac OS X")){
     		dirs=CommonTools.setPath("/testresource/chromedriver");
@@ -188,16 +198,16 @@ public class WebApp extends UI{
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
     	elementData =getElementData();
-
 		testCaseData = getTestCaseData();
-		screenPath = getScreenPath();
-		
 
+		
+		log("Start to run the chrome browser.");
 
     	
     }
      
     public void switchToFrame(String nameOrId){
+    	log("Switch to the \""+nameOrId+"\" frame.");
     	driver.switchTo().frame(nameOrId);
     }
     
@@ -210,6 +220,7 @@ public class WebApp extends UI{
     }
 
     public void switchToDefaultContent(){
+    	log("Switch to the default content.");
     	driver.switchTo().defaultContent();
     }
     
@@ -288,10 +299,10 @@ public class WebApp extends UI{
 			}
 			else if (action.equals("sleep")){
 				int v=Integer.parseInt(value);
-				CommonTools.sleep(v);
+				sleep(v);
 				logResult(rowin);
 				writeResult(rowin, 8, "P");
-				String script = "CommonTools.sleep("+v+");";
+				String script = appClass+".sleep("+v+");";
 				writeScript(rowin, 9, script);
 
 			}
@@ -345,7 +356,8 @@ public class WebApp extends UI{
 				writeScript(rowin, 9, script);
 			}
 			else if (action.equals("runTestCase")){
-				runTestCase(value);
+				log("Run the \""+value+"\" test case.");
+				runTestCase(value);				
 				logResult(rowin);
 				writeResult(rowin, 8, "P");
 				String script = appClass+"."+"runTestCase(\""+value+"\");";
@@ -355,7 +367,7 @@ public class WebApp extends UI{
 
 
 			else{
-				CommonTools.log("Can not run the action");
+				log("Can not run the action");
 
 			}
 

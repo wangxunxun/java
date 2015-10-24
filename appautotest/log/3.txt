@@ -1,0 +1,162 @@
+F:\workspace\java\appautotest/log/
+Get http://106.185.47.124:5000/Server/Auth/Login?next=%2F.
+Send the "admin" value to the 登录输入框 element on the 登录页 page.
+To find the 密码输入框 element on the 登录页 page.
+The 密码输入框 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Send the "admin" value to the 密码输入框 element on the 登录页 page.
+To get the text of the 密码输入框 element on the 登录页 page.
+The text is "".
+To find the 登录 element on the 登录页 page.
+The 登录 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Click the 登录 element on the 登录页 page.
+To find the 车队与车辆管理 element on the 侧边栏 page.
+The 车队与车辆管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队与车辆管理 element on the 侧边栏 page.
+To find the 车队管理 element on the 侧边栏 page.
+The 车队管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队管理 element on the 侧边栏 page.
+To find the 添加车队 element on the 车队管理 page.
+The 添加车队 element on the 车队管理 page is displayed.
+Sleep 500 ms.
+Click the 添加车队 element on the 车队管理 page.
+Switch to the "xubox_iframe1" frame.
+Send the "11" value to the 名称 element on the 添加车队 page.
+Send the "11" value to the 负责人 element on the 添加车队 page.
+Send the "11" value to the 电话 element on the 添加车队 page.
+Send the "11" value to the 座机 element on the 添加车队 page.
+Send the "11" value to the 地址 element on the 添加车队 page.
+Click the 提交 element on the 添加车队 page.
+Quit.
+Get http://106.185.47.124:5000/Server/Auth/Login?next=%2F.
+Send the "admin" value to the 登录输入框 element on the 登录页 page.
+To find the 密码输入框 element on the 登录页 page.
+The 密码输入框 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Send the "admin" value to the 密码输入框 element on the 登录页 page.
+To get the text of the 密码输入框 element on the 登录页 page.
+The text is "".
+To find the 登录 element on the 登录页 page.
+The 登录 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Click the 登录 element on the 登录页 page.
+To find the 车队与车辆管理 element on the 侧边栏 page.
+The 车队与车辆管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队与车辆管理 element on the 侧边栏 page.
+To find the 车队管理 element on the 侧边栏 page.
+The 车队管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队管理 element on the 侧边栏 page.
+To find the 添加车队 element on the 车队管理 page.
+The 添加车队 element on the 车队管理 page is displayed.
+Sleep 500 ms.
+Click the 添加车队 element on the 车队管理 page.
+Switch to the "xubox_iframe1" frame.
+Send the "11" value to the 名称 element on the 添加车队 page.
+Send the "11" value to the 负责人 element on the 添加车队 page.
+Send the "11" value to the 电话 element on the 添加车队 page.
+Send the "11" value to the 座机 element on the 添加车队 page.
+Send the "11" value to the 地址 element on the 添加车队 page.
+Click the 提交 element on the 添加车队 page.
+Quit.
+Get http://106.185.47.124:5000/Server/Auth/Login?next=%2F.
+Send the "admin" value to the 登录输入框 element on the 登录页 page.
+To find the 密码输入框 element on the 登录页 page.
+The 密码输入框 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Send the "admin" value to the 密码输入框 element on the 登录页 page.
+To get the text of the 密码输入框 element on the 登录页 page.
+The text is "".
+To find the 登录 element on the 登录页 page.
+The 登录 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Click the 登录 element on the 登录页 page.
+To find the 车队与车辆管理 element on the 侧边栏 page.
+The 车队与车辆管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队与车辆管理 element on the 侧边栏 page.
+To find the 车队管理 element on the 侧边栏 page.
+The 车队管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队管理 element on the 侧边栏 page.
+To find the 添加车队 element on the 车队管理 page.
+The 添加车队 element on the 车队管理 page is displayed.
+Sleep 500 ms.
+Click the 添加车队 element on the 车队管理 page.
+Switch to the "xubox_iframe1" frame.
+Send the "11" value to the 名称 element on the 添加车队 page.
+Send the "11" value to the 负责人 element on the 添加车队 page.
+Send the "11" value to the 电话 element on the 添加车队 page.
+Send the "11" value to the 座机 element on the 添加车队 page.
+Send the "11" value to the 地址 element on the 添加车队 page.
+Click the 提交 element on the 添加车队 page.
+Quit.
+Get http://106.185.47.124:5000/Server/Auth/Login?next=%2F.
+Send the "admin" value to the 登录输入框 element on the 登录页 page.
+To find the 密码输入框 element on the 登录页 page.
+The 密码输入框 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Send the "admin" value to the 密码输入框 element on the 登录页 page.
+To get the text of the 密码输入框 element on the 登录页 page.
+The text is "".
+To find the 登录 element on the 登录页 page.
+The 登录 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Click the 登录 element on the 登录页 page.
+To find the 车队与车辆管理 element on the 侧边栏 page.
+The 车队与车辆管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队与车辆管理 element on the 侧边栏 page.
+To find the 车队管理 element on the 侧边栏 page.
+The 车队管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队管理 element on the 侧边栏 page.
+To find the 添加车队 element on the 车队管理 page.
+The 添加车队 element on the 车队管理 page is displayed.
+Sleep 500 ms.
+Click the 添加车队 element on the 车队管理 page.
+Switch to the "xubox_iframe1" frame.
+Send the "11" value to the 名称 element on the 添加车队 page.
+Send the "11" value to the 负责人 element on the 添加车队 page.
+Send the "11" value to the 电话 element on the 添加车队 page.
+Send the "11" value to the 座机 element on the 添加车队 page.
+Send the "11" value to the 地址 element on the 添加车队 page.
+Click the 提交 element on the 添加车队 page.
+Quit.
+Start to run the chrome browser.
+Get http://106.185.47.124:5000/Server/Auth/Login?next=%2F.
+Send the "admin" value to the 登录输入框 element on the 登录页 page.
+To find the 密码输入框 element on the 登录页 page.
+The 密码输入框 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Send the "admin" value to the 密码输入框 element on the 登录页 page.
+To get the text of the 密码输入框 element on the 登录页 page.
+The text is "".
+To find the 登录 element on the 登录页 page.
+The 登录 element on the 登录页 page is displayed.
+Sleep 500 ms.
+Click the 登录 element on the 登录页 page.
+To find the 车队与车辆管理 element on the 侧边栏 page.
+The 车队与车辆管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队与车辆管理 element on the 侧边栏 page.
+To find the 车队管理 element on the 侧边栏 page.
+The 车队管理 element on the 侧边栏 page is displayed.
+Sleep 500 ms.
+Click the 车队管理 element on the 侧边栏 page.
+To find the 添加车队 element on the 车队管理 page.
+The 添加车队 element on the 车队管理 page is displayed.
+Sleep 500 ms.
+Click the 添加车队 element on the 车队管理 page.
+Switch to the "xubox_iframe1" frame.
+Send the "11" value to the 名称 element on the 添加车队 page.
+Send the "11" value to the 负责人 element on the 添加车队 page.
+Send the "11" value to the 电话 element on the 添加车队 page.
+Send the "11" value to the 座机 element on the 添加车队 page.
+Send the "11" value to the 地址 element on the 添加车队 page.
+Click the 提交 element on the 添加车队 page.
+Quit.

@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="47065" started-at="2015-10-23T16:25:18Z" finished-at="2015-10-23T16:26:05Z">
+  <suite name="Default suite" duration-ms="17758" started-at="2015-10-24T10:06:57Z" finished-at="2015-10-24T10:07:14Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="47065" started-at="2015-10-23T16:25:18Z" finished-at="2015-10-23T16:26:05Z">
-      <class name="autotest.appautotest.testa">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="setUp" is-config="true" duration-ms="15697" started-at="2015-10-24T00:25:18Z" finished-at="2015-10-24T00:25:34Z">
+    <test name="Default test" duration-ms="17758" started-at="2015-10-24T10:06:57Z" finished-at="2015-10-24T10:07:14Z">
+      <class name="testTicketWeb.cheDuiAndCheLiang">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3ac3fd8b]" name="setUp" is-config="true" duration-ms="3578" started-at="2015-10-24T18:06:57Z" finished-at="2015-10-24T18:07:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="login()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="login" duration-ms="29306" started-at="2015-10-24T00:25:34Z" finished-at="2015-10-24T00:26:03Z">
+        <test-method status="PASS" signature="addCheDui()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3ac3fd8b]" name="addCheDui" duration-ms="12577" started-at="2015-10-24T18:07:00Z" finished-at="2015-10-24T18:07:13Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="tearDown" is-config="true" duration-ms="2046" started-at="2015-10-24T00:26:03Z" finished-at="2015-10-24T00:26:05Z">
+        </test-method> <!-- addCheDui -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3ac3fd8b]" name="tearDown" is-config="true" duration-ms="1587" started-at="2015-10-24T18:07:13Z" finished-at="2015-10-24T18:07:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- autotest.appautotest.testa -->
+      </class> <!-- testTicketWeb.cheDuiAndCheLiang -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
