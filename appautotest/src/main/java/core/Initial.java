@@ -34,7 +34,7 @@ public class Initial {
 	protected File appDir = new File(classpathRoot, "/testresource/apps");
 	protected boolean unicodeKeyboard = true;
 	protected boolean resetKeyboard = true;
-	protected String deviceName = "meizu";
+	protected String androidDeviceName = "meizu";
 	protected Integer waitTime = 10;
 	protected String apkName = null;
 	protected String appPackage = null;
@@ -46,18 +46,18 @@ public class Initial {
 	protected String platform;
 	protected String platformName;
 	protected String browserName;
+	protected String iosDeviceName;
 
 
 
 	//截屏存放目录
-//	protected String dirName = CommonTools.setPath("/screenshot/");
 	protected String screenPath;
 	protected String logPath;
 	
 	//测试数据变量
-	protected String testExcelPath = null;
-	protected String elementSheet = null;
-	protected String testCaseSheet = null;
+	protected String testExcelPath;
+	protected String elementSheet;
+	protected String testCaseSheet;
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
 	
@@ -68,18 +68,12 @@ public class Initial {
 	protected boolean logSwitch;
     
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
-
-		testExcelPath = getProperties("testExcelPath");
-		elementSheet = getProperties("elementSheet");
-
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
 		return eledata;
 	}
 	
 	public List<Map<String, String>> getTestData(String testDataSheet){
-
-		testExcelPath = getProperties("testExcelPath");
 
 		ReadTestData readtestdata = new ReadTestData();
 		List<Map<String, String>> data = readtestdata.getTestData(testExcelPath, testDataSheet);
@@ -90,8 +84,6 @@ public class Initial {
 	
 	public Object[][] getTestDataForTestNG(String testDataSheet){
 
-		testExcelPath = getProperties("testExcelPath");
-
 		ReadTestData readtestdata = new ReadTestData();
 		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
 		return data;
@@ -99,8 +91,6 @@ public class Initial {
 	
 	protected Map<String, Object> getTestCaseData(){
 
-		testExcelPath = getProperties("testExcelPath");
-		testCaseSheet = getProperties("testCaseSheet");
 
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
@@ -109,11 +99,8 @@ public class Initial {
 	}
 	
 	protected String getScreenPath(){
-		String path =null;
-
-		path = getProperties("screenPath");
-		if(path!=null){
-			return CommonTools.setPath(path);
+		if(screenPath!=null){
+			return CommonTools.setPath(screenPath);
 		}
 
 		return CommonTools.setPath("/screenshot/");
@@ -121,20 +108,14 @@ public class Initial {
 	}
 	
 	protected String getlogPath(){
-
-
-		String path = getProperties("logPath");
-		if(path!=null){
-			return CommonTools.setPath(path);
+		if(logPath!=null){
+			return CommonTools.setPath(logPath);
 		}
 		return CommonTools.setPath("/logDefault/");
 		
 	}
 	
 	protected void writeTable(Integer row,Integer cow,String content){
-
-		testExcelPath = getProperties("testExcelPath");
-		testCaseSheet = getProperties("testCaseSheet");
 
 		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
 		try {
@@ -171,61 +152,30 @@ public class Initial {
 
 	protected void writeResult(Integer row,Integer cow,String result){
 
-		if (getProperties("writeResult").matches("true")){
+		if(writeResult==true){
 			writeTable(row, cow, result);
 		}
 
-
-		else{
-			if(writeResult==true){
-				writeTable(row, cow, result);
-			}
-		}
 	}
 	protected void logResult(Integer row){
 
-		if (getProperties("log").matches("true")){
+		if(logSwitch==true){
 			String content = "The "+row+"th step is pass.";
 			CommonTools.log(content);
-		}
-
-
-		else{
-			if(logSwitch==true){
-				String content = "The "+row+"th step is pass.";
-				CommonTools.log(content);
-			}
 		}
 	}
 	
 	protected void log(String content){
-
-		if (getProperties("log").matches("true")){
+		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
-		}
-
-
-		else{
-			if(logSwitch==true){
-				CommonTools.log(content);
-				writeLog(content);
-			}
 		}
 	}
 	
 	protected void writeScript(Integer row,Integer cow,String script){
 
-
-		if (getProperties("writeScript").matches("true")){
+		if(writeScript==true){
 			writeTable(row, cow, script);
-		}
-
-
-		else{
-			if(writeScript==true){
-				writeTable(row, cow, script);
-			}
 		}
 	}
 	
@@ -254,6 +204,39 @@ public class Initial {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	protected void initialData() {
+		testExcelPath = getProperties("testExcelPath");
+		elementSheet = getProperties("elementSheet");    	
+		testCaseSheet = getProperties("testCaseSheet");
+    	
+    	elementData =getElementData();
+		testCaseData = getTestCaseData();
+		
+		logPath = getlogPath();
+		screenPath = getScreenPath();
+		appClass = getProperties("appClass");
+		
+		writeScript = Boolean.parseBoolean(getProperties("writeScript"));
+		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
+		logSwitch = Boolean.parseBoolean(getProperties("log"));
+	
+	}
+	
+	protected void initialAndroidData(){
+		apkName = getProperties("apkName");
+		appPackage = getProperties("appPackage");
+		mainActivity = getProperties("mainActivity");
+	}
+	
+	protected void initialIOSData(){
+		app = getProperties("app");
+		iosDeviceName = getProperties("deviceName");
+		platformVersion = getProperties("platformVersion");
+		platform = getProperties("platform");
+		platformName = getProperties("platformName");
+		browserName = getProperties("browserName");
 	}
 
 }

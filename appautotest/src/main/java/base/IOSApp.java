@@ -27,18 +27,13 @@ public class IOSApp extends UI {
 
   	public void runIOSApp(){
 		    // set up appium
-    	if (configFileName != null){
-    		app = getProperties("app");
-    		deviceName = getProperties("deviceName");
-    		platformVersion = getProperties("platformVersion");
-    		platform = getProperties("platform");
-    		platformName = getProperties("platformName");
-    		browserName = getProperties("browserName");
-    	}
+  		initialData();
+  		initialIOSData();
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
     
         capabilities.setCapability("app", app);
-        capabilities.setCapability("deviceName", deviceName);
+        capabilities.setCapability("deviceName", iosDeviceName);
         capabilities.setCapability("platformVersion", platformVersion);
         capabilities.setCapability("platform", platform);
         capabilities.setCapability("platformName", platformName);
@@ -52,11 +47,7 @@ public class IOSApp extends UI {
 			e.printStackTrace();
 		}
         wait = new WebDriverWait(driver,waitTime);
-        elementData = getElementData();
 
-    	testCaseData = getTestCaseData();
-    	screenPath = getScreenPath();
-    	logPath = getlogPath();
   	}
   	public void quit(){
 		driver.quit();

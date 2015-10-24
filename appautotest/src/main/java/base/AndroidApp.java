@@ -27,17 +27,13 @@ public class AndroidApp extends UI{
 		 
     public void runAndroidApp(){
         // set up appium
-    	
-    	if (configFileName != null){
-    		apkName = getProperties("apkName");
-    		appPackage = getProperties("appPackage");
-    		mainActivity = getProperties("mainActivity");
-    	}
+    	initialData();
+    	initialAndroidData();
 
     	log("Start to run "+apkName+" app.");
         File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName",deviceName);
+        capabilities.setCapability("deviceName",androidDeviceName);
         capabilities.setCapability("app", app.getAbsolutePath());
         capabilities.setCapability("unicodeKeyboard", unicodeKeyboard);
         capabilities.setCapability("resetKeyboard", resetKeyboard);
@@ -50,11 +46,7 @@ public class AndroidApp extends UI{
 			e.printStackTrace();
 		}
         wait = new WebDriverWait(driver,waitTime);
-        elementData = getElementData();
 
-    	testCaseData = getTestCaseData();
-    	screenPath = getScreenPath();
-    	logPath = getlogPath();
 
         
     }
@@ -149,7 +141,7 @@ public class AndroidApp extends UI{
         // Sliding screen to the left
         if (type.equalsIgnoreCase(swipeLeft)) {
         	log("Swipe left.");
-            driver.swipe((int) (windowlenX * 0.8), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
+            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.1), (int) (windowlenY * 0.5),
                     3000);
         }
 
@@ -157,9 +149,10 @@ public class AndroidApp extends UI{
         // Sliding screen to the right
         if (type.equalsIgnoreCase(swipeRight)) {
         	log("Swipe right.");
-            driver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.8), (int) (windowlenY * 0.5),
+            driver.swipe((int) (windowlenX * 0.1), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5),
                     3000);
         }
+
 
 
         // Screen upward sliding
@@ -412,8 +405,6 @@ public class AndroidApp extends UI{
 	   
 	   @SuppressWarnings({ "unchecked" })
 	   public void runTestCase(String testCase){
-
-    		appClass = getProperties("appClass");
 
 	    	if(appClass ==null){
 	    		appClass = "app";

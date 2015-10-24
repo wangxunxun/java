@@ -126,7 +126,7 @@ public class cheDuiAndCheLiang {
     
     @Test
     public void addCheDui(){
-    	piaoWuWebApp.runTestCase("登录");
+/*    	piaoWuWebApp.runTestCase("登录");
     	piaoWuWebApp.waitDisplay("侧边栏","车队与车辆管理");
     	piaoWuWebApp.clickElement("侧边栏","车队与车辆管理");
     	piaoWuWebApp.waitDisplay("侧边栏","车队管理");
@@ -140,10 +140,9 @@ public class cheDuiAndCheLiang {
     	piaoWuWebApp.sendKeys("添加车队","座机","11");
     	piaoWuWebApp.sendKeys("添加车队","地址","11");
 
-    	piaoWuWebApp.clickElement("添加车队","提交");
+    	piaoWuWebApp.clickElement("添加车队","提交");*/
 
-
-//    	piaoWuWebApp.runTestCase("添加车队");
+    	piaoWuWebApp.runTestCase("添加车队");
     }
 
 }

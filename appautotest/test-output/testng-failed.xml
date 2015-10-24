@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testTicketWeb.cheDuiAndCheLiang">
+      <class name="autotest.appautotest.testa">
         <methods>
+          <include name="login"/>
           <include name="setUp"/>
-          <include name="addCheDui"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- testTicketWeb.cheDuiAndCheLiang -->
+      </class> <!-- autotest.appautotest.testa -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

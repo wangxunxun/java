@@ -184,6 +184,8 @@ public class WebApp extends UI{
     }    
 
     public void runChormeApp(){
+    	initialData();
+
     	
     	String dirs =null;
     	if(CommonTools.getOSName().matches("Mac OS X")){
@@ -198,20 +200,13 @@ public class WebApp extends UI{
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
     	
-    	
-		testExcelPath = getProperties("testExcelPath");
-		elementSheet = getProperties("elementSheet");    	
-		testCaseSheet = getProperties("testCaseSheet");
-    	
-    	elementData =getElementData();
-		testCaseData = getTestCaseData();
-		
-		logPath = getlogPath();
-		screenPath = getScreenPath();
+		log("Start to run the test case.");
+		log("Start to launch the chrome browser.");
+
 
 
 		
-		log("Start to run the chrome browser.");
+
 
     	
     }
@@ -277,9 +272,6 @@ public class WebApp extends UI{
     
     @SuppressWarnings({ "unchecked" })
     public void runTestCase(String testCase){
-
-		appClass = getProperties("appClass");
-
     	if(appClass ==null){
     		appClass = "app";
     	}

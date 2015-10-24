@@ -3,7 +3,6 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import utils.CommonTools;
 import initial.ticketIOS;
 public class testIOS {
 	ticketIOS app= new ticketIOS();
