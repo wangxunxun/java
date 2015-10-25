@@ -160,11 +160,6 @@ public class Initial {
 		return null;
 	}
 
-	public String getProperties(String configFileName, String name){
-
-		return CommonTools.getProperties(configFileName, name);
-
-	}
 
 	protected void writeResult(Integer row,Integer cow,String result){
 
