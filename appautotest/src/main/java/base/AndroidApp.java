@@ -27,7 +27,6 @@ public class AndroidApp extends UI{
 		 
     public void runAndroidApp(){
         // set up appium
-    	initialData();
     	initialAndroidData();
 
 
@@ -46,7 +45,7 @@ public class AndroidApp extends UI{
 			e.printStackTrace();
 		}
         wait = new WebDriverWait(driver,waitTime);
-    	log("Start to run "+apkName+" app.");
+
 
         
     }

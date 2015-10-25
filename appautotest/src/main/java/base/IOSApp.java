@@ -27,7 +27,7 @@ public class IOSApp extends UI {
 
   	public void runIOSApp(){
 		    // set up appium
-  		initialData();
+
   		initialIOSData();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -47,7 +47,7 @@ public class IOSApp extends UI {
 			e.printStackTrace();
 		}
         wait = new WebDriverWait(driver,waitTime);
-    	log("Start to run "+app+" app.");
+
   	}
   	public void quit(){
 		driver.quit();

@@ -10,7 +10,6 @@ public class ticketAndroid extends AndroidApp{
 
 	public void initialTestData(){
 		configFileName = "/config/ticketSystem/configAndroid.properties";
-		testCaseClassName = this.getClass().getName();
 	}
 
 }

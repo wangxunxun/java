@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Default suite]">
+  <listeners>
+    <listener class-name="utils.TestngListenerWeb"/>
+  </listeners>
   <test name="Default test(failed)">
     <classes>
-      <class name="autotest.appautotest.testa">
+      <class name="testTicketWeb.baShi">
         <methods>
-          <include name="login"/>
+          <include name="tearDown"/>
+          <include name="test004editBaShiPiaoJia"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- autotest.appautotest.testa -->
+      </class> <!-- testTicketWeb.baShi -->
+      <class name="testTicketWeb.cheDuiAndCheLiang">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testTicketWeb.cheDuiAndCheLiang -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

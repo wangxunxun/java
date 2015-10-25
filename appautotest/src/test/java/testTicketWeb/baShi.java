@@ -46,7 +46,8 @@ public class baShi {
 	@BeforeClass
 	public void setUp(){
 		piaoWuWebApp.initialTestData();
-		piaoWuWebApp.runChormeApp();				
+		piaoWuWebApp.runChormeApp();	
+		piaoWuWebApp.setTestClassName(this.getClass().getName());
 	}
 
 
@@ -143,7 +144,7 @@ public class baShi {
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
 
-		
+		piaoWuWebApp.getScreen();
 		piaoWuWebApp.waitDisplayByCss(newPiaoJia);
 		piaoWuWebApp.clickByCss(newPiaoJia);
 //		piaoWuWebApp.waitDisplay("巴士线路维护", "票价");

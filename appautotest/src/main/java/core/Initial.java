@@ -71,6 +71,13 @@ public class Initial {
 	public void setTestClassName(String value){
 		testCaseClassName = value;
 	}
+	
+	public String getTestClassName(){
+		if (testCaseClassName ==null){
+			return "default";
+		}
+		return testCaseClassName;
+	}
 	public String getApkName(){
 		return apkName;
 	}
@@ -105,7 +112,7 @@ public class Initial {
 		
 	}
 	
-	protected String getScreenPath(){
+	public String getScreenPath(){
 		screenPath = getProperties("screenPath");
 		if(screenPath!=null){
 			return CommonTools.setPath(screenPath);
@@ -195,7 +202,7 @@ public class Initial {
 
 	
 	protected void writeLog(String content){
-		writeLog(testCaseClassName+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
+		writeLog(getTestClassName()+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
 	private void writeLog(String fileName,String content){
@@ -271,6 +278,7 @@ public class Initial {
 	}
 	
 	protected void initialAndroidData(){
+		initialData();
 		apkName = getProperties("apkName");
 		appPackage = getProperties("appPackage");
 		mainActivity = getProperties("mainActivity");
@@ -279,6 +287,7 @@ public class Initial {
 	}
 	
 	protected void initialIOSData(){
+		initialData();
 		app = getProperties("app");
 		iosDeviceName = getProperties("deviceName");
 		platformVersion = getProperties("platformVersion");

@@ -42,7 +42,7 @@ public class WebApp extends UI{
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
 
-		log("Start to launch the chrome browser.");
+		
 	
     }
      

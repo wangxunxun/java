@@ -5,7 +5,6 @@ import initial.piaoWuWebTest;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
-import utils.CommonTools;
 
 import org.testng.annotations.AfterClass;
 
@@ -41,7 +40,9 @@ public class cheDuiAndCheLiang {
 	public void setUp(){
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
-		piaoWuWebApp.log("Start to run "+this.getClass().getName()+".");
+		piaoWuWebApp.setTestClassName(this.getClass().getName());
+/*		piaoWuWebApp.log("Start to launch the chrome browser.");
+		piaoWuWebApp.log("Start to run "+this.getClass().getName()+".");*/
 	}
 
 

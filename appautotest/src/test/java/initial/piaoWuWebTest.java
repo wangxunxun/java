@@ -5,8 +5,6 @@ public class piaoWuWebTest extends WebApp{
 
 	public void initialTestData(){
 		configFileName = "/config/ticketSystem/configWeb.properties";
-		testCaseClassName = this.getClass().getName();
-
 	}
 	
 	public void enterHomePage(){
