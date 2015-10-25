@@ -2,38 +2,38 @@
 <testng-results skipped="0" failed="1" total="2" passed="1">
   <reporter-output>
     <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_193219_437_test004editBaShiPiaoJia.jpg]]>
+      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_202724_410_test004editBaShiPiaoJia.jpg]]>
     </line>
     <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_193219_437_test004editBaShiPiaoJia.jpg"/>]]>
+      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_202724_410_test004editBaShiPiaoJia.jpg"/>]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="40400" started-at="2015-10-25T11:31:40Z" finished-at="2015-10-25T11:32:20Z">
+  <suite name="Default suite" duration-ms="46007" started-at="2015-10-25T12:26:39Z" finished-at="2015-10-25T12:27:25Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="40400" started-at="2015-10-25T11:31:40Z" finished-at="2015-10-25T11:32:20Z">
+    <test name="Default test" duration-ms="46007" started-at="2015-10-25T12:26:39Z" finished-at="2015-10-25T12:27:25Z">
       <class name="testTicketWeb.baShi">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@34ce8af7]" name="setUp" is-config="true" duration-ms="1833" started-at="2015-10-25T19:31:58Z" finished-at="2015-10-25T19:31:59Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@34ce8af7]" name="setUp" is-config="true" duration-ms="1810" started-at="2015-10-25T20:26:59Z" finished-at="2015-10-25T20:27:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="test004editBaShiPiaoJia()[pri:0, instance:testTicketWeb.baShi@34ce8af7]" name="test004editBaShiPiaoJia" duration-ms="16431" started-at="2015-10-25T19:31:59Z" finished-at="2015-10-25T19:32:16Z">
+        <test-method status="FAIL" signature="test004editBaShiPiaoJia()[pri:0, instance:testTicketWeb.baShi@34ce8af7]" name="test004editBaShiPiaoJia" duration-ms="20249" started-at="2015-10-25T20:27:01Z" finished-at="2015-10-25T20:27:21Z">
           <exception class="org.openqa.selenium.TimeoutException">
             <message>
               <![CDATA[Timed out after 10 seconds waiting for presence of element located by: By.cssSelector: #table_main > tbody > tr:nth-child(6) > td:nth-child(11) > a:nth-child(3)
 Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
 System info: host: 'troy-PC', ip: '192.168.1.100', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, chrome={userDataDir=C:\Users\troy\AppData\Local\Temp\scoped_dir4644_20820}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, version=45.0.2454.85, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 6c74ae5d80f29be44a4e6e9c5698b812]]>
+Capabilities [{applicationCacheEnabled=false, rotatable=false, chrome={userDataDir=C:\Users\troy\AppData\Local\Temp\scoped_dir6272_2902}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, version=45.0.2454.85, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 68189de37e33d582f19bf565671f0af7]]>
             </message>
             <full-stacktrace>
               <![CDATA[org.openqa.selenium.TimeoutException: Timed out after 10 seconds waiting for presence of element located by: By.cssSelector: #table_main > tbody > tr:nth-child(6) > td:nth-child(11) > a:nth-child(3)
 Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
 System info: host: 'troy-PC', ip: '192.168.1.100', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, chrome={userDataDir=C:\Users\troy\AppData\Local\Temp\scoped_dir4644_20820}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, version=45.0.2454.85, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 6c74ae5d80f29be44a4e6e9c5698b812
+Capabilities [{applicationCacheEnabled=false, rotatable=false, chrome={userDataDir=C:\Users\troy\AppData\Local\Temp\scoped_dir6272_2902}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, version=45.0.2454.85, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 68189de37e33d582f19bf565671f0af7
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:80)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
 	at base.WebApp.waitDisplayByCss(WebApp.java:253)
@@ -65,13 +65,13 @@ Session ID: 6c74ae5d80f29be44a4e6e9c5698b812
 Caused by: org.openqa.selenium.NoSuchElementException: no such element
   (Session info: chrome=45.0.2454.85)
   (Driver info: chromedriver=2.9.248315,platform=Windows NT 6.1 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 16 milliseconds
+Command duration or timeout: 0 milliseconds
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '2.46.0', revision: '61506a4624b13675f24581e453592342b7485d71', time: '2015-06-04 10:22:50'
 System info: host: 'troy-PC', ip: '192.168.1.100', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_60'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities [{applicationCacheEnabled=false, rotatable=false, chrome={userDataDir=C:\Users\troy\AppData\Local\Temp\scoped_dir4644_20820}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, version=45.0.2454.85, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
-Session ID: 6c74ae5d80f29be44a4e6e9c5698b812
+Capabilities [{applicationCacheEnabled=false, rotatable=false, chrome={userDataDir=C:\Users\troy\AppData\Local\Temp\scoped_dir6272_2902}, takesHeapSnapshot=true, databaseEnabled=false, handlesAlerts=true, version=45.0.2454.85, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 68189de37e33d582f19bf565671f0af7
 *** Element info: {Using=css selector, value=#table_main > tbody > tr:nth-child(6) > td:nth-child(11) > a:nth-child(3)}
 	at sun.reflect.GeneratedConstructorAccessor11.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -94,28 +94,28 @@ Session ID: 6c74ae5d80f29be44a4e6e9c5698b812
           </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
             <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_193219_437_test004editBaShiPiaoJia.jpg]]>
+              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_202724_410_test004editBaShiPiaoJia.jpg]]>
             </line>
             <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_193219_437_test004editBaShiPiaoJia.jpg"/>]]>
+              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151025_202724_410_test004editBaShiPiaoJia.jpg"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- test004editBaShiPiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@34ce8af7]" name="tearDown" is-config="true" duration-ms="1437" started-at="2015-10-25T19:32:19Z" finished-at="2015-10-25T19:32:20Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@34ce8af7]" name="tearDown" is-config="true" duration-ms="1375" started-at="2015-10-25T20:27:24Z" finished-at="2015-10-25T20:27:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testTicketWeb.baShi -->
       <class name="testTicketWeb.cheDuiAndCheLiang">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3d24753a]" name="setUp" is-config="true" duration-ms="2540" started-at="2015-10-25T19:31:40Z" finished-at="2015-10-25T19:31:43Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3d24753a]" name="setUp" is-config="true" duration-ms="2441" started-at="2015-10-25T20:26:39Z" finished-at="2015-10-25T20:26:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="addCheDui()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3d24753a]" name="addCheDui" duration-ms="13446" started-at="2015-10-25T19:31:43Z" finished-at="2015-10-25T19:31:56Z">
+        <test-method status="PASS" signature="addCheDui()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3d24753a]" name="addCheDui" duration-ms="15439" started-at="2015-10-25T20:26:42Z" finished-at="2015-10-25T20:26:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addCheDui -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3d24753a]" name="tearDown" is-config="true" duration-ms="1521" started-at="2015-10-25T19:31:56Z" finished-at="2015-10-25T19:31:58Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.cheDuiAndCheLiang@3d24753a]" name="tearDown" is-config="true" duration-ms="1498" started-at="2015-10-25T20:26:57Z" finished-at="2015-10-25T20:26:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

@@ -214,12 +214,12 @@ public class Initial {
 	}
 	
 	private String getLogFilePath(){
-		return logPath+getTestClassName()+".txt";
+		return logPath+testCaseClassName+".txt";
 	}
 	
 	protected void writeLog(String content){
 		deleteFirstTime(getLogFilePath());
-		writeLog(getTestClassName()+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
+		writeLog(testCaseClassName+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
 	private void writeLog(String fileName,String content){
