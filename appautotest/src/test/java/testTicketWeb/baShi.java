@@ -45,6 +45,7 @@ public class baShi {
 	
 	@BeforeClass
 	public void setUp(){
+		
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
 		piaoWuWebApp.setTestClassName(this.getClass().getName());
