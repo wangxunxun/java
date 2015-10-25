@@ -114,13 +114,48 @@ public class Initial {
 		
 	}
 	
+	private String getAppClass(){
+		appClass = getProperties("appClass");
+    	if(appClass ==null){
+    		return "app";
+    	}
+    	return appClass;
+
+	}
+	
+	protected int getBasicWindowX(){
+		String x = getProperties("basicWindowX");
+		
+		if(x!=null){
+			basicWindowX = Integer.parseInt(x);
+			return basicWindowX;
+		}
+		return 720;
+	}
+	
+	protected int getBasicWindowY(){
+		String y = getProperties("basicWindowY");		
+		if(y!=null){
+			basicWindowY = Integer.parseInt(y);
+			return basicWindowY;
+		}
+		return 1280;
+	}
+	protected int getWaitTime(){
+		String time = getProperties("waitTime");		
+		if(time!=null){
+			waitTime = Integer.parseInt(time);
+			return waitTime;
+		}
+		return 10;
+	}
 	public String getScreenPath(){
 		screenPath = getProperties("screenPath");
 		if(screenPath!=null){
 			return CommonTools.setPath(screenPath);
 		}
 
-		return CommonTools.setPath("/screenshot/");
+		return CommonTools.setPath("/screenShot/");
 		
 	}
 	
@@ -129,7 +164,7 @@ public class Initial {
 		if(appDir!=null){
 			return CommonTools.setPath(appDir);
 		}
-		return CommonTools.setPath("/testresource/apps/");
+		return CommonTools.setPath("/testResource/apps/");
 		
 	}
 	
@@ -201,20 +236,11 @@ public class Initial {
 		}
 	}
 	
-	public void sleep(int time){
-		log("Sleep "+time+" ms.");
-		CommonTools.sleep(time);
-	}
 
-	private void deleteFile(String filePath){
-		File f = new File(filePath);
-		if(f.exists()){
-			f.delete();
-		}
-	}
+
 	private void deleteFirstTime(String filePath){
 		if(deleteLogFileFirst ==true){
-			deleteFile(filePath);
+			CommonTools.deleteFile(filePath);
 			deleteLogFileFirst = false;
 		}
 	}
@@ -244,42 +270,7 @@ public class Initial {
 		}
 		
 	}
-	
-	private String getAppClass(){
-		appClass = getProperties("appClass");
-    	if(appClass ==null){
-    		return "app";
-    	}
-    	return appClass;
 
-	}
-	
-	protected int getBasicWindowX(){
-		String x = getProperties("basicWindowX");
-		
-		if(x!=null){
-			basicWindowX = Integer.parseInt(x);
-			return basicWindowX;
-		}
-		return 720;
-	}
-	
-	protected int getBasicWindowY(){
-		String y = getProperties("basicWindowY");		
-		if(y!=null){
-			basicWindowY = Integer.parseInt(y);
-			return basicWindowY;
-		}
-		return 1280;
-	}
-	protected int getWaitTime(){
-		String time = getProperties("waitTime");		
-		if(time!=null){
-			waitTime = Integer.parseInt(time);
-			return waitTime;
-		}
-		return 10;
-	}
 	
 	protected void initialData() {
 		testExcelPath = getProperties("testExcelPath");

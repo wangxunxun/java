@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import core.Initial;
+import utils.CommonTools;
 public class UI extends Initial{
     
     public void clickElement(String page,String name){
@@ -77,6 +78,10 @@ public class UI extends Initial{
     	return findElement(page, name).isEnabled();
     }
     
+	public void sleep(int time){
+		log("Sleep "+time+" ms.");
+		CommonTools.sleep(time);
+	}
 
 
 	public WebElement findElement(String page,String name){

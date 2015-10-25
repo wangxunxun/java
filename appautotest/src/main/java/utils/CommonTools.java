@@ -2,6 +2,7 @@ package utils;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
@@ -27,6 +28,12 @@ public class CommonTools {
     	return currentPath + dirname;
     }
 
+    public static void deleteFile(String filePath){
+		File f = new File(filePath);
+		if(f.exists()){
+			f.delete();
+		}
+	}
     
     protected static void log(Object content, Integer type) {
 
