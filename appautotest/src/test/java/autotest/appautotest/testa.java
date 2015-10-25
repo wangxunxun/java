@@ -49,7 +49,7 @@ public class testa{
     public void login(){
 
 
-    	ticketApp.runTestCase("预约包车");
+    	ticketApp.runTestCase("登录");
 
 
 

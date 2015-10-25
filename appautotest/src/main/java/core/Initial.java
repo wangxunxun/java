@@ -22,19 +22,17 @@ public class Initial {
 
 	public static WebDriver driver;		
 	protected WebDriverWait wait; 
-	
-	
+	protected int waitTime;	
+
 	protected String configFileName;
-	//屏幕分辨率设置
+	//app存放文件夹
+	protected String appDir;
+	//andorid配置信息
 	protected int basicWindowX;
 	protected int basicWindowY;	
-	//andorid配置信息
-	protected File classpathRoot = new File(System.getProperty("user.dir"));
-	protected File appDir = new File(classpathRoot, "/testresource/apps");
-	protected boolean unicodeKeyboard = true;
-	protected boolean resetKeyboard = true;
+	protected boolean unicodeKeyboard;
+	protected boolean resetKeyboard;
 	protected String androidDeviceName;
-	protected int waitTime;
 	protected String apkName;
 	protected String appPackage;
 	protected String mainActivity;
@@ -51,6 +49,7 @@ public class Initial {
 
 	//截屏存放目录
 	protected String screenPath;
+	//log存放路径
 	protected String logPath;
 	
 	//测试数据变量
@@ -59,12 +58,17 @@ public class Initial {
 	protected String testCaseSheet;
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
-	
+	//测试app的类名
 	protected String appClass;
+	//测试用例的类名
 	protected String testCaseClassName;
+	//回写脚本开关
 	protected boolean writeScript;
+	//回写测试结果开关
 	protected boolean writeResult;
+	//log开关
 	protected boolean logSwitch;
+	//每次运行时是否删除log文件开关
 	protected boolean deleteLogFileFirst;
     
 	
@@ -78,9 +82,7 @@ public class Initial {
 		}
 		return testCaseClassName;
 	}
-	public String getApkName(){
-		return apkName;
-	}
+
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
 		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
@@ -119,6 +121,15 @@ public class Initial {
 		}
 
 		return CommonTools.setPath("/screenshot/");
+		
+	}
+	
+	protected String getAppDir(){
+		appDir = getProperties("appDir");
+		if(appDir!=null){
+			return CommonTools.setPath(appDir);
+		}
+		return CommonTools.setPath("/testresource/apps/");
 		
 	}
 	
@@ -287,6 +298,7 @@ public class Initial {
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
+		appDir = getAppDir();
 	
 	}
 	
@@ -297,6 +309,8 @@ public class Initial {
 		mainActivity = getProperties("mainActivity");
 		basicWindowX = getBasicWindowX();
 		basicWindowY = getBasicWindowY();
+		unicodeKeyboard = Boolean.parseBoolean(getProperties("unicodeKeyboard"));
+		resetKeyboard = Boolean.parseBoolean(getProperties("resetKeyboard"));
 	}
 	
 	protected void initialIOSData(){

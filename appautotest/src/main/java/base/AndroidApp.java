@@ -29,11 +29,9 @@ public class AndroidApp extends UI{
         // set up appium
     	initialAndroidData();
 
-
-        File app = new File(appDir, apkName);
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",androidDeviceName);
-        capabilities.setCapability("app", app.getAbsolutePath());
+        capabilities.setCapability("app", appDir+apkName);
         capabilities.setCapability("unicodeKeyboard", unicodeKeyboard);
         capabilities.setCapability("resetKeyboard", resetKeyboard);
         capabilities.setCapability("appPackage", appPackage);
@@ -51,6 +49,13 @@ public class AndroidApp extends UI{
     }
 
 	
+	public String getApkName(){
+		return apkName;
+	}
+	
+	public String getAppPackage(){
+		return appPackage;
+	}
 	
     public void getButtons(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.Button");
