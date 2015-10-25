@@ -25,7 +25,6 @@ public class Initial {
 	
 	
 	protected String configFileName;
-
 	//屏幕分辨率设置
 	protected int basicWindowX;
 	protected int basicWindowY;	
@@ -66,6 +65,7 @@ public class Initial {
 	protected boolean writeScript;
 	protected boolean writeResult;
 	protected boolean logSwitch;
+	protected boolean deleteLogFileFirst;
     
 	
 	public void setTestClassName(String value){
@@ -200,8 +200,25 @@ public class Initial {
 		CommonTools.sleep(time);
 	}
 
+	private void deleteFile(String filePath){
+		File f = new File(filePath);
+		if(f.exists()){
+			f.delete();
+		}
+	}
+	private void deleteFirstTime(String filePath){
+		if(deleteLogFileFirst ==true){
+			deleteFile(filePath);
+			deleteLogFileFirst = false;
+		}
+	}
+	
+	private String getLogFilePath(){
+		return logPath+getTestClassName()+".txt";
+	}
 	
 	protected void writeLog(String content){
+		deleteFirstTime(getLogFilePath());
 		writeLog(getTestClassName()+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
@@ -274,6 +291,7 @@ public class Initial {
 		writeScript = Boolean.parseBoolean(getProperties("writeScript"));
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
+		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
 	
 	}
 	
