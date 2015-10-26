@@ -113,7 +113,7 @@ public class AndroidApp extends UI{
 	   	}
     }
     
-    
+
     
     public void getImageButtons(){
     	List<AndroidElement> eles= driver.findElementsByClassName("android.widget.ImageButton");
@@ -125,7 +125,7 @@ public class AndroidApp extends UI{
    		}
     }
     
-    protected AndroidElement findElementByClassNameIndex(String classname,int index){
+    public AndroidElement findElementByClassNameIndex(String classname,int index){
     	List<AndroidElement> eles= driver.findElementsByClassName(classname);
     	return eles.get(index);
     }
@@ -232,6 +232,14 @@ public class AndroidApp extends UI{
 		getScreen("");
 	}
 	
+    public int getElementX(String page,String name){
+    	return findElement(page, name).getSize().getWidth();    	
+    }
+    
+    public int getElementY(String page,String name){
+    	return findElement(page, name).getSize().getHeight();  	
+    }
+	
 	public AndroidElement findElement(String page,String name){
 
 		String selecttype = elementData.get(page).get(name).get("SelectType");
@@ -266,10 +274,12 @@ public class AndroidApp extends UI{
 			String classname = sourceStrArray[0];
 			String index = sourceStrArray[1];
 			int in=Integer.parseInt(index);
+			log(in);
+			log(classname);
 			return findElementByClassNameIndex(classname, in);
 		}		
 		else{
-			System.out.println("Can not find the element.");
+			log("Can not find the element.");
 		}
 		return null;
 	}

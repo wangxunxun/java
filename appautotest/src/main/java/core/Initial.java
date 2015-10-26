@@ -222,7 +222,7 @@ public class Initial {
 		}
 	}
 	
-	public void log(String content){
+	public void log(Object content){
 		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
@@ -249,12 +249,12 @@ public class Initial {
 		return logPath+testCaseClassName+".txt";
 	}
 	
-	protected void writeLog(String content){
+	protected void writeLog(Object content){
 		deleteFirstTime(getLogFilePath());
 		writeLog(testCaseClassName+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
-	private void writeLog(String fileName,String content){
+	private void writeLog(String fileName,Object content){
 		FileWriter writer;
 		try {
 		  	if (!(new File(logPath).isDirectory())) {  // 判断是否存在该目录

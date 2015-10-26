@@ -247,7 +247,7 @@ public class UI extends Initial{
 			String[] sourceStrArray = location.split(",");
 			String classname = sourceStrArray[0];
 			try {
-				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className(classname)));
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.className(classname)));
 			} catch (Exception e) {
 				// TODO: handle exception
 				log("The "+name+" element on the "+page+" page is not displayed.");
