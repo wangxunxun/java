@@ -1,15 +1,18 @@
-20151027_134715_139 INFO - Start to run NPAndroid.ad.
-20151027_134715_147 INFO - Sleep 5000 ms.
-20151027_134720_148 INFO - To find the 略过 element on the 启动页 page.
-20151027_134720_216 INFO - The 略过 element on the 启动页 page is displayed.
-20151027_134720_216 INFO - Sleep 500 ms.
-20151027_134720_718 INFO - Click the 略过 element on the 启动页 page.
-20151027_134721_246 INFO - Sleep 20000 ms.
-20151027_134741_257 INFO - To find the 文章 element on the 首页 page.
-20151027_134741_491 INFO - The 文章 element on the 首页 page is displayed.
-20151027_134741_493 INFO - Sleep 500 ms.
-20151027_134742_007 INFO - Sleep 5000 ms.
-20151027_134747_007 INFO - Click the 文章 element on the 首页 page by XY.
-20151027_134801_391 INFO - Tab (35,76).
-20151027_134802_127 INFO - Sleep 5000 ms.
-20151027_134807_134 INFO - Quit app-qa-release_10_03.apk app.
+20151027_161126_242 INFO - Start to run NPAndroid.ad.
+20151027_161126_242 INFO - Sleep 5000 ms.
+20151027_161131_256 INFO - To find the 略过 element on the 启动页 page.
+20151027_161131_338 INFO - The 略过 element on the 启动页 page is displayed.
+20151027_161131_338 INFO - Sleep 500 ms.
+20151027_161131_838 INFO - Click the 略过 element on the 启动页 page.
+20151027_161132_494 INFO - Sleep 20000 ms.
+20151027_161152_538 INFO - Swipe up.
+20151027_161154_190 INFO - Swipe up.
+20151027_161155_654 INFO - Sleep 5000 ms.
+20151027_161200_665 INFO - To find the 广告 element on the 首页 page.
+20151027_161200_713 INFO - The 广告 element on the 首页 page is displayed.
+20151027_161200_713 INFO - Sleep 500 ms.
+20151027_161201_213 INFO - Sleep 5000 ms.
+20151027_161206_674 INFO - 510
+20151027_161206_674 INFO - 907
+20151027_161206_674 INFO - Sleep 5000 ms.
+20151027_161211_700 INFO - Quit app-qa-release_10_03.apk app.

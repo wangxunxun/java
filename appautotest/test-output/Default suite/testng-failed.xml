@@ -6,6 +6,7 @@
       <class name="NPAndroid.ad">
         <methods>
           <include name="login"/>
+          <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- NPAndroid.ad -->
