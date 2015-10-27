@@ -1,14 +1,15 @@
-20151026_232942_552 INFO - Start to run NPAndroid.ad.
-20151026_232942_559 INFO - Sleep 5000 ms.
-20151026_232947_561 INFO - To find the ÂÔ¹ı element on the Æô¶¯Ò³ page.
-20151026_232948_661 INFO - The ÂÔ¹ı element on the Æô¶¯Ò³ page is displayed.
-20151026_232948_661 INFO - Sleep 500 ms.
-20151026_232949_162 INFO - Click the ÂÔ¹ı element on the Æô¶¯Ò³ page.
-20151026_232951_080 INFO - Sleep 15000 ms.
-20151026_233006_168 INFO - Swipe up.
-20151026_233016_384 INFO - Swipe up.
-20151026_233018_965 INFO - Sleep 5000 ms.
-20151026_233029_480 INFO - The total of imageview is 22
-20151026_233029_481 INFO - 0
-20151026_233029_481 INFO - android.webkit.WebView
-20151026_233030_621 INFO - Quit app-qa-release_10_03.apk app.
+20151027_134715_139 INFO - Start to run NPAndroid.ad.
+20151027_134715_147 INFO - Sleep 5000 ms.
+20151027_134720_148 INFO - To find the ç•¥è¿‡ element on the å¯åŠ¨é¡µ page.
+20151027_134720_216 INFO - The ç•¥è¿‡ element on the å¯åŠ¨é¡µ page is displayed.
+20151027_134720_216 INFO - Sleep 500 ms.
+20151027_134720_718 INFO - Click the ç•¥è¿‡ element on the å¯åŠ¨é¡µ page.
+20151027_134721_246 INFO - Sleep 20000 ms.
+20151027_134741_257 INFO - To find the æ–‡ç«  element on the é¦–é¡µ page.
+20151027_134741_491 INFO - The æ–‡ç«  element on the é¦–é¡µ page is displayed.
+20151027_134741_493 INFO - Sleep 500 ms.
+20151027_134742_007 INFO - Sleep 5000 ms.
+20151027_134747_007 INFO - Click the æ–‡ç«  element on the é¦–é¡µ page by XY.
+20151027_134801_391 INFO - Tab (35,76).
+20151027_134802_127 INFO - Sleep 5000 ms.
+20151027_134807_134 INFO - Quit app-qa-release_10_03.apk app.

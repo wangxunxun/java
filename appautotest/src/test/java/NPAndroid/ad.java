@@ -36,27 +36,29 @@ public class ad {
     	NPAndroid.sleep(5000);
     	NPAndroid.waitDisplay("启动页", "略过");
     	NPAndroid.clickElement("启动页", "略过");
-    	NPAndroid.sleep(15000);
-    	NPAndroid.swipeOfType("up");
-    	NPAndroid.swipeOfType("up");
+    	NPAndroid.sleep(20000);
+/*    	NPAndroid.swipeOfType("up");
+    	NPAndroid.swipeOfType("up");*/
+//    	NPAndroid.sleep(5000);
+    	NPAndroid.waitDisplay("首页","文章");
+//    	NPAndroid.clickElement("首页","文章");
     	NPAndroid.sleep(5000);
+    	NPAndroid.clickElementByXY("首页","文章");
+//    	NPAndroid.tab(60, 100);
+//    	NPAndroid.swipeOfType("left");
+/*    	NPAndroid.sleep(15000);
+    	NPAndroid.waitDisplay("首页","文章");
     	NPAndroid.getImageViews();
-    	NPAndroid.log(NPAndroid.findElement("首页","广告").getSize().getHeight());
-    	AndroidElement eee = NPAndroid.findElementByClassNameIndex("android.widget.ImageView", 0);
-    	NPAndroid.log(eee.getSize().getHeight());
-    	List<AndroidElement> ele = AndroidApp.driver.findElementsByClassName("android.widget.ImageView");
-    	NPAndroid.log(ele.get(0).getSize().getHeight());
-    	List<AndroidElement> ele1 = AndroidApp.driver.findElementsByClassName("android.webkit.WebView");
-    	NPAndroid.log(ele1.get(0).getSize().getHeight());
-    	NPAndroid.log(ele1.get(0).getSize().getWidth());
-    	NPAndroid.log(ele1.get(0).getLocation().getX());
-    	NPAndroid.log(ele1.get(0).getLocation().getY());
-    	ele1.get(0).click();
+    	
+    	
+    	NPAndroid.log(NPAndroid.getElementX("首页","文章"));
+    	NPAndroid.log(NPAndroid.getElementY("首页","文章"));
+    	NPAndroid.log(NPAndroid.getElementLocateX("首页","文章"));
+    	NPAndroid.log(NPAndroid.getElementLocateY("首页","文章"));*/
+
     	
 
-    	int x = NPAndroid.getElementX("首页","广告");
-    	NPAndroid.sleep(5000);
-    	NPAndroid.log(x);
+
 
     	NPAndroid.sleep(5000);
 

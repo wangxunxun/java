@@ -124,8 +124,7 @@ public class Initial {
 	}
 	
 	protected int getBasicWindowX(){
-		String x = getProperties("basicWindowX");
-		
+		String x = getProperties("basicWindowX");		
 		if(x!=null){
 			basicWindowX = Integer.parseInt(x);
 			return basicWindowX;
@@ -134,7 +133,7 @@ public class Initial {
 	}
 	
 	protected int getBasicWindowY(){
-		String y = getProperties("basicWindowY");		
+		String y = getProperties("basicWindowY");
 		if(y!=null){
 			basicWindowY = Integer.parseInt(y);
 			return basicWindowY;

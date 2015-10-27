@@ -176,6 +176,7 @@ public class AndroidApp extends UI{
 
 
     }
+
     
     public void clickEnter(){
     	log("Click Enter.");
@@ -239,7 +240,13 @@ public class AndroidApp extends UI{
     public int getElementY(String page,String name){
     	return findElement(page, name).getSize().getHeight();  	
     }
+	public int getElementLocateX(String page,String name){
+		return findElement(page, name).getLocation().getX();
+	}
 	
+	public int getElementLocateY(String page,String name){
+		return findElement(page, name).getLocation().getY();
+	}
 	public AndroidElement findElement(String page,String name){
 
 		String selecttype = elementData.get(page).get(name).get("SelectType");
@@ -274,8 +281,6 @@ public class AndroidApp extends UI{
 			String classname = sourceStrArray[0];
 			String index = sourceStrArray[1];
 			int in=Integer.parseInt(index);
-			log(in);
-			log(classname);
 			return findElementByClassNameIndex(classname, in);
 		}		
 		else{
@@ -347,11 +352,10 @@ public class AndroidApp extends UI{
 	    }
 	   
 	   public void tab(int fingers, int x, int y, int duration ){
-
-		   float a = x/basicWindowX;
-		   float b = y/basicWindowY;
+		   float a = (float)x/basicWindowX;
+		   float b = (float)y/basicWindowY;
 		   int newx = (int) (a*driver.manage().window().getSize().getWidth());
-		   int newy = (int) (b*driver.manage().window().getSize().getHeight());		   
+		   int newy = (int) (b*driver.manage().window().getSize().getHeight());	
 		   driver.tap(fingers, newx, newy, duration);
 	   }
 	   
@@ -363,6 +367,13 @@ public class AndroidApp extends UI{
 	   public void longTab(int x, int y){
 		   log("Long tab ("+x+","+y+").");
 		   tab(1, x, y, 3000);
+	   }
+	   
+	   public void clickElementByXY(String page,String name){
+		   log("Click the "+name+" element on the "+page+" page by XY.");
+		   int X= getElementLocateX(page, name);
+		   int Y = getElementLocateY(page, name);	
+		   tab(X+10, Y+10);
 	   }
 	   
 	   public void swipe (int startx, int starty, int endx, int endy, int duration){

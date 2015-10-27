@@ -11,12 +11,16 @@ import org.testng.Assert;
 import core.Initial;
 import utils.CommonTools;
 public class UI extends Initial{
+	
+
     
     public void clickElement(String page,String name){
     	log("Click the "+name+" element on the "+page+" page.");
     	findElement(page, name).click();
     	
     }
+    
+
     public void waitToclickElement(String page,String name){
     	waitDisplay(page, name);
     	log("Click the "+name+" element on the "+page+" page.");
