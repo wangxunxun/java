@@ -9,9 +9,10 @@ public class piaoWuWebTest extends WebApp{
 	
 	public void enterHomePage(){
 		String url=getProperties("url");
-//		String url = "http://106.185.47.124:5000/Server/Auth/Login?next=%2F";
 		get(url);
+		waitDisplay("登录页", "登录输入框");
 		sendKeys("登录页", "登录输入框", "admin");
+		waitDisplay("登录页", "密码输入框");
 		sendKeys("登录页", "密码输入框", "admin");
 		clickElement("登录页", "登录");
 	}

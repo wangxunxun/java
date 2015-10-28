@@ -87,6 +87,7 @@ public class ReadTestData {
 		Sheet readsheet = readwb.getSheet(tablename);   
 		int rsColumns = readsheet.getColumns();   
 		int rsRows = readsheet.getRows();   
+		
 		if (rsRows==0){
 			throw new IllegalStateException("There is now row found in excel file [" + excelpath + "], can't "
 					+ "generate map from column name to column index. ");
@@ -94,6 +95,11 @@ public class ReadTestData {
 		for (int i = 1; i < rsRows; i++){
 			if (readsheet.getCell(0, i).getContents()==""){
 				rsRows = i;
+			}
+		}
+		for (int i = 1; i < rsColumns; i++){
+			if (readsheet.getCell(i, 0).getContents()==""){
+				rsColumns = i;
 			}
 		}
   

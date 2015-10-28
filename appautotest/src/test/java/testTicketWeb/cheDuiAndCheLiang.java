@@ -42,8 +42,7 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
 		piaoWuWebApp.setTestClassName(this.getClass().getName());
-/*		piaoWuWebApp.log("Start to launch the chrome browser.");
-		piaoWuWebApp.log("Start to run "+this.getClass().getName()+".");*/
+
 	}
 
 
@@ -52,16 +51,26 @@ public class cheDuiAndCheLiang {
 	public void tearDown() {
 		piaoWuWebApp.quit();
 	}
-
-//	@Test(dataProvider="addCheLiang")
-    public void addCheLiang(String siJi,String cheDui,String carType,String car_owner,String phone_number,String seat_num,String max_seat_num,String add_seat_num,String plate_number,String buy_year,String engine_number,String brand  ) throws InterruptedException, BiffException, IOException{
-
-
+	
+	@Test
+	public void test000login(){
 		piaoWuWebApp.enterHomePage();
+	}
+	
+//	@Test
+	public void test010EnterAddCheLiangPage(){
 		piaoWuWebApp.waitDisplay("侧边栏", "车队与车辆管理");
 		piaoWuWebApp.clickElement("侧边栏", "车队与车辆管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "车辆管理");
 		piaoWuWebApp.clickElement("侧边栏", "车辆管理");
+	}
+
+//	@Test(dataProvider="addCheLiang")
+    public void test011AddCheLiang(String siJi,String cheDui,String carType,String car_owner,String phone_number,String seat_num,String max_seat_num,String add_seat_num,String plate_number,String buy_year,String engine_number,String brand  ) throws InterruptedException, BiffException, IOException{
+
+
+
+
 		piaoWuWebApp.waitDisplay("车辆管理", "添加车辆");
 		piaoWuWebApp.clickElement("车辆管理", "添加车辆");
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
@@ -77,6 +86,7 @@ public class cheDuiAndCheLiang {
 		piaoWuWebApp.sendKeys("添加车辆", "加座数",add_seat_num); 
 		piaoWuWebApp.sendKeys("添加车辆", "车牌号码",plate_number); 
 		piaoWuWebApp.sendKeys("添加车辆", "购买时间",buy_year); 
+		piaoWuWebApp.clickElement("添加车辆", "车主姓名"); 
 		piaoWuWebApp.sendKeys("添加车辆", "发动机号",engine_number); 
 		piaoWuWebApp.clear("添加车辆", "品牌");
 		piaoWuWebApp.sendKeys("添加车辆", "品牌",brand); 
@@ -89,14 +99,20 @@ public class cheDuiAndCheLiang {
 		
     }
 	
-//	@Test(dataProvider="addSiJi")
-    public void addSiJi(String number,String name,String cheDui,String phone,String xingBie,String idCard,String workNo,String licenseNo,String driverYear,String driverType) throws InterruptedException, BiffException, IOException{
-
-
-		piaoWuWebApp.enterHomePage();
+	@Test
+	public void test020EnterAddSiJiPage(){
+		piaoWuWebApp.waitDisplay("侧边栏", "车队与车辆管理");
 		piaoWuWebApp.clickElement("侧边栏", "车队与车辆管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "司机管理");
 		piaoWuWebApp.clickElement("侧边栏", "司机管理");
+	}
+	
+	@Test(dataProvider="addSiJi")
+    public void test021addSiJi(String number,String name,String cheDui,String phone,String xingBie,String idCard,String workNo,String licenseNo,String driverYear,String driverType) throws InterruptedException, BiffException, IOException{
+
+
+
+
 		piaoWuWebApp.waitDisplay("司机管理", "添加司机");
 		piaoWuWebApp.clickElement("司机管理", "添加司机");
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
@@ -127,9 +143,9 @@ public class cheDuiAndCheLiang {
 
     }
     
-    @Test
+//    @Test
     public void addCheDui(){
-/*    	piaoWuWebApp.runTestCase("登录");
+    	piaoWuWebApp.runTestCase("登录");
     	piaoWuWebApp.waitDisplay("侧边栏","车队与车辆管理");
     	piaoWuWebApp.clickElement("侧边栏","车队与车辆管理");
     	piaoWuWebApp.waitDisplay("侧边栏","车队管理");
@@ -143,9 +159,10 @@ public class cheDuiAndCheLiang {
     	piaoWuWebApp.sendKeys("添加车队","座机","11");
     	piaoWuWebApp.sendKeys("添加车队","地址","11");
 
-    	piaoWuWebApp.clickElement("添加车队","提交");*/
+    	piaoWuWebApp.clickElement("添加车队","提交");
 
-    	piaoWuWebApp.runTestCase("添加车队");
     }
+    
+    
 
 }

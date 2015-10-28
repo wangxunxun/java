@@ -58,38 +58,56 @@ public class baShi {
 		piaoWuWebApp.quit();
 	}
 
+	@Test
+	public void test000login(){
+		piaoWuWebApp.enterHomePage();
+	}
+	
+//	@Test
+	public void test001EnterBusStationPage(){
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");
+		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士车站维护");
+		piaoWuWebApp.clickElement("侧边栏", "巴士车站维护");
 
+
+	}
 	
 //	@Test(dataProvider="addBaShiStation")
     public void test001addBaShiStation(String name,String longitude,String latitude) throws InterruptedException, BiffException, IOException{
 
-		piaoWuWebApp.enterHomePage();
-		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
-		piaoWuWebApp.clickElement("侧边栏", "巴士车站维护");
-		piaoWuWebApp.waitDisplay("侧边栏", "巴士车站维护");
+
+		piaoWuWebApp.waitDisplay("巴士车站维护", "添加车站");
 		piaoWuWebApp.clickElement("巴士车站维护", "添加车站");
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
-
+		piaoWuWebApp.waitDisplay("巴士-添加车站", "车站名称");
 		piaoWuWebApp.sendKeys("巴士-添加车站", "车站名称",name); 
 		piaoWuWebApp.sendKeys("巴士-添加车站", "经度",longitude); 
 		piaoWuWebApp.sendKeys("巴士-添加车站", "纬度",latitude); 
 		piaoWuWebApp.clickElement("巴士-添加车站", "提交");
 
 
+
     }
-	
-//	@Test(dataProvider="addBaShiXianLu")
-    public void test002addBaShiXianLu(String name,String city,String qidian,String zhongdian,String km,String time,String sellNum,String sellDay,String effectiveData) throws InterruptedException, BiffException, IOException{
-
-
-		piaoWuWebApp.enterHomePage();
+//	@Test
+	public void test010EnterBaShiXianLuPage(){
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
+
+
+
+	}
+//	@Test(dataProvider="addBaShiXianLu")
+    public void test011addBaShiXianLu(String name,String city,String qidian,String zhongdian,String km,String time,String sellNum,String sellDay,String effectiveData) throws InterruptedException, BiffException, IOException{
+
+
+
 		piaoWuWebApp.waitDisplay("巴士线路维护", "添加线路");
 		piaoWuWebApp.clickElement("巴士线路维护", "添加线路");
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
-
+		piaoWuWebApp.waitDisplay("巴士-添加线路", "线路名称");
 		piaoWuWebApp.sendKeys("巴士-添加线路", "线路名称",name); 
 		piaoWuWebApp.sendKeys("巴士-添加线路", "所属城市",city); 
 		piaoWuWebApp.sendKeys("巴士-添加线路", "起点站",qidian); 
@@ -103,15 +121,14 @@ public class baShi {
 		piaoWuWebApp.clickElement("巴士-添加线路", "提交");
 
 
+
     }
-	
-//	@Test(dataProvider="addBaShiLuDuan")
-    public void test003addBaShiLuDuan(String station,String km,String time) throws InterruptedException, BiffException, IOException{
+//	@Test
+	public void test020EnterBaShiLuDuanPage(){
 		String luDuan = piaoWuWebApp.getProperties("baShiLuDuan");
 
-		String newLuDuan = piaoWuWebApp.getTableRowLocationByCss(luDuan, 6);
-
-		piaoWuWebApp.enterHomePage();
+		String newLuDuan = piaoWuWebApp.getTableRowLocationByCss(luDuan, 1);
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
@@ -119,11 +136,19 @@ public class baShi {
 		
 		piaoWuWebApp.waitDisplayByCss(newLuDuan);
 		piaoWuWebApp.clickByCss(newLuDuan);
-		
-//		piaoWuWebApp.waitDisplay("巴士线路维护", "路段");
-//		piaoWuWebApp.clickElement("巴士线路维护", "路段");
+
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
 
+
+
+	}
+//	@Test(dataProvider="addBaShiLuDuan")
+    public void test021addBaShiLuDuan(String station,String km,String time) throws InterruptedException, BiffException, IOException{
+
+
+
+
+		piaoWuWebApp.waitDisplay("巴士-编辑路段", "选择站点");
 		piaoWuWebApp.sendKeys("巴士-编辑路段", "选择站点",station); 
 		piaoWuWebApp.sendKeys("巴士-编辑路段", "距起始站距离",km); 
 		piaoWuWebApp.sendKeys("巴士-编辑路段", "距起始站时间",time); 
@@ -133,26 +158,23 @@ public class baShi {
     }
 
 	@Test
-    public void test004editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
+    public void test031editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
 
 		String piaoJia = piaoWuWebApp.getProperties("baShiPiaoJia");
 
-		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaoJia, 6);
-		
-		piaoWuWebApp.enterHomePage();
+		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaoJia, 2);
+
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");
 		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士线路维护");
 		piaoWuWebApp.clickElement("侧边栏", "巴士线路维护");
 
-		piaoWuWebApp.getScreen();
 		piaoWuWebApp.waitDisplayByCss(newPiaoJia);
 		piaoWuWebApp.clickByCss(newPiaoJia);
-//		piaoWuWebApp.waitDisplay("巴士线路维护", "票价");
-//		piaoWuWebApp.clickElement("巴士线路维护", "票价");
+
 		piaoWuWebApp.switchToFrame("xubox_iframe1");
 		
-		for (int i=1;i<=105;i++){
+		for (int i=1;i<=78;i++){
 			String loc1 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(3) > input";
 			String loc2 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(4) > input";
 			String loc3 = "#form-user-add > table > tbody > tr:nth-child("+i+") > td:nth-child(5) > input";
@@ -162,7 +184,7 @@ public class baShi {
 			piaoWuWebApp.clearByCss(loc2);
 			piaoWuWebApp.sendKeysByCss(loc2, "1");
 			piaoWuWebApp.clearByCss(loc3);
-			piaoWuWebApp.sendKeysByCss(loc3, "0.01");
+			piaoWuWebApp.sendKeysByCss(loc3, "0.02");
 			piaoWuWebApp.clearByCss(loc4);
 			piaoWuWebApp.sendKeysByCss(loc4, "0.01");
 
@@ -170,9 +192,9 @@ public class baShi {
 		
 		}
 
-
+		piaoWuWebApp.waitDisplay("巴士-票价", "提交");
 		piaoWuWebApp.clickElement("巴士-票价", "提交");
-		
+		piaoWuWebApp.sleep(5000);
 
 
     }

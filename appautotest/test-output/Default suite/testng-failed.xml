@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="NPAndroid.ad">
+      <class name="testTicketWeb.baShi">
         <methods>
-          <include name="login"/>
+          <include name="test031editBaShiPiaoJia"/>
           <include name="tearDown"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- NPAndroid.ad -->
+      </class> <!-- testTicketWeb.baShi -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
