@@ -1,0 +1,8 @@
+20151030_232323_275 INFO - Start to run autotest.appautotest.testa.
+20151030_232323_283 INFO - Sleep 5000 ms.
+20151030_232328_342 INFO - Swipe left.
+20151030_232329_892 INFO - Sleep 500 ms.
+20151030_232330_433 INFO - Swipe left.
+20151030_232333_123 INFO - Get screen.
+20151030_232333_548 INFO - Click the 开启直达车 element on the 启动页 page.
+20151030_232334_810 INFO - Quit ticketingsystem(10-15).apk app.

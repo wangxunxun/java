@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="125617" started-at="2015-10-28T06:45:25Z" finished-at="2015-10-28T06:47:31Z">
+  <suite name="Default suite" duration-ms="30939" started-at="2015-10-30T15:23:06Z" finished-at="2015-10-30T15:23:37Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="125617" started-at="2015-10-28T06:45:25Z" finished-at="2015-10-28T06:47:31Z">
-      <class name="testTicketWeb.baShi">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="setUp" is-config="true" duration-ms="2744" started-at="2015-10-28T14:45:25Z" finished-at="2015-10-28T14:45:28Z">
+    <test name="Default test" duration-ms="30939" started-at="2015-10-30T15:23:06Z" finished-at="2015-10-30T15:23:37Z">
+      <class name="autotest.appautotest.testa">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="setUp" is-config="true" duration-ms="16455" started-at="2015-10-30T23:23:06Z" finished-at="2015-10-30T23:23:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="test000login" duration-ms="12782" started-at="2015-10-28T14:45:28Z" finished-at="2015-10-28T14:45:41Z">
+        <test-method status="PASS" signature="enterMainPage()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="enterMainPage" duration-ms="11531" started-at="2015-10-30T23:23:23Z" finished-at="2015-10-30T23:23:34Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test031editBaShiPiaoJia()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="test031editBaShiPiaoJia" duration-ms="107928" started-at="2015-10-28T14:45:41Z" finished-at="2015-10-28T14:47:29Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test031editBaShiPiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="tearDown" is-config="true" duration-ms="2146" started-at="2015-10-28T14:47:29Z" finished-at="2015-10-28T14:47:31Z">
+        </test-method> <!-- enterMainPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@6a5fc7f7]" name="tearDown" is-config="true" duration-ms="2934" started-at="2015-10-30T23:23:34Z" finished-at="2015-10-30T23:23:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testTicketWeb.baShi -->
+      </class> <!-- autotest.appautotest.testa -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

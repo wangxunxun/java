@@ -2,6 +2,7 @@ package base;
 
 import io.appium.java_client.android.AndroidElement;
 import utils.CommonTools;
+import utils.ImageUtils;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.io.File;
@@ -220,7 +221,8 @@ public class AndroidApp extends UI{
 	  	}
 		try {
 			log("Get screen.");
-			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
+			String path = screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".png";
+			FileUtils.copyFile(scrFile, new File(path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -229,9 +231,45 @@ public class AndroidApp extends UI{
 		}		
 	}
 	
-	public void getScreen() throws IOException{ 
+	private String getScreenReturnPath(String filename){ 
+		File scrFile = driver.getScreenshotAs(OutputType.FILE);
+
+	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
+	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
+	  	}
+		try {
+			log("Get screen.");
+			String path = screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".png";
+			FileUtils.copyFile(scrFile, new File(path));
+			return path;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			log("Get screen failed.");
+			Assert.fail("Get screen failed.");
+
+		}		
+		return null;
+		
+	}
+	
+	public void getScreen(){ 
 		getScreen("");
 	}
+
+	public void getElementScreen(String page,String name){
+		String srcImg = getScreenReturnPath(name);
+		String destImg = screenPath;
+		
+		int x = getElementLocateX(page, name);
+		int y = getElementLocateY(page, name);
+		int elementX =getElementX(page, name);
+		int elementY = getElementY(page, name);
+
+		ImageUtils.cutImage(srcImg, destImg, x, y, elementX, elementY);
+	}
+	
+	
 	
     public int getElementX(String page,String name){
     	return findElement(page, name).getSize().getWidth();    	

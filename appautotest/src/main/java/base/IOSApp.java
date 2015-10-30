@@ -165,7 +165,7 @@ public class IOSApp extends UI {
 	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
 	  	}
 		try {
-			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
+			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

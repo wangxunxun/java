@@ -33,19 +33,19 @@ public class testa{
     }
     
     
-/*    @Test
+    @Test
     public void enterMainPage(){
 
-    	ticketApp.tool.sleep(10000);
+    	ticketApp.sleep(5000);
     	ticketApp.swipeOfType("left");
-    	ticketApp.tool.sleep(500);
+    	ticketApp.sleep(500);
     	ticketApp.swipeOfType("left");
-    	ticketApp.clickElement(eledata, "启动页", "开启直达车");
-    	ticketApp.waitDisplay(eledata, "首页", "汽车票");
-    	ticketApp.tool.sleep(1000);
-    }*/
+    	ticketApp.getElementScreen("启动页", "开启直达车");
+    	ticketApp.clickElement("启动页", "开启直达车");
+    	
+    }
 
-    @Test
+//    @Test
     public void login(){
 
 
