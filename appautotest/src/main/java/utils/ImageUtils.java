@@ -14,13 +14,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
@@ -358,14 +355,57 @@ public class ImageUtils {
         }     
     }  
     
+    public static void markImageByText(String filePath,String targerPath,String markContent,Color markContentColor,
+            String fontType,int fontSize) {     
+        OutputStream os = null;     
+        try {     
+            Image srcImg = ImageIO.read(new File(filePath));   
+            int width=srcImg.getWidth(null);
+            int height= srcImg.getHeight(null);
+            BufferedImage buffImg = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);   
+            // 得到画笔对象        
+            Graphics2D g = buffImg.createGraphics();     
+            g.setColor(markContentColor);
+            g.setBackground(Color.white);
+ 
+            g.drawImage(srcImg, 0, 0, null );  
+            
+            AttributedString ats = new AttributedString(markContent);
+            Font f = new Font(fontType,Font.BOLD, fontSize);
+
+            ats.addAttribute(TextAttribute.FONT, f, 0,markContent.length() );
+            AttributedCharacterIterator iter = ats.getIterator();
+
+            g.drawString(iter,width/5,height/5); //添加水印的文字和设置水印文字出现的内容
+            
+            g.dispose();     
+            os = new FileOutputStream(targerPath);     
+            // 生成图片     
+            ImageIO.write(buffImg, "JPG", os);     
+        } catch (Exception e) {     
+            e.printStackTrace();     
+        } finally {     
+            try {     
+                if (null != os)     
+                    os.close();     
+            } catch (Exception e) {     
+                e.printStackTrace();     
+            }     
+        }     
+    }  
+    
     public static void main(String[] args) {
         //ImageUtils.compareImage("C:\\Users\\Wendy\\Desktop\\Image1.png", "C:\\Users\\Wendy\\Desktop\\Image2.png");
         // test();
         //cutImage("C:\\Users\\Wendy\\Desktop\\img.png", "C:\\Users\\Wendy\\Desktop",  0, 146, 720, 405);
        //thumbnailImage("C:\\Users\\Wendy\\Desktop\\cut__1440657046525_img.png", 364, 204, "test", true);
-       
-      
-        String s = "[大佬孝靚抽 向港隊敬禮激讚勁揪, 隔空傳情話 謝安琪與張繼聰一味靠黑, 【飲食男女】人氣2大芝士撻 「…, 抵玩又夠潮 Reebok與Sandr…, 【飲食男女】人氣2大芝士撻 「…, 抵玩又夠潮 Reebok與Sandr…, 無恥! 匈女記為影相勾跌逃生難民, 【飲食男女】大地藝術祭(一)自己…, 哈利波特出插畫版 重繪魔法世界, 哈利波特出插畫版 重繪魔法世界, 狄志遠宣佈退出民主黨, 港足表現佳 田北辰批噓國歌球迷搏…, 徐正曦借糧搵藉口 周麗淇冇收…]";
+       String srcImgPath = "F:/workplace/java/appautotest/screenShotPiaoWuWeb/20151101_143216_135_.jpg";
+       String iconPath =  "F:/workplace/java/appautotest/screenShotPiaoWuWeb/log.jpg";
+       String targerPath = "F:/workplace/java/appautotest/screenShotPiaoWuWeb/test.jpg";
+       int degree = 3;
+       markImageByText(iconPath,targerPath,"45454545",Color.red,"黑体",13);
+       markImageByIcon(iconPath, srcImgPath, targerPath, degree);
+/*        String s = "[大佬孝靚抽 向港隊敬禮激讚勁揪, 隔空傳情話 謝安琪與張繼聰一味靠黑, 【飲食男女】人氣2大芝士撻 「…, 抵玩又夠潮 Reebok與Sandr…, 【飲食男女】人氣2大芝士撻 「…, 抵玩又夠潮 Reebok與Sandr…, 無恥! 匈女記為影相勾跌逃生難民, 【飲食男女】大地藝術祭(一)自己…, 哈利波特出插畫版 重繪魔法世界, 哈利波特出插畫版 重繪魔法世界, 狄志遠宣佈退出民主黨, 港足表現佳 田北辰批噓國歌球迷搏…, 徐正曦借糧搵藉口 周麗淇冇收…]";
         String[] w2 = s.split(",");
         List<String> ls = new ArrayList<String>();
         for (int i = 0; i <w2.length; i++) {
@@ -380,6 +420,6 @@ public class ImageUtils {
             }
         }
         System.out.println(ls);
-       compareImage("C:\\Users\\Wendy\\Desktop\\testcut__1440657046525_img.png" , "C:\\Users\\Wendy\\Desktop\\cut__1440656895566_img.png");
+       compareImage("C:\\Users\\Wendy\\Desktop\\testcut__1440657046525_img.png" , "C:\\Users\\Wendy\\Desktop\\cut__1440656895566_img.png");*/
     }
 }

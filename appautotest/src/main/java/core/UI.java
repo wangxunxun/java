@@ -2,6 +2,7 @@ package core;
 
 
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 
@@ -316,6 +317,9 @@ public class UI extends Initial{
 	public void getScreen(){ 
 		getScreen("");
 	}
+	private String getScreenReturnPath(){ 
+		return getScreenReturnPath("");		
+	}
 
 	public void getElementScreen(String page,String name){
 		String srcImg = getScreenReturnPath(name);
@@ -329,6 +333,14 @@ public class UI extends Initial{
 		ImageUtils.cutImage(srcImg, destImg, x, y, elementX, elementY);
 	}
 	
+	public void getScreenMarketedByText(String content){
+		
+		String srcImg = getScreenReturnPath();
+		File srcImg1 = new File(srcImg);
+		String destImg = screenPath;
+		String name = srcImg1.getName();
+		ImageUtils.markImageByText(srcImg, destImg+"marked by text "+content+" "+name, content,Color.red,"黑体",13);
+	}
 	
 	
     public int getElementX(String page,String name){

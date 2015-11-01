@@ -1,20 +1,19 @@
 package base;
 
 import io.appium.java_client.android.AndroidElement;
-import utils.CommonTools;
-import utils.ImageUtils;
+
 import io.appium.java_client.android.AndroidDriver;
 
-import java.io.File;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
