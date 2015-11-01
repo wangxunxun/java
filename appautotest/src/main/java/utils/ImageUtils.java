@@ -270,31 +270,20 @@ public class ImageUtils {
         thumbnailImage(imagePath, w, h, DEFAULT_FORCE);
     }
 
-    private static String DEFAULT_CUT_PREVFIX = "cut_";
-
-   
 
     public static void cutImage(File srcImg, OutputStream output, int x, int y, int width, int height) {
         cutImage(srcImg, output, new java.awt.Rectangle(x, y, width, height));
     }
 
-    public static void cutImage(File srcImg, String destImgPath, java.awt.Rectangle rect) {
-        File destImg = new File(destImgPath);
-        if (destImg.exists()) {
-            String p = destImg.getPath();
+    public static void cutImage(File srcImg, String destImg, java.awt.Rectangle rect) {
 
             try {
-                if (!destImg.isDirectory())
-                    p = destImg.getParent();
-                if (!p.endsWith(File.separator))
-                    p = p + File.separator;
-                cutImage(srcImg, new java.io.FileOutputStream(p + DEFAULT_CUT_PREVFIX + "_" 
-                        + "_" + srcImg.getName()), rect);
-            } catch (FileNotFoundException e) {
-                // log.warn("the dest image is not exist.");
-            }
-        } else
-            System.err.print("the dest image folder is not exist.");
+				cutImage(srcImg, new java.io.FileOutputStream(destImg), rect);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
     }
 
     public static void cutImage(File srcImg, String destImg, int x, int y, int width, int height) {

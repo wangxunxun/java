@@ -322,18 +322,19 @@ public class UI extends Initial{
 	}
 
 	public void getElementScreen(String page,String name){
-		String srcImg = getScreenReturnPath(name);
+		String srcImg = getScreenReturnPath();
+		File srcImg1 = new File(srcImg);
 		String destImg = screenPath;
-		
+		String imgName = srcImg1.getName();
 		int x = getElementLocateX(page, name);
 		int y = getElementLocateY(page, name);
 		int elementX =getElementX(page, name);
 		int elementY = getElementY(page, name);
 
-		ImageUtils.cutImage(srcImg, destImg, x, y, elementX, elementY);
+		ImageUtils.cutImage(srcImg, destImg+"cut by element_ "+name+" "+imgName, x, y, elementX, elementY);
 	}
 	
-	public void getScreenMarketedByText(String content){
+	public void getScreenMarkedByText(String content){
 		
 		String srcImg = getScreenReturnPath();
 		File srcImg1 = new File(srcImg);
