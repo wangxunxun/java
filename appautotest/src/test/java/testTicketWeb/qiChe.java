@@ -85,6 +85,8 @@ public class qiChe {
     }
 	@Test
 	public void test020enterAddQiChePage(){
+		piaoWuWebApp.getScreen();
+		piaoWuWebApp.getElementScreen("侧边栏","长途售票管理");
     	piaoWuWebApp.waitDisplay("侧边栏","长途售票管理");
     	piaoWuWebApp.clickElement("侧边栏", "长途售票管理");
     	piaoWuWebApp.waitDisplay("侧边栏", "汽车车站维护");

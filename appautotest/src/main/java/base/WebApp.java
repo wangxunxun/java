@@ -1,25 +1,24 @@
 package base;
 import java.awt.Robot;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.io.FileUtils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
 
 import core.UI;
 import utils.CommonTools;
+
 
 public class WebApp extends UI{
 	protected String main_window;
@@ -91,28 +90,7 @@ public class WebApp extends UI{
     	return null;
     }
     		    
-    public void getScreen(String filename)
-    {
-    	File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
-	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
-	  	}
-		try {
-			log("Get screen.");
-			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			log("Get screen failed.");
-			Assert.fail("Get screen failed.");
-		}	
-	}
-    
-    public void getScreen()
-    {
-    	getScreen("");
-	}
 
     
     public boolean isAlertPresent(){
@@ -367,4 +345,7 @@ public class WebApp extends UI{
 
 		}
    }
+
+	
+
 }

@@ -157,32 +157,15 @@ public class IOSApp extends UI {
         }
 
     }
-    
-	public void getScreen(String filename){ 
-		File scrFile = driver.getScreenshotAs(OutputType.FILE);
 
-	  	if (!(new File(screenPath).isDirectory())) {  // 判断是否存在该目录
-	  		new File(screenPath).mkdir();  // 如果不存在则新建一个目录
-	  	}
-		try {
-			FileUtils.copyFile(scrFile, new File(screenPath+CommonTools.getCurrentTime()+ "_"+ filename+".png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-	}
 	
-	public void getScreen(){ 
-		getScreen("");
-	}
+    @SuppressWarnings({ "unchecked" })
+    	public void runTestCase(String testCase){
 	
-	   @SuppressWarnings({ "unchecked" })
-	   public void runTestCase(String testCase){
-
 			List<Map<String,String>> cases = (List<Map<String, String>>) testCaseData.get(testCase);
 			
 			for (int i = 0;i <cases.size();i++){
-
+		
 				String action = cases.get(i).get("Action");
 				String page = cases.get(i).get("Page");
 				String name = cases.get(i).get("Element");
@@ -191,15 +174,15 @@ public class IOSApp extends UI {
 				String expected = cases.get(i).get("Expected");
 				String row = cases.get(i).get("row");
 				int rowin=Integer.parseInt(row);
-
-
+		
+		
 				if (action.equals("click")){
 					clickElement(page, name);
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
 					writeScript(rowin, 9, script);
-
+		
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
@@ -208,7 +191,7 @@ public class IOSApp extends UI {
 					writeResult(rowin, 8, "P");
 					String script = "CommonTools.sleep("+v+");";
 					writeScript(rowin, 9, script);
-
+		
 				}
 				else if (action.equals("waitDisplay")){
 					waitDisplay(page, name);
@@ -216,10 +199,10 @@ public class IOSApp extends UI {
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
 					writeScript(rowin, 9, script);
-
+		
 				}
-
-
+		
+		
 				else if (action.equals("clear")){
 					clear(page, name);
 					logResult(rowin);
@@ -227,16 +210,16 @@ public class IOSApp extends UI {
 					String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
 					writeScript(rowin, 9, script);
 				}
-
-
-
+		
+		
+		
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
 					logResult(rowin);
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"swipeOfType(\""+value+"\");";
 					writeScript(rowin, 9, script);
-
+		
 				}
 				else if (action.equals("sendKey")){
 					sendKeys(page, name, value);
@@ -244,7 +227,7 @@ public class IOSApp extends UI {
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
 					writeScript(rowin, 9, script);
-
+		
 				}
 				else if (action.equals("assert")){
 					actual = getElementText(page, name);
@@ -253,7 +236,7 @@ public class IOSApp extends UI {
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
 					writeScript(rowin, 9, script);
-
+		
 					
 				}
 				else if (action.equals("runTestCase")){
@@ -262,15 +245,15 @@ public class IOSApp extends UI {
 					writeResult(rowin, 8, "P");
 					String script = appClass+"."+"runTestCase(\""+value+"\");";
 					writeScript(rowin, 9, script);
-
+		
 				}
-
-
+		
+		
 				else{
 					CommonTools.log("Can not run the action");
-
+		
 				}
-
+		
 			}
 	   }
 }
