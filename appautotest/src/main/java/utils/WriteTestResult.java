@@ -28,11 +28,11 @@ public class WriteTestResult {
 		jxl.Workbook wb =null;
 		InputStream is = new FileInputStream(this.excelpath);
 		wb = Workbook.getWorkbook(is);
-		jxl.write.WritableWorkbook wbe= Workbook.createWorkbook(new File(this.excelpath), wb);
+		WritableWorkbook wbe= Workbook.createWorkbook(new File(this.excelpath), wb);
 		WritableSheet sheet  = wbe.getSheet(this.sheet);
 //		WritableCell cell =sheet.getWritableCell(6, 1);
 //		jxl.format.CellFormat cf = cell.getCellFormat();
-		jxl.write.Label lbl = new jxl.write.Label(cow, row, result);
+		Label lbl = new Label(cow, row, result);
 //		lbl.setCellFormat(cf);
 		sheet.addCell(lbl);
 		wbe.write();

@@ -83,7 +83,7 @@ public class qiChe {
 
 
     }
-	@Test
+//	@Test
 	public void test020enterAddQiChePage(){
 		piaoWuWebApp.getElementScreen("侧边栏","长途售票管理");
 		piaoWuWebApp.getScreenMarkedByText("为俄方的");
@@ -94,7 +94,7 @@ public class qiChe {
 
 	}    
     
-	@Test(dataProvider="addqichezhan")
+//	@Test(dataProvider="addqichezhan")
     public void test021addQiCheZhan(String address,String name,String pinyin,String longitude,String latitude,String bashi,String phone,String from,String to,String city) throws InterruptedException, BiffException, IOException{
 		
 
@@ -128,10 +128,10 @@ public class qiChe {
 
     }
 
-//	@Test
+	@Test
     public void test012editQiChePiaoJia() throws InterruptedException, BiffException, IOException{
 		
-
+/*
 		String piaojia = piaoWuWebApp.getProperties("qiChePiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaojia, 6);
@@ -161,9 +161,9 @@ public class qiChe {
 		}
 
 
-		piaoWuWebApp.clickElement("汽车-票价", "提交");
+		piaoWuWebApp.clickElement("汽车-票价", "提交");*/
 		
-		
+		piaoWuWebApp.runTestCase("登录");
 
 
 

@@ -14,10 +14,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.CommonTools;
+import utils.OperateExcel;
 import utils.ReadElementData;
 import utils.ReadTestCasesData;
 import utils.ReadTestData;
-import utils.WriteTestResult;
 public class Initial {
 
 	public static WebDriver driver;		
@@ -177,16 +177,14 @@ public class Initial {
 	}
 	
 	protected void writeTable(Integer row,Integer cow,String content){
-
-		WriteTestResult writeTestResult = new WriteTestResult(testExcelPath, testCaseSheet);
+		String excelPath = CommonTools.setPath(testExcelPath);
+		log(testCaseSheet);
 		try {
-			try {
-				writeTestResult.write(row, cow, content);
-			} catch (BiffException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			OperateExcel.writeContent(excelPath, testCaseSheet, cow, row, content);
 		} catch (RowsExceededException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (WriteException e) {
@@ -195,7 +193,8 @@ public class Initial {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}		 
+		}
+	 
 	}
 	
 	public String getProperties(String name){
@@ -225,6 +224,7 @@ public class Initial {
 		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
+			writeLogToExcelLastRow("F:/test.xls", "haha", 6, content);
 		}
 	}
 	
@@ -253,6 +253,68 @@ public class Initial {
 		writeLog(testCaseClassName+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
+	protected void writeLogToExcel(String excelPath,String className,int cow,int row,Object content){
+		try {
+			OperateExcel.writeContent(excelPath, className, cow, row, content);
+		} catch (RowsExceededException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void writeLogToExcelLastRow(String excelPath,String className,int cow,Object content){
+		try {
+			OperateExcel.writeLastRow(excelPath, className, cow, content);
+		} catch (RowsExceededException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void createWorkBook(String excelPath,String className,int index){
+		try {
+			OperateExcel.createWorkBook(excelPath, className, index);
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	protected void createSheet(String excelPath,String className,int index){
+		try {
+			OperateExcel.createSheet(excelPath, className, index);
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private void writeLog(String fileName,Object content){
 		FileWriter writer;
 		try {
