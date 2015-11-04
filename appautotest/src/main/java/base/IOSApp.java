@@ -178,26 +178,26 @@ public class IOSApp extends UI {
 				if (action.equals("click")){
 					clickElement(page, name);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 				}
 				else if (action.equals("sleep")){
 					int v=Integer.parseInt(value);
 					CommonTools.sleep(v);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = "CommonTools.sleep("+v+");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 				}
 				else if (action.equals("waitDisplay")){
 					waitDisplay(page, name);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 				}
 		
@@ -205,9 +205,9 @@ public class IOSApp extends UI {
 				else if (action.equals("clear")){
 					clear(page, name);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 				}
 		
 		
@@ -215,35 +215,35 @@ public class IOSApp extends UI {
 				else if (action.equals("swipeOfType")){
 					swipeOfType(value);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"swipeOfType(\""+value+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 				}
 				else if (action.equals("sendKey")){
 					sendKeys(page, name, value);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 				}
 				else if (action.equals("assert")){
 					actual = getElementText(page, name);
 					assertEquals(actual, expected);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 					
 				}
 				else if (action.equals("runTestCase")){
 					runTestCase(value);
 					logResult(rowin);
-					writeResult(rowin, 8, "P");
+					writeResult(8, rowin, "P");
 					String script = appClass+"."+"runTestCase(\""+value+"\");";
-					writeScript(rowin, 9, script);
+					writeScript(9, rowin, script);
 		
 				}
 		

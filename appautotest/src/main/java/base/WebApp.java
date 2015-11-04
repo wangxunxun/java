@@ -263,9 +263,9 @@ public class WebApp extends UI{
 			if (action.equals("click")){
 				clickElement(page, name);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"clickElement(\""+page+"\",\""+name+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 
 
 			}
@@ -273,33 +273,33 @@ public class WebApp extends UI{
 				int v=Integer.parseInt(value);
 				sleep(v);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+".sleep("+v+");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 
 			}
 			else if (action.equals("waitDisplay")){
 				waitDisplay(page, name);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"waitDisplay(\""+page+"\",\""+name+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 			}
 			else if (action.equals("clear")){
 				clear(page, name);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"clear(\""+page+"\",\""+name+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 			}
 
 
 			else if (action.equals("sendKey")){
 				sendKeys(page, name, value);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"sendKeys(\""+page+"\",\""+name+"\",\""+value+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 				
 
 			}
@@ -307,33 +307,33 @@ public class WebApp extends UI{
 				actual = getElementText(page, name);
 				assertEquals(actual, expected);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"assertEquals("+appClass+"."+"getElementText(\""+page+"\",\""+ name+"\")"+","+"\""+expected+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 				
 			}
 			else if (action.equals("get")){
 				get(value);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"get(\""+value+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 				
 			}
 			else if (action.equals("switchToFrame")){
 				switchToFrame(value);
 				logResult(rowin);
-				writeResult(rowin, 8, "P");				
+				writeResult(8, rowin, "P");			
 				String script = appClass+"."+"switchToFrame(\""+value+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 			}
 			else if (action.equals("runTestCase")){
 				log("Run the \""+value+"\" test case.");
 				runTestCase(value);				
 				logResult(rowin);
-				writeResult(rowin, 8, "P");
+				writeResult(8, rowin, "P");
 				String script = appClass+"."+"runTestCase(\""+value+"\");";
-				writeScript(rowin, 9, script);
+				writeScript(9, rowin, script);
 			}
 
 

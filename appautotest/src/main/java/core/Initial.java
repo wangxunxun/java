@@ -176,9 +176,8 @@ public class Initial {
 		
 	}
 	
-	protected void writeTable(Integer row,Integer cow,String content){
+	protected void writeTable(int cow,int row,String content){
 		String excelPath = CommonTools.setPath(testExcelPath);
-		log(testCaseSheet);
 		try {
 			OperateExcel.writeContent(excelPath, testCaseSheet, cow, row, content);
 		} catch (RowsExceededException e) {
@@ -205,10 +204,10 @@ public class Initial {
 	}
 
 
-	protected void writeResult(Integer row,Integer cow,String result){
+	protected void writeResult(int cow,int row,String result){
 
 		if(writeResult==true){
-			writeTable(row, cow, result);
+			writeTable(cow, row, result);
 		}
 
 	}
@@ -224,14 +223,14 @@ public class Initial {
 		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
-			writeLogToExcelLastRow("F:/test.xls", "haha", 6, content);
+//			writeLogToExcelLastRow("F:/test.xls", "haha", 6, content);
 		}
 	}
 	
-	protected void writeScript(Integer row,Integer cow,String script){
+	protected void writeScript(int cow,int row,String script){
 
 		if(writeScript==true){
-			writeTable(row, cow, script);
+			writeTable(cow,row,script);
 		}
 	}
 	
