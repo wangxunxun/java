@@ -48,7 +48,8 @@ public class baShi {
 		
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
-		piaoWuWebApp.setTestClassName(this.getClass().getName());
+		piaoWuWebApp.log("Start to run " + this.getClass().getName() + ".");
+
 	}
 
 
@@ -60,6 +61,7 @@ public class baShi {
 
 	@Test
 	public void test000login(){
+		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
 	}
 	
@@ -157,7 +159,7 @@ public class baShi {
 
     }
 
-	@Test
+//	@Test
     public void test031editBaShiPiaoJia() throws InterruptedException, BiffException, IOException{
 
 		String piaoJia = piaoWuWebApp.getProperties("baShiPiaoJia");

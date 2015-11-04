@@ -41,7 +41,7 @@ public class cheDuiAndCheLiang {
 		
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
-		piaoWuWebApp.setTestClassName(this.getClass().getName());
+
 
 	}
 

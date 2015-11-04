@@ -21,7 +21,6 @@ public class ad {
 		NPAndroid.initialTestData();
 		
 		NPAndroid.runAndroidApp();
-		NPAndroid.setTestClassName(this.getClass().getName());
 		NPAndroid.log("Start to run "+this.getClass().getName()+".");
 	}
 

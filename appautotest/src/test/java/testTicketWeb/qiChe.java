@@ -32,11 +32,9 @@ public class qiChe {
 	@BeforeClass
 	public void setUp() {
 		piaoWuWebApp.initialTestData();
-		piaoWuWebApp.setTestClassName(this.getClass().getName());
 		piaoWuWebApp.runChormeApp();
 
 		piaoWuWebApp.log("Start to run " + this.getClass().getName() + ".");
-		piaoWuWebApp.getClassName();
 
 	}
 
@@ -47,7 +45,7 @@ public class qiChe {
 
 	@Test
 	public void test000login() {
-		piaoWuWebApp.logTestDescription("34234hshfsferewrewrerdsfdsrerew");
+		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
 	}
 

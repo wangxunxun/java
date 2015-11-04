@@ -1,19 +1,9 @@
 package utils;
 
 import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-
-
-
-
-import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
@@ -26,8 +16,8 @@ public class OperateExcel {
 	
 	private String excelPath;
 	private String className;
-	protected Workbook wb;
-	protected WritableWorkbook wbe;
+	protected static Workbook wb;
+	protected static WritableWorkbook wbe;
 	protected WritableSheet sheet;
 
 	public OperateExcel(String excelPath,String className) throws BiffException, IOException{
@@ -36,6 +26,17 @@ public class OperateExcel {
 		wb = Workbook.getWorkbook(new File(this.excelPath));
 		wbe= Workbook.createWorkbook(new File(this.excelPath), wb);
 		sheet = wbe.getSheet(this.className);
+	}
+	
+	public static Workbook getWb(String excelPath) throws BiffException, IOException{
+		wb = Workbook.getWorkbook(new File(excelPath));
+		return wb;
+	}
+	
+	public static WritableWorkbook getWbe(String excelPath) throws BiffException, IOException{
+		wb = Workbook.getWorkbook(new File(excelPath));
+		wbe= Workbook.createWorkbook(new File(excelPath), wb);
+		return wbe;
 	}
 
 	public void writeLastRow(int cow,Object content) throws RowsExceededException, WriteException, BiffException, IOException{
@@ -61,6 +62,7 @@ public class OperateExcel {
 	public void close() throws IOException, WriteException{
 		wbe.write();
 		wbe.close();
+		wb.close();
 	}
 
 	
@@ -70,6 +72,7 @@ public class OperateExcel {
 		wbe.createSheet(className, index);
 		wbe.write();
 		wbe.close();
+		wb.close();
 	}
 	public static void createWorkbook(String excelDir,String excelName,String className,int index) throws IOException, WriteException, BiffException{
 		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir+excelName));
@@ -101,14 +104,19 @@ public class OperateExcel {
 	}
 
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-//		createWorkBook("F:/test11.xls", "haha", 0);
-//		createWorkBook("F:/test.xls", "haha", 0);
-//		createSheet("F:/test11.xls", "haha33545", 0);
-//		createSheet("F:/test11.xls", "haha33", 0);
-		writeContent("/Users/wangxun/Documents/workspace/java/appautotest/testresource/test.xls", "test", 3, 3, "565656");
-//		writeContent("F:/test.xls", "haha", 4, 4, "56566656");
-//		writeLastRow("F:/test.xls", "haha", 6, "56566656");
-//		writeLastRow("F:/test.xls", "haha", 6, "56566656");
+		createWorkbook("F:/", "ttt.xls", "1", 0);
+		
+		createSheet("F:/ttt.xls", "2", 99);
+		OperateExcel excel = new OperateExcel("F:/ttt.xls", "2");
+		excel.writeLastRow(2, "343434");
+		excel.close();
+		
+		createSheet("F:/ttt.xls", "3", 99);
+		OperateExcel excel1 = new OperateExcel("F:/ttt.xls", "3");
+		excel1.writeLastRow(2, "3434desww34");
+		excel1.close();
+		System.out.println(1111);
+		
 	}
 	
 	

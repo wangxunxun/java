@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import jxl.read.biff.BiffException;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
@@ -57,7 +55,7 @@ public class Initial {
 	protected String logPath;
 	
 	//测试数据变量
-	protected String testReportPath = "/Users/wangxun/Documents/workspace/java/appautotest/testresource/";
+	protected String testReportPath;
 	protected String testExcelName = "testReport";
 	protected String testExcelPath;
 	protected String elementSheet;
@@ -66,8 +64,7 @@ public class Initial {
 	protected Map<String, Object> testCaseData;
 	//测试app的类名
 	protected String appClass;
-	//测试用例的类名
-	protected String testCaseClassName;
+
 	//回写脚本开关
 	protected boolean writeScript;
 	//回写测试结果开关
@@ -76,22 +73,23 @@ public class Initial {
 	protected boolean logSwitch;
 	//每次运行时是否删除log文件开关
 	protected boolean deleteLogFileFirst;
+
 	protected OperateExcel excel;
 
 	protected String testClassName;
 	protected String testMethodName;
+
 	
 	
-	public void setTestClassName(String value){
-		testCaseClassName = value;
-	}
-	
-	public String getTestClassName(){
-		if (testCaseClassName ==null){
-			return "default";
+	protected String getTestReportPath(){
+		testReportPath = getProperties("testReportPath");
+		if(testReportPath!=null){
+			return CommonTools.setPath(testReportPath);
 		}
-		return testCaseClassName;
+
+		return CommonTools.setPath("/testresource/");
 	}
+
 
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
 		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
@@ -233,7 +231,7 @@ public class Initial {
 		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
-			writetest(1, content);
+			writeLogToExcel(1, content);
 		}
 	}
 	
@@ -254,51 +252,18 @@ public class Initial {
 	}
 	
 	private String getLogFilePath(){
-		return logPath+testCaseClassName+".txt";
+		return logPath+getClassName()+".txt";
 	}
 	
 	protected void writeLog(Object content){
 		deleteFirstTime(getLogFilePath());
-		writeLog(testCaseClassName+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
+		writeLog(getClassName()+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
 	}
 	
-	protected void writeLogToExcel(String excelPath,String className,int cow,int row,Object content){
-		try {
-			OperateExcel.writeContent(excelPath, className, cow, row, content);
-		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
+
 	
-	public void writeLogToExcelLastRow(String excelPath,String className,int cow,Object content){
-		try {
-			OperateExcel.writeLastRow(excelPath, className, cow, content);
-		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public void writetest(int cow,Object content){
+	public void writeLogToExcel(int cow,Object content){
 
 		try {
 			excel.writeLastRow(cow, content);
@@ -318,12 +283,23 @@ public class Initial {
 	}
 	
     public String getClassName() {
-       // log(">==================================================<");
         try {
             ITestResult it = Reporter.getCurrentTestResult();
             String classNamePath = it.getTestClass().getName();
             
 			return classNamePath;
+        } catch (Exception e) {
+
+        }
+        return "";
+    }
+    
+    public String getTestMethodName(){
+        try {
+            ITestResult it = Reporter.getCurrentTestResult();
+            String testMethodName = it.getName();
+            
+			return testMethodName;
         } catch (Exception e) {
 
         }
@@ -412,6 +388,7 @@ public class Initial {
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
 		appDir = getAppDir();
+		testReportPath = getTestReportPath();
 		createWorkBook("TestSummary", 0);
 	
 	}

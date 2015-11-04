@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import jxl.read.biff.BiffException;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
 import org.openqa.selenium.By;
@@ -45,7 +43,8 @@ public class WebApp extends UI{
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
     	
-    	createSheet(getClassName(), 1);
+    	createSheet(getClassName(), 99);
+
     	try {
 			excel = new OperateExcel(testReportPath+testExcelName+".xls", getClassName()) ;
 		} catch (BiffException e) {
@@ -71,8 +70,9 @@ public class WebApp extends UI{
     }
     
     public void quit(){
-    	log("Quit.");
 
+    	log("End the "+getClassName() +".");
+    	driver.quit();
 		try {
 			excel.close();
 		} catch (WriteException e) {
@@ -83,7 +83,6 @@ public class WebApp extends UI{
 			e.printStackTrace();
 		}
 
-    	driver.quit();
     }
     
     public String getCurrentUrl() {
