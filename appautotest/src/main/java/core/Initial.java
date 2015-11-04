@@ -74,7 +74,8 @@ public class Initial {
 	//每次运行时是否删除log文件开关
 	protected boolean deleteLogFileFirst;
 
-	protected OperateExcel excel;
+	protected OperateExcel testReportExcel;
+	protected OperateExcel testCaseExcel;
 
 	protected String testClassName;
 	protected String testMethodName;
@@ -185,7 +186,22 @@ public class Initial {
 	}
 	
 	protected void writeTable(int cow,int row,String content){
-		String excelPath = CommonTools.setPath(testExcelPath);
+		try {
+			testCaseExcel.writeData(cow, row, content);
+		} catch (RowsExceededException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+/*		String excelPath = CommonTools.setPath(testExcelPath);
 		try {
 			OperateExcel.writeContent(excelPath, testCaseSheet, cow, row, content);
 		} catch (RowsExceededException e) {
@@ -200,7 +216,7 @@ public class Initial {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	 
 	}
 	
@@ -266,7 +282,7 @@ public class Initial {
 	public void writeLogToExcel(int cow,Object content){
 
 		try {
-			excel.writeLastRow(cow, content);
+			testReportExcel.writeLastRow(cow, content);
 		} catch (RowsExceededException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -310,8 +326,8 @@ public class Initial {
             ITestResult it = Reporter.getCurrentTestResult();
 
             String classNamePath = it.getName();
-            excel.writeLastRow(0, classNamePath);
-            excel.writeSameRow(1, content);
+            testReportExcel.writeLastRow(0, classNamePath);
+            testReportExcel.writeSameRow(1, content);
 			return classNamePath;
         } catch (Exception e) {
             log("None testNG executor detected, test may continue, but highly recommended to migrate your test to testNG.");

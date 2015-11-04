@@ -126,7 +126,7 @@ public class qiChe {
 	public void test012editQiChePiaoJia() throws InterruptedException,
 			BiffException, IOException {
 
-		piaoWuWebApp.logTestDescription("ahahddsferewrewrewrewrerew");
+/*		piaoWuWebApp.logTestDescription("ahahddsferewrewrewrewrerew");
 		String piaojia = piaoWuWebApp.getProperties("qiChePiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaojia, 6);
@@ -159,9 +159,9 @@ public class qiChe {
 
 		}
 
-		piaoWuWebApp.clickElement("汽车-票价", "提交");
+		piaoWuWebApp.clickElement("汽车-票价", "提交");*/
 
-		// piaoWuWebApp.runTestCase("登录");
+		 piaoWuWebApp.runTestCase("登录");
 
 	}
 

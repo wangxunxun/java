@@ -16,8 +16,8 @@ public class OperateExcel {
 	
 	private String excelPath;
 	private String className;
-	protected static Workbook wb;
-	protected static WritableWorkbook wbe;
+	protected Workbook wb;
+	protected WritableWorkbook wbe;
 	protected WritableSheet sheet;
 
 	public OperateExcel(String excelPath,String className) throws BiffException, IOException{
@@ -28,16 +28,7 @@ public class OperateExcel {
 		sheet = wbe.getSheet(this.className);
 	}
 	
-	public static Workbook getWb(String excelPath) throws BiffException, IOException{
-		wb = Workbook.getWorkbook(new File(excelPath));
-		return wb;
-	}
-	
-	public static WritableWorkbook getWbe(String excelPath) throws BiffException, IOException{
-		wb = Workbook.getWorkbook(new File(excelPath));
-		wbe= Workbook.createWorkbook(new File(excelPath), wb);
-		return wbe;
-	}
+
 
 	public void writeLastRow(int cow,Object content) throws RowsExceededException, WriteException, BiffException, IOException{
 
@@ -62,7 +53,6 @@ public class OperateExcel {
 	public void close() throws IOException, WriteException{
 		wbe.write();
 		wbe.close();
-		wb.close();
 	}
 
 	
