@@ -7,11 +7,15 @@ import java.util.List;
 import java.util.Map;
 
 import jxl.read.biff.BiffException;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
+import org.testng.Reporter;
 
 import utils.CommonTools;
 import utils.OperateExcel;
@@ -53,6 +57,8 @@ public class Initial {
 	protected String logPath;
 	
 	//测试数据变量
+	protected String testReportPath = "/Users/wangxun/Documents/workspace/java/appautotest/testresource/";
+	protected String testExcelName = "testReport";
 	protected String testExcelPath;
 	protected String elementSheet;
 	protected String testCaseSheet;
@@ -70,7 +76,11 @@ public class Initial {
 	protected boolean logSwitch;
 	//每次运行时是否删除log文件开关
 	protected boolean deleteLogFileFirst;
-    
+	protected OperateExcel excel;
+
+	protected String testClassName;
+	protected String testMethodName;
+	
 	
 	public void setTestClassName(String value){
 		testCaseClassName = value;
@@ -223,7 +233,7 @@ public class Initial {
 		if(logSwitch==true){
 			CommonTools.log(content);
 			writeLog(content);
-//			writeLogToExcelLastRow("F:/test.xls", "haha", 6, content);
+			writetest(1, content);
 		}
 	}
 	
@@ -270,7 +280,7 @@ public class Initial {
 		}
 	}
 	
-	protected void writeLogToExcelLastRow(String excelPath,String className,int cow,Object content){
+	public void writeLogToExcelLastRow(String excelPath,String className,int cow,Object content){
 		try {
 			OperateExcel.writeLastRow(excelPath, className, cow, content);
 		} catch (RowsExceededException e) {
@@ -288,21 +298,13 @@ public class Initial {
 		}
 	}
 	
-	protected void createWorkBook(String excelPath,String className,int index){
+	public void writetest(int cow,Object content){
+
 		try {
-			OperateExcel.createWorkBook(excelPath, className, index);
-		} catch (WriteException e) {
+			excel.writeLastRow(cow, content);
+		} catch (RowsExceededException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	protected void createSheet(String excelPath,String className,int index){
-		try {
-			OperateExcel.createSheet(excelPath, className, index);
 		} catch (WriteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -314,6 +316,66 @@ public class Initial {
 			e.printStackTrace();
 		}
 	}
+	
+    public String getClassName() {
+       // log(">==================================================<");
+        try {
+            ITestResult it = Reporter.getCurrentTestResult();
+            String classNamePath = it.getTestClass().getName();
+            
+			return classNamePath;
+        } catch (Exception e) {
+
+        }
+        return "";
+    }
+    public String logTestDescription(String content) {
+        try {
+            ITestResult it = Reporter.getCurrentTestResult();
+
+            String classNamePath = it.getName();
+            excel.writeLastRow(0, classNamePath);
+            excel.writeSameRow(1, content);
+			return classNamePath;
+        } catch (Exception e) {
+            log("None testNG executor detected, test may continue, but highly recommended to migrate your test to testNG.");
+        }
+        return "";
+    }
+	
+	protected void createWorkBook(String className,int index){
+
+		CommonTools.deleteFile(testReportPath+testExcelName+".xls");
+		try {
+			OperateExcel.createWorkbook(testReportPath, testExcelName+".xls",className, index);
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	protected void createSheet(String className,int index){
+		try {
+			OperateExcel.createSheet(testReportPath+testExcelName+".xls", className, index);
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	private void writeLog(String fileName,Object content){
 		FileWriter writer;
 		try {
@@ -350,6 +412,7 @@ public class Initial {
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
 		appDir = getAppDir();
+		createWorkBook("TestSummary", 0);
 	
 	}
 	

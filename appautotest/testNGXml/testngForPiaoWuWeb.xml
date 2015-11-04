@@ -12,7 +12,7 @@
         </run>
     </groups>
     <classes>
-      <class name="testTicketWeb.cheDuiAndCheLiang">
+      <class name="testTicketWeb.qiChe">
       <methods>
 
 <!-- 			<include name = "addBaShiStation"/>
@@ -23,15 +23,7 @@
 
       </methods>
       </class>
-      
-      <class name="testTicketWeb.baShi">
-      <methods>
 
-			<!--<include name = "addBaShiStation"/> -->
-			<!-- <include name = "editBaShiPiaoJia"/> -->
-
-      </methods>
-      </class>
 
     </classes>
   </test> <!-- Default test -->

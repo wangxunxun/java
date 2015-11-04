@@ -28,6 +28,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
 		CommonTools.log(tr.getName() + " Failure");
+		System.out.println(tr.getThrowable().getMessage());
 		try {
 			takeScreenShot(tr);
 		} catch (InterruptedException e) {

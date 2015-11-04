@@ -1,23 +1,26 @@
 package base;
 import java.awt.Robot;
-
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import jxl.read.biff.BiffException;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 import core.UI;
 import utils.CommonTools;
+import utils.OperateExcel;
 
 
 public class WebApp extends UI{
@@ -25,8 +28,9 @@ public class WebApp extends UI{
 	
 	
     public void runChormeApp(){
+    	
     	initialData();
-
+    	
     	
     	String dirs =null;
     	if(CommonTools.getOSName().matches("Mac OS X")){
@@ -40,9 +44,18 @@ public class WebApp extends UI{
 		System.setProperty("webdriver.chrome.driver", dirs);
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
+    	
+    	createSheet(getClassName(), 1);
+    	try {
+			excel = new OperateExcel(testReportPath+testExcelName+".xls", getClassName()) ;
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		
-	
     }
      
     public void get(String url){
@@ -59,6 +72,17 @@ public class WebApp extends UI{
     
     public void quit(){
     	log("Quit.");
+
+		try {
+			excel.close();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     	driver.quit();
     }
     
