@@ -57,6 +57,7 @@ public class Initial {
 	//测试数据变量
 	protected String testReportPath;
 	protected String testExcelName = "testReport";
+	protected String testClassName;
 	protected String testExcelPath;
 	protected String elementSheet;
 	protected String testCaseSheet;
@@ -77,8 +78,7 @@ public class Initial {
 	protected OperateExcel testReportExcel;
 	protected OperateExcel testCaseExcel;
 
-	protected String testClassName;
-	protected String testMethodName;
+
 
 	
 	
@@ -336,26 +336,45 @@ public class Initial {
     }
 	
 	protected void createWorkBook(String className,int index){
-
-		CommonTools.deleteFile(testReportPath+testExcelName+".xls");
-		try {
-			OperateExcel.createWorkbook(testReportPath, testExcelName+".xls",className, index);
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		File f = new File(testReportPath+testExcelName+".xls");
+		if(!f.exists()){
+			try {
+				OperateExcel.createWorkbook(testReportPath, testExcelName+".xls",className, index);
+			} catch (WriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BiffException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
+
+//		CommonTools.deleteFile(testReportPath+testExcelName+".xls");
+//		try {
+//			OperateExcel.createWorkbook(testReportPath, testExcelName+".xls",className, index);
+//		} catch (WriteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (BiffException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 	
-	protected void createSheet(String className,int index){
+	protected void createSheet(int index){
+
+		System.out.println("222"+testClassName);
 		try {
-			OperateExcel.createSheet(testReportPath+testExcelName+".xls", className, index);
+			OperateExcel.createSheet(testReportPath+testExcelName+".xls", testClassName, index);
 		} catch (WriteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -385,7 +404,12 @@ public class Initial {
 		
 	}
 
-	
+	protected String getTestClassName(){
+		String className = getClassName();
+		String[] ddd = className.split("\\.");
+		return ddd[ddd.length-1];
+		
+	}
 	protected void initialData() {
 		testExcelPath = getProperties("testExcelPath");
 		elementSheet = getProperties("elementSheet");    	
@@ -406,6 +430,7 @@ public class Initial {
 		appDir = getAppDir();
 		testReportPath = getTestReportPath();
 		createWorkBook("TestSummary", 0);
+		testClassName = getTestClassName()+CommonTools.getCurrentTime1();
 	
 	}
 	

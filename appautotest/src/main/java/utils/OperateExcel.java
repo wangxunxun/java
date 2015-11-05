@@ -1,7 +1,6 @@
 package utils;
 
 import java.io.File;
-
 import java.io.IOException;
 
 import jxl.Workbook;
@@ -94,18 +93,23 @@ public class OperateExcel {
 	}
 
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-		createWorkbook("F:/", "ttt.xls", "1", 0);
+//		createWorkbook("F:/", "ttt.xls", "1", 0);
+//		
+//		createSheet("F:/ttt.xls", "2", 99);
+//		OperateExcel excel = new OperateExcel("F:/ttt.xls", "2");
+//		excel.writeLastRow(2, "343434");
+//		excel.close();
+//		
+//		createSheet("F:/ttt.xls", "3", 99);
+//		OperateExcel excel1 = new OperateExcel("F:/ttt.xls", "3");
+//		excel1.writeLastRow(2, "3434desww34");
+//		excel1.close();
+		System.out.println(CommonTools.getCurrentTime1());
+		String ddd= "testTicketWeb.qiChe1";
+		String[] ee = ddd.split("\\.");
+		System.out.println(ee.length);
 		
-		createSheet("F:/ttt.xls", "2", 99);
-		OperateExcel excel = new OperateExcel("F:/ttt.xls", "2");
-		excel.writeLastRow(2, "343434");
-		excel.close();
-		
-		createSheet("F:/ttt.xls", "3", 99);
-		OperateExcel excel1 = new OperateExcel("F:/ttt.xls", "3");
-		excel1.writeLastRow(2, "3434desww34");
-		excel1.close();
-		System.out.println(1111);
+		System.out.println(ee[ee.length-1]);
 		
 	}
 	

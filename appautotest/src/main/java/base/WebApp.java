@@ -43,6 +43,7 @@ public class WebApp extends UI{
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
     	String excelPath = CommonTools.setPath(testExcelPath);
+    	
     	try {
 			testCaseExcel = new OperateExcel(excelPath, testCaseSheet) ;
 		} catch (BiffException e) {
@@ -52,10 +53,10 @@ public class WebApp extends UI{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	createSheet(getClassName(), 99);
-
+    	createSheet(99);
+    	System.out.println(testClassName);
     	try {
-    		testReportExcel = new OperateExcel(testReportPath+testExcelName+".xls", getClassName()) ;
+    		testReportExcel = new OperateExcel(testReportPath+testExcelName+".xls",testClassName ) ;
 		} catch (BiffException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,16 +82,6 @@ public class WebApp extends UI{
     public void quit(){
 
     	log("End the "+getClassName() +".");
-    	driver.quit();
-		try {
-			testReportExcel.close();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		try {
 			testCaseExcel.close();
 		} catch (WriteException e) {
@@ -100,6 +91,18 @@ public class WebApp extends UI{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			testReportExcel.close();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	driver.quit();
+
+
 
     }
     

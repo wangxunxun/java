@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="13261" started-at="2015-11-04T16:08:16Z" finished-at="2015-11-04T16:08:29Z">
+  <suite name="Default suite" duration-ms="36695" started-at="2015-11-05T06:37:59Z" finished-at="2015-11-05T06:38:35Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="13261" started-at="2015-11-04T16:08:16Z" finished-at="2015-11-04T16:08:29Z">
+    <test name="Default test" duration-ms="36695" started-at="2015-11-05T06:37:59Z" finished-at="2015-11-05T06:38:35Z">
       <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@6a5fc7f7]" name="setUp" is-config="true" duration-ms="4039" started-at="2015-11-05T00:08:16Z" finished-at="2015-11-05T00:08:20Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@96532d6]" name="setUp" is-config="true" duration-ms="9519" started-at="2015-11-05T14:37:59Z" finished-at="2015-11-05T14:38:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@6a5fc7f7]" name="test000login" duration-ms="3121" started-at="2015-11-05T00:08:20Z" finished-at="2015-11-05T00:08:23Z">
+        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@96532d6]" name="test000login" duration-ms="5988" started-at="2015-11-05T14:38:08Z" finished-at="2015-11-05T14:38:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test012editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@6a5fc7f7]" name="test012editQiChePiaoJia" duration-ms="4401" started-at="2015-11-05T00:08:23Z" finished-at="2015-11-05T00:08:28Z">
+        <test-method status="PASS" signature="test012editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@96532d6]" name="test012editQiChePiaoJia" duration-ms="10166" started-at="2015-11-05T14:38:14Z" finished-at="2015-11-05T14:38:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test012editQiChePiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@6a5fc7f7]" name="tearDown" is-config="true" duration-ms="1681" started-at="2015-11-05T00:08:28Z" finished-at="2015-11-05T00:08:29Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@96532d6]" name="tearDown" is-config="true" duration-ms="930" started-at="2015-11-05T14:38:24Z" finished-at="2015-11-05T14:38:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testTicketWeb.qiChe -->
+      <class name="testTicketWeb.baShi">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@3498ed]" name="setUp" is-config="true" duration-ms="4203" started-at="2015-11-05T14:38:25Z" finished-at="2015-11-05T14:38:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.baShi@3498ed]" name="test000login" duration-ms="4958" started-at="2015-11-05T14:38:29Z" finished-at="2015-11-05T14:38:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test000login -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@3498ed]" name="tearDown" is-config="true" duration-ms="887" started-at="2015-11-05T14:38:34Z" finished-at="2015-11-05T14:38:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testTicketWeb.baShi -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

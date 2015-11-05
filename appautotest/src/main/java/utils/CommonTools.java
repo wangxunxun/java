@@ -19,7 +19,12 @@ public class CommonTools {
     
     public static String getCurrentTime() {
         Date date = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");
+        SimpleDateFormat f = new SimpleDateFormat("yyyyMMdd.HHmmss.SSS");
+        return f.format(date);
+    }
+    public static String getCurrentTime1() {
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("MMdd-HHmmss");
         return f.format(date);
     }
     
