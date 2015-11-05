@@ -2,6 +2,8 @@ package utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
@@ -91,6 +93,26 @@ public class OperateExcel {
 		wbe.close();
 		
 	}
+	
+	public static void deleteSheet(String excelPath,String name) throws BiffException, IOException, WriteException{
+		Workbook wb = Workbook.getWorkbook(new File(excelPath));
+		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
+		String[] sheetNames = wbe.getSheetNames();
+		Map<String,String> map = new HashMap<String,String>();
+		for(int i =0;i<sheetNames.length;i++){
+			String j = Integer.toString(i);
+			map.put(sheetNames[i], j);
+		}
+		for(String sheetName :sheetNames){
+			if(sheetName.contains(name)){
+				wbe.removeSheet(Integer.parseInt(map.get(sheetName)));
+			}
+			
+		}
+		wbe.write();
+		wbe.close();
+		wb.close();
+	}
 
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
 //		createWorkbook("F:/", "ttt.xls", "1", 0);
@@ -104,12 +126,8 @@ public class OperateExcel {
 //		OperateExcel excel1 = new OperateExcel("F:/ttt.xls", "3");
 //		excel1.writeLastRow(2, "3434desww34");
 //		excel1.close();
-		System.out.println(CommonTools.getCurrentTime1());
-		String ddd= "testTicketWeb.qiChe1";
-		String[] ee = ddd.split("\\.");
-		System.out.println(ee.length);
-		
-		System.out.println(ee[ee.length-1]);
+
+//		deleteSheet("/Users/wangxun/Documents/workspace/java/appautotest/testresource/ticketWeb.xls", "addCity");
 		
 	}
 	

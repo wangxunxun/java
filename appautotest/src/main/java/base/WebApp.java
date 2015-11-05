@@ -53,8 +53,7 @@ public class WebApp extends UI{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	createSheet(99);
-    	System.out.println(testClassName);
+    	createSheet(999);
     	try {
     		testReportExcel = new OperateExcel(testReportPath+testExcelName+".xls",testClassName ) ;
 		} catch (BiffException e) {

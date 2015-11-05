@@ -1,12 +1,12 @@
-20151105.143829.874 INFO - Start to run testTicketWeb.baShi.
-20151105.143829.877 INFO - Get http://zdc.hldf.net/.
-20151105.143833.520 INFO - To find the 登录输入框 element on the 登录页 page.
-20151105.143833.543 INFO - The 登录输入框 element on the 登录页 page is displayed.
-20151105.143833.544 INFO - Sleep 500 ms.
-20151105.143834.046 INFO - Send the "admin" value to the 登录输入框 element on the 登录页 page.
-20151105.143834.162 INFO - To find the 密码输入框 element on the 登录页 page.
-20151105.143834.195 INFO - The 密码输入框 element on the 登录页 page is displayed.
-20151105.143834.196 INFO - Sleep 500 ms.
-20151105.143834.698 INFO - Send the "admin" value to the 密码输入框 element on the 登录页 page.
-20151105.143834.778 INFO - Click the 登录 element on the 登录页 page.
-20151105.143834.835 INFO - End the testTicketWeb.baShi.
+20151105.161230.465 INFO - Start to run testTicketWeb.baShi.
+20151105.161230.467 INFO - Get http://zdc.hldf.net/.
+20151105.161233.463 INFO - To find the 登录输入框 element on the 登录页 page.
+20151105.161233.492 INFO - The 登录输入框 element on the 登录页 page is displayed.
+20151105.161233.493 INFO - Sleep 500 ms.
+20151105.161233.998 INFO - Send the "admin" value to the 登录输入框 element on the 登录页 page.
+20151105.161234.125 INFO - To find the 密码输入框 element on the 登录页 page.
+20151105.161234.153 INFO - The 密码输入框 element on the 登录页 page is displayed.
+20151105.161234.155 INFO - Sleep 500 ms.
+20151105.161234.659 INFO - Send the "admin" value to the 密码输入框 element on the 登录页 page.
+20151105.161234.739 INFO - Click the 登录 element on the 登录页 page.
+20151105.161234.796 INFO - End the testTicketWeb.baShi.

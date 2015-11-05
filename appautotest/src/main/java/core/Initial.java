@@ -354,25 +354,10 @@ public class Initial {
 		}
 		
 
-//		CommonTools.deleteFile(testReportPath+testExcelName+".xls");
-//		try {
-//			OperateExcel.createWorkbook(testReportPath, testExcelName+".xls",className, index);
-//		} catch (WriteException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (BiffException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
 	}
 	
 	protected void createSheet(int index){
-
-		System.out.println("222"+testClassName);
+		deleteSheet(getClassName());
 		try {
 			OperateExcel.createSheet(testReportPath+testExcelName+".xls", testClassName, index);
 		} catch (WriteException e) {
@@ -386,6 +371,21 @@ public class Initial {
 			e.printStackTrace();
 		}
 	}
+	protected void deleteSheet(String sheetName){
+		try {
+			OperateExcel.deleteSheet(testReportPath+testExcelName+".xls", sheetName);
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	private void writeLog(String fileName,Object content){
 		FileWriter writer;
@@ -430,7 +430,7 @@ public class Initial {
 		appDir = getAppDir();
 		testReportPath = getTestReportPath();
 		createWorkBook("TestSummary", 0);
-		testClassName = getTestClassName()+CommonTools.getCurrentTime1();
+		testClassName = getClassName();
 	
 	}
 	
