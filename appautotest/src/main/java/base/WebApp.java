@@ -42,27 +42,7 @@ public class WebApp extends UI{
 		System.setProperty("webdriver.chrome.driver", dirs);
     	driver=new ChromeDriver();
     	wait = new WebDriverWait(driver,waitTime);
-    	String excelPath = CommonTools.setPath(testExcelPath);
-    	
-    	try {
-			testCaseExcel = new OperateExcel(excelPath, testCaseSheet) ;
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	createSheet(999);
-    	try {
-    		testReportExcel = new OperateExcel(testReportPath+testExcelName+".xls",testClassName ) ;
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 
     }
      

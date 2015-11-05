@@ -357,7 +357,7 @@ public class Initial {
 	}
 	
 	protected void createSheet(int index){
-		deleteSheet(getClassName());
+		deleteSheet(testClassName);
 		try {
 			OperateExcel.createSheet(testReportPath+testExcelName+".xls", testClassName, index);
 		} catch (WriteException e) {
@@ -407,7 +407,7 @@ public class Initial {
 	protected String getTestClassName(){
 		String className = getClassName();
 		String[] ddd = className.split("\\.");
-		return ddd[ddd.length-1];
+		return ddd[ddd.length-2]+"."+ddd[ddd.length-1];
 		
 	}
 	protected void initialData() {
@@ -431,6 +431,27 @@ public class Initial {
 		testReportPath = getTestReportPath();
 		createWorkBook("TestSummary", 0);
 		testClassName = getClassName();
+    	String excelPath = CommonTools.setPath(testExcelPath);
+    	
+    	try {
+			testCaseExcel = new OperateExcel(excelPath, testCaseSheet) ;
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	createSheet(999);
+    	try {
+    		testReportExcel = new OperateExcel(testReportPath+testExcelName+".xls",testClassName ) ;
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
 	}
 	
