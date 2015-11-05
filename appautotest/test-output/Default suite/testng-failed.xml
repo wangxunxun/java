@@ -6,6 +6,12 @@
   </listeners>
   <test name="Default test(failed)">
     <classes>
+      <class name="testTicketWeb.baShi">
+        <methods>
+          <include name="test000login"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- testTicketWeb.baShi -->
       <class name="testTicketWeb.qiChe">
         <methods>
           <include name="test000login"/>
@@ -13,12 +19,6 @@
           <include name="setUp"/>
         </methods>
       </class> <!-- testTicketWeb.qiChe -->
-      <class name="testTicketWeb.baShi">
-        <methods>
-          <include name="test000login"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- testTicketWeb.baShi -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

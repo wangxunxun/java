@@ -4,6 +4,7 @@ package base;
 
 
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -17,6 +18,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
+import jxl.read.biff.BiffException;
+import jxl.write.WriteException;
 import utils.CommonTools;
 import core.UI;
 
@@ -27,7 +30,18 @@ public class IOSApp extends UI {
   	public void runIOSApp(){
 		    // set up appium
 
-  		initialIOSData();
+  		try {
+			initialIOSData();
+		} catch (WriteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (BiffException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
     

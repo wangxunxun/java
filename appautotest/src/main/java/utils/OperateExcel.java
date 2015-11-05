@@ -8,10 +8,13 @@ import java.util.Map;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
+import net.sourceforge.htmlunit.corejs.javascript.ast.LabeledStatement;
 
 public class OperateExcel {
 	
@@ -20,6 +23,8 @@ public class OperateExcel {
 	protected Workbook wb;
 	protected WritableWorkbook wbe;
 	protected WritableSheet sheet;
+	protected WritableFont font;
+	protected static WritableCellFormat format;
 
 	public OperateExcel(String excelPath,String className) throws BiffException, IOException{
 		this.excelPath = excelPath;
@@ -27,6 +32,7 @@ public class OperateExcel {
 		wb = Workbook.getWorkbook(new File(this.excelPath));
 		wbe= Workbook.createWorkbook(new File(this.excelPath), wb);
 		sheet = wbe.getSheet(this.className);
+		
 	}
 	
 
@@ -34,21 +40,39 @@ public class OperateExcel {
 	public void writeLastRow(int cow,Object content) throws RowsExceededException, WriteException, BiffException, IOException{
 
 		int row = sheet.getRows();
-		Label lbl = new Label(cow, row, (String) content);
-		sheet.addCell(lbl);
+		if (format!=null){
+			Label lable = new Label(cow, row, (String) content,format);
+			sheet.addCell(lable);
+		}
+		else{
+			Label lable = new Label(cow, row, (String) content);
+			sheet.addCell(lable);
+		}
 	}
 	
 	public void writeSameRow(int cow,Object content) throws RowsExceededException, WriteException, BiffException, IOException{
 
 		int row = sheet.getRows();
-		Label lbl = new Label(cow, row-1, (String) content);
-		sheet.addCell(lbl);
+		if (format!=null){
+			Label lable = new Label(cow, row-1, (String) content,format);
+			sheet.addCell(lable);
+		}
+		else{
+			Label lable = new Label(cow, row-1, (String) content,format);
+			sheet.addCell(lable);
+		}
 	}
 	
 	public void writeData(int cow,int row,Object content) throws RowsExceededException, WriteException, BiffException, IOException{
 
-		Label lbl = new Label(cow, row, (String) content);
-		sheet.addCell(lbl);
+		if (format!=null){
+			Label lable = new Label(cow, row, (String) content,format);
+			sheet.addCell(lable);
+		}
+		else{
+			Label lable = new Label(cow, row, (String) content);
+			sheet.addCell(lable);
+		}
 	}
 	
 	public void close() throws IOException, WriteException{
@@ -77,7 +101,7 @@ public class OperateExcel {
 		wb = Workbook.getWorkbook(new File(excelPath));
 		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
 		WritableSheet sheet = wbe.getSheet(className);
-		Label lbl = new Label(cow, row, (String) content);
+		Label lbl = new Label(cow, row, (String) content,format);
 		sheet.addCell(lbl);
 		wbe.write();
 		wbe.close();
@@ -87,12 +111,32 @@ public class OperateExcel {
 		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
 		WritableSheet sheet = wbe.getSheet(className);
 		int row = sheet.getRows();
-		Label lbl = new Label(cow, row, (String) content);
+		Label lbl = new Label(cow, row, (String) content,format);
 		sheet.addCell(lbl);
 		wbe.write();
 		wbe.close();
 		
 	}
+	public void mergeCells(int col1,int row1,int col2,int row2) throws RowsExceededException, WriteException{
+		sheet.mergeCells(col1, row1, col2, row2);
+	}
+	public void setColumnView(int col,int width){
+		sheet.setColumnView(col, width);
+	}
+	
+	public void writeTitle(int cow,int row,String content,int size) throws RowsExceededException, WriteException{
+		WritableFont font = new WritableFont(WritableFont.ARIAL, size ,WritableFont.BOLD);
+		WritableCellFormat format = new WritableCellFormat(font);
+		Label label = new Label(cow,row,content,format);
+		sheet.addCell(label);
+	}
+	
+	public void setFormat(int size,Boolean wrap) throws WriteException{
+		font = new WritableFont(WritableFont.ARIAL, size);
+		format = new WritableCellFormat(font);
+		format.setWrap(wrap);
+	}
+	
 	
 	public static void deleteSheet(String excelPath,String name) throws BiffException, IOException, WriteException{
 		Workbook wb = Workbook.getWorkbook(new File(excelPath));
@@ -115,20 +159,13 @@ public class OperateExcel {
 	}
 
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-//		createWorkbook("F:/", "ttt.xls", "1", 0);
-//		
-//		createSheet("F:/ttt.xls", "2", 99);
-//		OperateExcel excel = new OperateExcel("F:/ttt.xls", "2");
-//		excel.writeLastRow(2, "343434");
-//		excel.close();
-//		
-//		createSheet("F:/ttt.xls", "3", 99);
-//		OperateExcel excel1 = new OperateExcel("F:/ttt.xls", "3");
-//		excel1.writeLastRow(2, "3434desww34");
-//		excel1.close();
 
-//		deleteSheet("/Users/wangxun/Documents/workspace/java/appautotest/testresource/ticketWeb.xls", "addCity");
-		
+		OperateExcel excel = new OperateExcel("F:/testReport.xls", "testTicketWeb.baShi");
+//		excel.setColumnView(1, 60);
+//		excel.setFormat(19, true);
+		excel.writeData(0, 0, "3434343434343434354354545454545454545454545454545");
+		excel.close();
+		System.out.println("end");
 	}
 	
 	

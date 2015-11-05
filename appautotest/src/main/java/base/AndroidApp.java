@@ -1,7 +1,8 @@
 package base;
 
 import io.appium.java_client.android.AndroidElement;
-
+import jxl.read.biff.BiffException;
+import jxl.write.WriteException;
 import io.appium.java_client.android.AndroidDriver;
 
 
@@ -27,7 +28,18 @@ public class AndroidApp extends UI{
 		 
     public void runAndroidApp(){
         // set up appium
-    	initialAndroidData();
+    	try {
+			initialAndroidData();
+		} catch (WriteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (BiffException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName",androidDeviceName);

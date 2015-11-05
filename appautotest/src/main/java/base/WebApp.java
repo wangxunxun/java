@@ -27,7 +27,18 @@ public class WebApp extends UI{
 	
     public void runChormeApp(){
     	
-    	initialData();
+    	try {
+			initialData();
+		} catch (WriteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	
     	String dirs =null;

@@ -56,7 +56,7 @@ public class Initial {
 	
 	//测试数据变量
 	protected String testReportPath;
-	protected String testExcelName = "testReport";
+	protected String testReportName;
 	protected String testClassName;
 	protected String testExcelPath;
 	protected String elementSheet;
@@ -88,8 +88,18 @@ public class Initial {
 			return CommonTools.setPath(testReportPath);
 		}
 
-		return CommonTools.setPath("/testresource/");
+		return CommonTools.setPath("/testResource/");
 	}
+	
+	protected String getTestReportName(){
+		testReportName = getProperties("testReportName");
+		if(testReportName!=null){
+			return CommonTools.setPath(testReportName);
+		}
+
+		return "testReport";
+	}
+	
 
 
     protected Map<String, Map<String, Map<String, String>>> getElementData(){
@@ -201,22 +211,6 @@ public class Initial {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-/*		String excelPath = CommonTools.setPath(testExcelPath);
-		try {
-			OperateExcel.writeContent(excelPath, testCaseSheet, cow, row, content);
-		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 	 
 	}
 	
@@ -245,9 +239,10 @@ public class Initial {
 	
 	public void log(Object content){
 		if(logSwitch==true){
-			CommonTools.log(content);
-			writeLog(content);
-			writeLogToExcel(1, content);
+			String time = CommonTools.getCurrentTime();
+			System.out.println(time + " INFO - " + content);
+			writeLog(time + " INFO - " + content);
+			writeLogToExcel(1, time + " INFO - " + content);
 		}
 	}
 	
@@ -273,7 +268,7 @@ public class Initial {
 	
 	protected void writeLog(Object content){
 		deleteFirstTime(getLogFilePath());
-		writeLog(getClassName()+".txt", CommonTools.getCurrentTime()+" INFO - "+content);
+		writeLog(getClassName()+".txt",content);
 	}
 	
 
@@ -337,10 +332,10 @@ public class Initial {
 	
 	protected void createWorkBook(String className,int index){
 		
-		File f = new File(testReportPath+testExcelName+".xls");
+		File f = new File(testReportPath+testReportName+".xls");
 		if(!f.exists()){
 			try {
-				OperateExcel.createWorkbook(testReportPath, testExcelName+".xls",className, index);
+				OperateExcel.createWorkbook(testReportPath, testReportName+".xls",className, index);
 			} catch (WriteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -356,24 +351,15 @@ public class Initial {
 
 	}
 	
-	protected void createSheet(int index){
+	protected void createSheet(int index) throws WriteException, BiffException, IOException{
 		deleteSheet(testClassName);
-		try {
-			OperateExcel.createSheet(testReportPath+testExcelName+".xls", testClassName, index);
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		OperateExcel.createSheet(testReportPath+testReportName+".xls", testClassName, index);
+
 	}
 	protected void deleteSheet(String sheetName){
 		try {
-			OperateExcel.deleteSheet(testReportPath+testExcelName+".xls", sheetName);
+			OperateExcel.deleteSheet(testReportPath+testReportName+".xls", sheetName);
 		} catch (BiffException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -410,7 +396,7 @@ public class Initial {
 		return ddd[ddd.length-2]+"."+ddd[ddd.length-1];
 		
 	}
-	protected void initialData() {
+	protected void initialData() throws WriteException, BiffException, IOException {
 		testExcelPath = getProperties("testExcelPath");
 		elementSheet = getProperties("elementSheet");    	
 		testCaseSheet = getProperties("testCaseSheet");
@@ -429,33 +415,30 @@ public class Initial {
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
 		appDir = getAppDir();
 		testReportPath = getTestReportPath();
+		testReportName =getTestReportName();
 		createWorkBook("TestSummary", 0);
 		testClassName = getClassName();
     	String excelPath = CommonTools.setPath(testExcelPath);
     	
-    	try {
-			testCaseExcel = new OperateExcel(excelPath, testCaseSheet) ;
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		testCaseExcel = new OperateExcel(excelPath, testCaseSheet) ;
+
     	createSheet(999);
-    	try {
-    		testReportExcel = new OperateExcel(testReportPath+testExcelName+".xls",testClassName ) ;
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+    	
+    	testReportExcel = new OperateExcel(testReportPath+testReportName+".xls",testClassName ) ;
+
+    	testReportExcel.setColumnView(1, 100);
+    	testReportExcel.setColumnView(0, 40);
+    	
+		testReportExcel.setFormat(10, true);
+		testReportExcel.writeTitle(0, 0, "TestMethod",14);
+		testReportExcel.writeTitle(1, 0, "Log",14);
+
 	
 	}
 	
-	protected void initialAndroidData(){
+	protected void initialAndroidData() throws WriteException, BiffException, IOException{
 		initialData();
 		apkName = getProperties("apkName");
 		appPackage = getProperties("appPackage");
@@ -466,7 +449,7 @@ public class Initial {
 		resetKeyboard = Boolean.parseBoolean(getProperties("resetKeyboard"));
 	}
 	
-	protected void initialIOSData(){
+	protected void initialIOSData() throws WriteException, BiffException, IOException{
 		initialData();
 		app = getProperties("app");
 		iosDeviceName = getProperties("deviceName");
