@@ -2,6 +2,8 @@ package utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +12,7 @@ import jxl.read.biff.BiffException;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
+import jxl.write.WritableHyperlink;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
@@ -137,6 +140,16 @@ public class OperateExcel {
 		format.setWrap(wrap);
 	}
 	
+	public void setHyperLinkForFile(int cow,int row,String filePath) throws MalformedURLException, RowsExceededException, WriteException{
+		WritableHyperlink link = new WritableHyperlink(cow, row, new File(filePath)); 
+		sheet.addHyperlink(link);
+	}
+	
+	public void setHyperLinkForSheet(int col,int row,String desc,String sheetName,int destCol,int destRow) throws RowsExceededException, WriteException{
+		WritableSheet desSheet = wbe.getSheet(sheetName);
+		WritableHyperlink link = new WritableHyperlink(col, row, desc, desSheet, destCol, destRow);
+		sheet.addHyperlink(link);
+	}
 	
 	public static void deleteSheet(String excelPath,String name) throws BiffException, IOException, WriteException{
 		Workbook wb = Workbook.getWorkbook(new File(excelPath));
@@ -164,6 +177,8 @@ public class OperateExcel {
 //		excel.setColumnView(1, 60);
 //		excel.setFormat(19, true);
 		excel.writeData(0, 0, "3434343434343434354354545454545454545454545454545");
+		excel.setHyperLinkForFile(4,5,"F:/ttt.xls");
+		excel.setHyperLinkForSheet(5, 5, "5534343", "TestSummary", 6, 6);
 		excel.close();
 		System.out.println("end");
 	}
