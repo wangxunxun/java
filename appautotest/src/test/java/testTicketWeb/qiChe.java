@@ -51,6 +51,19 @@ public class qiChe {
 		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
 	}
+	
+	@Test
+	public void test003login() {
+		piaoWuWebApp.logTestDescription("test");
+	}
+	@Test
+	public void test004login() {
+		piaoWuWebApp.logTestDescription("erwerewrewr");
+	}
+	@Test
+	public void test005login() {
+		piaoWuWebApp.logTestDescription("teewrewrewrewrewrst");
+	}
 
 	// @Test
 	public void test001enterAddCityPage() {
@@ -89,12 +102,13 @@ public class qiChe {
 
 	}
 
-	// @Test(dataProvider="addqichezhan")
+//	@Test(dataProvider="addqichezhan")
 	public void test021addQiCheZhan(String address, String name, String pinyin,
 			String longitude, String latitude, String bashi, String phone,
 			String from, String to, String city) throws InterruptedException,
 			BiffException, IOException {
-
+		/*		piaoWuWebApp.logTestDescription("ahahddsferewrewrewrewrerew");
+		
 		piaoWuWebApp.waitDisplay("汽车车站维护", "添加车站");
 		piaoWuWebApp.clickElement("汽车车站维护", "添加车站");
 
@@ -117,20 +131,20 @@ public class qiChe {
 		if (piaoWuWebApp.verifyDisplay("汽车车站维护", "添加车站") == false) {
 			piaoWuWebApp
 					.get("http://zdc.hldf.net/Server/LongDistanceBus/Station");
-			/*
+			
 			 * piaoWuWebApp.waitDisplay("汽车-添加车站", "关闭");
 			 * piaoWuWebApp.clickElement("汽车-添加车站", "关闭");
-			 */
-		}
+			 
+		}*/
 
 	}
 
-	@Test
+//	@Test
 	public void test012editQiChePiaoJia() throws InterruptedException,
 			BiffException, IOException {
 
-/*		piaoWuWebApp.logTestDescription("ahahddsferewrewrewrewrerew");
-		String piaojia = piaoWuWebApp.getProperties("qiChePiaoJia");
+		piaoWuWebApp.logTestDescription("ahahddsferewrewrewrewrerew");
+		/*		String piaojia = piaoWuWebApp.getProperties("qiChePiaoJia");
 
 		String newPiaoJia = piaoWuWebApp.getTableRowLocationByCss(piaojia, 6);
 

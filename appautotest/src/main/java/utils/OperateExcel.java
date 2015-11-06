@@ -201,7 +201,44 @@ public class OperateExcel {
 		wb.write();
 		wb.close();
 		
+	}
+	
+	public void writeTestToExcel(List<Map<String, String>>classData) throws RowsExceededException, WriteException, BiffException, IOException{
+		
+		
+		for(int i =0;i<classData.size();i++){
+			int methodsCounts = classData.size();
+			String className=classData.get(i).get("className");
+			String method=classData.get(i).get("method");
+			String time=classData.get(i).get("time");
+			String status=classData.get(i).get("status");
+			String comment=classData.get(i).get("comment");
+
+			if(i==0){
+				writeLastRow(0, className);
+				int currentRow = sheet.getRows();
+				setHyperLinkForSheet(8, currentRow-1, className+"-log", className, 0, 1);
+			}
+			else{
+				writeLastRow(0, "");
+			}
+			
+			writeSameRow(1, method);
+			writeSameRow(7, time);
+			writeSameRow(10, comment);
+			if(status.equals("Success")){
+				writeSameRow(2, "1");
+			}
+			if(status.equals("FAILURE")){
+				writeSameRow(3, "1");
+			}
+			if(status.equals("Skipped")){
+				writeSameRow(4, "1");
+			}
+
+
 		}
+	}
 
     public int getTestsValue(int cel, int row) {
 

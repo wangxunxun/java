@@ -5,6 +5,7 @@
     <classes>
       <class name="testTicketWeb.qiChe">
         <methods>
+          <include name="test003login"/>
           <include name="test000login"/>
           <include name="setUp"/>
           <include name="tearDown"/>

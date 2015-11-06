@@ -7,6 +7,7 @@ import java.util.Set;
 
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -94,7 +95,53 @@ public class WebApp extends UI{
 		
 		
     	driver.quit();
-    	System.out.println(TestngListenerWeb.classData.get(0).get("className"));
+
+/*    	List<Map<String, String>> classData = TestngListenerWeb.classData;
+    	for(int i =0;i<classData.size();i++){
+			String className=classData.get(i).get("className");
+			String method=classData.get(i).get("method");
+			String time=classData.get(i).get("time");
+			String status=classData.get(i).get("status");
+			String comment=classData.get(i).get("comment");
+			System.out.println("className: "+className);
+			System.out.println("method: "+method);
+			System.out.println("time: "+time);
+			System.out.println("status: "+status);
+			System.out.println("comment: "+comment);
+    	}*/
+    	OperateExcel testSummay;
+		try {
+			testSummay = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
+			try {
+				testSummay.setFormat(10, true);
+			} catch (WriteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	    	try {
+				testSummay.writeTestToExcel(TestngListenerWeb.classData);
+			} catch (RowsExceededException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (WriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	try {
+				testSummay.close();
+			} catch (WriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (BiffException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    	
 /*        OperateExcel testSummary;
         try {
             testSummary = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");

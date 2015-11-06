@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classes><class name="testTicketWeb.qiChe"><methods><method name="test000login"><pass>0</pass><fail>0</fail><skip>0</skip><error>0</error><time>1</time><comment>20151106.225828.380 - Skipped message is null</comment></method></methods></class></classes>

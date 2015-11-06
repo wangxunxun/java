@@ -3,6 +3,7 @@ package utils;
 
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -14,6 +15,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
@@ -22,6 +30,7 @@ import org.testng.TestListenerAdapter;
 
 import utils.CommonTools;
 import base.WebApp;
+import core.Initial;
 @SuppressWarnings("unused")
 public class TestngListenerWeb extends TestListenerAdapter {
 
@@ -32,7 +41,6 @@ public class TestngListenerWeb extends TestListenerAdapter {
 	private Long time;
 	private String status;
 	private String comment;
-	public Map<String, String> methodData = new HashMap<String, String>();
 	public static List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
 
 	
@@ -40,6 +48,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
+		Map<String, String> methodData = new HashMap<String, String>();
 		CommonTools.log(tr.getName() + " Failure");
 		try {
 			takeScreenShot(tr);
@@ -51,17 +60,20 @@ public class TestngListenerWeb extends TestListenerAdapter {
 			e.printStackTrace();
 		}
 		className = tr.getTestClass().getName();
+		String[] ddd = className.split("\\.");
+		className = ddd[ddd.length-2]+"."+ddd[ddd.length-1];
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "FAILURE";
+		String successMessage = Initial.successMessage;
         try {
         	comment = tr.getThrowable().getMessage();
-        	if(comment.isEmpty()){
-        		comment = "message is null";
+        	if(comment==null){
+        		comment = "";
         	}
         } catch (Exception e) {
+        	comment = "";
 
-        	comment = "message is null";
         	
         }
         
@@ -69,8 +81,14 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("method", method);
         methodData.put("time", time + "");
         methodData.put("status", status);
-        methodData.put("comment", CommonTools.getCurrentTime() + " - Failed " + comment);
+        methodData.put("comment", CommonTools.getCurrentTime() + " - FAILURE " + comment);
         classData.add(methodData);
+//        writeLog("F:/workspace/java/appautotest/testResource/", content);
+		System.out.println("className: "+className);
+		System.out.println("method: "+method);
+		System.out.println("time: "+time);
+		System.out.println("status: "+status);
+		System.out.println("comment: "+comment);
 		
 		
 	}
@@ -78,18 +96,32 @@ public class TestngListenerWeb extends TestListenerAdapter {
 	@Override
 	public void onTestSuccess(ITestResult tr) {
 		super.onTestSuccess(tr);
+		Map<String, String> methodData = new HashMap<String, String>();
 		className = tr.getTestClass().getName();
+		String[] ddd = className.split("\\.");
+		className = ddd[ddd.length-2]+"."+ddd[ddd.length-1];
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
-		status = "FAILURE";
+		status = "Success";
+		String successMessage = Initial.successMessage;
         try {
         	comment = tr.getThrowable().getMessage();
         	if(comment.isEmpty()){
-        		comment = "message is null";
+        		if(successMessage==null){
+        			comment = "";
+        		}
+        		else{
+        			comment = successMessage;
+        		}
         	}
         } catch (Exception e) {
 
-        	comment = "message is null";
+    		if(successMessage==null){
+    			comment = "";
+    		}
+    		else{
+    			comment = successMessage;
+    		}
         	
         }
         
@@ -97,35 +129,48 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("method", method);
         methodData.put("time", time + "");
         methodData.put("status", status);
-        methodData.put("comment", CommonTools.getCurrentTime() + " - Failed " + comment);
+        methodData.put("comment", CommonTools.getCurrentTime() + " - Success " + comment);
         classData.add(methodData);				
+//        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
+		System.out.println("className: "+className);
+		System.out.println("method: "+method);
+		System.out.println("time: "+time);
+		System.out.println("status: "+status);
+		System.out.println("comment: "+comment);
 	}
 	@Override
 	public void onTestSkipped(ITestResult tr) {
 		super.onTestSkipped(tr);
+		Map<String, String> methodData = new HashMap<String, String>();
 		className = tr.getTestClass().getName();
+		String[] ddd = className.split("\\.");
+		className = ddd[ddd.length-2]+"."+ddd[ddd.length-1];
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
-		status = "FAILURE";
+		status = "Skipped";
         try {
         	comment = tr.getThrowable().getMessage();
-        	if(comment.isEmpty()){
-        		comment = "message is null";
+        	if(comment==null){
+        		comment = "";
         	}
         } catch (Exception e) {
-
-        	comment = "message is null";
-        	
+        	comment = "";    	
         }
         
         methodData.put("className", className);
         methodData.put("method", method);
         methodData.put("time", time + "");
         methodData.put("status", status);
-        methodData.put("comment", CommonTools.getCurrentTime() + " - Failed " + comment);
+        methodData.put("comment", CommonTools.getCurrentTime() + " - Skipped " + comment);
         classData.add(methodData);				
-	}
-		
+ //       createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
+		System.out.println("className: "+className);
+		System.out.println("method: "+method);
+		System.out.println("time: "+time);
+		System.out.println("status: "+status);
+		System.out.println("comment: "+comment);
+	}		
+    
 	private void takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		File scrFile = ((TakesScreenshot) WebApp.driver).getScreenshotAs(OutputType.FILE);		
