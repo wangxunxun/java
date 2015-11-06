@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import core.UI;
 import utils.CommonTools;
 import utils.OperateExcel;
+import utils.TestngListenerWeb;
 
 
 public class WebApp extends UI{
@@ -93,6 +94,7 @@ public class WebApp extends UI{
 		
 		
     	driver.quit();
+    	System.out.println(TestngListenerWeb.classData.get(0).get("className"));
 /*        OperateExcel testSummary;
         try {
             testSummary = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");

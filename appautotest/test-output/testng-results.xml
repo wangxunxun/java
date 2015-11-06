@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14934" started-at="2015-11-06T10:00:23Z" finished-at="2015-11-06T10:00:38Z">
+  <suite name="Default suite" duration-ms="14771" started-at="2015-11-06T13:08:07Z" finished-at="2015-11-06T13:08:22Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="14934" started-at="2015-11-06T10:00:23Z" finished-at="2015-11-06T10:00:38Z">
+    <test name="Default test" duration-ms="14771" started-at="2015-11-06T13:08:07Z" finished-at="2015-11-06T13:08:22Z">
       <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@6fadae5d]" name="setUp" is-config="true" duration-ms="7876" started-at="2015-11-06T18:00:23Z" finished-at="2015-11-06T18:00:31Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="setUp" is-config="true" duration-ms="3760" started-at="2015-11-06T21:08:07Z" finished-at="2015-11-06T21:08:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@6fadae5d]" name="test000login" duration-ms="6045" started-at="2015-11-06T18:00:31Z" finished-at="2015-11-06T18:00:37Z">
+        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test000login" duration-ms="9179" started-at="2015-11-06T21:08:11Z" finished-at="2015-11-06T21:08:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test012editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@6fadae5d]" name="test012editQiChePiaoJia" duration-ms="0" started-at="2015-11-06T18:00:37Z" finished-at="2015-11-06T18:00:37Z">
+        <test-method status="PASS" signature="test012editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test012editQiChePiaoJia" duration-ms="0" started-at="2015-11-06T21:08:20Z" finished-at="2015-11-06T21:08:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test012editQiChePiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@6fadae5d]" name="tearDown" is-config="true" duration-ms="960" started-at="2015-11-06T18:00:37Z" finished-at="2015-11-06T18:00:38Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="tearDown" is-config="true" duration-ms="1806" started-at="2015-11-06T21:08:20Z" finished-at="2015-11-06T21:08:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
