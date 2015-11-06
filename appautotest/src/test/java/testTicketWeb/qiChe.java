@@ -15,7 +15,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
-//@Listeners(utils.ListenersTestng.class)
+@Listeners(utils.ListenersTestng.class)
 public class qiChe {
 	
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();

@@ -47,8 +47,13 @@ public class ListenersTestng extends TestListenerAdapter {
         // get the method run result.
         try {
             message = tr.getThrowable().getMessage();
+        	if(message.isEmpty()){
+                message = "message is null";
+        	}
         } catch (Exception e) {
+
             message = "message is null";
+        	
         }
         status = "FAILURE";
 
@@ -57,6 +62,7 @@ public class ListenersTestng extends TestListenerAdapter {
         data.put("time", time + "");
         data.put("status", status);
         data.put("comment", formatDate(System.currentTimeMillis()) + " - Failed " + message);
+        System.out.println(data.get("comment"));
         createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/" + className
                 + ".xml", data, className);
 
@@ -85,11 +91,14 @@ public class ListenersTestng extends TestListenerAdapter {
 
         try {
             message = tr.getThrowable().getMessage();
-        } catch (Exception e) {
             message = Initial.successMessage;
             if(message.isEmpty()){
             	message = "The success message is null.";
             }
+        } catch (Exception e) {
+
+            message = "The success message is null.";
+
             
         }
         status = "SUCCESS";
@@ -98,6 +107,7 @@ public class ListenersTestng extends TestListenerAdapter {
         data.put("time", time + "");
         data.put("status", status);
         data.put("comment", message);
+        System.out.println(data.get("comment"));
 
         createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/" + className
                 + ".xml", data, className);
@@ -137,6 +147,7 @@ public class ListenersTestng extends TestListenerAdapter {
         data.put("time", time + "");
         data.put("status", status);
         data.put("comment", message);
+        System.out.println(data.get("comment"));
         createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/" + className
                 + ".xml", data, className);
 

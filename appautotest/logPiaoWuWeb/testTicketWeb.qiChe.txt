@@ -1,12 +1,12 @@
-20151106.180031.765 INFO - Start to run testTicketWeb.qiChe.
-20151106.180031.813 INFO - Get http://zdc.hldf.net/.
-20151106.180036.367 INFO - To find the 登录输入框 element on the 登录页 page.
-20151106.180036.430 INFO - The 登录输入框 element on the 登录页 page is displayed.
-20151106.180036.431 INFO - Sleep 500 ms.
-20151106.180036.932 INFO - Send the "admin" value to the 登录输入框 element on the 登录页 page.
-20151106.180037.154 INFO - To find the 密码输入框 element on the 登录页 page.
-20151106.180037.183 INFO - The 密码输入框 element on the 登录页 page is displayed.
-20151106.180037.184 INFO - Sleep 500 ms.
-20151106.180037.685 INFO - Send the "admin" value to the 密码输入框 element on the 登录页 page.
-20151106.180037.766 INFO - Click the 登录 element on the 登录页 page.
-20151106.180037.839 INFO - End the testTicketWeb.qiChe.
+20151106.181331.158 INFO - Start to run testTicketWeb.qiChe.
+20151106.181331.171 INFO - Get http://zdc.hldf.net/.
+20151106.181336.304 INFO - To find the 登录输入框 element on the 登录页 page.
+20151106.181336.347 INFO - The 登录输入框 element on the 登录页 page is displayed.
+20151106.181336.348 INFO - Sleep 500 ms.
+20151106.181336.853 INFO - Send the "admin" value to the 登录输入框 element on the 登录页 page.
+20151106.181337.028 INFO - To find the 密码输入框 element on the 登录页 page.
+20151106.181337.056 INFO - The 密码输入框 element on the 登录页 page is displayed.
+20151106.181337.056 INFO - Sleep 500 ms.
+20151106.181337.558 INFO - Send the "admin" value to the 密码输入框 element on the 登录页 page.
+20151106.181337.642 INFO - Click the 登录 element on the 登录页 page.
+20151106.181337.892 INFO - End the testTicketWeb.qiChe.
