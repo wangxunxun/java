@@ -11,8 +11,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+
+//@Listeners(utils.ListenersTestng.class)
 public class qiChe {
 	
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
@@ -161,7 +164,7 @@ public class qiChe {
 
 		piaoWuWebApp.clickElement("汽车-票价", "提交");*/
 
-		 piaoWuWebApp.runTestCase("登录");
+//		 piaoWuWebApp.runTestCase("登录");
 
 	}
 

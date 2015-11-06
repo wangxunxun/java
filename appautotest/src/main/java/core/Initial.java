@@ -77,6 +77,8 @@ public class Initial {
 
 	protected OperateExcel testReportExcel;
 	protected OperateExcel testCaseExcel;
+	public static String successMessage;
+	protected String testSummarySheetName = "TestSummary";
 
 
 
@@ -316,18 +318,20 @@ public class Initial {
         }
         return "";
     }
-    public String logTestDescription(String content) {
+    public void logTestDescription(String content) {
         try {
             ITestResult it = Reporter.getCurrentTestResult();
-
             String classNamePath = it.getName();
             testReportExcel.writeLastRow(0, classNamePath);
             testReportExcel.writeSameRow(1, content);
-			return classNamePath;
         } catch (Exception e) {
             log("None testNG executor detected, test may continue, but highly recommended to migrate your test to testNG.");
         }
-        return "";
+    }
+    
+    public void logSuccessMessage(String content){
+    	successMessage = content;
+    	log(content);
     }
 	
 	protected void createWorkBook(String className,int index){
@@ -416,7 +420,7 @@ public class Initial {
 		appDir = getAppDir();
 		testReportPath = getTestReportPath();
 		testReportName =getTestReportName();
-		createWorkBook("TestSummary", 0);
+		createWorkBook(testSummarySheetName, 0);
 		testClassName = getClassName();
     	String excelPath = CommonTools.setPath(testExcelPath);
     	

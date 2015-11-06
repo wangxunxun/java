@@ -90,8 +90,27 @@ public class WebApp extends UI{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
     	driver.quit();
+/*        OperateExcel testSummary;
+        try {
+            testSummary = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
+            testSummary.readXML("/Users/wangxun/Documents/workspace/java/appautotest/testresource/Test_FCVerifySettings.xml");
 
+            try {
+                testSummary.close();
+            } catch (WriteException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } catch (BiffException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }*/
 
 
     }

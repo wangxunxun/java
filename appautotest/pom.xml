@@ -12,6 +12,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <dom4j-version>1.6</dom4j-version>
   </properties>
 
   <dependencies>
@@ -33,7 +34,11 @@
 	<artifactId>jxl</artifactId>
 	<version>2.6.12</version>
 	</dependency>
-
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j-version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>

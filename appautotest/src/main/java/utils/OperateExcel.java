@@ -3,11 +3,19 @@ package utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
+import jxl.Sheet;
 import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.format.Colour;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
@@ -17,24 +25,25 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
-import net.sourceforge.htmlunit.corejs.javascript.ast.LabeledStatement;
 
 public class OperateExcel {
 	
-	private String excelPath;
-	private String className;
 	protected Workbook wb;
 	protected WritableWorkbook wbe;
 	protected WritableSheet sheet;
 	protected WritableFont font;
 	protected static WritableCellFormat format;
+	
+    private static String navigation[] = { "Summary", "Tests", "Pass", "Failed", "Skip", "Errors",
+        "Success rate", "Time" };
+    private static String classNavigation[] = { "Classes", "MethodName", "Pass", "Failed", "Skip",
+        "Errors", "Success rate", "Time ", "log", "Error Screenshot", "Comment" };
 
 	public OperateExcel(String excelPath,String className) throws BiffException, IOException{
-		this.excelPath = excelPath;
-		this.className = className;
-		wb = Workbook.getWorkbook(new File(this.excelPath));
-		wbe= Workbook.createWorkbook(new File(this.excelPath), wb);
-		sheet = wbe.getSheet(this.className);
+
+		wb = Workbook.getWorkbook(new File(excelPath));
+		wbe= Workbook.createWorkbook(new File(excelPath), wb);
+		sheet = wbe.getSheet(className);
 		
 	}
 	
@@ -93,10 +102,24 @@ public class OperateExcel {
 		wb.close();
 	}
 	public static void createWorkbook(String excelDir,String excelName,String className,int index) throws IOException, WriteException, BiffException{
-		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir+excelName));
-		wb.createSheet(className, index);
-		wb.write();
-		wb.close();
+        WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
+        wb.createSheet(className, index);
+
+        WritableSheet homePageSheet = wb.getSheet(className);
+        Label label = new Label(0, 0, "Description");
+        homePageSheet.addCell(label);
+
+        // 概况 总数量 pass fail skip error 百分百 log
+        for (int i = 0; i < navigation.length; i++) {
+            System.out.println(324342);
+            homePageSheet.addCell(new Label(i, 1, navigation[i]));
+        }
+
+        for (int i = 0; i < classNavigation.length; i++) {
+            homePageSheet.addCell(new Label(i, 3, classNavigation[i]));
+        }
+        wb.write();
+        wb.close();
 	}
 
 	public static void writeContent(String excelPath,String className,int cow,int row,Object content) throws BiffException, IOException, RowsExceededException, WriteException{
@@ -168,17 +191,225 @@ public class OperateExcel {
 		}
 		wbe.write();
 		wbe.close();
-		wb.close();
 	}
+	
+	public void copySheet(String modelPath,String destPath) throws BiffException, IOException, WriteException{
+		WritableWorkbook wb = Workbook.createWorkbook(new File(destPath));
+		Workbook model = Workbook.getWorkbook(new File(modelPath));
+		Sheet modelSheet = model.getSheet(0);
+		wb.importSheet("newsheet", 0, modelSheet);
+		wb.write();
+		wb.close();
+		
+		}
 
+    public int getTestsValue(int cel, int row) {
+
+        String value = sheet.getCell(cel, row).getContents();
+        if (value.isEmpty()) {
+            return 0;
+        } else {
+            return Integer.parseInt(value);
+        }
+
+    }
+
+    public void setValueToSummary(String pass, String fail, String skip, String error, String time) {
+
+        try {
+            int SMPass = getTestsValue(2, 2) + Integer.parseInt(pass);
+            int SMFail = getTestsValue(3, 2) + Integer.parseInt(fail);
+            int SMSkip = getTestsValue(4, 2) + Integer.parseInt(skip);
+            ;
+            int SMError = getTestsValue(5, 2) + Integer.parseInt(error);
+            int SMTime = getTestsValue(6, 2) + Integer.parseInt(time);
+
+            Label passLabel = new Label(2, 2, SMPass + "");
+            Label failLabel = new Label(3, 2, SMFail + "");
+            Label skipLabel = new Label(4, 2, SMSkip + "");
+            Label errorLabel = new Label(5, 2, SMError + "");
+            Label timeLabel = new Label(7, 2, SMTime + "");
+
+            sheet.addCell(passLabel);
+            sheet.addCell(failLabel);
+            sheet.addCell(skipLabel);
+            sheet.addCell(errorLabel);
+            sheet.addCell(timeLabel);
+        } catch (RowsExceededException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (WriteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public void readXML(String path) {
+        // 当前class 总共的method 个数.
+        int countTests = 0;
+        // class name
+        String className = "";
+
+        Document document = readerTestData(path);
+        Element rootElement = document.getRootElement();
+
+        List<Element> classes = rootElement.selectNodes("//class");
+
+        if (classes.size() != 1) {
+            throw new IndexOutOfBoundsException("一个xml文件只能保存一个class 的信息.");
+        }
+        Element currentClassElement = classes.get(0);
+        className = currentClassElement.attribute("name").getValue().toString();
+        // 解析method
+
+        List<Element> methods = currentClassElement.selectNodes("./methods/method");
+        countTests = methods.size();
+
+        int row = 0;
+        int cloumns = 0;
+        for (int i = 0; i < methods.size(); i++) {
+            try {
+                Map<String, String> result = new HashMap<String, String>();
+                String methodName = "";
+                String time = "";
+                String comment = "";
+                String pass = "0";
+                String fail = "0";
+                String skip = "0";
+                String error = "0";
+                String status = "";
+                // 获取method 值
+
+                Element methodElement = (Element) methods.get(i);
+                methodName = methodElement.attribute("name").getValue().toString();
+                // 获取 pass值.
+                Element passElement = (Element) methods.get(i).selectNodes("./pass").get(0);
+                pass = passElement.getText();
+                // 获取 fail值.
+                Element failElement = (Element) methods.get(i).selectNodes("./fail").get(0);
+                fail = failElement.getText();
+                // 获取 skip值.
+                Element skipElement = (Element) methods.get(i).selectNodes("./skip").get(0);
+                skip = skipElement.getText();
+                // 获取 error值.
+                Element errorElement = (Element) methods.get(i).selectNodes("./error").get(0);
+                error = errorElement.getText();
+                // 获取 time值.
+                Element timeElement = (Element) methods.get(i).selectNodes("./time").get(0);
+                time = timeElement.getText();
+                // 获取 comment值.
+                Element commentElement = (Element) methods.get(i).selectNodes("./comment").get(0);
+                comment = commentElement.getText();
+
+                // 把值写入到Excel
+
+                // open excel.
+                row = sheet.getRows();
+                cloumns = sheet.getColumns();
+
+                Label label1 = new Label(0, row, className);
+                Label label2 = new Label(1, row, methodName);
+                Label label3 = new Label(2, row, pass);
+                Label label4 = new Label(3, row, fail);
+                Label label5 = new Label(4, row, skip);
+                Label label6 = new Label(5, row, error);
+                Label label7 = new Label(7, row, time);
+                // Label label8 = new Label(8, row, "log" );
+                Label lable10 = new Label(10, row, comment);
+
+                setValueToSummary(pass, fail, skip, error, time);
+                // setAddress("test1",label8 );
+
+                sheet.addCell(label1);
+                sheet.addCell(label2);
+                sheet.addCell(label3);
+                sheet.addCell(label4);
+                sheet.addCell(label5);
+                sheet.addCell(label6);
+                sheet.addCell(label7);
+                sheet.addCell(lable10);
+            } catch (RowsExceededException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (WriteException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            className = "";
+        }
+        WritableCellFormat headerFormat = new WritableCellFormat();
+        try {
+            headerFormat.setAlignment(Alignment.CENTRE);
+            headerFormat.setBackground(Colour.BLUE);
+
+            String logText = className + "_Log";
+            Label label8 = new Label(8, row - countTests + 1, logText, headerFormat);
+
+            setAddress(logText, label8, wbe.getSheet(0), countTests);
+
+            sheet.addCell(label8);
+
+            int tests = getTestsValue(1, 2);
+            Label testsLabel = new Label(1, 2, (tests + countTests) + "");
+            sheet.addCell(testsLabel);
+        } catch (RowsExceededException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (WriteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public Document readerTestData(String XmlPath) {
+
+        try {
+            File file = new File(XmlPath);
+            if (!file.exists()) {
+                if (!file.exists()) {
+                    throw new RuntimeException("Test data set file: [" + file + "] "
+                            + "could not be found, please make sure you set property correctly.");
+                }
+            }
+            SAXReader reader = new SAXReader();
+            return reader.read(XmlPath);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public void setAddress(String labelText, Label label, WritableSheet sheet, int count) {
+
+        try {
+            int column = label.getColumn();
+            int row = label.getRow();
+            WritableHyperlink link = new WritableHyperlink(column, row, labelText, sheet, 1, 2);
+            sheet.addHyperlink(link);
+            sheet.mergeCells(column, row, column, row + count - 1);
+
+        } catch (RowsExceededException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (WriteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
 
-		OperateExcel excel = new OperateExcel("F:/testReport.xls", "testTicketWeb.baShi");
+		OperateExcel excel = new OperateExcel("/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls", "elements");
 //		excel.setColumnView(1, 60);
 //		excel.setFormat(19, true);
-		excel.writeData(0, 0, "3434343434343434354354545454545454545454545454545");
+/*		excel.writeData(0, 0, "3434343434343434354354545454545454545454545454545");
 		excel.setHyperLinkForFile(4,5,"F:/ttt.xls");
-		excel.setHyperLinkForSheet(5, 5, "5534343", "TestSummary", 6, 6);
+		excel.setHyperLinkForSheet(5, 5, "5534343", "TestSummary", 6, 6);*/
+		excel.copySheet("/Users/wangxun/Documents/workspace/java/appautotest/ticketWeb.xls","/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls");
 		excel.close();
 		System.out.println("end");
 	}
