@@ -2,28 +2,28 @@
 <testng-results skipped="0" failed="2" total="9" passed="7">
   <reporter-output>
     <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184513.840_test000login.png]]>
+      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202416-762_test000login.png]]>
     </line>
     <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184513.840_test000login.png"/>]]>
+      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202416-762_test000login.png"/>]]>
     </line>
     <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184537.959_test005login.png]]>
+      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202440-841_test005login.png]]>
     </line>
     <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184537.959_test005login.png"/>]]>
+      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202440-841_test005login.png"/>]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="44478" started-at="2015-11-07T10:45:03Z" finished-at="2015-11-07T10:45:47Z">
+  <suite name="Default suite" duration-ms="47172" started-at="2015-11-07T12:24:04Z" finished-at="2015-11-07T12:24:51Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="44478" started-at="2015-11-07T10:45:03Z" finished-at="2015-11-07T10:45:47Z">
+    <test name="Default test" duration-ms="47172" started-at="2015-11-07T12:24:04Z" finished-at="2015-11-07T12:24:51Z">
       <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="setUp" is-config="true" duration-ms="3039" started-at="2015-11-07T18:45:03Z" finished-at="2015-11-07T18:45:06Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="setUp" is-config="true" duration-ms="3265" started-at="2015-11-07T20:24:04Z" finished-at="2015-11-07T20:24:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test000login" duration-ms="4113" started-at="2015-11-07T18:45:06Z" finished-at="2015-11-07T18:45:10Z">
+        <test-method status="FAIL" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test000login" duration-ms="5813" started-at="2015-11-07T20:24:07Z" finished-at="2015-11-07T20:24:13Z">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
@@ -59,22 +59,22 @@
           </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
             <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184513.840_test000login.png]]>
+              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202416-762_test000login.png]]>
             </line>
             <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184513.840_test000login.png"/>]]>
+              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202416-762_test000login.png"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test003login" duration-ms="1" started-at="2015-11-07T18:45:13Z" finished-at="2015-11-07T18:45:13Z">
+        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test003login" duration-ms="1" started-at="2015-11-07T20:24:16Z" finished-at="2015-11-07T20:24:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test003login -->
-        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test004login" duration-ms="2" started-at="2015-11-07T18:45:13Z" finished-at="2015-11-07T18:45:13Z">
+        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test004login" duration-ms="1" started-at="2015-11-07T20:24:16Z" finished-at="2015-11-07T20:24:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test004login -->
-        <test-method status="FAIL" signature="test005login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test005login" duration-ms="20975" started-at="2015-11-07T18:45:13Z" finished-at="2015-11-07T18:45:34Z">
+        <test-method status="FAIL" signature="test005login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test005login" duration-ms="20895" started-at="2015-11-07T20:24:16Z" finished-at="2015-11-07T20:24:37Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Don't find the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page.]]>
@@ -85,7 +85,7 @@
 	at core.UI.waitDisplay(UI.java:151)
 	at core.UI.waitDisplay(UI.java:132)
 	at initial.piaoWuWebTest.enterHomePage(piaoWuWebTest.java:13)
-	at testTicketWeb.qiChe.test005login(qiChe.java:67)
+	at testTicketWeb.qiChe.test005login(qiChe.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -115,44 +115,44 @@
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184537.959_test005login.png]]>
+              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202440-841_test005login.png]]>
             </line>
             <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107.184537.959_test005login.png"/>]]>
+              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151107-202440-841_test005login.png"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- test005login -->
-        <test-method status="PASS" signature="test006login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test006login" duration-ms="1" started-at="2015-11-07T18:45:37Z" finished-at="2015-11-07T18:45:37Z">
+        <test-method status="PASS" signature="test006login()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="test006login" duration-ms="1" started-at="2015-11-07T20:24:40Z" finished-at="2015-11-07T20:24:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test006login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="tearDown" is-config="true" duration-ms="1934" started-at="2015-11-07T18:45:37Z" finished-at="2015-11-07T18:45:39Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@7f63425a]" name="tearDown" is-config="true" duration-ms="2010" started-at="2015-11-07T20:24:40Z" finished-at="2015-11-07T20:24:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testTicketWeb.qiChe -->
       <class name="testTicketWeb.baShi">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="setUp" is-config="true" duration-ms="2199" started-at="2015-11-07T18:45:39Z" finished-at="2015-11-07T18:45:42Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="setUp" is-config="true" duration-ms="2766" started-at="2015-11-07T20:24:42Z" finished-at="2015-11-07T20:24:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test000login" duration-ms="4053" started-at="2015-11-07T18:45:42Z" finished-at="2015-11-07T18:45:46Z">
+        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test000login" duration-ms="4236" started-at="2015-11-07T20:24:45Z" finished-at="2015-11-07T20:24:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test002login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test002login" duration-ms="1" started-at="2015-11-07T18:45:46Z" finished-at="2015-11-07T18:45:46Z">
+        <test-method status="PASS" signature="test002login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test002login" duration-ms="1" started-at="2015-11-07T20:24:49Z" finished-at="2015-11-07T20:24:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test002login -->
-        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test003login" duration-ms="2" started-at="2015-11-07T18:45:46Z" finished-at="2015-11-07T18:45:46Z">
+        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test003login" duration-ms="5" started-at="2015-11-07T20:24:49Z" finished-at="2015-11-07T20:24:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test003login -->
-        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test004login" duration-ms="1" started-at="2015-11-07T18:45:46Z" finished-at="2015-11-07T18:45:46Z">
+        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="test004login" duration-ms="1" started-at="2015-11-07T20:24:49Z" finished-at="2015-11-07T20:24:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test004login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="tearDown" is-config="true" duration-ms="1717" started-at="2015-11-07T18:45:46Z" finished-at="2015-11-07T18:45:47Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@17f6480]" name="tearDown" is-config="true" duration-ms="1714" started-at="2015-11-07T20:24:49Z" finished-at="2015-11-07T20:24:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

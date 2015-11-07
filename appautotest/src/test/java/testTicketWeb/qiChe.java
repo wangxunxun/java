@@ -56,10 +56,12 @@ public class qiChe {
 	@Test
 	public void test003login() {
 		piaoWuWebApp.logTestDescription("test");
+		piaoWuWebApp.logSuccessMessage("test0003success");
 	}
 	@Test
 	public void test004login() {
 		piaoWuWebApp.logTestDescription("erwerewrewr");
+		piaoWuWebApp.logSuccessMessage("test0004success");
 	}
 	@Test
 	public void test005login() {

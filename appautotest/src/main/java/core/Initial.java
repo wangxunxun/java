@@ -20,26 +20,27 @@ import utils.OperateExcel;
 import utils.ReadElementData;
 import utils.ReadTestCasesData;
 import utils.ReadTestData;
+
 public class Initial {
 
-	public static WebDriver driver;		
-	protected WebDriverWait wait; 
-	protected int waitTime;	
+	public static WebDriver driver;
+	protected WebDriverWait wait;
+	protected int waitTime;
 
 	protected String configFileName;
-	//app存放文件夹
+	// app存放文件夹
 	protected String appDir;
-	//andorid配置信息
+	// andorid配置信息
 	protected int basicWindowX;
-	protected int basicWindowY;	
+	protected int basicWindowY;
 	protected boolean unicodeKeyboard;
 	protected boolean resetKeyboard;
 	protected String androidDeviceName;
 	protected String apkName;
 	protected String appPackage;
 	protected String mainActivity;
-	
-	//IOS配置信息
+
+	// IOS配置信息
 	protected String app;
 	protected String platformVersion;
 	protected String platform;
@@ -47,14 +48,12 @@ public class Initial {
 	protected String browserName;
 	protected String iosDeviceName;
 
-
-
-	//截屏存放目录
+	// 截屏存放目录
 	protected String screenPath;
-	//log存放路径
+	// log存放路径
 	protected String logPath;
-	
-	//测试数据变量
+
+	// 测试数据变量
 	protected String testReportPath;
 	protected String testReportName;
 	protected String testClassName;
@@ -63,16 +62,16 @@ public class Initial {
 	protected String testCaseSheet;
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	protected Map<String, Object> testCaseData;
-	//测试app的类名
+	// 测试app的类名
 	protected String appClass;
 
-	//回写脚本开关
+	// 回写脚本开关
 	protected boolean writeScript;
-	//回写测试结果开关
+	// 回写测试结果开关
 	protected boolean writeResult;
-	//log开关
+	// log开关
 	protected boolean logSwitch;
-	//每次运行时是否删除log文件开关
+	// 每次运行时是否删除log文件开关
 	protected boolean deleteLogFileFirst;
 
 	protected OperateExcel testReportExcel;
@@ -80,125 +79,117 @@ public class Initial {
 	public static String successMessage;
 	protected String testSummarySheetName = "TestSummary";
 
-
-
-
-	
-	
-	protected String getTestReportPath(){
+	protected String getTestReportPath() {
 		testReportPath = getProperties("testReportPath");
-		if(testReportPath!=null){
+		if (testReportPath != null) {
 			return CommonTools.setPath(testReportPath);
 		}
 
 		return CommonTools.setPath("/testResource/");
 	}
-	
-	protected String getTestReportName(){
+
+	protected String getTestReportName() {
 		testReportName = getProperties("testReportName");
-		if(testReportName!=null){
+		if (testReportName != null) {
 			return CommonTools.setPath(testReportName);
 		}
 
 		return "testReport";
 	}
-	
 
-
-    protected Map<String, Map<String, Map<String, String>>> getElementData(){
-		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);	
-		Map<String, Map<String, Map<String, String>>> eledata =elementdata.getdata();
+	protected Map<String, Map<String, Map<String, String>>> getElementData() {
+		ReadElementData elementdata = new ReadElementData(testExcelPath, elementSheet);
+		Map<String, Map<String, Map<String, String>>> eledata = elementdata.getdata();
 		return eledata;
 	}
-	
-	public List<Map<String, String>> getTestData(String testDataSheet){
+
+	public List<Map<String, String>> getTestData(String testDataSheet) {
 
 		ReadTestData readtestdata = new ReadTestData();
 		List<Map<String, String>> data = readtestdata.getTestData(testExcelPath, testDataSheet);
 		return data;
 	}
-	
 
-	
-	public Object[][] getTestDataForTestNG(String testDataSheet){
+	public Object[][] getTestDataForTestNG(String testDataSheet) {
 
 		ReadTestData readtestdata = new ReadTestData();
 		Object[][] data = readtestdata.getTestDataForTestNG(testExcelPath, testDataSheet);
 		return data;
 	}
-	
-	protected Map<String, Object> getTestCaseData(){
 
+	protected Map<String, Object> getTestCaseData() {
 
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testExcelPath, testCaseSheet);
 		Map<String, Object> data = testCaseData.getdata();
 		return data;
-		
-	}
-	
-	private String getAppClass(){
-		appClass = getProperties("appClass");
-    	if(appClass ==null){
-    		return "app";
-    	}
-    	return appClass;
 
 	}
-	
-	protected int getBasicWindowX(){
-		String x = getProperties("basicWindowX");		
-		if(x!=null){
+
+	private String getAppClass() {
+		appClass = getProperties("appClass");
+		if (appClass == null) {
+			return "app";
+		}
+		return appClass;
+
+	}
+
+	protected int getBasicWindowX() {
+		String x = getProperties("basicWindowX");
+		if (x != null) {
 			basicWindowX = Integer.parseInt(x);
 			return basicWindowX;
 		}
 		return 720;
 	}
-	
-	protected int getBasicWindowY(){
+
+	protected int getBasicWindowY() {
 		String y = getProperties("basicWindowY");
-		if(y!=null){
+		if (y != null) {
 			basicWindowY = Integer.parseInt(y);
 			return basicWindowY;
 		}
 		return 1280;
 	}
-	protected int getWaitTime(){
-		String time = getProperties("waitTime");		
-		if(time!=null){
+
+	protected int getWaitTime() {
+		String time = getProperties("waitTime");
+		if (time != null) {
 			waitTime = Integer.parseInt(time);
 			return waitTime;
 		}
 		return 10;
 	}
-	public String getScreenPath(){
+
+	public String getScreenPath() {
 		screenPath = getProperties("screenPath");
-		if(screenPath!=null){
+		if (screenPath != null) {
 			return CommonTools.setPath(screenPath);
 		}
 
 		return CommonTools.setPath("/screenShot/");
-		
+
 	}
-	
-	protected String getAppDir(){
+
+	protected String getAppDir() {
 		appDir = getProperties("appDir");
-		if(appDir!=null){
+		if (appDir != null) {
 			return CommonTools.setPath(appDir);
 		}
 		return CommonTools.setPath("/testResource/apps/");
-		
+
 	}
-	
-	protected String getlogPath(){
+
+	protected String getlogPath() {
 		logPath = getProperties("logPath");
-		if(logPath!=null){
+		if (logPath != null) {
 			return CommonTools.setPath(logPath);
 		}
 		return CommonTools.setPath("/logDefault/");
-		
+
 	}
-	
-	protected void writeTable(int cow,int row,String content){
+
+	protected void writeTable(int cow, int row, String content) {
 		try {
 			testCaseExcel.writeData(cow, row, content);
 		} catch (RowsExceededException e) {
@@ -214,70 +205,65 @@ public class Initial {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	 
+
 	}
-	
-	public String getProperties(String name){
-		if(configFileName!=null){
+
+	public String getProperties(String name) {
+		if (configFileName != null) {
 			return CommonTools.getProperties(configFileName, name);
 		}
 		return null;
 	}
 
+	protected void writeResult(int cow, int row, String result) {
 
-	protected void writeResult(int cow,int row,String result){
-
-		if(writeResult==true){
+		if (writeResult == true) {
 			writeTable(cow, row, result);
 		}
 
 	}
-	protected void logResult(Integer row){
 
-		if(logSwitch==true){
-			String content = "The "+row+"th step is pass.";
+	protected void logResult(Integer row) {
+
+		if (logSwitch == true) {
+			String content = "The " + row + "th step is pass.";
 			CommonTools.log(content);
 		}
 	}
-	
-	public void log(Object content){
-		if(logSwitch==true){
+
+	public void log(Object content) {
+		if (logSwitch == true) {
 			String time = CommonTools.getCurrentTime();
 			System.out.println(time + " INFO - " + content);
 			writeLog(time + " INFO - " + content);
 			writeLogToExcel(1, time + " INFO - " + content);
 		}
 	}
-	
-	protected void writeScript(int cow,int row,String script){
 
-		if(writeScript==true){
-			writeTable(cow,row,script);
+	protected void writeScript(int cow, int row, String script) {
+
+		if (writeScript == true) {
+			writeTable(cow, row, script);
 		}
 	}
-	
 
-
-	private void deleteFirstTime(String filePath){
-		if(deleteLogFileFirst ==true){
+	private void deleteFirstTime(String filePath) {
+		if (deleteLogFileFirst == true) {
 			CommonTools.deleteFile(filePath);
 			deleteLogFileFirst = false;
 		}
 	}
-	
-	private String getLogFilePath(){
-		return logPath+getClassName()+".txt";
+
+	private String getLogFilePath() {
+		return logPath + getClassName() + ".txt";
 	}
-	
-	protected void writeLog(Object content){
+
+	protected void writeLog(Object content) {
 		deleteFirstTime(getLogFilePath());
-		writeLog(getClassName()+".txt",content);
+		writeLog(getClassName() + ".txt", content);
 	}
-	
 
-
-	
-	public void writeLogToExcel(int cow,Object content){
+	public void writeLogToExcel(int cow, Object content) {
 
 		try {
 			testReportExcel.writeLastRow(cow, content);
@@ -295,52 +281,53 @@ public class Initial {
 			e.printStackTrace();
 		}
 	}
-	
-    public String getClassName() {
-        try {
-            ITestResult it = Reporter.getCurrentTestResult();
-            String classNamePath = it.getTestClass().getName();
-            
+
+	public String getClassName() {
+		try {
+			ITestResult it = Reporter.getCurrentTestResult();
+			String classNamePath = it.getTestClass().getName();
+
 			return classNamePath;
-        } catch (Exception e) {
+		} catch (Exception e) {
 
-        }
-        return "";
-    }
-    
-    public String getTestMethodName(){
-        try {
-            ITestResult it = Reporter.getCurrentTestResult();
-            String testMethodName = it.getName();
-            
+		}
+		return "";
+	}
+
+	public String getTestMethodName() {
+		try {
+			ITestResult it = Reporter.getCurrentTestResult();
+			String testMethodName = it.getName();
+
 			return testMethodName;
-        } catch (Exception e) {
+		} catch (Exception e) {
 
-        }
-        return "";
-    }
-    public void logTestDescription(String content) {
-        try {
-            ITestResult it = Reporter.getCurrentTestResult();
-            String classNamePath = it.getName();
-            testReportExcel.writeLastRow(0, classNamePath);
-            testReportExcel.writeSameRow(1, content);
-        } catch (Exception e) {
-            log("None testNG executor detected, test may continue, but highly recommended to migrate your test to testNG.");
-        }
-    }
-    
-    public void logSuccessMessage(String content){
-    	successMessage = content;
-    	log(content);
-    }
-	
-	protected void createWorkBook(String className,int index){
-		
-		File f = new File(testReportPath+testReportName+".xls");
-		if(!f.exists()){
+		}
+		return "";
+	}
+
+	public void logTestDescription(String content) {
+		try {
+			ITestResult it = Reporter.getCurrentTestResult();
+			String classNamePath = it.getName();
+			testReportExcel.writeLastRow(0, classNamePath);
+			testReportExcel.writeSameRow(1, content);
+		} catch (Exception e) {
+			log("None testNG executor detected, test may continue, but highly recommended to migrate your test to testNG.");
+		}
+	}
+
+	public void logSuccessMessage(String content) {
+		successMessage = content;
+		log(content);
+	}
+
+	protected void createWorkBook(String className, int index) {
+
+		File f = new File(testReportPath + testReportName + ".xls");
+		if (!f.exists()) {
 			try {
-				CommonTools.createWorkbook(testReportPath, testReportName+".xls",className, index);
+				CommonTools.createWorkbook(testReportPath, testReportName + ".xls", className, index);
 			} catch (WriteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -352,19 +339,19 @@ public class Initial {
 				e.printStackTrace();
 			}
 		}
-		
 
 	}
-	
-	protected void createSheet(int index) throws WriteException, BiffException, IOException{
+
+	protected void createSheet(int index) throws WriteException, BiffException, IOException {
 		deleteSheet(testClassName);
 
-		CommonTools.createSheet(testReportPath+testReportName+".xls", testClassName, index);
+		CommonTools.createSheet(testReportPath + testReportName + ".xls", testClassName, index);
 
 	}
-	protected void deleteSheet(String sheetName){
+
+	protected void deleteSheet(String sheetName) {
 		try {
-			CommonTools.deleteSheet(testReportPath+testReportName+".xls", sheetName);
+			CommonTools.deleteSheet(testReportPath + testReportName + ".xls", sheetName);
 		} catch (BiffException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -376,74 +363,71 @@ public class Initial {
 			e.printStackTrace();
 		}
 	}
-	
 
-	private void writeLog(String fileName,Object content){
+	private void writeLog(String fileName, Object content) {
 		FileWriter writer;
 		try {
-		  	if (!(new File(logPath).isDirectory())) {  // 判断是否存在该目录
-		  		new File(logPath).mkdir();  // 如果不存在则新建一个目录
-		  	}
-			writer = new FileWriter(logPath+fileName,true);
-			writer.write(content+"\r\n");
+			if (!(new File(logPath).isDirectory())) { // 判断是否存在该目录
+				new File(logPath).mkdir(); // 如果不存在则新建一个目录
+			}
+			writer = new FileWriter(logPath + fileName, true);
+			writer.write(content + "\r\n");
 			writer.flush();
 			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-	protected String getTestClassName(){
+	protected String getTestClassName() {
 		String className = getClassName();
 		String[] ddd = className.split("\\.");
-		return ddd[ddd.length-2]+"."+ddd[ddd.length-1];
-		
+		return ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
+
 	}
+
 	protected void initialData() throws WriteException, BiffException, IOException {
 		testExcelPath = getProperties("testExcelPath");
-		elementSheet = getProperties("elementSheet");    	
+		elementSheet = getProperties("elementSheet");
 		testCaseSheet = getProperties("testCaseSheet");
-    	
-    	elementData =getElementData();
+
+		elementData = getElementData();
 		testCaseData = getTestCaseData();
 		waitTime = getWaitTime();
-		
+
 		logPath = getlogPath();
 		screenPath = getScreenPath();
 		appClass = getAppClass();
-		
+
 		writeScript = Boolean.parseBoolean(getProperties("writeScript"));
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
 		appDir = getAppDir();
 		testReportPath = getTestReportPath();
-		testReportName =getTestReportName();
+		testReportName = getTestReportName();
 		createWorkBook(testSummarySheetName, 0);
 		testClassName = getClassName();
-    	String excelPath = CommonTools.setPath(testExcelPath);
-    	
+		String excelPath = CommonTools.setPath(testExcelPath);
 
-		testCaseExcel = new OperateExcel(excelPath, testCaseSheet) ;
+		testCaseExcel = new OperateExcel(excelPath, testCaseSheet);
 
-    	createSheet(999);
+		createSheet(999);
 
-    	
-    	testReportExcel = new OperateExcel(testReportPath+testReportName+".xls",testClassName ) ;
+		testReportExcel = new OperateExcel(testReportPath + testReportName + ".xls", testClassName);
 
-    	testReportExcel.setColumnView(1, 100);
-    	testReportExcel.setColumnView(0, 40);
-    	
+		testReportExcel.setColumnView(1, 100);
+		testReportExcel.setColumnView(0, 40);
+
 		testReportExcel.setFormat(10, true);
-		testReportExcel.writeTitle(0, 0, "TestMethod",14);
-		testReportExcel.writeTitle(1, 0, "Log",14);
+		testReportExcel.writeTitle(0, 0, "TestMethod", 14);
+		testReportExcel.writeTitle(1, 0, "Log", 14);
 
-	
 	}
-	
-	protected void initialAndroidData() throws WriteException, BiffException, IOException{
+
+	protected void initialAndroidData() throws WriteException, BiffException, IOException {
 		initialData();
 		apkName = getProperties("apkName");
 		appPackage = getProperties("appPackage");
@@ -453,8 +437,8 @@ public class Initial {
 		unicodeKeyboard = Boolean.parseBoolean(getProperties("unicodeKeyboard"));
 		resetKeyboard = Boolean.parseBoolean(getProperties("resetKeyboard"));
 	}
-	
-	protected void initialIOSData() throws WriteException, BiffException, IOException{
+
+	protected void initialIOSData() throws WriteException, BiffException, IOException {
 		initialData();
 		app = getProperties("app");
 		iosDeviceName = getProperties("deviceName");

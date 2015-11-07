@@ -7,6 +7,7 @@ package base;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,8 @@ import io.appium.java_client.ios.IOSElement;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 import utils.CommonTools;
+import utils.OperateExcel;
+import utils.TestngListenerWeb;
 import core.UI;
 
 public class IOSApp extends UI {
@@ -63,7 +66,30 @@ public class IOSApp extends UI {
 
   	}
   	public void quit(){
-		driver.quit();
+
+    	log("End the "+getClassName() +".");
+		try {
+			testCaseExcel.close();
+			testReportExcel.close();
+		} catch (Exception e) {
+			System.err.println(e);
+		} 
+				
+    	driver.quit();
+    	List<Map<String, String>> classData = new ArrayList<Map<String,String>>();
+    	classData = TestngListenerWeb.classData;
+    	try{
+    		OperateExcel testSummay = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
+    		testSummay.setFormat(10, true);
+    		testSummay.setColumnView(3, 20);
+    		testSummay.setColumnView(6, 50);
+    		testSummay.writeTestToExcel(classData);
+    		testSummay.close();
+    		classData.clear();
+    	}
+    	catch(Exception e){
+    		System.err.println(e);
+    	}
 	}
   	
 	public IOSElement findElement(String page,String name){
