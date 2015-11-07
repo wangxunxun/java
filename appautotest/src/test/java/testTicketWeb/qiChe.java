@@ -64,6 +64,10 @@ public class qiChe {
 	public void test005login() {
 		piaoWuWebApp.logTestDescription("teewrewrewrewrewrst");
 	}
+	@Test
+	public void test006login() {
+		piaoWuWebApp.logTestDescription("teewrewrewre65565wrewrst");
+	}
 
 	// @Test
 	public void test001enterAddCityPage() {

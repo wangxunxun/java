@@ -1,63 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="8" passed="8">
+<testng-results skipped="0" failed="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="18289" started-at="2015-11-06T16:02:46Z" finished-at="2015-11-06T16:03:04Z">
+  <suite name="Default suite" duration-ms="16092" started-at="2015-11-07T03:36:45Z" finished-at="2015-11-07T03:37:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="18289" started-at="2015-11-06T16:02:46Z" finished-at="2015-11-06T16:03:04Z">
+    <test name="Default test" duration-ms="16092" started-at="2015-11-07T03:36:45Z" finished-at="2015-11-07T03:37:01Z">
       <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@511baa65]" name="setUp" is-config="true" duration-ms="2935" started-at="2015-11-07T00:02:46Z" finished-at="2015-11-07T00:02:49Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="setUp" is-config="true" duration-ms="3496" started-at="2015-11-07T11:36:45Z" finished-at="2015-11-07T11:36:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@511baa65]" name="test000login" duration-ms="4326" started-at="2015-11-07T00:02:49Z" finished-at="2015-11-07T00:02:53Z">
+        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test000login" duration-ms="10149" started-at="2015-11-07T11:36:48Z" finished-at="2015-11-07T11:36:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.qiChe@511baa65]" name="test003login" duration-ms="1" started-at="2015-11-07T00:02:53Z" finished-at="2015-11-07T00:02:53Z">
+        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test003login" duration-ms="0" started-at="2015-11-07T11:36:59Z" finished-at="2015-11-07T11:36:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test003login -->
-        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.qiChe@511baa65]" name="test004login" duration-ms="0" started-at="2015-11-07T00:02:53Z" finished-at="2015-11-07T00:02:53Z">
+        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test004login" duration-ms="1" started-at="2015-11-07T11:36:59Z" finished-at="2015-11-07T11:36:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test004login -->
-        <test-method status="PASS" signature="test005login()[pri:0, instance:testTicketWeb.qiChe@511baa65]" name="test005login" duration-ms="1" started-at="2015-11-07T00:02:53Z" finished-at="2015-11-07T00:02:53Z">
+        <test-method status="PASS" signature="test005login()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test005login" duration-ms="1" started-at="2015-11-07T11:36:59Z" finished-at="2015-11-07T11:36:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test005login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@511baa65]" name="tearDown" is-config="true" duration-ms="1831" started-at="2015-11-07T00:02:53Z" finished-at="2015-11-07T00:02:55Z">
+        <test-method status="PASS" signature="test006login()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="test006login" duration-ms="1" started-at="2015-11-07T11:36:59Z" finished-at="2015-11-07T11:36:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test006login -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@6e8dacdf]" name="tearDown" is-config="true" duration-ms="2372" started-at="2015-11-07T11:36:59Z" finished-at="2015-11-07T11:37:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testTicketWeb.qiChe -->
-      <class name="testTicketWeb.baShi">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@2acf57e3]" name="setUp" is-config="true" duration-ms="2757" started-at="2015-11-07T00:02:55Z" finished-at="2015-11-07T00:02:58Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.baShi@2acf57e3]" name="test000login" duration-ms="4719" started-at="2015-11-07T00:02:58Z" finished-at="2015-11-07T00:03:02Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test002login()[pri:0, instance:testTicketWeb.baShi@2acf57e3]" name="test002login" duration-ms="1" started-at="2015-11-07T00:03:02Z" finished-at="2015-11-07T00:03:02Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test002login -->
-        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.baShi@2acf57e3]" name="test003login" duration-ms="1" started-at="2015-11-07T00:03:02Z" finished-at="2015-11-07T00:03:02Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test003login -->
-        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.baShi@2acf57e3]" name="test004login" duration-ms="1" started-at="2015-11-07T00:03:02Z" finished-at="2015-11-07T00:03:02Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- test004login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@2acf57e3]" name="tearDown" is-config="true" duration-ms="1686" started-at="2015-11-07T00:03:02Z" finished-at="2015-11-07T00:03:04Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- testTicketWeb.baShi -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

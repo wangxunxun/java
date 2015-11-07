@@ -63,8 +63,7 @@ public class ListenersTestng extends TestListenerAdapter {
         data.put("status", status);
         data.put("comment", formatDate(System.currentTimeMillis()) + " - Failed " + message);
         System.out.println(data.get("comment"));
-        createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/" + className
-                + ".xml", data, className);
+        createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/88.xml", data, className);
 
     }
 
@@ -109,8 +108,7 @@ public class ListenersTestng extends TestListenerAdapter {
         data.put("comment", message);
         System.out.println(data.get("comment"));
 
-        createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/" + className
-                + ".xml", data, className);
+        createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/88.xml", data, className);
     }
 
     public void onTestSkipped(ITestResult tr) {
@@ -148,8 +146,7 @@ public class ListenersTestng extends TestListenerAdapter {
         data.put("status", status);
         data.put("comment", message);
         System.out.println(data.get("comment"));
-        createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/" + className
-                + ".xml", data, className);
+        createXml("/Users/wangxun/Documents/workspace/java/appautotest/testresource/88.xml", data, className);
 
     }
 

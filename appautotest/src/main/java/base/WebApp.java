@@ -1,6 +1,7 @@
 package base;
 import java.awt.Robot;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -109,6 +110,9 @@ public class WebApp extends UI{
 			System.out.println("status: "+status);
 			System.out.println("comment: "+comment);
     	}*/
+    	List<Map<String, String>> classData = new ArrayList<Map<String,String>>();
+    	classData = TestngListenerWeb.classData;
+    	TestngListenerWeb.classData.removeAll(TestngListenerWeb.classData);
     	OperateExcel testSummay;
 		try {
 			testSummay = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
@@ -119,7 +123,7 @@ public class WebApp extends UI{
 				e1.printStackTrace();
 			}
 	    	try {
-				testSummay.writeTestToExcel(TestngListenerWeb.classData);
+				testSummay.writeTestToExcel(classData);
 			} catch (RowsExceededException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -140,7 +144,8 @@ public class WebApp extends UI{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		
     	
 /*        OperateExcel testSummary;
         try {

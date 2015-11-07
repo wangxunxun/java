@@ -83,7 +83,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("status", status);
         methodData.put("comment", CommonTools.getCurrentTime() + " - FAILURE " + comment);
         classData.add(methodData);
-//        writeLog("F:/workspace/java/appautotest/testResource/", content);
+        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
 		System.out.println("className: "+className);
 		System.out.println("method: "+method);
 		System.out.println("time: "+time);
@@ -131,7 +131,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("status", status);
         methodData.put("comment", CommonTools.getCurrentTime() + " - Success " + comment);
         classData.add(methodData);				
-//        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
+        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
 		System.out.println("className: "+className);
 		System.out.println("method: "+method);
 		System.out.println("time: "+time);
@@ -163,7 +163,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("status", status);
         methodData.put("comment", CommonTools.getCurrentTime() + " - Skipped " + comment);
         classData.add(methodData);				
- //       createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
+        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
 		System.out.println("className: "+className);
 		System.out.println("method: "+method);
 		System.out.println("time: "+time);
@@ -171,6 +171,80 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		System.out.println("comment: "+comment);
 	}		
     
+    private void createXml(String path, Map<String, String> data, String className) {
+
+        XMLWriter output = null;
+        Document document = null;
+
+        String methodName = data.get("method");
+        String time = data.get("time");
+        String comment = data.get("comment");
+        String status = data.get("status");
+
+
+        try {
+            // 判断文件是否存在
+            if (!new File(path).exists()) {
+                // 不存在创建xml 构造class-method 节点.
+                output = new XMLWriter(new FileWriter(new File(path)));
+                document = DocumentHelper.createDocument();
+                // 创建跟节点.
+                Element classElement = document.addElement("class");
+                classElement.addAttribute("name", className);
+                // 添加methods 节点.
+                Element methodsElement = classElement.addElement("methods");
+
+                // 添加methods 节点.
+                Element methodElement = methodsElement.addElement("method");
+                methodElement.addAttribute("name", methodName);
+                Element statusElement = methodElement.addElement("status");
+                statusElement.setText(status);
+                // 添加methods 节点.
+                Element timeElement = methodElement.addElement("time");
+                timeElement.setText(time);
+
+                Element commentElement = methodElement.addElement("comment");
+                commentElement.setText(comment);
+
+                output.write(document);
+                output.flush();
+                output.close();
+
+            } else {
+                SAXReader reader = new SAXReader();
+                try {
+					document = reader.read(path);
+				} catch (DocumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+                Element rootElement = document.getRootElement();
+                Element element = (Element) rootElement.selectNodes("./methods").get(0);
+                Element methodElement = element.addElement("method");
+                methodElement.addAttribute("name", methodName);
+                Element statusElement = element.addElement("status");
+                statusElement.setText(status);
+                // 添加methods 节点.
+                Element timeElement = element.addElement("time");
+                timeElement.setText(time);
+
+                Element commentElement = element.addElement("comment");
+                commentElement.setText(comment);
+                
+                OutputFormat format = OutputFormat.createPrettyPrint();
+                format.setEncoding("UTF-8");
+                output = new XMLWriter(new FileWriter(new File(path)), format);
+                output.write(document);
+                output.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+	
 	private void takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		File scrFile = ((TakesScreenshot) WebApp.driver).getScreenshotAs(OutputType.FILE);		
