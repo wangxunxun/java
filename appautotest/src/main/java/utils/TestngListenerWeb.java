@@ -3,39 +3,25 @@ package utils;
 
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-
-
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.io.FileUtils;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
-
 import utils.CommonTools;
 import base.WebApp;
 import core.Initial;
-@SuppressWarnings("unused")
+import jxl.read.biff.BiffException;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
+
 public class TestngListenerWeb extends TestListenerAdapter {
-
-	CommonTools tool = new CommonTools();
-
 	private String className;
 	private String method;
 	private Long time;
@@ -50,8 +36,9 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		super.onTestFailure(tr);
 		Map<String, String> methodData = new HashMap<String, String>();
 		CommonTools.log(tr.getName() + " Failure");
+		String screenPath =null;
 		try {
-			takeScreenShot(tr);
+			screenPath = takeScreenShot(tr);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,14 +52,13 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "FAILURE";
-		String successMessage = Initial.successMessage;
         try {
         	comment = tr.getThrowable().getMessage();
         	if(comment==null){
-        		comment = "";
+        		comment = "java.lang.NullPointerException";
         	}
         } catch (Exception e) {
-        	comment = "";
+        	comment = e.toString();
 
         	
         }
@@ -81,22 +67,17 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("method", method);
         methodData.put("time", time + "");
         methodData.put("status", status);
-        methodData.put("comment", CommonTools.getCurrentTime() + " - FAILURE " + comment);
+        methodData.put("comment", CommonTools.getCurrentTime() + " - Failure " + comment);
+        methodData.put("screenPath", screenPath);
         classData.add(methodData);
-        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
-		System.out.println("className: "+className);
-		System.out.println("method: "+method);
-		System.out.println("time: "+time);
-		System.out.println("status: "+status);
-		System.out.println("comment: "+comment);
-		
-		
+
 	}
 	
 	@Override
 	public void onTestSuccess(ITestResult tr) {
 		super.onTestSuccess(tr);
 		Map<String, String> methodData = new HashMap<String, String>();
+		String screenPath =null;
 		className = tr.getTestClass().getName();
 		String[] ddd = className.split("\\.");
 		className = ddd[ddd.length-2]+"."+ddd[ddd.length-1];
@@ -130,18 +111,15 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("time", time + "");
         methodData.put("status", status);
         methodData.put("comment", CommonTools.getCurrentTime() + " - Success " + comment);
-        classData.add(methodData);				
-        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
-		System.out.println("className: "+className);
-		System.out.println("method: "+method);
-		System.out.println("time: "+time);
-		System.out.println("status: "+status);
-		System.out.println("comment: "+comment);
+        methodData.put("screenPath", screenPath);
+        classData.add(methodData);				     
+
 	}
 	@Override
 	public void onTestSkipped(ITestResult tr) {
 		super.onTestSkipped(tr);
 		Map<String, String> methodData = new HashMap<String, String>();
+		String screenPath =null;
 		className = tr.getTestClass().getName();
 		String[] ddd = className.split("\\.");
 		className = ddd[ddd.length-2]+"."+ddd[ddd.length-1];
@@ -162,90 +140,13 @@ public class TestngListenerWeb extends TestListenerAdapter {
         methodData.put("time", time + "");
         methodData.put("status", status);
         methodData.put("comment", CommonTools.getCurrentTime() + " - Skipped " + comment);
-        classData.add(methodData);				
-        createXml("F:/workspace/java/appautotest/testResource" + className+ ".xml", methodData, className);
-		System.out.println("className: "+className);
-		System.out.println("method: "+method);
-		System.out.println("time: "+time);
-		System.out.println("status: "+status);
-		System.out.println("comment: "+comment);
+        methodData.put("screenPath", screenPath);
+        classData.add(methodData);		
 	}		
-    
-    private void createXml(String path, Map<String, String> data, String className) {
 
-        XMLWriter output = null;
-        Document document = null;
-
-        String methodName = data.get("method");
-        String time = data.get("time");
-        String comment = data.get("comment");
-        String status = data.get("status");
-
-
-        try {
-            // 判断文件是否存在
-            if (!new File(path).exists()) {
-                // 不存在创建xml 构造class-method 节点.
-                output = new XMLWriter(new FileWriter(new File(path)));
-                document = DocumentHelper.createDocument();
-                // 创建跟节点.
-                Element classElement = document.addElement("class");
-                classElement.addAttribute("name", className);
-                // 添加methods 节点.
-                Element methodsElement = classElement.addElement("methods");
-
-                // 添加methods 节点.
-                Element methodElement = methodsElement.addElement("method");
-                methodElement.addAttribute("name", methodName);
-                Element statusElement = methodElement.addElement("status");
-                statusElement.setText(status);
-                // 添加methods 节点.
-                Element timeElement = methodElement.addElement("time");
-                timeElement.setText(time);
-
-                Element commentElement = methodElement.addElement("comment");
-                commentElement.setText(comment);
-
-                output.write(document);
-                output.flush();
-                output.close();
-
-            } else {
-                SAXReader reader = new SAXReader();
-                try {
-					document = reader.read(path);
-				} catch (DocumentException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-                Element rootElement = document.getRootElement();
-                Element element = (Element) rootElement.selectNodes("./methods").get(0);
-                Element methodElement = element.addElement("method");
-                methodElement.addAttribute("name", methodName);
-                Element statusElement = element.addElement("status");
-                statusElement.setText(status);
-                // 添加methods 节点.
-                Element timeElement = element.addElement("time");
-                timeElement.setText(time);
-
-                Element commentElement = element.addElement("comment");
-                commentElement.setText(comment);
-                
-                OutputFormat format = OutputFormat.createPrettyPrint();
-                format.setEncoding("UTF-8");
-                output = new XMLWriter(new FileWriter(new File(path)), format);
-                output.write(document);
-                output.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 	
-	private void takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
+	private String takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		File scrFile = ((TakesScreenshot) WebApp.driver).getScreenshotAs(OutputType.FILE);		
 		String dir_name = CommonTools.setPath("/failTestCaseScreenShot/");
@@ -257,8 +158,21 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		Reporter.setCurrentTestResult(tr);
 		Reporter.log(filepath);
 		Reporter.log("<img src=\"../" + filepath + "\"/>");
+		return filepath;
 
 
+	}
+	
+	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
+
+
+		Map<String, String> methodData = new HashMap<String, String>();
+		methodData.put("method", "test1");
+		methodData.put("name", "namedd");
+		methodData.put("status", "pass");
+		methodData.put("time", "333");
+		methodData.put("comment", "commentsssdfdf");
+		System.out.println("end");
 	}
 
 }

@@ -15,7 +15,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
-@Listeners(utils.TestngListenerWeb.class)
+//@Listeners(utils.TestngListenerWeb.class)
 public class qiChe {
 	
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
@@ -50,6 +50,7 @@ public class qiChe {
 	public void test000login() {
 		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
+		piaoWuWebApp.clear("3434", "3434");
 	}
 	
 	@Test
@@ -63,6 +64,8 @@ public class qiChe {
 	@Test
 	public void test005login() {
 		piaoWuWebApp.logTestDescription("teewrewrewrewrewrst");
+		piaoWuWebApp.enterHomePage();
+		piaoWuWebApp.clear("3434", "3434");
 	}
 	@Test
 	public void test006login() {

@@ -340,7 +340,7 @@ public class Initial {
 		File f = new File(testReportPath+testReportName+".xls");
 		if(!f.exists()){
 			try {
-				OperateExcel.createWorkbook(testReportPath, testReportName+".xls",className, index);
+				CommonTools.createWorkbook(testReportPath, testReportName+".xls",className, index);
 			} catch (WriteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -359,12 +359,12 @@ public class Initial {
 	protected void createSheet(int index) throws WriteException, BiffException, IOException{
 		deleteSheet(testClassName);
 
-		OperateExcel.createSheet(testReportPath+testReportName+".xls", testClassName, index);
+		CommonTools.createSheet(testReportPath+testReportName+".xls", testClassName, index);
 
 	}
 	protected void deleteSheet(String sheetName){
 		try {
-			OperateExcel.deleteSheet(testReportPath+testReportName+".xls", sheetName);
+			CommonTools.deleteSheet(testReportPath+testReportName+".xls", sheetName);
 		} catch (BiffException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

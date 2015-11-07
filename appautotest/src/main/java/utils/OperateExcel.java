@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +35,7 @@ public class OperateExcel {
 	protected WritableFont font;
 	protected static WritableCellFormat format;
 	
-    private static String navigation[] = { "Summary", "Tests", "Pass", "Failed", "Skip", "Errors",
-        "Success rate", "Time" };
-    private static String classNavigation[] = { "Classes", "MethodName", "Pass", "Failed", "Skip",
-        "Errors", "Success rate", "Time ", "log", "Error Screenshot", "Comment" };
+
 
 	public OperateExcel(String excelPath,String className) throws BiffException, IOException{
 
@@ -93,56 +91,11 @@ public class OperateExcel {
 	}
 
 	
-	public static void createSheet(String excelPath,String className,int index) throws IOException, WriteException, BiffException{
-		Workbook wb = Workbook.getWorkbook(new File(excelPath));
-		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
-		wbe.createSheet(className, index);
-		wbe.write();
-		wbe.close();
-		wb.close();
-	}
-	public static void createWorkbook(String excelDir,String excelName,String className,int index) throws IOException, WriteException, BiffException{
-        WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
-        wb.createSheet(className, index);
 
-        WritableSheet homePageSheet = wb.getSheet(className);
-        Label label = new Label(0, 0, "Description");
-        homePageSheet.addCell(label);
 
-        // 概况 总数量 pass fail skip error 百分百 log
-        for (int i = 0; i < navigation.length; i++) {
-            System.out.println(324342);
-            homePageSheet.addCell(new Label(i, 1, navigation[i]));
-        }
 
-        for (int i = 0; i < classNavigation.length; i++) {
-            homePageSheet.addCell(new Label(i, 3, classNavigation[i]));
-        }
-        wb.write();
-        wb.close();
-	}
 
-	public static void writeContent(String excelPath,String className,int cow,int row,Object content) throws BiffException, IOException, RowsExceededException, WriteException{
-		Workbook wb =null;
-		wb = Workbook.getWorkbook(new File(excelPath));
-		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
-		WritableSheet sheet = wbe.getSheet(className);
-		Label lbl = new Label(cow, row, (String) content,format);
-		sheet.addCell(lbl);
-		wbe.write();
-		wbe.close();
-	}
-	public static void writeLastRow(String excelPath,String className,int cow,Object content) throws BiffException, IOException, RowsExceededException, WriteException{
-		Workbook wb = Workbook.getWorkbook(new File(excelPath));
-		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
-		WritableSheet sheet = wbe.getSheet(className);
-		int row = sheet.getRows();
-		Label lbl = new Label(cow, row, (String) content,format);
-		sheet.addCell(lbl);
-		wbe.write();
-		wbe.close();
-		
-	}
+
 	public void mergeCells(int col1,int row1,int col2,int row2) throws RowsExceededException, WriteException{
 		sheet.mergeCells(col1, row1, col2, row2);
 	}
@@ -174,24 +127,7 @@ public class OperateExcel {
 		sheet.addHyperlink(link);
 	}
 	
-	public static void deleteSheet(String excelPath,String name) throws BiffException, IOException, WriteException{
-		Workbook wb = Workbook.getWorkbook(new File(excelPath));
-		WritableWorkbook wbe= Workbook.createWorkbook(new File(excelPath), wb);
-		String[] sheetNames = wbe.getSheetNames();
-		Map<String,String> map = new HashMap<String,String>();
-		for(int i =0;i<sheetNames.length;i++){
-			String j = Integer.toString(i);
-			map.put(sheetNames[i], j);
-		}
-		for(String sheetName :sheetNames){
-			if(sheetName.contains(name)){
-				wbe.removeSheet(Integer.parseInt(map.get(sheetName)));
-			}
-			
-		}
-		wbe.write();
-		wbe.close();
-	}
+
 	
 	public void copySheet(String modelPath,String destPath) throws BiffException, IOException, WriteException{
 		WritableWorkbook wb = Workbook.createWorkbook(new File(destPath));
@@ -205,39 +141,50 @@ public class OperateExcel {
 	
 	public void writeTestToExcel(List<Map<String, String>>classData) throws RowsExceededException, WriteException, BiffException, IOException{
 		
-		
+		int currentRow = sheet.getRows();
+		int methodsCounts = classData.size();
+		int successCount =0;
+		float successRate;
 		for(int i =0;i<classData.size();i++){
-			int methodsCounts = classData.size();
 			String className=classData.get(i).get("className");
 			String method=classData.get(i).get("method");
 			String time=classData.get(i).get("time");
 			String status=classData.get(i).get("status");
 			String comment=classData.get(i).get("comment");
-
+			String screenPath = classData.get(i).get("screenPath");
+			float time1 = Float.parseFloat(time)/1000;
+			time = String.valueOf(time1)+"s";
 			if(i==0){
 				writeLastRow(0, className);
-				int currentRow = sheet.getRows();
-				setHyperLinkForSheet(8, currentRow-1, className+"-log", className, 0, 1);
+				
+				setHyperLinkForSheet(2, currentRow, className+"-log", className, 0, 1);
 			}
 			else{
 				writeLastRow(0, "");
 			}
 			
-			writeSameRow(1, method);
-			writeSameRow(7, time);
-			writeSameRow(10, comment);
+			writeSameRow(3, method);
+			writeSameRow(4, time);
+			if(screenPath!=null){
+			setHyperLinkForFile(5, sheet.getRows()-1, screenPath);
+			}
+			writeSameRow(6, comment);
 			if(status.equals("Success")){
-				writeSameRow(2, "1");
+				successCount=successCount+1;
+				writeSameRow(7, status);
 			}
 			if(status.equals("FAILURE")){
-				writeSameRow(3, "1");
+				writeSameRow(7, status);
 			}
 			if(status.equals("Skipped")){
-				writeSameRow(4, "1");
+				writeSameRow(7, status);
 			}
-
-
 		}
+		float successCount2 = successCount;
+		successRate = successCount2/methodsCounts;
+	    DecimalFormat df = new DecimalFormat("0.00%");
+        String successRate1 = df.format(successRate);
+		writeData(1, currentRow, successRate1);
 	}
 
     public int getTestsValue(int cel, int row) {
@@ -440,14 +387,19 @@ public class OperateExcel {
     }
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
 
-		OperateExcel excel = new OperateExcel("/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls", "elements");
+//		OperateExcel excel = new OperateExcel("/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls", "elements");
 //		excel.setColumnView(1, 60);
 //		excel.setFormat(19, true);
 /*		excel.writeData(0, 0, "3434343434343434354354545454545454545454545454545");
 		excel.setHyperLinkForFile(4,5,"F:/ttt.xls");
 		excel.setHyperLinkForSheet(5, 5, "5534343", "TestSummary", 6, 6);*/
-		excel.copySheet("/Users/wangxun/Documents/workspace/java/appautotest/ticketWeb.xls","/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls");
-		excel.close();
+//		excel.copySheet("/Users/wangxun/Documents/workspace/java/appautotest/ticketWeb.xls","/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls");
+//		excel.close();
+		int a =3;
+		int b =52;
+		float c = b;
+		float d = a/c;
+		System.out.println(d);
 		System.out.println("end");
 	}
 	

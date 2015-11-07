@@ -77,95 +77,26 @@ public class WebApp extends UI{
     	log("End the "+getClassName() +".");
 		try {
 			testCaseExcel.close();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			testReportExcel.close();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
+		} catch (Exception e) {
+			System.err.println(e);
+		} 
+				
     	driver.quit();
-
-/*    	List<Map<String, String>> classData = TestngListenerWeb.classData;
-    	for(int i =0;i<classData.size();i++){
-			String className=classData.get(i).get("className");
-			String method=classData.get(i).get("method");
-			String time=classData.get(i).get("time");
-			String status=classData.get(i).get("status");
-			String comment=classData.get(i).get("comment");
-			System.out.println("className: "+className);
-			System.out.println("method: "+method);
-			System.out.println("time: "+time);
-			System.out.println("status: "+status);
-			System.out.println("comment: "+comment);
-    	}*/
     	List<Map<String, String>> classData = new ArrayList<Map<String,String>>();
     	classData = TestngListenerWeb.classData;
-    	TestngListenerWeb.classData.removeAll(TestngListenerWeb.classData);
-    	OperateExcel testSummay;
-		try {
-			testSummay = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
-			try {
-				testSummay.setFormat(10, true);
-			} catch (WriteException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-	    	try {
-				testSummay.writeTestToExcel(classData);
-			} catch (RowsExceededException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (WriteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    	try {
-				testSummay.close();
-			} catch (WriteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-    	
-/*        OperateExcel testSummary;
-        try {
-            testSummary = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
-            testSummary.readXML("/Users/wangxun/Documents/workspace/java/appautotest/testresource/Test_FCVerifySettings.xml");
-
-            try {
-                testSummary.close();
-            } catch (WriteException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        } catch (BiffException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }*/
-
+    	try{
+    		OperateExcel testSummay = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
+    		testSummay.setFormat(10, true);
+    		testSummay.setColumnView(3, 20);
+    		testSummay.setColumnView(6, 50);
+    		testSummay.writeTestToExcel(classData);
+    		testSummay.close();
+    		classData.clear();
+    	}
+    	catch(Exception e){
+    		System.err.println(e);
+    	}
 
     }
     
