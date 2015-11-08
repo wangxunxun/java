@@ -153,23 +153,23 @@ public class CommonTools {
 	public static void createWorkbook(String excelDir, String excelName, String className, int index)
 			throws IOException, WriteException, BiffException {
 
-		String navigation[] = { "Summary", "Test ", "Pass", "Failed", "Skip", "Success rate", "Time Consuming" };
+		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Total", "Time Consuming"};
 		String classNavigation[] = { "Test Suite", "Success Rate", "Log", "Test Case", "Time Consuming",
 				"Error Screenshot", "Comment", "Status" };
 		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
 		wb.createSheet(className, index);
 
 		WritableSheet homePageSheet = wb.getSheet(className);
-		Label label = new Label(0, 0, "Description");
-		homePageSheet.addCell(label);
+/*		Label label = new Label(0, 0, "Description");
+		homePageSheet.addCell(label);*/
 
 		// 概况 总数量 pass fail skip error 百分百 log
 		for (int i = 0; i < navigation.length; i++) {
-			homePageSheet.addCell(new Label(i, 1, navigation[i]));
+			homePageSheet.addCell(new Label(i, 0, navigation[i]));
 		}
 
 		for (int i = 0; i < classNavigation.length; i++) {
-			homePageSheet.addCell(new Label(i, 3, classNavigation[i]));
+			homePageSheet.addCell(new Label(i, 4, classNavigation[i]));
 		}
 		wb.write();
 		wb.close();

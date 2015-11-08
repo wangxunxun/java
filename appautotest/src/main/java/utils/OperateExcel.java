@@ -145,6 +145,8 @@ public class OperateExcel {
 		int startRow = sheet.getRows();
 		int methodsCounts = classData.size();
 		int successCount = 0;
+		int failureCount = 0;
+		int skippedCount = 0;
 		float successRate;
 		for (int i = 0; i < classData.size(); i++) {
 			String className = classData.get(i).get("className");
@@ -174,9 +176,11 @@ public class OperateExcel {
 				writeDataByColour(7, sheet.getRows() - 1, status, 10, Colour.GREEN);
 			}
 			if (status.equals("Failure")) {
+				failureCount = failureCount + 1;
 				writeDataByColour(7, sheet.getRows() - 1, status, 10, Colour.RED);
 			}
 			if (status.equals("Skipped")) {
+				skippedCount = skippedCount + 1;
 				writeDataByColour(7, sheet.getRows() - 1, status, 10, Colour.YELLOW);
 			}
 		}
@@ -186,11 +190,20 @@ public class OperateExcel {
 		String successRate1 = df.format(successRate);
 		writeData(1, startRow, successRate1);
 		int endRow = sheet.getRows();
-		System.out.println(startRow);
-		System.out.println(endRow);
 		mergeCells(0, startRow, 0, endRow - 1);
 		mergeCells(1, startRow, 1, endRow - 1);
 		mergeCells(2, startRow, 2, endRow - 1);
+		int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 1).getContents());
+		int oldFailureCount = Integer.parseInt(sheet.getCell(1, 1).getContents());
+		int oldSkippedCount = Integer.parseInt(sheet.getCell(2, 1).getContents());
+		int newSuccessCount = successCount+oldSuccessCount;
+		int newFailureCount = failureCount+oldFailureCount;
+		int newSiippedCount = skippedCount+oldSkippedCount;
+/*		writeData(0, 1, String.valueOf(newSuccessCount));
+		writeData(1, 1, String.valueOf(newFailureCount));
+		writeData(2, 1, String.valueOf(newSiippedCount));*/
+		
+		
 	}
 
 	public int getTestsValue(int cel, int row) {
