@@ -147,7 +147,10 @@ public class OperateExcel {
 		int successCount = 0;
 		int failureCount = 0;
 		int skippedCount = 0;
-		float successRate;
+		String totalTimeString = sheet.getCell(5, 1).getContents();
+		String[] aa = totalTimeString.split("s");
+		System.out.println(Float.parseFloat(aa[0]));
+		float TotalTime = Float.parseFloat(aa[0]);
 		for (int i = 0; i < classData.size(); i++) {
 			String className = classData.get(i).get("className");
 			String method = classData.get(i).get("method");
@@ -156,6 +159,7 @@ public class OperateExcel {
 			String comment = classData.get(i).get("comment");
 			String screenPath = classData.get(i).get("screenPath");
 			float time1 = Float.parseFloat(time) / 1000;
+			TotalTime = TotalTime+Float.parseFloat(time)/1000;
 			time = String.valueOf(time1) + "s";
 			if (i == 0) {
 				writeLastRow(0, className + "(" + CommonTools.getCurrentTime() + ")");
@@ -184,11 +188,8 @@ public class OperateExcel {
 				writeDataByColour(7, sheet.getRows() - 1, status, 10, Colour.YELLOW);
 			}
 		}
-		float successCount2 = successCount;
-		successRate = successCount2 / methodsCounts;
-		DecimalFormat df = new DecimalFormat("0.00%");
-		String successRate1 = df.format(successRate);
-		writeData(1, startRow, successRate1);
+		String classSuccessRate = CommonTools.getPercent(successCount, methodsCounts);
+		writeData(1, startRow, classSuccessRate);
 		int endRow = sheet.getRows();
 		mergeCells(0, startRow, 0, endRow - 1);
 		mergeCells(1, startRow, 1, endRow - 1);
@@ -199,10 +200,14 @@ public class OperateExcel {
 		int newSuccessCount = successCount+oldSuccessCount;
 		int newFailureCount = failureCount+oldFailureCount;
 		int newSiippedCount = skippedCount+oldSkippedCount;
+		int total = newSuccessCount+newFailureCount+newSiippedCount;
 		writeData(0, 1, String.valueOf(newSuccessCount));
 		writeData(1, 1, String.valueOf(newFailureCount));
 		writeData(2, 1, String.valueOf(newSiippedCount));
-		
+		String allPercent = CommonTools.getPercent(newSuccessCount,total);
+		writeData(3, 1, allPercent);
+		writeData(4, 1, String.valueOf(total));
+		writeData(5, 1, String.format("%.3f", TotalTime) + "s");
 		
 	}
 

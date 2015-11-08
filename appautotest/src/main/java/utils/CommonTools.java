@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -149,6 +150,14 @@ public class CommonTools {
 		wbe.write();
 		wbe.close();
 	}
+	
+	public static String getPercent(int numerator,int denominator){
+		float numerator1 = numerator;
+		float successRate = numerator1 / denominator;
+		DecimalFormat df = new DecimalFormat("0.00%");
+		String successRate1 = df.format(successRate);
+		return successRate1;
+	}
 
 	public static void createWorkbook(String excelDir, String excelName, String className, int index)
 			throws IOException, WriteException, BiffException {
@@ -163,9 +172,11 @@ public class CommonTools {
 		Label label1 = new Label(0, 1, "0");
 		Label label2 = new Label(1, 1, "0");
 		Label label3 = new Label(2, 1, "0");
+		Label label4 = new Label(5, 1, "0s");
 		homePageSheet.addCell(label1);
 		homePageSheet.addCell(label2);
 		homePageSheet.addCell(label3);
+		homePageSheet.addCell(label4);
 
 		// 概况 总数量 pass fail skip error 百分百 log
 		for (int i = 0; i < navigation.length; i++) {
@@ -175,6 +186,13 @@ public class CommonTools {
 		for (int i = 0; i < classNavigation.length; i++) {
 			homePageSheet.addCell(new Label(i, 4, classNavigation[i]));
 		}
+		homePageSheet.setColumnView(0, 15);
+		homePageSheet.setColumnView(1, 15);
+		homePageSheet.setColumnView(2, 15);
+		homePageSheet.setColumnView(3, 20);
+		homePageSheet.setColumnView(4, 15);
+		homePageSheet.setColumnView(5, 15);
+		homePageSheet.setColumnView(6, 50);
 		wb.write();
 		wb.close();
 	}

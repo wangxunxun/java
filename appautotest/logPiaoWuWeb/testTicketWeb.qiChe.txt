@@ -1,20 +1,20 @@
-20151108-170322-527 INFO - Start to run testTicketWeb.qiChe.
-20151108-170322-624 INFO - Get http://zdc.hldf.net/.
-20151108-170328-812 INFO - To find the ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page.
-20151108-170328-866 INFO - The ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page is displayed.
-20151108-170328-867 INFO - Sleep 500 ms.
-20151108-170329-380 INFO - Send the "admin" value to the ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page.
-20151108-170329-548 INFO - To find the å¯†ç è¾“å…¥æ¡† element on the ç™»å½•é¡µ page.
-20151108-170329-592 INFO - The å¯†ç è¾“å…¥æ¡† element on the ç™»å½•é¡µ page is displayed.
-20151108-170329-593 INFO - Sleep 500 ms.
-20151108-170330-099 INFO - Send the "admin" value to the å¯†ç è¾“å…¥æ¡† element on the ç™»å½•é¡µ page.
-20151108-170330-266 INFO - Click the ç™»å½• element on the ç™»å½•é¡µ page.
-20151108-170331-330 INFO - test0003success
-20151108-170331-334 INFO - test0004success
-20151108-170331-339 INFO - Get http://zdc.hldf.net/.
-20151108-170331-523 INFO - To find the ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page.
-20151108-170341-780 INFO - The ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page is not displayed.
-20151108-170341-780 INFO - Start to find the ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page again.
-20151108-170341-780 INFO - To find the ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page.
-20151108-170351-892 INFO - The ç™»å½•è¾“å…¥æ¡† element on the ç™»å½•é¡µ page is not displayed.
-20151108-170355-228 INFO - End the testTicketWeb.qiChe.
+20151108-234700-548 INFO - Start to run testTicketWeb.qiChe.
+20151108-234700-563 INFO - Get http://zdc.hldf.net/.
+20151108-234708-059 INFO - To find the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page.
+20151108-234708-099 INFO - The µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page is displayed.
+20151108-234708-100 INFO - Sleep 500 ms.
+20151108-234708-600 INFO - Send the "admin" value to the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page.
+20151108-234708-697 INFO - To find the ÃÜÂëÊäÈë¿ò element on the µÇÂ¼Ò³ page.
+20151108-234708-731 INFO - The ÃÜÂëÊäÈë¿ò element on the µÇÂ¼Ò³ page is displayed.
+20151108-234708-732 INFO - Sleep 500 ms.
+20151108-234709-233 INFO - Send the "admin" value to the ÃÜÂëÊäÈë¿ò element on the µÇÂ¼Ò³ page.
+20151108-234709-324 INFO - Click the µÇÂ¼ element on the µÇÂ¼Ò³ page.
+20151108-234709-403 INFO - test0003success
+20151108-234709-405 INFO - test0004success
+20151108-234709-408 INFO - Get http://zdc.hldf.net/.
+20151108-234715-941 INFO - To find the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page.
+20151108-234726-305 INFO - The µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page is not displayed.
+20151108-234726-306 INFO - Start to find the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page again.
+20151108-234726-306 INFO - To find the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page.
+20151108-234736-645 INFO - The µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page is not displayed.
+20151108-234739-976 INFO - End the testTicketWeb.qiChe.

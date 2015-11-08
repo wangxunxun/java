@@ -80,8 +80,6 @@ public class WebApp extends UI {
 		try {
 			OperateExcel testSummay = new OperateExcel(testReportPath + testReportName + ".xls", "TestSummary");
 			testSummay.setFormat(10, true);
-			testSummay.setColumnView(3, 20);
-			testSummay.setColumnView(6, 50);
 			testSummay.writeTestToExcel(classData);
 			testSummay.close();
 			classData.clear();
