@@ -199,9 +199,9 @@ public class OperateExcel {
 		int newSuccessCount = successCount+oldSuccessCount;
 		int newFailureCount = failureCount+oldFailureCount;
 		int newSiippedCount = skippedCount+oldSkippedCount;
-/*		writeData(0, 1, String.valueOf(newSuccessCount));
+		writeData(0, 1, String.valueOf(newSuccessCount));
 		writeData(1, 1, String.valueOf(newFailureCount));
-		writeData(2, 1, String.valueOf(newSiippedCount));*/
+		writeData(2, 1, String.valueOf(newSiippedCount));
 		
 		
 	}

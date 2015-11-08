@@ -160,8 +160,12 @@ public class CommonTools {
 		wb.createSheet(className, index);
 
 		WritableSheet homePageSheet = wb.getSheet(className);
-/*		Label label = new Label(0, 0, "Description");
-		homePageSheet.addCell(label);*/
+		Label label1 = new Label(0, 1, "0");
+		Label label2 = new Label(1, 1, "0");
+		Label label3 = new Label(2, 1, "0");
+		homePageSheet.addCell(label1);
+		homePageSheet.addCell(label2);
+		homePageSheet.addCell(label3);
 
 		// 概况 总数量 pass fail skip error 百分百 log
 		for (int i = 0; i < navigation.length; i++) {

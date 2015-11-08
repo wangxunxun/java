@@ -50,7 +50,6 @@ public class qiChe {
 	public void test000login() {
 		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
-		piaoWuWebApp.clear("3434", "3434");
 	}
 	
 	@Test
