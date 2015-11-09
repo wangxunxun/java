@@ -49,35 +49,45 @@ public class Initial {
 	protected String browserName;
 	protected String iosDeviceName;
 
-	// 截屏存放目录
+	// 截屏存放路径
 	protected String screenPath;
 	// log存放路径
 	protected String logPath;
 
-	// 测试数据变量
+	//测试报告存储路径
 	protected String testReportPath;
+	//测试报告名称
 	protected String testReportName;
+	//当前运行测试class的类名
 	protected String testClassName;
+	//测试数据存储路径
 	protected String testExcelPath;
+	//元素定位对应sheet名
 	protected String elementSheet;
+	//测试用例对应sheet名
 	protected String testCaseSheet;
+	//元素定位对象
 	protected Map<String, Map<String, Map<String, String>>> elementData;
+	//测试用例对象
 	protected Map<String, Object> testCaseData;
-	// 测试app的类名
+	// 测试app的对象名
 	protected String appClass;
 
-	// 回写脚本开关
+	// 回写用例脚本开关
 	protected boolean writeScript;
 	// 回写测试结果开关
 	protected boolean writeResult;
 	// log开关
 	protected boolean logSwitch;
-	// 每次运行时是否删除log文件开关
+	// 每次运行时是否删除log.text文件开关
 	protected boolean deleteLogFileFirst;
-
+	//测试报告对应excel文档的对象
 	protected OperateExcel testReportExcel;
+	//测试用例对应excel文档的对象
 	protected OperateExcel testCaseExcel;
+	//每个case执行成功后的message
 	public static String successMessage;
+	//测试报告testsummary sheet名称
 	protected String testSummarySheetName;
 	//测试报告名称中转变量
 	public static List<String> reportName = new ArrayList<String>();
