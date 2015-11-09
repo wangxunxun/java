@@ -79,7 +79,7 @@ public class IOSApp extends UI {
     	List<Map<String, String>> classData = new ArrayList<Map<String,String>>();
     	classData = TestngListenerWeb.classData;
     	try{
-    		OperateExcel testSummay = new OperateExcel(testReportPath+testReportName+".xls", "TestSummary");
+    		OperateExcel testSummay = new OperateExcel(testReportDir+testReportName+".xls", "TestSummary");
     		testSummay.setFormat(10, true);
     		testSummay.setColumnView(3, 20);
     		testSummay.setColumnView(6, 50);

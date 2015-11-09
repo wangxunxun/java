@@ -252,12 +252,12 @@ public class UI extends Initial {
 	public void getScreen(String filename) {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-		if (!(new File(screenPath).isDirectory())) { // 判断是否存在该目录
-			new File(screenPath).mkdir(); // 如果不存在则新建一个目录
+		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
+			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
 		}
 		try {
 			log("Get screen.");
-			String path = screenPath + CommonTools.getCurrentTime() + "_" + filename + ".png";
+			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
 			FileUtils.copyFile(scrFile, new File(path));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -270,12 +270,12 @@ public class UI extends Initial {
 	private String getScreenReturnPath(String filename) {
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-		if (!(new File(screenPath).isDirectory())) { // 判断是否存在该目录
-			new File(screenPath).mkdir(); // 如果不存在则新建一个目录
+		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
+			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
 		}
 		try {
 			log("Get screen.");
-			String path = screenPath + CommonTools.getCurrentTime() + "_" + filename + ".png";
+			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
 			FileUtils.copyFile(scrFile, new File(path));
 			return path;
 		} catch (IOException e) {
@@ -300,7 +300,7 @@ public class UI extends Initial {
 	public void getElementScreen(String page, String name) {
 		String srcImg = getScreenReturnPath();
 		File srcImg1 = new File(srcImg);
-		String destImg = screenPath;
+		String destImg = screenDir;
 		String imgName = srcImg1.getName();
 		int x = getElementLocateX(page, name);
 		int y = getElementLocateY(page, name);
@@ -314,7 +314,7 @@ public class UI extends Initial {
 
 		String srcImg = getScreenReturnPath();
 		File srcImg1 = new File(srcImg);
-		String destImg = screenPath;
+		String destImg = screenDir;
 		String name = srcImg1.getName();
 		ImageUtils.markImageByText(srcImg, destImg + "marked by text " + content + " " + name, content, Color.red, "黑体",
 				13);

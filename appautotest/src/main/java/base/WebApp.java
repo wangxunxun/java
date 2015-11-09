@@ -78,7 +78,7 @@ public class WebApp extends UI {
 		List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
 		classData = TestngListenerWeb.classData;
 		try {
-			OperateExcel testSummay = new OperateExcel(testReportPath + testReportName + ".xls", "TestSummary");
+			OperateExcel testSummay = new OperateExcel(testReportDir + testReportName + ".xls", "TestSummary");
 			testSummay.setFormat(10, true);
 			testSummay.writeTestToExcel(classData);
 			testSummay.close();
