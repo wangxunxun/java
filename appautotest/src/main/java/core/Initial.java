@@ -3,6 +3,7 @@ package core;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -77,7 +78,9 @@ public class Initial {
 	protected OperateExcel testReportExcel;
 	protected OperateExcel testCaseExcel;
 	public static String successMessage;
-	protected String testSummarySheetName = "TestSummary";
+	protected String testSummarySheetName;
+	//测试报告名称中转变量
+	public static List<String> reportName = new ArrayList<String>();
 
 	protected String getTestReportPath() {
 		testReportPath = getProperties("testReportPath");
@@ -87,14 +90,27 @@ public class Initial {
 
 		return CommonTools.setPath("/testResource/");
 	}
+	
+	protected String getTestSummarySheetName(){
+		testSummarySheetName = getProperties("testSummarySheetName");
+		if (testSummarySheetName != null) {
+			return testSummarySheetName;
+		}
+
+		return "TestSummary";
+		
+	}
 
 	protected String getTestReportName() {
 		testReportName = getProperties("testReportName");
 		if (testReportName != null) {
-			return CommonTools.setPath(testReportName);
+			testReportName = testReportName+"("+CommonTools.getCurrentTime()+")";
+			reportName.add(testReportName);
+			return reportName.get(0);
 		}
-
-		return "testReport";
+		String name = "TestReport"+"("+CommonTools.getCurrentTime()+")";
+		reportName.add(name);
+		return reportName.get(0);
 	}
 
 	protected Map<String, Map<String, Map<String, String>>> getElementData() {
@@ -408,6 +424,7 @@ public class Initial {
 		appDir = getAppDir();
 		testReportPath = getTestReportPath();
 		testReportName = getTestReportName();
+		testSummarySheetName = getTestSummarySheetName();
 		createWorkBook(testSummarySheetName, 0);
 		testClassName = getClassName();
 		String excelPath = CommonTools.setPath(testExcelPath);
