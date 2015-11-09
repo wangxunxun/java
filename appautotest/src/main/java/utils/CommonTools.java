@@ -126,6 +126,7 @@ public class CommonTools {
 			throws IOException, WriteException, BiffException {
 		Workbook wb = Workbook.getWorkbook(new File(excelPath));
 		WritableWorkbook wbe = Workbook.createWorkbook(new File(excelPath), wb);
+		className = getValidSheetName(className);
 		wbe.createSheet(className, index);
 		wbe.write();
 		wbe.close();
@@ -166,6 +167,7 @@ public class CommonTools {
 		String classNavigation[] = { "Test Suite", "Success Rate", "Log", "Test Case", "Time Consuming",
 				"Error Screenshot", "Comment", "Status" };
 		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
+		className = getValidSheetName(className);
 		wb.createSheet(className, index);
 
 		WritableSheet homePageSheet = wb.getSheet(className);
@@ -299,29 +301,20 @@ public class CommonTools {
 		}
 		return classData;
 	}
+	
+	public static String getValidSheetName(String sheetName){
+		if(sheetName.length()>31){
+			return sheetName.substring(sheetName.length()-31, sheetName.length());
+		}
+		return sheetName;
+	}
 
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
 
-		Map<String, String> methodData = new HashMap<String, String>();
-		methodData.put("method", "sadas实打实");
-		methodData.put("status", "pass");
-		methodData.put("time", "333");
-		methodData.put("comment", "commentsssdfdf");
-
-		Map<String, String> methodData1 = new HashMap<String, String>();
-		methodData1.put("method", "sfdsf的份上");
-		methodData1.put("status", "pass3");
-		methodData1.put("time", "3333");
-		methodData1.put("comment", "commentsssdfdf3");
-
-		Map<String, String> methodData2 = new HashMap<String, String>();
-		methodData2.put("method", "sfdsf的份上");
-		methodData2.put("status", "pass3");
-		methodData2.put("time", "3333");
-		methodData2.put("comment", "commentsssdfdf3");
-
-		List<Map<String, String>> data = readXmlForTestNg("F:/workspace/java/appautotest/testResource/333.xml");
-		System.out.println(data.size());
+		String aa = "12345678901234567890123456789012";
+		if(aa.length()>31){
+			System.out.println(aa.substring(aa.length()-31, aa.length()));
+		}
 		System.out.println("end");
 	}
 

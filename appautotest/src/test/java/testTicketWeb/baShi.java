@@ -48,6 +48,7 @@ public class baShi {
 		
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
+		piaoWuWebApp.logClassInfo("342423resrewrewrewr");
 		piaoWuWebApp.log("Start to run " + this.getClass().getName() + ".");
 
 	}

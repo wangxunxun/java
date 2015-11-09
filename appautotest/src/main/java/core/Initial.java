@@ -339,13 +339,24 @@ public class Initial {
 			testReportExcel.writeLastRow(0, classNamePath);
 			testReportExcel.writeSameRow(1, content);
 		} catch (Exception e) {
-			log("None testNG executor detected, test may continue, but highly recommended to migrate your test to testNG.");
+			System.err.println(e);
 		}
 	}
 
 	public void logSuccessMessage(String content) {
 		successMessage = content;
 		log(content);
+	}
+	
+	public void logClassInfo(String content){
+		try {
+		testReportExcel.writeLastRow(0, "ClassName");
+		testReportExcel.writeSameRow(1, testClassName);
+		testReportExcel.writeLastRow(0, "Description");
+		testReportExcel.writeSameRow(1, content);
+		} catch (Exception e) {
+			System.err.println(e);
+		}
 	}
 
 	protected void createWorkBook(String className, int index) {
@@ -450,9 +461,8 @@ public class Initial {
 		testReportExcel.setColumnView(0, 40);
 
 		testReportExcel.setFormat(10, true);
-		testReportExcel.setHyperLinkForSheet(0, 0, "back", testSummarySheetName, 0, 0);
-		testReportExcel.writeTitle(0, 1, "TestMethod", 14);
-		testReportExcel.writeTitle(1, 1, "Log", 14);
+		testReportExcel.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+
 
 	}
 

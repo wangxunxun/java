@@ -36,7 +36,7 @@ public class qiChe {
 	public void setUp() {
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();
-
+		piaoWuWebApp.logClassInfo("testclasdfdsreinfof");
 		piaoWuWebApp.log("Start to run " + this.getClass().getName() + ".");
 
 	}
