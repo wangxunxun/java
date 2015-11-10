@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>8/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Nov 10 10:55:40 CST 2015</td>
+<td>Started on:</td><td>Tue Nov 10 13:20:41 CST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>47 seconds (47598 ms)</td>
+<tr><td>Total time:</td><td>35 seconds (35979 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,20 +76,18 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='testTicketWeb.qiChe.test005login()'><b>test005login</b><br>Test class: testTicketWeb.qiChe<br/>
-<a href="#Output-871160466" onClick='toggleBox("Output-871160466", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-770010802" onClick='toggleBox("Output-770010802", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-871160466" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-871160466">
-/Users/wangxun/Documents/workspace/java/appautotest/failTestCaseScreenShot/20151110-105617-239_test005login.png<br/>
-<img src="..//Users/wangxun/Documents/workspace/java/appautotest/failTestCaseScreenShot/20151110-105617-239_test005login.png"/><br/>
+<a href="#Output-770010802" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-770010802">
+/Users/wangxun/Documents/workspace/java/appautotest/failTestCaseScreenShot/20151110-132105-928_test005login.png<br/>
+<img src="..//Users/wangxun/Documents/workspace/java/appautotest/failTestCaseScreenShot/20151110-132105-928_test005login.png"/><br/>
 </div>
 </td>
-<td><div><pre>java.lang.AssertionError: Don&apos;t find the 登录输入框 element on the 登录页 page.
-	at org.testng.Assert.fail(Assert.java:94)
-	at core.UI.waitDisplay(UI.java:138)
-	at core.UI.waitDisplay(UI.java:121)
-	at initial.piaoWuWebTest.enterHomePage(piaoWuWebTest.java:13)
-	at testTicketWeb.qiChe.test005login(qiChe.java:68)
+<td><div><pre>java.lang.NullPointerException
+	at core.UI.findElement(UI.java:96)
+	at core.UI.clear(UI.java:54)
+	at testTicketWeb.qiChe.test005login(qiChe.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -114,13 +112,11 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace871160466", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace871160466'><pre>java.lang.AssertionError: Don&apos;t find the 登录输入框 element on the 登录页 page.
-	at org.testng.Assert.fail(Assert.java:94)
-	at core.UI.waitDisplay(UI.java:138)
-	at core.UI.waitDisplay(UI.java:121)
-	at initial.piaoWuWebTest.enterHomePage(piaoWuWebTest.java:13)
-	at testTicketWeb.qiChe.test005login(qiChe.java:68)
+</pre></div><a href='#' onClick='toggleBox("stack-trace770010802", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace770010802'><pre>java.lang.NullPointerException
+	at core.UI.findElement(UI.java:96)
+	at core.UI.clear(UI.java:54)
+	at testTicketWeb.qiChe.test005login(qiChe.java:69)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -146,8 +142,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
-<td>24</td>
-<td>testTicketWeb.qiChe@2d6e8792</td></tr>
+<td>1</td>
+<td>testTicketWeb.qiChe@2812cbfa</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -159,8 +155,8 @@ function toggleAllBoxes() {
 <tr>
 <td title='testTicketWeb.qiChe.test000login()'><b>test000login</b><br>Test class: testTicketWeb.qiChe</td>
 <td></td>
-<td>5</td>
-<td>testTicketWeb.qiChe@2d6e8792</td></tr>
+<td>7</td>
+<td>testTicketWeb.qiChe@2812cbfa</td></tr>
 <tr>
 <td title='testTicketWeb.baShi.test000login()'><b>test000login</b><br>Test class: testTicketWeb.baShi</td>
 <td></td>
@@ -175,7 +171,7 @@ function toggleAllBoxes() {
 <td title='testTicketWeb.qiChe.test003login()'><b>test003login</b><br>Test class: testTicketWeb.qiChe</td>
 <td></td>
 <td>0</td>
-<td>testTicketWeb.qiChe@2d6e8792</td></tr>
+<td>testTicketWeb.qiChe@2812cbfa</td></tr>
 <tr>
 <td title='testTicketWeb.baShi.test003login()'><b>test003login</b><br>Test class: testTicketWeb.baShi</td>
 <td></td>
@@ -185,7 +181,7 @@ function toggleAllBoxes() {
 <td title='testTicketWeb.qiChe.test004login()'><b>test004login</b><br>Test class: testTicketWeb.qiChe</td>
 <td></td>
 <td>0</td>
-<td>testTicketWeb.qiChe@2d6e8792</td></tr>
+<td>testTicketWeb.qiChe@2812cbfa</td></tr>
 <tr>
 <td title='testTicketWeb.baShi.test004login()'><b>test004login</b><br>Test class: testTicketWeb.baShi</td>
 <td></td>
@@ -195,7 +191,7 @@ function toggleAllBoxes() {
 <td title='testTicketWeb.qiChe.test006login()'><b>test006login</b><br>Test class: testTicketWeb.qiChe</td>
 <td></td>
 <td>0</td>
-<td>testTicketWeb.qiChe@2d6e8792</td></tr>
+<td>testTicketWeb.qiChe@2812cbfa</td></tr>
 </table><p>
 </body>
 </html>

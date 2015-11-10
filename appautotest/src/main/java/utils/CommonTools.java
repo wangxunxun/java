@@ -27,6 +27,8 @@ import org.dom4j.io.XMLWriter;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
@@ -163,7 +165,7 @@ public class CommonTools {
 	public static void createWorkbook(String excelDir, String excelName, String className, int index)
 			throws IOException, WriteException, BiffException {
 
-		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Total", "Time Consuming"};
+		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Time Consuming", "Total"};
 		String classNavigation[] = { "Test Suite", "Success Rate", "Log", "Test Case", "Time Consuming",
 				"Error Screenshot", "Comment", "Status" };
 		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
@@ -171,10 +173,24 @@ public class CommonTools {
 		wb.createSheet(className, index);
 
 		WritableSheet homePageSheet = wb.getSheet(className);
-		Label label1 = new Label(0, 1, "0");
-		Label label2 = new Label(1, 1, "0");
-		Label label3 = new Label(2, 1, "0");
-		Label label4 = new Label(5, 1, "0s");
+		WritableFont font = new WritableFont(WritableFont.ARIAL, 10);
+		WritableCellFormat format = new WritableCellFormat(font);
+		format.setWrap(true);
+		Label projectName = new Label(0, 0, "Project Name", format);
+		Label projectInfo = new Label(0, 1, "Project Info", format);
+		Label testSpecification = new Label(0, 2, "Test Specification", format);
+		
+		Label label1 = new Label(0, 4, "0");
+		Label label2 = new Label(1, 4, "0");
+		Label label3 = new Label(2, 4, "0");
+		Label label4 = new Label(4, 4, "0s");
+		homePageSheet.addCell(projectName);
+		homePageSheet.addCell(projectInfo);
+		homePageSheet.addCell(testSpecification);
+		homePageSheet.mergeCells(1, 0, 5, 0);
+		homePageSheet.mergeCells(1, 1, 5, 1);
+		homePageSheet.mergeCells(1, 2, 5, 2);
+
 		homePageSheet.addCell(label1);
 		homePageSheet.addCell(label2);
 		homePageSheet.addCell(label3);
@@ -182,11 +198,11 @@ public class CommonTools {
 
 		// 概况 总数量 pass fail skip error 百分百 log
 		for (int i = 0; i < navigation.length; i++) {
-			homePageSheet.addCell(new Label(i, 0, navigation[i]));
+			homePageSheet.addCell(new Label(i, 3, navigation[i]));
 		}
 
 		for (int i = 0; i < classNavigation.length; i++) {
-			homePageSheet.addCell(new Label(i, 4, classNavigation[i]));
+			homePageSheet.addCell(new Label(i, 5, classNavigation[i]));
 		}
 		homePageSheet.setColumnView(0, 15);
 		homePageSheet.setColumnView(1, 15);
@@ -318,8 +334,7 @@ public class CommonTools {
 	}
 	
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-		getNewString("3434","5555");
-		System.out.println(getNewString("3434","5555"));
+		createWorkbook("/Users/wangxun/Desktop/","test1111.xls","33",0);
 		System.out.println("end");
 	}
 

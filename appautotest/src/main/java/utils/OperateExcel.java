@@ -60,7 +60,7 @@ public class OperateExcel {
 			Label lable = new Label(cow, row - 1, (String) content, format);
 			sheet.addCell(lable);
 		} else {
-			Label lable = new Label(cow, row - 1, (String) content, format);
+			Label lable = new Label(cow, row - 1, (String) content);
 			sheet.addCell(lable);
 		}
 	}
@@ -152,7 +152,7 @@ public class OperateExcel {
 		int successCount = 0;
 		int failureCount = 0;
 		int skippedCount = 0;
-		String totalTimeString = sheet.getCell(5, 1).getContents();
+		String totalTimeString = sheet.getCell(4, 4).getContents();
 		String[] aa = totalTimeString.split("s");
 		float TotalTime = Float.parseFloat(aa[0]);
 		for (int i = 0; i < classData.size(); i++) {
@@ -203,23 +203,24 @@ public class OperateExcel {
 		mergeCells(0, startRow, 0, endRow - 1);
 		mergeCells(1, startRow, 1, endRow - 1);
 		mergeCells(2, startRow, 2, endRow - 1);
-		int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 1)
+		int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 4)
 				.getContents());
-		int oldFailureCount = Integer.parseInt(sheet.getCell(1, 1)
+		int oldFailureCount = Integer.parseInt(sheet.getCell(1, 4)
 				.getContents());
-		int oldSkippedCount = Integer.parseInt(sheet.getCell(2, 1)
+		int oldSkippedCount = Integer.parseInt(sheet.getCell(2, 4)
 				.getContents());
 		int newSuccessCount = successCount + oldSuccessCount;
 		int newFailureCount = failureCount + oldFailureCount;
 		int newSiippedCount = skippedCount + oldSkippedCount;
 		int total = newSuccessCount + newFailureCount + newSiippedCount;
-		writeData(0, 1, String.valueOf(newSuccessCount));
-		writeData(1, 1, String.valueOf(newFailureCount));
-		writeData(2, 1, String.valueOf(newSiippedCount));
+		writeData(0, 4, String.valueOf(newSuccessCount));
+		writeData(1, 4, String.valueOf(newFailureCount));
+		writeData(2, 4, String.valueOf(newSiippedCount));
 		String allPercent = CommonTools.getPercent(newSuccessCount, total);
-		writeData(3, 1, allPercent);
-		writeData(4, 1, String.valueOf(total));
-		writeData(5, 1, String.format("%.3f", TotalTime) + "s");
+		writeData(3, 4, allPercent);
+		writeData(4, 4, String.format("%.3f", TotalTime) + "s");
+		writeData(5, 4, String.valueOf(total));
+		
 
 	}
 

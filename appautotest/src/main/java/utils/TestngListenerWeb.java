@@ -23,7 +23,6 @@ public class TestngListenerWeb extends TestListenerAdapter {
 	private Long time;
 	private String status;
 	private String comment;
-	private static String oldString;
 	public static List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
 
 	@Override
