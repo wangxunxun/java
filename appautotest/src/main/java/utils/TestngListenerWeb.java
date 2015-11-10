@@ -23,6 +23,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
 	private Long time;
 	private String status;
 	private String comment;
+	private static String oldString;
 	public static List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
 
 	@Override
@@ -60,7 +61,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		methodData.put("method", method);
 		methodData.put("time", time + "");
 		methodData.put("status", status);
-		methodData.put("comment", CommonTools.getCurrentTime() + " - " + comment);
+		methodData.put("comment", "Failure info - " + comment);
 		methodData.put("screenPath", screenPath);
 		classData.add(methodData);
 
@@ -82,17 +83,19 @@ public class TestngListenerWeb extends TestListenerAdapter {
 			comment = tr.getThrowable().getMessage();
 			if (comment.isEmpty()) {
 				if (successMessage == null) {
-					comment = "";
+					comment = "No comment";
 				} else {
 					comment = successMessage;
+					Initial.successMessage = null;
 				}
 			}
 		} catch (Exception e) {
 
 			if (successMessage == null) {
-				comment = "";
+				comment = "No comment";
 			} else {
 				comment = successMessage;
+				Initial.successMessage = null;
 			}
 
 		}
@@ -101,7 +104,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		methodData.put("method", method);
 		methodData.put("time", time + "");
 		methodData.put("status", status);
-		methodData.put("comment", CommonTools.getCurrentTime() + " - " + comment);
+		methodData.put("comment", "Success info - " + comment);
 		methodData.put("screenPath", screenPath);
 		classData.add(methodData);
 
@@ -121,17 +124,17 @@ public class TestngListenerWeb extends TestListenerAdapter {
 		try {
 			comment = tr.getThrowable().getMessage();
 			if (comment == null) {
-				comment = "";
+				comment = "No comment";
 			}
 		} catch (Exception e) {
-			comment = "";
+			comment = "No comment";
 		}
 
 		methodData.put("className", className);
 		methodData.put("method", method);
 		methodData.put("time", time + "");
 		methodData.put("status", status);
-		methodData.put("comment", CommonTools.getCurrentTime() + " - " + comment);
+		methodData.put("comment", "Skipped - " + comment);
 		methodData.put("screenPath", screenPath);
 		classData.add(methodData);
 	}

@@ -1,8 +1,6 @@
 package base;
 
 import io.appium.java_client.android.AndroidElement;
-import jxl.read.biff.BiffException;
-import jxl.write.WriteException;
 import utils.OperateExcel;
 import utils.TestngListenerWeb;
 import io.appium.java_client.android.AndroidDriver;
@@ -15,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -29,15 +26,8 @@ public class AndroidApp extends UI {
 		// set up appium
 		try {
 			initialAndroidData();
-		} catch (WriteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (BiffException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (Exception e) {
+			System.err.println(e.toString());
 		}
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();

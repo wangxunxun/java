@@ -150,7 +150,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -162,7 +161,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.id(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -174,7 +172,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -186,7 +183,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -198,7 +194,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.name(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -210,7 +205,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -222,7 +216,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(location)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -236,7 +229,6 @@ public class UI extends Initial {
 			try {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.className(classname)));
 			} catch (Exception e) {
-				// TODO: handle exception
 				log("The " + name + " element on the " + page + " page is not displayed.");
 				return false;
 			}
@@ -260,8 +252,7 @@ public class UI extends Initial {
 			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
 			FileUtils.copyFile(scrFile, new File(path));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println(e.toString());
 			log("Get screen failed.");
 			Assert.fail("Get screen failed.");
 		}
@@ -279,8 +270,7 @@ public class UI extends Initial {
 			FileUtils.copyFile(scrFile, new File(path));
 			return path;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println(e.toString());
 			log("Get screen failed.");
 			Assert.fail("Get screen failed.");
 

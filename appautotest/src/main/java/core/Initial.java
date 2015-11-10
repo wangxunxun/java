@@ -218,18 +218,8 @@ public class Initial {
 	protected void writeTable(int cow, int row, String content) {
 		try {
 			testCaseExcel.writeData(cow, row, content);
-		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println(e.toString());
 		}
 
 	}
@@ -293,18 +283,8 @@ public class Initial {
 
 		try {
 			testReportExcel.writeLastRow(cow, content);
-		} catch (RowsExceededException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println(e.toString());
 		}
 	}
 
@@ -315,7 +295,7 @@ public class Initial {
 
 			return classNamePath;
 		} catch (Exception e) {
-
+			System.err.println(e.toString());
 		}
 		return "";
 	}
@@ -327,7 +307,7 @@ public class Initial {
 
 			return testMethodName;
 		} catch (Exception e) {
-
+			System.err.println(e.toString());
 		}
 		return "";
 	}
@@ -335,17 +315,21 @@ public class Initial {
 	public void logTestDescription(String content) {
 		try {
 			ITestResult it = Reporter.getCurrentTestResult();
-			String classNamePath = it.getName();
-			testReportExcel.writeLastRow(0, classNamePath);
-			testReportExcel.writeSameRow(1, content);
+			String testMethod = it.getName();
+			testReportExcel.writeLastRow(0, testMethod);
+			testReportExcel.writeSameRow(1, "Test case description: "+content);
 		} catch (Exception e) {
-			System.err.println(e);
+			System.err.println(e.toString());
 		}
 	}
 
 	public void logSuccessMessage(String content) {
 		successMessage = content;
-		log(content);
+		try {
+			testReportExcel.writeLastRow(1, "Success info: "+content);
+		} catch (Exception e) {
+			System.err.println(e.toString());
+		}
 	}
 	
 	public void logClassInfo(String content){
@@ -355,7 +339,7 @@ public class Initial {
 		testReportExcel.writeLastRow(0, "Description");
 		testReportExcel.writeSameRow(1, content);
 		} catch (Exception e) {
-			System.err.println(e);
+			System.err.println(e.toString());
 		}
 	}
 
@@ -365,15 +349,8 @@ public class Initial {
 		if (!f.exists()) {
 			try {
 				CommonTools.createWorkbook(testReportDir, testReportName + ".xls", className, index);
-			} catch (WriteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (BiffException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (Exception e) {
+				System.err.println(e.toString());
 			}
 		}
 
@@ -389,15 +366,8 @@ public class Initial {
 	protected void deleteSheet(String sheetName) {
 		try {
 			CommonTools.deleteSheet(testReportDir + testReportName + ".xls", sheetName);
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println(e.toString());
 		}
 	}
 
@@ -411,9 +381,8 @@ public class Initial {
 			writer.write(content + "\r\n");
 			writer.flush();
 			writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println(e.toString());
 		}
 
 	}

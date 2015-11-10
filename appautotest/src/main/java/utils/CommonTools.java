@@ -309,12 +309,17 @@ public class CommonTools {
 		return sheetName;
 	}
 
-	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-
-		String aa = "12345678901234567890123456789012";
-		if(aa.length()>31){
-			System.out.println(aa.substring(aa.length()-31, aa.length()));
+	public static String getNewString(String oldString,String newString){
+		if (newString ==oldString){
+			return "success";
 		}
+		oldString = newString;
+		return newString;
+	}
+	
+	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
+		getNewString("3434","5555");
+		System.out.println(getNewString("3434","5555"));
 		System.out.println("end");
 	}
 

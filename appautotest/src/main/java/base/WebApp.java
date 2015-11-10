@@ -1,14 +1,11 @@
 package base;
 
 import java.awt.Robot;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import jxl.read.biff.BiffException;
-import jxl.write.WriteException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -30,15 +27,8 @@ public class WebApp extends UI {
 
 		try {
 			initialData();
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (BiffException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.err.println(e.toString());
 		}
 
 		String dirs = null;
@@ -156,8 +146,6 @@ public class WebApp extends UI {
 
 	public void clickElementByJS(String page, String name) {
 		log("Click the " + name + " element on the " + page + "page by JS.");
-
-		// String locator = uiMapElementLocator(elementName);
 		WebElement element = findElement(page, name);
 		executeJavaScript("arguments[0].click();", element);
 	}

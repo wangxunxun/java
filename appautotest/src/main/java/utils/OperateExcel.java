@@ -154,7 +154,6 @@ public class OperateExcel {
 		int skippedCount = 0;
 		String totalTimeString = sheet.getCell(5, 1).getContents();
 		String[] aa = totalTimeString.split("s");
-		System.out.println(Float.parseFloat(aa[0]));
 		float TotalTime = Float.parseFloat(aa[0]);
 		for (int i = 0; i < classData.size(); i++) {
 			String className = classData.get(i).get("className");
