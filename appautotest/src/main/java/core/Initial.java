@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import jxl.format.Colour;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 
@@ -343,8 +344,8 @@ public class Initial {
 		try {
 			ITestResult it = Reporter.getCurrentTestResult();
 			String testMethod = it.getName();
-			testReportExcel.writeLastRow(0, testMethod);
-			testReportExcel.writeSameRow(1, "Test case description: "+content);
+			testReportExcel.writeLastRow(0, testMethod,12,Colour.BLACK);
+			testReportExcel.writeSameRow(1, "Test case description: "+content,12,Colour.BLACK);
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -361,10 +362,11 @@ public class Initial {
 	
 	public void logClassInfo(String content){
 		try {
-		testReportExcel.writeLastRow(0, "ClassName");
-		testReportExcel.writeSameRow(1, testClassName);
-		testReportExcel.writeLastRow(0, "Description");
-		testReportExcel.writeSameRow(1, content);
+
+		testReportExcel.writeLastRow(0, "ClassName",12,Colour.BLACK);
+		testReportExcel.writeSameRow(1, testClassName,12,Colour.BLACK);
+		testReportExcel.writeLastRow(0, "Description",12,Colour.BLACK);
+		testReportExcel.writeSameRow(1, content,12,Colour.BLACK);
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -441,13 +443,13 @@ public class Initial {
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
-		
+		testClassName = getClassName();
 		appDir = getAppDir();
 		testReportDir = getTestReportDir();
 		testReportName = getTestReportName();
 		testSummarySheetName = getTestSummarySheetName();
 		createWorkBook(testSummarySheetName, 0);
-		testClassName = getClassName();
+
 
 		
 		

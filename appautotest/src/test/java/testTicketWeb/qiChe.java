@@ -59,7 +59,7 @@ public class qiChe {
 	}
 	@Test
 	public void test004login() {
-		piaoWuWebApp.logTestDescription("erwerewrewr");
+
 		piaoWuWebApp.logSuccessMessage("test0004success");
 	}
 	@Test

@@ -3,12 +3,13 @@ package utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-
 import java.util.List;
 import java.util.Map;
 
 import jxl.Sheet;
 import jxl.Workbook;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
@@ -50,7 +51,29 @@ public class OperateExcel {
 			sheet.addCell(lable);
 		}
 	}
-
+	public void writeLastRow(int cow, String content, int size,Colour colour)
+			throws RowsExceededException, WriteException {
+		int row = sheet.getRows();
+		WritableFont font = new WritableFont(WritableFont.ARIAL, size,
+				WritableFont.BOLD);
+		font.setColour(colour);
+		WritableCellFormat format = new WritableCellFormat(font);
+		format.setBorder(Border.ALL, BorderLineStyle.THIN);
+		Label label = new Label(cow, row, content, format);
+		sheet.addCell(label);
+	}
+	
+	public void writeSameRow(int cow, String content, int size,Colour colour)
+			throws RowsExceededException, WriteException {
+		int row = sheet.getRows();
+		WritableFont font = new WritableFont(WritableFont.ARIAL, size,
+				WritableFont.BOLD);
+		font.setColour(colour);
+		WritableCellFormat format = new WritableCellFormat(font);
+		format.setBorder(Border.ALL, BorderLineStyle.THIN);
+		Label label = new Label(cow, row - 1, content, format);
+		sheet.addCell(label);
+	}
 	public void writeSameRow(int cow, Object content)
 			throws RowsExceededException, WriteException, BiffException,
 			IOException {
@@ -65,6 +88,19 @@ public class OperateExcel {
 		}
 	}
 
+	public void writeData(int cow, int row, Object content,WritableCellFormat format)
+			throws RowsExceededException, WriteException, BiffException,
+			IOException {
+
+		if (format != null) {
+			Label lable = new Label(cow, row, (String) content, format);
+			sheet.addCell(lable);
+		} else {
+			Label lable = new Label(cow, row, (String) content);
+			sheet.addCell(lable);
+		}
+	}
+	
 	public void writeData(int cow, int row, Object content)
 			throws RowsExceededException, WriteException, BiffException,
 			IOException {
@@ -106,6 +142,7 @@ public class OperateExcel {
 		WritableFont font = new WritableFont(WritableFont.ARIAL, size);
 		WritableCellFormat format = new WritableCellFormat(font);
 		format.setBackground(colour);
+		format.setBorder(Border.ALL, BorderLineStyle.THIN);
 		Label label = new Label(cow, row, content, format);
 		sheet.addCell(label);
 	}
@@ -114,6 +151,15 @@ public class OperateExcel {
 		font = new WritableFont(WritableFont.ARIAL, size);
 		format = new WritableCellFormat(font);
 		format.setWrap(wrap);
+		format.setBorder(Border.ALL, BorderLineStyle.THIN);
+	}
+	
+	public static WritableCellFormat getFormat(int size, Boolean wrap,Colour fontColour) throws WriteException {
+		WritableFont font1 = new WritableFont(WritableFont.ARIAL, size);
+		font1.setColour(fontColour);
+		WritableCellFormat format1 = new WritableCellFormat(font1);
+		format1.setWrap(wrap);
+		return format1;
 	}
 
 	public void setHyperLinkForFile(int cow, int row, String filePath)
@@ -167,7 +213,7 @@ public class OperateExcel {
 			time = String.valueOf(time1) + "s";
 			if (i == 0) {
 				writeLastRow(0, className);
-
+				writeSameRow(2, "");
 				setHyperLinkForSheet(2, startRow, className + "-log",
 						className, 0, 1);
 			} else {
@@ -177,7 +223,11 @@ public class OperateExcel {
 			writeSameRow(3, method);
 			writeSameRow(4, time);
 			if (screenPath != null) {
+				writeSameRow(5, "");
 				setHyperLinkForFile(5, sheet.getRows() - 1, screenPath);
+			}
+			else{
+				writeSameRow(5, "");
 			}
 			writeSameRow(6, comment);
 			if (status.equals("Success")) {

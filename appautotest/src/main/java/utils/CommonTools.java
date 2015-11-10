@@ -3,8 +3,10 @@ package utils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -25,6 +27,8 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 import jxl.Workbook;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
@@ -173,20 +177,31 @@ public class CommonTools {
 		wb.createSheet(className, index);
 
 		WritableSheet homePageSheet = wb.getSheet(className);
-		WritableFont font = new WritableFont(WritableFont.ARIAL, 10);
-		WritableCellFormat format = new WritableCellFormat(font);
-		format.setWrap(true);
-		Label projectNameLabel = new Label(0, 0, "Project Name", format);
-		Label projectInfoLabel = new Label(0, 1, "Project Info", format);
-		Label testSpecificationLabel = new Label(0, 2, "Test Specification", format);
-		Label projectNameLabel2 = new Label(1, 0, projectName, format);
-		Label projectInfoLabel2 = new Label(1, 1, projectInfo, format);
-		Label testSpecificationLabel2 = new Label(1, 2, testSpecification, format);
+		WritableFont fontTitle = new WritableFont(WritableFont.ARIAL, 10,WritableFont.BOLD);
+		WritableCellFormat formatTitle = new WritableCellFormat(fontTitle);
+		formatTitle.setWrap(true);
+		formatTitle.setBorder(Border.ALL, BorderLineStyle.THIN);
 		
-		Label label1 = new Label(0, 4, "0");
-		Label label2 = new Label(1, 4, "0");
-		Label label3 = new Label(2, 4, "0");
-		Label label4 = new Label(4, 4, "0s");
+		WritableFont fontBody = new WritableFont(WritableFont.ARIAL, 10);
+		WritableCellFormat formatBody = new WritableCellFormat(fontBody);
+		formatBody.setWrap(true);
+		formatBody.setBorder(Border.ALL, BorderLineStyle.THIN);
+		
+		
+		Label projectNameLabel = new Label(0, 0, "Project Name", formatTitle);
+		Label projectInfoLabel = new Label(0, 1, "Project Info", formatTitle);
+		Label testSpecificationLabel = new Label(0, 2, "Test Specification", formatTitle);
+		Label projectNameLabel2 = new Label(1, 0, projectName, formatBody);
+		Label projectInfoLabel2 = new Label(1, 1, projectInfo, formatBody);
+		Label testSpecificationLabel2 = new Label(1, 2, testSpecification, formatBody);
+		// 概况 总数量 pass fail skip error 百分百 log
+		for (int i = 0; i < navigation.length; i++) {
+			homePageSheet.addCell(new Label(i, 3, navigation[i], formatTitle));
+		}
+		Label label1 = new Label(0, 4, "0", formatBody);
+		Label label2 = new Label(1, 4, "0", formatBody);
+		Label label3 = new Label(2, 4, "0", formatBody);
+		Label label4 = new Label(4, 4, "0s", formatBody);
 		homePageSheet.addCell(projectNameLabel);
 		homePageSheet.addCell(projectInfoLabel);
 		homePageSheet.addCell(testSpecificationLabel);
@@ -202,13 +217,10 @@ public class CommonTools {
 		homePageSheet.addCell(label3);
 		homePageSheet.addCell(label4);
 
-		// 概况 总数量 pass fail skip error 百分百 log
-		for (int i = 0; i < navigation.length; i++) {
-			homePageSheet.addCell(new Label(i, 3, navigation[i]));
-		}
+
 
 		for (int i = 0; i < classNavigation.length; i++) {
-			homePageSheet.addCell(new Label(i, 5, classNavigation[i]));
+			homePageSheet.addCell(new Label(i, 7, classNavigation[i], formatTitle));
 		}
 		homePageSheet.setColumnView(0, 15);
 		homePageSheet.setColumnView(1, 15);
@@ -331,15 +343,37 @@ public class CommonTools {
 		return sheetName;
 	}
 
-	public static String getNewString(String oldString,String newString){
-		if (newString ==oldString){
-			return "success";
-		}
-		oldString = newString;
-		return newString;
-	}
+	public void copyFile(String oldPath, String newPath) { 
+		try { 
+		int bytesum = 0; 
+		int byteread = 0; 
+		File oldfile = new File(oldPath); 
+		if (oldfile.exists()) { //文件存在时 
+		InputStream inStream = new FileInputStream(oldPath); //读入原文件 
+		FileOutputStream fs = new FileOutputStream(newPath); 
+		byte[] buffer = new byte[1444]; 
+		while ( (byteread = inStream.read(buffer)) != -1) { 
+		bytesum += byteread; //字节数 文件大小 
+		System.out.println(bytesum); 
+		fs.write(buffer, 0, byteread); 
+		fs.close();
+		} 
+		inStream.close(); 
+		} 
+		} 
+		catch (Exception e) { 
+		System.out.println("复制单个文件操作出错"); 
+		e.printStackTrace(); 
+
+		} 
+
+		} 
 	
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
+		
+		
+		
+		
 		System.out.println("end");
 	}
 
