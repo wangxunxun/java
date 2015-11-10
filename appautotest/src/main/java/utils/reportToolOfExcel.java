@@ -509,11 +509,12 @@ public class reportToolOfExcel {
 
         return colours.get(ys);
     }
+// "\ " 
 
     public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-        createWorkbook("/Users/wangxun/Desktop/test.xls", "sheetView", 0);
-        openSheet("/Users/wangxun/Desktop/test.xls", "sheetView");
-        setLinkToErrorScrenshot(1, 2, "/Users/wangxun/Documents/workspace/java/appautotest/failTestCaseScreen Shot/20151110-105617-239_test005login.png");
+        createWorkbook("D:/test111.xls", "sheetView", 0);
+        openSheet("D:/test111.xls", "sheetView");
+        setLinkToErrorScrenshot(1, 2, "D:/workplace/java/appautotest/failTestCaseScreen Shot/20151110-134533-812_test005login.png");
         close();
     }
 

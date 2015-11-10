@@ -9,7 +9,6 @@ import java.util.Map;
 
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
-import jxl.write.biff.RowsExceededException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -91,6 +90,9 @@ public class Initial {
 	protected String testSummarySheetName;
 	//测试报告名称中转变量
 	public static List<String> reportName = new ArrayList<String>();
+	protected String projectName;
+	protected String projectInfo;
+	protected String testSpecification;
 
 	protected String getTestReportDir() {
 		testReportDir = getProperties("testReportDir");
@@ -99,6 +101,31 @@ public class Initial {
 		}
 
 		return CommonTools.setPath("/testResource/");
+	}
+	protected String getProjectName(){
+		projectName = getProperties("projectName");
+		if (projectName != null) {
+			return projectName;
+		}
+
+		return "";
+	}
+	protected String getProjectInfo(){
+		projectInfo = getProperties("projectInfo");
+		if (projectInfo != null) {
+			return projectInfo;
+		}
+
+		return "";
+	}
+	
+	protected String getTestSpecification(){
+		testSpecification = getProperties("testSpecification");
+		if (testSpecification != null) {
+			return testSpecification;
+		}
+
+		return "";
 	}
 	
 	protected String getTestSummarySheetName(){
@@ -348,7 +375,7 @@ public class Initial {
 		File f = new File(testReportDir + testReportName + ".xls");
 		if (!f.exists()) {
 			try {
-				CommonTools.createWorkbook(testReportDir, testReportName + ".xls", className, index);
+				CommonTools.createWorkbook(testReportDir, testReportName + ".xls", className, index,projectName,projectInfo,testSpecification);
 			} catch (Exception e) {
 				System.err.println(e.toString());
 			}
@@ -398,6 +425,9 @@ public class Initial {
 		testDataExcelPath = getProperties("testDataExcelPath");
 		elementSheet = getProperties("elementSheet");
 		testCaseSheet = getProperties("testCaseSheet");
+		projectName = getProjectName();
+		projectInfo = getProjectInfo();
+		testSpecification = getTestSpecification();
 
 		elementData = getElementData();
 		testCaseData = getTestCaseData();
@@ -418,6 +448,9 @@ public class Initial {
 		testSummarySheetName = getTestSummarySheetName();
 		createWorkBook(testSummarySheetName, 0);
 		testClassName = getClassName();
+
+		
+		
 		String excelPath = CommonTools.setPath(testDataExcelPath);
 
 		testCaseExcel = new OperateExcel(excelPath, testCaseSheet);

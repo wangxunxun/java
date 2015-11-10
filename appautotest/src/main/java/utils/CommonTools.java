@@ -162,7 +162,7 @@ public class CommonTools {
 		return successRate1;
 	}
 
-	public static void createWorkbook(String excelDir, String excelName, String className, int index)
+	public static void createWorkbook(String excelDir, String excelName, String className, int index,String projectName,String projectInfo,String testSpecification)
 			throws IOException, WriteException, BiffException {
 
 		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Time Consuming", "Total"};
@@ -176,17 +176,23 @@ public class CommonTools {
 		WritableFont font = new WritableFont(WritableFont.ARIAL, 10);
 		WritableCellFormat format = new WritableCellFormat(font);
 		format.setWrap(true);
-		Label projectName = new Label(0, 0, "Project Name", format);
-		Label projectInfo = new Label(0, 1, "Project Info", format);
-		Label testSpecification = new Label(0, 2, "Test Specification", format);
+		Label projectNameLabel = new Label(0, 0, "Project Name", format);
+		Label projectInfoLabel = new Label(0, 1, "Project Info", format);
+		Label testSpecificationLabel = new Label(0, 2, "Test Specification", format);
+		Label projectNameLabel2 = new Label(1, 0, projectName, format);
+		Label projectInfoLabel2 = new Label(1, 1, projectInfo, format);
+		Label testSpecificationLabel2 = new Label(1, 2, testSpecification, format);
 		
 		Label label1 = new Label(0, 4, "0");
 		Label label2 = new Label(1, 4, "0");
 		Label label3 = new Label(2, 4, "0");
 		Label label4 = new Label(4, 4, "0s");
-		homePageSheet.addCell(projectName);
-		homePageSheet.addCell(projectInfo);
-		homePageSheet.addCell(testSpecification);
+		homePageSheet.addCell(projectNameLabel);
+		homePageSheet.addCell(projectInfoLabel);
+		homePageSheet.addCell(testSpecificationLabel);
+		homePageSheet.addCell(projectNameLabel2);
+		homePageSheet.addCell(projectInfoLabel2);
+		homePageSheet.addCell(testSpecificationLabel2);
 		homePageSheet.mergeCells(1, 0, 5, 0);
 		homePageSheet.mergeCells(1, 1, 5, 1);
 		homePageSheet.mergeCells(1, 2, 5, 2);
@@ -334,7 +340,6 @@ public class CommonTools {
 	}
 	
 	public static void main(String[] args) throws RowsExceededException, BiffException, WriteException, IOException {
-		createWorkbook("/Users/wangxun/Desktop/","test1111.xls","33",0);
 		System.out.println("end");
 	}
 
