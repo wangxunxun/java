@@ -8,10 +8,7 @@ import jxl.read.biff.BiffException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
@@ -147,7 +144,7 @@ public class qiChe {
 
 	}
 
-//	@Test
+	@Test
 	public void test012editQiChePiaoJia() throws InterruptedException,
 			BiffException, IOException {
 
@@ -186,7 +183,7 @@ public class qiChe {
 
 		piaoWuWebApp.clickElement("汽车-票价", "提交");*/
 
-//		 piaoWuWebApp.runTestCase("登录");
+		 piaoWuWebApp.runTestCase("添加城市");
 
 	}
 

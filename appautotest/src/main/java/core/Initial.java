@@ -84,7 +84,7 @@ public class Initial {
 	//测试报告对应excel文档的对象
 	protected OperateExcel testReportExcel;
 	//测试用例对应excel文档的对象
-	protected OperateExcel testCaseExcel;
+
 	//每个case执行成功后的message
 	public static String successMessage;
 	//测试报告testsummary sheet名称
@@ -94,6 +94,8 @@ public class Initial {
 	protected String projectName;
 	protected String projectInfo;
 	protected String testSpecification;
+	public static List<List<String>> testScriptData = new ArrayList<List<String>>();
+	public static List<List<String>> testResultData = new ArrayList<List<String>>();
 
 	protected String getTestReportDir() {
 		testReportDir = getProperties("testReportDir");
@@ -243,14 +245,7 @@ public class Initial {
 
 	}
 
-	protected void writeTable(int cow, int row, String content) {
-		try {
-			testCaseExcel.writeData(cow, row, content);
-		} catch (Exception e) {
-			System.err.println(e.toString());
-		}
 
-	}
 
 	public String getProperties(String name) {
 		if (configFileName != null) {
@@ -259,13 +254,7 @@ public class Initial {
 		return null;
 	}
 
-	protected void writeResult(int cow, int row, String result) {
 
-		if (writeResult == true) {
-			writeTable(cow, row, result);
-		}
-
-	}
 
 	protected void logResult(Integer row) {
 
@@ -284,12 +273,7 @@ public class Initial {
 		}
 	}
 
-	protected void writeScript(int cow, int row, String script) {
 
-		if (writeScript == true) {
-			writeTable(cow, row, script);
-		}
-	}
 
 	private void deleteFirstTime(String filePath) {
 		if (deleteLogFileFirst == true) {
@@ -338,6 +322,22 @@ public class Initial {
 			System.err.println(e.toString());
 		}
 		return "";
+	}
+	
+	public void putScriptData(Integer row,String script){
+		String rowString = String.valueOf(row);
+		List<String> result = new ArrayList<String>();
+		result.add(rowString);
+		result.add(script);
+		testScriptData.add(result);
+	}
+	
+	public void putResultData(Integer row,String result){
+		String rowString = String.valueOf(row);
+		List<String> data = new ArrayList<String>();
+		data.add(rowString);
+		data.add(result);
+		testResultData.add(data);
 	}
 
 	public void logTestDescription(String content) {
@@ -451,11 +451,6 @@ public class Initial {
 		createWorkBook(testSummarySheetName, 0);
 
 
-		
-		
-		String excelPath = CommonTools.setPath(testDataExcelPath);
-
-		testCaseExcel = new OperateExcel(excelPath, testCaseSheet);
 
 		createSheet(999);
 

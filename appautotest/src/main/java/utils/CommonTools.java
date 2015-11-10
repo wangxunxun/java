@@ -233,6 +233,34 @@ public class CommonTools {
 		wb.close();
 	}
 
+	public static void writeResultToExcel(String excelPath, String className,List<List<String>> testResultData) throws BiffException, IOException, RowsExceededException, WriteException{
+		Workbook wb = Workbook.getWorkbook(new File(excelPath));
+		WritableWorkbook wbe = Workbook.createWorkbook(new File(excelPath), wb);
+		WritableSheet sheet = wbe.getSheet(className);
+		for(int i = 0;i <testResultData.size();i++){
+			int row = Integer.parseInt(testResultData.get(i).get(0));
+			String result = testResultData.get(i).get(1);
+			Label lable = new Label(8, row, result);
+			sheet.addCell(lable);	
+		}
+		wbe.write();
+		wbe.close();
+	}
+	
+	public static void writeScriptToExcel(String excelPath, String className,List<List<String>> testScriptData) throws BiffException, IOException, RowsExceededException, WriteException{
+		Workbook wb = Workbook.getWorkbook(new File(excelPath));
+		WritableWorkbook wbe = Workbook.createWorkbook(new File(excelPath), wb);
+		WritableSheet sheet = wbe.getSheet(className);
+		for(int i = 0;i <testScriptData.size();i++){
+			int row = Integer.parseInt(testScriptData.get(i).get(0));
+			String result = testScriptData.get(i).get(1);
+			Label lable = new Label(9, row, result);
+			sheet.addCell(lable);	
+		}
+		wbe.write();
+		wbe.close();
+	}
+	
 	public static void createXmlforTestNg(String path, Map<String, String> data, String className) {
 
 		XMLWriter output = null;

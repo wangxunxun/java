@@ -17,7 +17,7 @@ import base.WebApp;
 import core.Initial;
 
 
-public class TestngListenerWeb extends TestListenerAdapter {
+public class TestngListener extends TestListenerAdapter {
 	private String className;
 	private String method;
 	private Long time;
@@ -140,7 +140,7 @@ public class TestngListenerWeb extends TestListenerAdapter {
 
 	private String takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
-		File scrFile = ((TakesScreenshot) WebApp.driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = ((TakesScreenshot) Initial.driver).getScreenshotAs(OutputType.FILE);
 		String dir_name = CommonTools.setPath("/failTestCaseScreenShot/");
 		if (!(new File(dir_name).isDirectory())) { // 判断是否存在该目录
 			new File(dir_name).mkdir(); // 如果不存在则新建一个目录

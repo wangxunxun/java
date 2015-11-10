@@ -1,8 +1,9 @@
 package base;
 
 import io.appium.java_client.android.AndroidElement;
+import utils.CommonTools;
 import utils.OperateExcel;
-import utils.TestngListenerWeb;
+import utils.TestngListener;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.io.IOException;
@@ -282,7 +283,6 @@ public class AndroidApp extends UI {
 
 		log("End the " + getClassName() + ".");
 		try {
-			testCaseExcel.close();
 			testReportExcel.close();
 		} catch (Exception e) {
 			System.err.println(e);
@@ -290,7 +290,7 @@ public class AndroidApp extends UI {
 
 		driver.quit();
 		List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
-		classData = TestngListenerWeb.classData;
+		classData = TestngListener.classData;
 		try {
 			OperateExcel testSummay = new OperateExcel(testReportDir + testReportName + ".xls", "TestSummary");
 			testSummay.setFormat(10, true);
@@ -299,6 +299,16 @@ public class AndroidApp extends UI {
 			testSummay.writeTestToExcel(classData);
 			testSummay.close();
 			classData.clear();
+			String excelPath = CommonTools.setPath(testDataExcelPath);
+			if(writeResult==true){
+				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
+				testResultData.clear();
+			}
+			if(writeScript == true){
+				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
+				testScriptData.clear();
+			}
+
 		} catch (Exception e) {
 			System.err.println(e);
 		}
@@ -396,128 +406,128 @@ public class AndroidApp extends UI {
 			if (action.equals("click")) {
 				clickElement(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "clickElement(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("sleep")) {
 				int v = Integer.parseInt(value);
 
 				sleep(v);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "sleep(" + v + ");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("waitDisplay")) {
 				waitDisplay(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "waitDisplay(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("tap")) {
 				tabElement(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "tap(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("longTap")) {
 				longTabElement(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "longTap(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("clear")) {
 				clear(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "clear(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 			} else if (action.equals("back")) {
 				clickBack();
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "clickBack();";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 			} else if (action.equals("enter")) {
 				clickEnter();
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "clickEnter();";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 			} else if (action.equals("home")) {
 				clickHome();
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "clickHome();";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 			} else if (action.equals("menu")) {
 				clickMenu();
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "clickMenu();";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 			} else if (action.equals("swipeOfType")) {
 				swipeOfType(value);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "swipeOfType(\"" + value + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("sendKey")) {
 				sendKeys(page, name, value);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "sendKeys(\"" + page + "\",\"" + name + "\",\"" + value + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("assert")) {
 				actual = getElementText(page, name);
 				assertEquals(actual, expected);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "assertEquals(" + appClass + "." + "getElementText(\"" + page + "\",\""
 						+ name + "\")" + "," + "\"" + expected + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("runTestCase")) {
 				log("Run the " + value + " test case.");
 				runTestCase(value);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "runTestCase(\"" + value + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("startActivity")) {
 				startActivity(appPackage, value);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "startActivity(\"" + appPackage + "\"" + ",\"" + value + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("swipe")) {
 				swipeElement(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "swipeElement(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("scrollToClick")) {
 				scrollToClick(value);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "scrollToClick(\"" + value + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			} else if (action.equals("slideToElement")) {
 				slideUpToFindElement(page, name);
 				logResult(rowin);
-				writeResult(8, rowin, "P");
+				putResultData(rowin, "P");
 				String script = appClass + "." + "slideUPToFindElement(\"" + page + "\",\"" + name + "\");";
-				writeScript(9, rowin, script);
+				putScriptData(rowin, script);
 
 			}
 
