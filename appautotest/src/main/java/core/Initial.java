@@ -25,7 +25,7 @@ public class Initial {
 	public static WebDriver driver;
 	protected WebDriverWait wait;
 	protected int waitTime;
-
+	//测试项目配置文件
 	protected String configFileName;
 	// app存放文件夹
 	protected String appDir;
@@ -80,19 +80,23 @@ public class Initial {
 	// 每次运行时是否删除log.text文件开关
 	protected boolean deleteLogFileFirst;
 
-	//测试用例对应excel文档的对象
-
 	//每个case执行成功后的message
 	public static String successMessage;
 	//测试报告testsummary sheet名称
 	protected String testSummarySheetName;
 	//测试报告名称中转变量
 	public static List<String> reportName = new ArrayList<String>();
+	//测试项目名称
 	protected String projectName;
+	//测试项目简介
 	protected String projectInfo;
+	//测试范围
 	protected String testSpecification;
+	//测试脚本数据
 	public static List<List<String>> testScriptData = new ArrayList<List<String>>();
+	//测试结果数据
 	public static List<List<String>> testResultData = new ArrayList<List<String>>();
+	//log数据
 	public static List<List<String>> logData = new ArrayList<List<String>>();
 
 	protected String getTestReportDir() {

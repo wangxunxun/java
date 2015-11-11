@@ -241,87 +241,90 @@ public class OperateExcel {
 	public void writeTestSummaryToExcel(List<Map<String, String>> classData)
 			throws RowsExceededException, WriteException, BiffException,
 			IOException {
-
-		int startRow = sheet.getRows();
-		int methodsCounts = classData.size();
-		int successCount = 0;
-		int failureCount = 0;
-		int skippedCount = 0;
-		String totalTimeString = sheet.getCell(4, 4).getContents();
-		String[] aa = totalTimeString.split("s");
-		float TotalTime = Float.parseFloat(aa[0]);
-		for (int i = 0; i < classData.size(); i++) {
-			String className = classData.get(i).get("className");
-			String method = classData.get(i).get("method");
-			String time = classData.get(i).get("time");
-			String status = classData.get(i).get("status");
-			String comment = classData.get(i).get("comment");
-			String screenPath = classData.get(i).get("screenPath");
-			float time1 = Float.parseFloat(time) / 1000;
-			TotalTime = TotalTime + Float.parseFloat(time) / 1000;
-			time = String.valueOf(time1) + "s";
-			if (i == 0) {
-				writeLastRow(0, className);
-				writeSameRow(2, "");
-				setHyperLinkForSheet(2, startRow, className + "-log",
-						className, 0, 1);
-			} else {
-				writeLastRow(0, "");
+		if (classData.size() != 0){
+			int startRow = sheet.getRows();
+			int methodsCounts = classData.size();
+			int successCount = 0;
+			int failureCount = 0;
+			int skippedCount = 0;
+			String totalTimeString = sheet.getCell(4, 4).getContents();
+			String[] aa = totalTimeString.split("s");
+			float TotalTime = Float.parseFloat(aa[0]);
+			for (int i = 0; i < classData.size(); i++) {
+				String className = classData.get(i).get("className");
+				String method = classData.get(i).get("method");
+				String time = classData.get(i).get("time");
+				String status = classData.get(i).get("status");
+				String comment = classData.get(i).get("comment");
+				String screenPath = classData.get(i).get("screenPath");
+				float time1 = Float.parseFloat(time) / 1000;
+				TotalTime = TotalTime + Float.parseFloat(time) / 1000;
+				time = String.valueOf(time1) + "s";
+				if (i == 0) {
+					writeLastRow(0, className);
+					writeSameRow(2, "");
+					setHyperLinkForSheet(2, startRow, className + "-log",
+							className, 0, 1);
+				} else {
+					writeLastRow(0, "");
+				}
+	
+				writeSameRow(4, method);
+				writeSameRow(5, time);
+				if (screenPath != null) {
+					writeSameRow(6, "");
+					setHyperLinkForFile(6, sheet.getRows() - 1, screenPath);
+				}
+				else{
+					writeSameRow(6, "");
+				}
+				writeSameRow(7, comment);
+				if (status.equals("Success")) {
+					successCount = successCount + 1;
+					writeDataByColour(8, sheet.getRows() - 1, status, 10,
+							Colour.GREEN);
+				}
+				if (status.equals("Failure")) {
+					failureCount = failureCount + 1;
+					writeDataByColour(8, sheet.getRows() - 1, status, 10,
+							Colour.RED);
+				}
+				if (status.equals("Skipped")) {
+					skippedCount = skippedCount + 1;
+					writeDataByColour(8, sheet.getRows() - 1, status, 10,
+							Colour.YELLOW);
+				}
 			}
-
-			writeSameRow(4, method);
-			writeSameRow(5, time);
-			if (screenPath != null) {
-				writeSameRow(6, "");
-				setHyperLinkForFile(6, sheet.getRows() - 1, screenPath);
-			}
-			else{
-				writeSameRow(6, "");
-			}
-			writeSameRow(7, comment);
-			if (status.equals("Success")) {
-				successCount = successCount + 1;
-				writeDataByColour(8, sheet.getRows() - 1, status, 10,
-						Colour.GREEN);
-			}
-			if (status.equals("Failure")) {
-				failureCount = failureCount + 1;
-				writeDataByColour(8, sheet.getRows() - 1, status, 10,
-						Colour.RED);
-			}
-			if (status.equals("Skipped")) {
-				skippedCount = skippedCount + 1;
-				writeDataByColour(8, sheet.getRows() - 1, status, 10,
-						Colour.YELLOW);
-			}
+			String classSuccessRate = CommonTools.getPercent(successCount,
+					methodsCounts);
+			writeData(1, startRow, classSuccessRate);
+			writeData(3, startRow, String.valueOf(methodsCounts));
+			int endRow = sheet.getRows();
+			mergeCells(0, startRow, 0, endRow - 1);
+			mergeCells(1, startRow, 1, endRow - 1);
+			mergeCells(2, startRow, 2, endRow - 1);
+			mergeCells(3, startRow, 3, endRow - 1);
+			int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 4)
+					.getContents());
+			int oldFailureCount = Integer.parseInt(sheet.getCell(1, 4)
+					.getContents());
+			int oldSkippedCount = Integer.parseInt(sheet.getCell(2, 4)
+					.getContents());
+			int newSuccessCount = successCount + oldSuccessCount;
+			int newFailureCount = failureCount + oldFailureCount;
+			int newSiippedCount = skippedCount + oldSkippedCount;
+			int total = newSuccessCount + newFailureCount + newSiippedCount;
+			writeData(0, 4, String.valueOf(newSuccessCount));
+			writeData(1, 4, String.valueOf(newFailureCount));
+			writeData(2, 4, String.valueOf(newSiippedCount));
+			String allPercent = CommonTools.getPercent(newSuccessCount, total);
+			writeData(3, 4, allPercent);
+			writeData(4, 4, String.format("%.3f", TotalTime) + "s");
+			writeData(5, 4, String.valueOf(total));
 		}
-		String classSuccessRate = CommonTools.getPercent(successCount,
-				methodsCounts);
-		writeData(1, startRow, classSuccessRate);
-		writeData(3, startRow, String.valueOf(methodsCounts));
-		int endRow = sheet.getRows();
-		mergeCells(0, startRow, 0, endRow - 1);
-		mergeCells(1, startRow, 1, endRow - 1);
-		mergeCells(2, startRow, 2, endRow - 1);
-		mergeCells(3, startRow, 3, endRow - 1);
-		int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 4)
-				.getContents());
-		int oldFailureCount = Integer.parseInt(sheet.getCell(1, 4)
-				.getContents());
-		int oldSkippedCount = Integer.parseInt(sheet.getCell(2, 4)
-				.getContents());
-		int newSuccessCount = successCount + oldSuccessCount;
-		int newFailureCount = failureCount + oldFailureCount;
-		int newSiippedCount = skippedCount + oldSkippedCount;
-		int total = newSuccessCount + newFailureCount + newSiippedCount;
-		writeData(0, 4, String.valueOf(newSuccessCount));
-		writeData(1, 4, String.valueOf(newFailureCount));
-		writeData(2, 4, String.valueOf(newSiippedCount));
-		String allPercent = CommonTools.getPercent(newSuccessCount, total);
-		writeData(3, 4, allPercent);
-		writeData(4, 4, String.format("%.3f", TotalTime) + "s");
-		writeData(5, 4, String.valueOf(total));
-		
+		else{
+			System.out.println("Please run the test case in listener mode.");
+		}
 	}
 
 	public static void main(String[] args) throws RowsExceededException,
