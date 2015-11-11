@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Default suite]">
   <listeners>
-    <listener class-name="utils.TestngListenerWeb"/>
+    <listener class-name="utils.TestngListener"/>
   </listeners>
   <test name="Default test(failed)">
     <classes>

@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
+import jxl.format.VerticalAlignment;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
@@ -59,6 +61,8 @@ public class OperateExcel {
 		font.setColour(colour);
 		WritableCellFormat format = new WritableCellFormat(font);
 		format.setBorder(Border.ALL, BorderLineStyle.THIN);
+		format.setVerticalAlignment(VerticalAlignment.CENTRE);
+		format.setWrap(true);
 		Label label = new Label(cow, row, content, format);
 		sheet.addCell(label);
 	}
@@ -71,6 +75,8 @@ public class OperateExcel {
 		font.setColour(colour);
 		WritableCellFormat format = new WritableCellFormat(font);
 		format.setBorder(Border.ALL, BorderLineStyle.THIN);
+		format.setVerticalAlignment(VerticalAlignment.CENTRE);
+		format.setWrap(true);
 		Label label = new Label(cow, row - 1, content, format);
 		sheet.addCell(label);
 	}
@@ -152,6 +158,7 @@ public class OperateExcel {
 		format = new WritableCellFormat(font);
 		format.setWrap(wrap);
 		format.setBorder(Border.ALL, BorderLineStyle.THIN);
+		format.setVerticalAlignment(VerticalAlignment.CENTRE);
 	}
 	
 	public static WritableCellFormat getFormat(int size, Boolean wrap,Colour fontColour) throws WriteException {
@@ -189,7 +196,49 @@ public class OperateExcel {
 
 	}
 
-	public void writeTestToExcel(List<Map<String, String>> classData)
+	
+	public void writeLogToExcel(List<List<String>> logData) throws BiffException, IOException, RowsExceededException, WriteException{
+
+		int currentRow = 1;
+		List<Integer> firstCol= new ArrayList<Integer>();
+		for(int i = 0;i <logData.size();i++){
+			String title = logData.get(i).get(0);
+			String content = logData.get(i).get(1);
+			if(title == ""){
+				writeLastRow(0, title);
+				writeSameRow(1, content);
+			}
+			else{
+				currentRow = sheet.getRows();
+				firstCol.add(currentRow);
+				writeLastRow(0, title, 12, Colour.BLACK);
+				writeSameRow(1, content, 12, Colour.BLACK);
+			}
+		}
+
+		firstCol.add(sheet.getRows());
+		if (logData.get(0).get(0)=="ClassName"){
+			for(int i = 0 ;i<firstCol.size()-3;i++){
+				int endRow = firstCol.get(i+3)-1;
+				int startRow = firstCol.get(i+2);
+				if(endRow>startRow){
+					sheet.mergeCells(0, startRow, 0, endRow);
+				}
+			}
+			
+		}
+		else{
+			for(int i = 0 ;i<firstCol.size()-1;i++){
+				int endRow = firstCol.get(i+1)-1;
+				int startRow = firstCol.get(i);
+				if(endRow>startRow){
+					sheet.mergeCells(0, startRow, 0, endRow);
+				}
+			}
+		}
+	}
+	
+	public void writeTestSummaryToExcel(List<Map<String, String>> classData)
 			throws RowsExceededException, WriteException, BiffException,
 			IOException {
 
@@ -220,39 +269,41 @@ public class OperateExcel {
 				writeLastRow(0, "");
 			}
 
-			writeSameRow(3, method);
-			writeSameRow(4, time);
+			writeSameRow(4, method);
+			writeSameRow(5, time);
 			if (screenPath != null) {
-				writeSameRow(5, "");
-				setHyperLinkForFile(5, sheet.getRows() - 1, screenPath);
+				writeSameRow(6, "");
+				setHyperLinkForFile(6, sheet.getRows() - 1, screenPath);
 			}
 			else{
-				writeSameRow(5, "");
+				writeSameRow(6, "");
 			}
-			writeSameRow(6, comment);
+			writeSameRow(7, comment);
 			if (status.equals("Success")) {
 				successCount = successCount + 1;
-				writeDataByColour(7, sheet.getRows() - 1, status, 10,
+				writeDataByColour(8, sheet.getRows() - 1, status, 10,
 						Colour.GREEN);
 			}
 			if (status.equals("Failure")) {
 				failureCount = failureCount + 1;
-				writeDataByColour(7, sheet.getRows() - 1, status, 10,
+				writeDataByColour(8, sheet.getRows() - 1, status, 10,
 						Colour.RED);
 			}
 			if (status.equals("Skipped")) {
 				skippedCount = skippedCount + 1;
-				writeDataByColour(7, sheet.getRows() - 1, status, 10,
+				writeDataByColour(8, sheet.getRows() - 1, status, 10,
 						Colour.YELLOW);
 			}
 		}
 		String classSuccessRate = CommonTools.getPercent(successCount,
 				methodsCounts);
 		writeData(1, startRow, classSuccessRate);
+		writeData(3, startRow, String.valueOf(methodsCounts));
 		int endRow = sheet.getRows();
 		mergeCells(0, startRow, 0, endRow - 1);
 		mergeCells(1, startRow, 1, endRow - 1);
 		mergeCells(2, startRow, 2, endRow - 1);
+		mergeCells(3, startRow, 3, endRow - 1);
 		int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 4)
 				.getContents());
 		int oldFailureCount = Integer.parseInt(sheet.getCell(1, 4)
@@ -271,7 +322,6 @@ public class OperateExcel {
 		writeData(4, 4, String.format("%.3f", TotalTime) + "s");
 		writeData(5, 4, String.valueOf(total));
 		
-
 	}
 
 	public static void main(String[] args) throws RowsExceededException,

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import jxl.format.Colour;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 
@@ -17,7 +16,6 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 
 import utils.CommonTools;
-import utils.OperateExcel;
 import utils.ReadElementData;
 import utils.ReadTestCasesData;
 import utils.ReadTestData;
@@ -81,8 +79,7 @@ public class Initial {
 	protected boolean logSwitch;
 	// 每次运行时是否删除log.text文件开关
 	protected boolean deleteLogFileFirst;
-	//测试报告对应excel文档的对象
-	protected OperateExcel testReportExcel;
+
 	//测试用例对应excel文档的对象
 
 	//每个case执行成功后的message
@@ -96,6 +93,7 @@ public class Initial {
 	protected String testSpecification;
 	public static List<List<String>> testScriptData = new ArrayList<List<String>>();
 	public static List<List<String>> testResultData = new ArrayList<List<String>>();
+	public static List<List<String>> logData = new ArrayList<List<String>>();
 
 	protected String getTestReportDir() {
 		testReportDir = getProperties("testReportDir");
@@ -294,7 +292,7 @@ public class Initial {
 	public void writeLogToExcel(int cow, Object content) {
 
 		try {
-			testReportExcel.writeLastRow(cow, content);
+			putLogData("", (String) content);
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -339,13 +337,19 @@ public class Initial {
 		data.add(result);
 		testResultData.add(data);
 	}
+	
+	public void putLogData(String title,String info){
+		List<String> data = new ArrayList<String>();
+		data.add(title);
+		data.add(info);
+		logData.add(data);
+	}
 
 	public void logTestDescription(String content) {
 		try {
 			ITestResult it = Reporter.getCurrentTestResult();
-			String testMethod = it.getName();
-			testReportExcel.writeLastRow(0, testMethod,12,Colour.BLACK);
-			testReportExcel.writeSameRow(1, "Test case description: "+content,12,Colour.BLACK);
+			String testMethod = it.getName();			
+			putLogData(testMethod, "Test case description: "+content);
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -353,20 +357,17 @@ public class Initial {
 
 	public void logSuccessMessage(String content) {
 		successMessage = content;
-		try {
-			testReportExcel.writeLastRow(1, "Success info: "+content);
+		try {			
+			putLogData("", "Success info: "+content);
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
 	}
 	
 	public void logClassInfo(String content){
-		try {
-
-		testReportExcel.writeLastRow(0, "ClassName",12,Colour.BLACK);
-		testReportExcel.writeSameRow(1, testClassName,12,Colour.BLACK);
-		testReportExcel.writeLastRow(0, "Description",12,Colour.BLACK);
-		testReportExcel.writeSameRow(1, content,12,Colour.BLACK);
+		try {		
+		putLogData("ClassName", testClassName);
+		putLogData("Description", content);
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -449,19 +450,7 @@ public class Initial {
 		testReportName = getTestReportName();
 		testSummarySheetName = getTestSummarySheetName();
 		createWorkBook(testSummarySheetName, 0);
-
-
-
 		createSheet(999);
-
-		testReportExcel = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
-
-		testReportExcel.setColumnView(1, 100);
-		testReportExcel.setColumnView(0, 40);
-
-		testReportExcel.setFormat(10, true);
-		testReportExcel.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
-
 
 	}
 

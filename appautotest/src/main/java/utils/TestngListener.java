@@ -13,7 +13,6 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 import utils.CommonTools;
-import base.WebApp;
 import core.Initial;
 
 

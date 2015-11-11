@@ -7,7 +7,6 @@ package base;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -67,24 +66,24 @@ public class IOSApp extends UI {
   	}
   	public void quit(){
 
-    	log("End the "+getClassName() +".");
-		try {
-			testReportExcel.close();
-		} catch (Exception e) {
-			System.err.println(e);
-		} 
-				
-    	driver.quit();
-    	List<Map<String, String>> classData = new ArrayList<Map<String,String>>();
-    	classData = TestngListener.classData;
     	try{
-    		OperateExcel testSummay = new OperateExcel(testReportDir+testReportName+".xls", "TestSummary");
-    		testSummay.setFormat(10, true);
-    		testSummay.setColumnView(3, 20);
-    		testSummay.setColumnView(6, 50);
-    		testSummay.writeTestToExcel(classData);
-    		testSummay.close();
-    		classData.clear();
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+			testSummaySheet.setFormat(10, true);
+			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
+			testSummaySheet.close();
+			TestngListener.classData.clear();
+			
+			
+			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
+			testClassSheet.setColumnView(1, 100);
+			testClassSheet.setColumnView(0, 40);
+			testClassSheet.setFormat(10, true);
+			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+			testClassSheet.writeLogToExcel(logData);
+			testClassSheet.close();
+			logData.clear();
+    		
+    		
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -98,6 +97,7 @@ public class IOSApp extends UI {
     	catch(Exception e){
     		System.err.println(e);
     	}
+    	driver.quit();
 	}
   	
 	public IOSElement findElement(String page,String name){

@@ -1,7 +1,6 @@
 package base;
 
 import java.awt.Robot;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -55,24 +54,22 @@ public class WebApp extends UI {
 	}
 
 	public void quit() {
-
-		log("End the " + getClassName() + ".");
 		try {
-
-			testReportExcel.close();
-		} catch (Exception e) {
-			System.err.println(e);
-		}
-
-		driver.quit();
-		List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
-		classData = TestngListener.classData;
-		try {
-			OperateExcel testSummay = new OperateExcel(testReportDir + testReportName + ".xls", "TestSummary");
-			testSummay.setFormat(10, true);
-			testSummay.writeTestToExcel(classData);
-			testSummay.close();
-			classData.clear();
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+			testSummaySheet.setFormat(10, true);
+			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
+			testSummaySheet.close();
+			TestngListener.classData.clear();
+						
+			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
+			testClassSheet.setColumnView(1, 100);
+			testClassSheet.setColumnView(0, 40);
+			testClassSheet.setFormat(10, true);
+			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+			testClassSheet.writeLogToExcel(logData);
+			testClassSheet.close();
+			logData.clear();
+			
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -82,10 +79,11 @@ public class WebApp extends UI {
 				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
 				testScriptData.clear();
 			}
+			
 		} catch (Exception e) {
 			System.err.println(e);
 		}
-
+		driver.quit();
 	}
 
 	public String getCurrentUrl() {

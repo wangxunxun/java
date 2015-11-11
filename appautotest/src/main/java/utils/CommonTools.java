@@ -29,6 +29,7 @@ import org.dom4j.io.XMLWriter;
 import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
+import jxl.format.VerticalAlignment;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
@@ -170,7 +171,7 @@ public class CommonTools {
 			throws IOException, WriteException, BiffException {
 
 		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Time Consuming", "Total"};
-		String classNavigation[] = { "Test Suite", "Success Rate", "Log", "Test Case", "Time Consuming",
+		String classNavigation[] = { "Test Suite", "Success Rate", "Log", "Case Counts","Test Case", "Time Consuming",
 				"Error Screenshot", "Comment", "Status" };
 		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
 		className = getValidSheetName(className);
@@ -181,12 +182,13 @@ public class CommonTools {
 		WritableCellFormat formatTitle = new WritableCellFormat(fontTitle);
 		formatTitle.setWrap(true);
 		formatTitle.setBorder(Border.ALL, BorderLineStyle.THIN);
+		formatTitle.setVerticalAlignment(VerticalAlignment.CENTRE);
 		
 		WritableFont fontBody = new WritableFont(WritableFont.ARIAL, 10);
 		WritableCellFormat formatBody = new WritableCellFormat(fontBody);
 		formatBody.setWrap(true);
 		formatBody.setBorder(Border.ALL, BorderLineStyle.THIN);
-		
+		formatBody.setVerticalAlignment(VerticalAlignment.CENTRE);
 		
 		Label projectNameLabel = new Label(0, 0, "Project Name", formatTitle);
 		Label projectInfoLabel = new Label(0, 1, "Project Info", formatTitle);
@@ -225,10 +227,11 @@ public class CommonTools {
 		homePageSheet.setColumnView(0, 15);
 		homePageSheet.setColumnView(1, 15);
 		homePageSheet.setColumnView(2, 15);
-		homePageSheet.setColumnView(3, 20);
-		homePageSheet.setColumnView(4, 15);
+		homePageSheet.setColumnView(3, 15);
+		homePageSheet.setColumnView(4, 20);
 		homePageSheet.setColumnView(5, 15);
-		homePageSheet.setColumnView(6, 50);
+		homePageSheet.setColumnView(6, 15);
+		homePageSheet.setColumnView(7, 50);
 		wb.write();
 		wb.close();
 	}
@@ -260,6 +263,7 @@ public class CommonTools {
 		wbe.write();
 		wbe.close();
 	}
+
 	
 	public static void createXmlforTestNg(String path, Map<String, String> data, String className) {
 

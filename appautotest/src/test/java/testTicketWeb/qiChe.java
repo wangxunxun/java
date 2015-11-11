@@ -34,7 +34,6 @@ public class qiChe {
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();
 		piaoWuWebApp.logClassInfo("testclasdfdsreinfof");
-		piaoWuWebApp.log("Start to run " + this.getClass().getName() + ".");
 
 	}
 
@@ -45,7 +44,7 @@ public class qiChe {
 
 	@Test
 	public void test000login() {
-		piaoWuWebApp.logTestDescription("login the ststem");
+//		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
 	}
 	

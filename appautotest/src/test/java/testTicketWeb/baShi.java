@@ -5,14 +5,14 @@ import initial.piaoWuWebTest;
 import java.io.IOException;
 
 import jxl.read.biff.BiffException;
-import utils.CommonTools;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-
+//@Listeners(utils.TestngListener.class)
 public class baShi {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
 	
@@ -48,8 +48,7 @@ public class baShi {
 		
 		piaoWuWebApp.initialTestData();
 		piaoWuWebApp.runChormeApp();	
-		piaoWuWebApp.logClassInfo("342423resrewrewrewr");
-		piaoWuWebApp.log("Start to run " + this.getClass().getName() + ".");
+//		piaoWuWebApp.logClassInfo("342423resrewrewrewr");
 
 	}
 
