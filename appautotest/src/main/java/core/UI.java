@@ -21,8 +21,11 @@ public class UI extends Initial {
 
 	public void clickElement(String page, String name) {
 		log("Click the " + name + " element on the " + page + " page.");
-		findElement(page, name).click();
-
+		try {
+			findElement(page, name).click();
+		} catch (Exception e) {
+			Assert.fail("Fail to click the "+name +" element on the "+page+" page.\n"+e.toString());		
+		}
 	}
 
 	public void waitToclickElement(String page, String name) {
