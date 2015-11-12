@@ -29,6 +29,7 @@ import org.dom4j.io.XMLWriter;
 import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
 import jxl.format.VerticalAlignment;
 import jxl.read.biff.BiffException;
 import jxl.write.Label;
@@ -171,8 +172,8 @@ public class CommonTools {
 			throws IOException, WriteException, BiffException {
 
 		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Time Consuming", "Total"};
-		String classNavigation[] = { "Test Suite", "Success Rate", "Log", "Case Counts","Test Case", "Time Consuming",
-				"Error Screenshot", "Comment", "Status" };
+		String classNavigation[] = { "Test Suite", "Suite Summary","Success Rate", "Log", "Case Counts","Test Case", "Case Summary","Time Consuming",
+				"Error Screenshot", "Status", "Comment" };
 		WritableWorkbook wb = Workbook.createWorkbook(new File(excelDir + excelName));
 		className = getValidSheetName(className);
 		wb.createSheet(className, index);
@@ -183,6 +184,7 @@ public class CommonTools {
 		formatTitle.setWrap(true);
 		formatTitle.setBorder(Border.ALL, BorderLineStyle.THIN);
 		formatTitle.setVerticalAlignment(VerticalAlignment.CENTRE);
+		formatTitle.setBackground(Colour.BLUE_GREY);
 		
 		WritableFont fontBody = new WritableFont(WritableFont.ARIAL, 10);
 		WritableCellFormat formatBody = new WritableCellFormat(fontBody);
@@ -224,14 +226,17 @@ public class CommonTools {
 		for (int i = 0; i < classNavigation.length; i++) {
 			homePageSheet.addCell(new Label(i, 7, classNavigation[i], formatTitle));
 		}
-		homePageSheet.setColumnView(0, 15);
-		homePageSheet.setColumnView(1, 15);
-		homePageSheet.setColumnView(2, 15);
-		homePageSheet.setColumnView(3, 15);
-		homePageSheet.setColumnView(4, 20);
-		homePageSheet.setColumnView(5, 15);
-		homePageSheet.setColumnView(6, 15);
-		homePageSheet.setColumnView(7, 50);
+		homePageSheet.setColumnView(0, 11);
+		homePageSheet.setColumnView(1, 11);
+		homePageSheet.setColumnView(2, 11);
+		homePageSheet.setColumnView(3, 11);
+		homePageSheet.setColumnView(4, 11);
+		homePageSheet.setColumnView(5, 18);
+		homePageSheet.setColumnView(6, 30);
+		homePageSheet.setColumnView(7, 11);
+		homePageSheet.setColumnView(8, 18);
+		homePageSheet.setColumnView(9, 10);
+		homePageSheet.setColumnView(10, 50);
 		wb.write();
 		wb.close();
 	}

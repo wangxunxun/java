@@ -83,6 +83,10 @@ public class Initial {
 
 	//每个case执行成功后的message
 	public static String successMessage;
+	//每个case的介绍
+	public static String caseInfo;
+	//每个class的介绍
+	public static String classInfo;
 	//测试报告testsummary sheet名称
 	protected String testSummarySheetName;
 	//测试报告名称中转变量
@@ -162,7 +166,7 @@ public class Initial {
 		try {
 		eledata = elementdata.getdata();
 		} catch (Exception e) {
-			Assert.fail("Fail to get the element data.\n"+e.toString());
+			Assert.fail("Fail to get the element data.\n");
 		}
 		return eledata;
 	}
@@ -174,7 +178,7 @@ public class Initial {
 		try {
 		data = readtestdata.getTestData(testDataExcelPath, testDataSheet);
 		} catch (Exception e) {
-			Assert.fail("Fail to get the test data.\n"+e.toString());
+			Assert.fail("Fail to get the test data.\n");
 		}
 		return data;
 	}
@@ -186,7 +190,7 @@ public class Initial {
 		try {
 		data = readtestdata.getTestDataForTestNG(testDataExcelPath, testDataSheet);
 		} catch (Exception e) {
-			Assert.fail("Fail to get the test data for testNG.\n"+e.toString());
+			Assert.fail("Fail to get the test data for testNG.\n");
 		}
 		return data;
 	}
@@ -198,7 +202,7 @@ public class Initial {
 		try {
 		data = testCaseData.getdata();
 		} catch (Exception e) {
-			Assert.fail("Fail to get the test case data .\n"+e.toString());
+			Assert.fail("Fail to get the test case data .\n");
 		}
 		return data;
 
@@ -375,6 +379,7 @@ public class Initial {
 			ITestResult it = Reporter.getCurrentTestResult();
 			String testMethod = it.getName();			
 			putLogData(testMethod, "Test case description: "+content);
+			caseInfo = content;
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}
@@ -393,6 +398,7 @@ public class Initial {
 		try {		
 		putLogData("ClassName", testClassName);
 		putLogData("Description", content);
+		classInfo = content;
 		} catch (Exception e) {
 			System.err.println(e.toString());
 		}

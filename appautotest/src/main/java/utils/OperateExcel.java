@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import jxl.Sheet;
+import jxl.SheetSettings;
 import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
@@ -169,10 +170,10 @@ public class OperateExcel {
 		return format1;
 	}
 
-	public void setHyperLinkForFile(int cow, int row, String filePath)
+	public void setHyperLinkForFile(int cow, int row, String filePath,String desc)
 			throws MalformedURLException, RowsExceededException, WriteException {
 		WritableHyperlink link = new WritableHyperlink(cow, row, new File(
-				filePath));
+				filePath),desc);
 		sheet.addHyperlink(link);
 	}
 
@@ -185,6 +186,10 @@ public class OperateExcel {
 		sheet.addHyperlink(link);
 	}
 
+	public void setVerticalFreeze(int col){
+		SheetSettings setting = sheet.getSettings();
+		setting.setVerticalFreeze(col);
+	}
 	public void copySheet(String modelPath, String destPath)
 			throws BiffException, IOException, WriteException {
 		WritableWorkbook wb = Workbook.createWorkbook(new File(destPath));
@@ -257,53 +262,70 @@ public class OperateExcel {
 				String status = classData.get(i).get("status");
 				String comment = classData.get(i).get("comment");
 				String screenPath = classData.get(i).get("screenPath");
+				String caseInfo = classData.get(i).get("caseInfo");
+				String classInfo = classData.get(i).get("classInfo");
 				float time1 = Float.parseFloat(time) / 1000;
 				TotalTime = TotalTime + Float.parseFloat(time) / 1000;
 				time = String.valueOf(time1) + "s";
 				if (i == 0) {
 					writeLastRow(0, className);
-					writeSameRow(2, "");
-					setHyperLinkForSheet(2, startRow, className + "-log",
+					if(classInfo !=null){
+						writeSameRow(1, classInfo);
+					}
+					else{
+						writeSameRow(1, "");
+					}
+					
+					writeSameRow(3, "");
+					setHyperLinkForSheet(3, startRow, className + "-log",
 							className, 0, 1);
 				} else {
 					writeLastRow(0, "");
 				}
 	
-				writeSameRow(4, method);
-				writeSameRow(5, time);
-				if (screenPath != null) {
-					writeSameRow(6, "");
-					setHyperLinkForFile(6, sheet.getRows() - 1, screenPath);
+				writeSameRow(5, method);
+				writeSameRow(7, time);
+				if(caseInfo !=null){
+					writeSameRow(6, caseInfo);
 				}
 				else{
 					writeSameRow(6, "");
 				}
-				writeSameRow(7, comment);
+				
+				if (screenPath != null) {
+					writeSameRow(8, "");
+					setHyperLinkForFile(8, sheet.getRows() - 1, screenPath,method);
+				}
+				else{
+					writeSameRow(8, "");
+				}
+				writeSameRow(10, comment);
 				if (status.equals("Success")) {
 					successCount = successCount + 1;
-					writeDataByColour(8, sheet.getRows() - 1, status, 10,
+					writeDataByColour(9, sheet.getRows() - 1, status, 10,
 							Colour.GREEN);
 				}
 				if (status.equals("Failure")) {
 					failureCount = failureCount + 1;
-					writeDataByColour(8, sheet.getRows() - 1, status, 10,
+					writeDataByColour(9, sheet.getRows() - 1, status, 10,
 							Colour.RED);
 				}
 				if (status.equals("Skipped")) {
 					skippedCount = skippedCount + 1;
-					writeDataByColour(8, sheet.getRows() - 1, status, 10,
+					writeDataByColour(9, sheet.getRows() - 1, status, 10,
 							Colour.YELLOW);
 				}
 			}
 			String classSuccessRate = CommonTools.getPercent(successCount,
 					methodsCounts);
-			writeData(1, startRow, classSuccessRate);
-			writeData(3, startRow, String.valueOf(methodsCounts));
+			writeData(2, startRow, classSuccessRate);
+			writeData(4, startRow, String.valueOf(methodsCounts));
 			int endRow = sheet.getRows();
 			mergeCells(0, startRow, 0, endRow - 1);
 			mergeCells(1, startRow, 1, endRow - 1);
 			mergeCells(2, startRow, 2, endRow - 1);
 			mergeCells(3, startRow, 3, endRow - 1);
+			mergeCells(4, startRow, 4, endRow - 1);
 			int oldSuccessCount = Integer.parseInt(sheet.getCell(0, 4)
 					.getContents());
 			int oldFailureCount = Integer.parseInt(sheet.getCell(1, 4)

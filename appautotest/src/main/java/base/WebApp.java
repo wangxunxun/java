@@ -66,6 +66,7 @@ public class WebApp extends UI {
 			testClassSheet.setColumnView(0, 40);
 			testClassSheet.setFormat(10, true);
 			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+			testClassSheet.setVerticalFreeze(1);
 			testClassSheet.writeLogToExcel(logData);
 			testClassSheet.close();
 			logData.clear();

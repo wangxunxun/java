@@ -23,7 +23,7 @@ public class UI extends Initial {
 		try {
 			findElement(page, name).click();
 		} catch (Exception e) {
-			Assert.fail("Fail to click the "+name +" element on the "+page+" page.\n"+e.toString());		
+			Assert.fail("Fail to click the "+name +" element on the "+page+" page.\n");		
 		}
 	}
 
@@ -45,7 +45,7 @@ public class UI extends Initial {
 		try {
 		findElement(page, name).sendKeys(value);
 		} catch (Exception e) {
-			Assert.fail("Fail to send the \"" + value + "\" value to the "+name +" element on the "+page+" page.\n"+e.toString());		
+			Assert.fail("Fail to send the \"" + value + "\" value to the "+name +" element on the "+page+" page.\n");		
 		}
 	}
 
@@ -60,7 +60,7 @@ public class UI extends Initial {
 		try {
 		findElement(page, name).clear();
 		} catch (Exception e) {
-			Assert.fail("Fail to clear the "+name +" element on the "+page+" page.\n"+e.toString());		
+			Assert.fail("Fail to clear the "+name +" element on the "+page+" page.\n");		
 		}
 	}
 
@@ -126,7 +126,7 @@ public class UI extends Initial {
 				System.out.println("Can not find the element.");
 			}
 		} catch (Exception e) {
-			Assert.fail("Can not find the "+name +" element on the "+page+" page.\n"+e.toString());		
+			Assert.fail("Can not find the "+name +" element on the "+page+" page.\n");		
 		}
 		return null;
 	}
@@ -149,7 +149,7 @@ public class UI extends Initial {
 			}
 		}
 		if (statu == false) {
-			Assert.fail("Don't find the " + name + " element on the " + page + " page.");
+			Assert.fail("Can not find the " + name + " element on the " + page + " page.");
 
 		}
 
@@ -266,7 +266,7 @@ public class UI extends Initial {
 			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
 			FileUtils.copyFile(scrFile, new File(path));
 		} catch (Exception e) {
-			Assert.fail("Get screen failed.\n"+e.toString());
+			Assert.fail("Get screen failed.\n");
 		}
 	}
 
@@ -282,7 +282,7 @@ public class UI extends Initial {
 			FileUtils.copyFile(scrFile, new File(path));
 			return path;
 		} catch (Exception e) {
-			Assert.fail("Get screen failed.\n"+e.toString());
+			Assert.fail("Get screen failed.\n");
 
 		}
 		return null;
@@ -309,7 +309,7 @@ public class UI extends Initial {
 		try {
 		ImageUtils.cutImage(srcImg, destImg + "cut by element_ " + name + " " + imgName, x, y, elementX, elementY);
 		} catch (Exception e) {
-			Assert.fail("Get element screen failed.\n"+e.toString());
+			Assert.fail("Get element screen failed.\n");
 
 		}
 	}
@@ -324,7 +324,7 @@ public class UI extends Initial {
 		ImageUtils.markImageByText(srcImg, destImg + "marked by text " + content + " " + name, content, Color.red, "黑体",
 				13);
 		} catch (Exception e) {
-			Assert.fail("Get element screen failed.\n"+e.toString());
+			Assert.fail("Get element screen failed.\n");
 		}
 	}
 

@@ -12,7 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(utils.TestngListener.class)
+//@Listeners(utils.TestngListener.class)
 public class baShi {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
 	
@@ -67,7 +67,7 @@ public class baShi {
 	
 	@Test
 	public void test002login() {
-		piaoWuWebApp.logTestDescription("test");
+//		piaoWuWebApp.logTestDescription("test");
 		piaoWuWebApp.logSuccessMessage("34342342dfdfd3423");
 	}
 	

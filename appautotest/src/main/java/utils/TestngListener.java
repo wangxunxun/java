@@ -45,6 +45,10 @@ public class TestngListener extends TestListenerAdapter {
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "Failure";
+		String caseInfo = Initial.caseInfo;
+		Initial.caseInfo = null;
+		String classInfo = Initial.classInfo;
+		Initial.classInfo = null;
 		try {
 			comment = tr.getThrowable().getMessage();
 			if (comment == null) {
@@ -61,6 +65,8 @@ public class TestngListener extends TestListenerAdapter {
 		methodData.put("status", status);
 		methodData.put("comment", "Failure info - " + comment);
 		methodData.put("screenPath", screenPath);
+		methodData.put("caseInfo",caseInfo);
+		methodData.put("classInfo", classInfo);
 		classData.add(methodData);
 
 	}
@@ -77,6 +83,10 @@ public class TestngListener extends TestListenerAdapter {
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "Success";
 		String successMessage = Initial.successMessage;
+		String caseInfo = Initial.caseInfo;
+		Initial.caseInfo = null;
+		String classInfo = Initial.classInfo;
+		Initial.classInfo = null;
 		try {
 			comment = tr.getThrowable().getMessage();
 			if (comment.isEmpty()) {
@@ -104,6 +114,8 @@ public class TestngListener extends TestListenerAdapter {
 		methodData.put("status", status);
 		methodData.put("comment", "Success info - " + comment);
 		methodData.put("screenPath", screenPath);
+		methodData.put("caseInfo",caseInfo);
+		methodData.put("classInfo", classInfo);
 		classData.add(methodData);
 
 	}
@@ -119,6 +131,10 @@ public class TestngListener extends TestListenerAdapter {
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "Skipped";
+		String caseInfo = Initial.caseInfo;
+		Initial.caseInfo = null;
+		String classInfo = Initial.classInfo;
+		Initial.classInfo = null;
 		try {
 			comment = tr.getThrowable().getMessage();
 			if (comment == null) {
@@ -134,6 +150,8 @@ public class TestngListener extends TestListenerAdapter {
 		methodData.put("status", status);
 		methodData.put("comment", "Skipped - " + comment);
 		methodData.put("screenPath", screenPath);
+		methodData.put("caseInfo",caseInfo);
+		methodData.put("classInfo", classInfo);
 		classData.add(methodData);
 	}
 
