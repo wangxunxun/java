@@ -12,6 +12,7 @@ import jxl.write.WriteException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
@@ -157,28 +158,48 @@ public class Initial {
 
 	protected Map<String, Map<String, Map<String, String>>> getElementData() {
 		ReadElementData elementdata = new ReadElementData(testDataExcelPath, elementSheet);
-		Map<String, Map<String, Map<String, String>>> eledata = elementdata.getdata();
+		Map<String, Map<String, Map<String, String>>> eledata = null;
+		try {
+		eledata = elementdata.getdata();
+		} catch (Exception e) {
+			Assert.fail("Fail to get the element data.\n"+e.toString());
+		}
 		return eledata;
 	}
 
 	public List<Map<String, String>> getTestData(String testDataSheet) {
 
 		ReadTestData readtestdata = new ReadTestData();
-		List<Map<String, String>> data = readtestdata.getTestData(testDataExcelPath, testDataSheet);
+		List<Map<String, String>> data =null;
+		try {
+		data = readtestdata.getTestData(testDataExcelPath, testDataSheet);
+		} catch (Exception e) {
+			Assert.fail("Fail to get the test data.\n"+e.toString());
+		}
 		return data;
 	}
 
 	public Object[][] getTestDataForTestNG(String testDataSheet) {
 
 		ReadTestData readtestdata = new ReadTestData();
-		Object[][] data = readtestdata.getTestDataForTestNG(testDataExcelPath, testDataSheet);
+		Object[][] data = null;
+		try {
+		data = readtestdata.getTestDataForTestNG(testDataExcelPath, testDataSheet);
+		} catch (Exception e) {
+			Assert.fail("Fail to get the test data for testNG.\n"+e.toString());
+		}
 		return data;
 	}
 
 	protected Map<String, Object> getTestCaseData() {
 
 		ReadTestCasesData testCaseData = new ReadTestCasesData(testDataExcelPath, testCaseSheet);
-		Map<String, Object> data = testCaseData.getdata();
+		Map<String, Object> data = null;
+		try {
+		data = testCaseData.getdata();
+		} catch (Exception e) {
+			Assert.fail("Fail to get the test case data .\n"+e.toString());
+		}
 		return data;
 
 	}
@@ -271,7 +292,7 @@ public class Initial {
 			String time = CommonTools.getCurrentTime();
 			System.out.println(time + " INFO - " + content);
 			writeLog(time + " INFO - " + content);
-			writeLogToExcel(1, time + " INFO - " + content);
+			writeLogToExcel(time + " INFO - " + content);
 		}
 	}
 
@@ -293,7 +314,7 @@ public class Initial {
 		writeLog(getClassName() + ".txt", content);
 	}
 
-	public void writeLogToExcel(int cow, Object content) {
+	public void writeLogToExcel(Object content) {
 
 		try {
 			putLogData("", (String) content);

@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testTicketWeb.baShi">
+      <class name="testTicketWeb.qiChe">
         <methods>
+          <include name="test005login"/>
           <include name="test000login"/>
-          <include name="tearDown"/>
+          <include name="test012editQiChePiaoJia"/>
           <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- testTicketWeb.baShi -->
+      </class> <!-- testTicketWeb.qiChe -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

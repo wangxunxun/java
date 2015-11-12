@@ -2,7 +2,6 @@ package core;
 
 import java.awt.Color;
 import java.io.File;
-import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -31,30 +30,38 @@ public class UI extends Initial {
 	public void waitToclickElement(String page, String name) {
 		waitDisplay(page, name);
 		log("Click the " + name + " element on the " + page + " page.");
-		findElement(page, name).click();
+		clickElement(page, name);
 
 	}
 
 	public void waitToSendKeys(String page, String name, String value) {
 		waitDisplay(page, name);
 		log("Send the " + value + " to the " + name + " element on the " + page + " page.");
-		findElement(page, name).sendKeys(value);
+		sendKeys(page, name, value);
 	}
 
 	public void sendKeys(String page, String name, String value) {
 		log("Send the \"" + value + "\" value to the " + name + " element on the " + page + " page.");
+		try {
 		findElement(page, name).sendKeys(value);
+		} catch (Exception e) {
+			Assert.fail("Fail to send the \"" + value + "\" value to the "+name +" element on the "+page+" page.\n"+e.toString());		
+		}
 	}
 
 	public void waitToClear(String page, String name) {
 		waitDisplay(page, name);
 		log("Clear the " + name + " element on the " + page + " page.");
-		findElement(page, name).clear();
+		clear(page, name);
 	}
 
 	public void clear(String page, String name) {
 		log("Clear the " + name + " element on the " + page + " page.");
+		try {
 		findElement(page, name).clear();
+		} catch (Exception e) {
+			Assert.fail("Fail to clear the "+name +" element on the "+page+" page.\n"+e.toString());		
+		}
 	}
 
 	public String getElementText(String page, String name) {
@@ -98,24 +105,28 @@ public class UI extends Initial {
 
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
-		if (selecttype.equals("css")) {
-			return driver.findElement(By.cssSelector(location));
-		} else if (selecttype.equals("id")) {
-			return driver.findElement(By.id(location));
-		} else if (selecttype.equals("xpath")) {
-			return driver.findElement(By.xpath(location));
-		} else if (selecttype.equals("name")) {
-			return driver.findElement(By.name(location));
-
-		} else if (selecttype.equals("linktext")) {
-			return driver.findElement(By.linkText(location));
-
-		} else if (selecttype.equals("partiallinktext")) {
-			return driver.findElement(By.partialLinkText(location));
-		} else if (selecttype.equals("tagname")) {
-			return driver.findElement(By.tagName(location));
-		} else {
-			System.out.println("Can not find the element.");
+		try {
+			if (selecttype.equals("css")) {
+				return driver.findElement(By.cssSelector(location));
+			} else if (selecttype.equals("id")) {
+				return driver.findElement(By.id(location));
+			} else if (selecttype.equals("xpath")) {
+				return driver.findElement(By.xpath(location));
+			} else if (selecttype.equals("name")) {
+				return driver.findElement(By.name(location));
+	
+			} else if (selecttype.equals("linktext")) {
+				return driver.findElement(By.linkText(location));
+	
+			} else if (selecttype.equals("partiallinktext")) {
+				return driver.findElement(By.partialLinkText(location));
+			} else if (selecttype.equals("tagname")) {
+				return driver.findElement(By.tagName(location));
+			} else {
+				System.out.println("Can not find the element.");
+			}
+		} catch (Exception e) {
+			Assert.fail("Can not find the "+name +" element on the "+page+" page.\n"+e.toString());		
 		}
 		return null;
 	}
@@ -254,10 +265,8 @@ public class UI extends Initial {
 			log("Get screen.");
 			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
 			FileUtils.copyFile(scrFile, new File(path));
-		} catch (IOException e) {
-			System.err.println(e.toString());
-			log("Get screen failed.");
-			Assert.fail("Get screen failed.");
+		} catch (Exception e) {
+			Assert.fail("Get screen failed.\n"+e.toString());
 		}
 	}
 
@@ -272,10 +281,8 @@ public class UI extends Initial {
 			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
 			FileUtils.copyFile(scrFile, new File(path));
 			return path;
-		} catch (IOException e) {
-			System.err.println(e.toString());
-			log("Get screen failed.");
-			Assert.fail("Get screen failed.");
+		} catch (Exception e) {
+			Assert.fail("Get screen failed.\n"+e.toString());
 
 		}
 		return null;
@@ -299,8 +306,12 @@ public class UI extends Initial {
 		int y = getElementLocateY(page, name);
 		int elementX = getElementX(page, name);
 		int elementY = getElementY(page, name);
-
+		try {
 		ImageUtils.cutImage(srcImg, destImg + "cut by element_ " + name + " " + imgName, x, y, elementX, elementY);
+		} catch (Exception e) {
+			Assert.fail("Get element screen failed.\n"+e.toString());
+
+		}
 	}
 
 	public void getScreenMarkedByText(String content) {
@@ -309,8 +320,12 @@ public class UI extends Initial {
 		File srcImg1 = new File(srcImg);
 		String destImg = screenDir;
 		String name = srcImg1.getName();
+		try {
 		ImageUtils.markImageByText(srcImg, destImg + "marked by text " + content + " " + name, content, Color.red, "黑体",
 				13);
+		} catch (Exception e) {
+			Assert.fail("Get element screen failed.\n"+e.toString());
+		}
 	}
 
 	public int getElementX(String page, String name) {
