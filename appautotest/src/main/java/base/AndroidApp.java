@@ -80,6 +80,10 @@ public class AndroidApp extends UI {
 		}
 		driver.quit();
 	}
+	
+	public void quitWithoutTestData() {
+		driver.quit();
+	}
 	public String getApkName() {
 		return apkName;
 	}

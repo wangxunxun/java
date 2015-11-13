@@ -86,6 +86,9 @@ public class WebApp extends UI {
 		}
 		driver.quit();
 	}
+	public void quitWithoutTestData() {
+		driver.quit();
+	}
 
 	public String getCurrentUrl() {
 		log("Get current url.");

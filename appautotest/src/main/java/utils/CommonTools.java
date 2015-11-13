@@ -159,6 +159,27 @@ public class CommonTools {
 		wbe.write();
 		wbe.close();
 	}
+	public static boolean verifySheet(String excelPath, String name) throws BiffException, IOException, WriteException {
+		Workbook wb = Workbook.getWorkbook(new File(excelPath));
+		WritableWorkbook wbe = Workbook.createWorkbook(new File(excelPath), wb);
+		String[] sheetNames = wbe.getSheetNames();
+		Map<String, String> map = new HashMap<String, String>();
+		for (int i = 0; i < sheetNames.length; i++) {
+			String j = Integer.toString(i);
+			map.put(sheetNames[i], j);
+		}
+		for (String sheetName : sheetNames) {
+			if (sheetName.contains(name)) {
+				wbe.write();
+				wbe.close();
+				return true;
+			}
+
+		}		
+		wbe.write();
+		wbe.close();
+		return false;
+	}
 	
 	public static String getPercent(int numerator,int denominator){
 		float numerator1 = numerator;

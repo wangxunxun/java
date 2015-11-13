@@ -104,6 +104,7 @@ public class Initial {
 	//log数据
 	public static List<List<String>> logData = new ArrayList<List<String>>();
 
+	
 	protected String getTestReportDir() {
 		testReportDir = getProperties("testReportDir");
 		if (testReportDir != null) {
@@ -418,10 +419,9 @@ public class Initial {
 	}
 
 	protected void createSheet(int index) throws WriteException, BiffException, IOException {
-		deleteSheet(testClassName);
-
-		CommonTools.createSheet(testReportDir + testReportName + ".xls", testClassName, index);
-
+		if(!CommonTools.verifySheet(testReportDir + testReportName + ".xls", testClassName)){
+			CommonTools.createSheet(testReportDir + testReportName + ".xls", testClassName, index);
+		}
 	}
 
 	protected void deleteSheet(String sheetName) {

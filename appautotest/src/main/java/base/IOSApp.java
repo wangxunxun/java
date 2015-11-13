@@ -100,6 +100,9 @@ public class IOSApp extends UI {
     	driver.quit();
 	}
   	
+	public void quitWithoutTestData() {
+		driver.quit();
+	}
 	public IOSElement findElement(String page,String name){
 
 		String selecttype = elementData.get(page).get(name).get("SelectType");

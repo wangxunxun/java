@@ -12,10 +12,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-//@Listeners(utils.TestngListener.class)
+@Listeners(utils.TestngListener.class)
 public class baShi {
 	piaoWuWebTest piaoWuWebApp = new piaoWuWebTest();
-	
+	piaoWuWebTest testaaa;
 	
 	
 
@@ -56,7 +56,7 @@ public class baShi {
 		
 	@AfterClass
 	public void tearDown() {
-		piaoWuWebApp.quit();
+		testaaa.quit();
 	}
 
 	@Test
@@ -80,7 +80,13 @@ public class baShi {
 	@Test
 	public void test004login() {
 		piaoWuWebApp.logTestDescription("test");
-		piaoWuWebApp.logSuccessMessage("3434234234eeer23");
+		piaoWuWebApp.quitWithoutTestData();
+		testaaa = new piaoWuWebTest();
+		testaaa.initialTestData();
+		testaaa.runChormeApp();
+		testaaa.waitDisplay("侧边栏", "巴士售票管理");
+		testaaa.clickElement("侧边栏", "巴士售票管理");
+		testaaa.logSuccessMessage("3434234234eeer23");
 	}
 	
 //	@Test
