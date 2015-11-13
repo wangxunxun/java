@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>3/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Nov 13 17:24:57 CST 2015</td>
+<td>Started on:</td><td>Sat Nov 14 00:13:03 CST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>43 seconds (43073 ms)</td>
+<tr><td>Total time:</td><td>45 seconds (45947 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,20 +75,49 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testTicketWeb.baShi.test004login()'><b>test004login</b><br>Test class: testTicketWeb.baShi<br/>
-<a href="#Output-787122337" onClick='toggleBox("Output-787122337", this, "Show output", "Hide output");'>Show output</a>
+<td title='autotest.appautotest.testa.enterMainPage()'><b>enterMainPage</b><br>Test class: autotest.appautotest.testa<br/>
+<a href="#Output-402405659" onClick='toggleBox("Output-402405659", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-787122337" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-787122337">
-D:\workplace\java\appautotest/failTestCaseScreenShot/20151113-172538-369_test004login.png<br/>
-<img src="../D:\workplace\java\appautotest/failTestCaseScreenShot/20151113-172538-369_test004login.png"/><br/>
+<a href="#Output-402405659" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-402405659">
+F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-001343-223_enterMainPage.png<br/>
+<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-001343-223_enterMainPage.png"/><br/>
 </div>
 </td>
-<td><div><pre>java.lang.AssertionError: Can not find the 巴士售票管理 element on the 侧边栏 page.
-	at org.testng.Assert.fail(Assert.java:94)
-	at core.UI.waitDisplay(UI.java:152)
-	at core.UI.waitDisplay(UI.java:135)
-	at testTicketWeb.baShi.test004login(baShi.java:87)
+<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 338 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
+System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.21.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_60&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=F:\workspace\java\appautotest/testResource/apps/ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=02a59885, platform=LINUX, appActivity=cn.beyondsoft.wicket.LoddingActivity, desired={app=F:\workspace\java\appautotest/testResource/apps/ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, appActivity=cn.beyondsoft.wicket.LoddingActivity, unicodeKeyboard=true, platformName=Android, deviceName=null, resetKeyboard=true}, platformVersion=4.3, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, unicodeKeyboard=true, platformName=Android, resetKeyboard=true}]
+Session ID: 68918efc-3f44-4515-869a-6c0de8c84eda
+*** Element info: {Using=id, value=goto_main_btn}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:358)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:399)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:47)
+	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ById.findElement(By.java:215)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:37)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at base.AndroidApp.findElement(AndroidApp.java:328)
+	at base.AndroidApp.findElement(AndroidApp.java:1)
+	at core.UI.getElementLocateX(UI.java:348)
+	at base.AndroidApp.getElementScreen(AndroidApp.java:151)
+	at autotest.appautotest.testa.enterMainPage(testa.java:46)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -113,12 +142,41 @@ D:\workplace\java\appautotest/failTestCaseScreenShot/20151113-172538-369_test004
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace787122337", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace787122337'><pre>java.lang.AssertionError: Can not find the 巴士售票管理 element on the 侧边栏 page.
-	at org.testng.Assert.fail(Assert.java:94)
-	at core.UI.waitDisplay(UI.java:152)
-	at core.UI.waitDisplay(UI.java:135)
-	at testTicketWeb.baShi.test004login(baShi.java:87)
+</pre></div><a href='#' onClick='toggleBox("stack-trace402405659", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace402405659'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 338 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.46.0&apos;, revision: &apos;61506a4624b13675f24581e453592342b7485d71&apos;, time: &apos;2015-06-04 10:22:50&apos;
+System info: host: &apos;troy-PC&apos;, ip: &apos;192.168.21.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_60&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{app=F:\workspace\java\appautotest/testResource/apps/ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=02a59885, platform=LINUX, appActivity=cn.beyondsoft.wicket.LoddingActivity, desired={app=F:\workspace\java\appautotest/testResource/apps/ticketingsystem(10-15).apk, appPackage=cn.beyondsoft.wicket, appActivity=cn.beyondsoft.wicket.LoddingActivity, unicodeKeyboard=true, platformName=Android, deviceName=null, resetKeyboard=true}, platformVersion=4.3, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, unicodeKeyboard=true, platformName=Android, resetKeyboard=true}]
+Session ID: 68918efc-3f44-4515-869a-6c0de8c84eda
+*** Element info: {Using=id, value=goto_main_btn}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:605)
+	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:27)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:358)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:399)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:47)
+	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
+	at org.openqa.selenium.By$ById.findElement(By.java:215)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:37)
+	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
+	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
+	at base.AndroidApp.findElement(AndroidApp.java:328)
+	at base.AndroidApp.findElement(AndroidApp.java:1)
+	at core.UI.getElementLocateX(UI.java:348)
+	at base.AndroidApp.getElementScreen(AndroidApp.java:151)
+	at autotest.appautotest.testa.enterMainPage(testa.java:46)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -144,31 +202,8 @@ D:\workplace\java\appautotest/failTestCaseScreenShot/20151113-172538-369_test004
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
-<td>25</td>
-<td>testTicketWeb.baShi@43a25848</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='testTicketWeb.baShi.test000login()'><b>test000login</b><br>Test class: testTicketWeb.baShi</td>
-<td></td>
-<td>9</td>
-<td>testTicketWeb.baShi@43a25848</td></tr>
-<tr>
-<td title='testTicketWeb.baShi.test002login()'><b>test002login</b><br>Test class: testTicketWeb.baShi</td>
-<td></td>
-<td>0</td>
-<td>testTicketWeb.baShi@43a25848</td></tr>
-<tr>
-<td title='testTicketWeb.baShi.test003login()'><b>test003login</b><br>Test class: testTicketWeb.baShi</td>
-<td></td>
-<td>0</td>
-<td>testTicketWeb.baShi@43a25848</td></tr>
+<td>12</td>
+<td>autotest.appautotest.testa@7c30a502</td></tr>
 </table><p>
 </body>
 </html>

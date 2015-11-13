@@ -8,8 +8,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import core.Initial;
@@ -17,7 +20,8 @@ import utils.CommonTools;
 import utils.ImageUtils;
 
 public class UI extends Initial {
-
+	public static WebDriver driver;
+	protected WebDriverWait wait;
 	public void clickElement(String page, String name) {
 		log("Click the " + name + " element on the " + page + " page.");
 		try {
@@ -256,8 +260,10 @@ public class UI extends Initial {
 	}
 
 	public void getScreen(String filename) {
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = null;
 
+        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        
 		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
 			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
 		}
@@ -271,8 +277,10 @@ public class UI extends Initial {
 	}
 
 	private String getScreenReturnPath(String filename) {
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = null;
 
+        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        
 		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
 			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
 		}

@@ -2,17 +2,23 @@ package base;
 
 import io.appium.java_client.android.AndroidElement;
 import utils.CommonTools;
+import utils.ImageUtils;
 import utils.OperateExcel;
 import utils.TestngListener;
 import io.appium.java_client.android.AndroidDriver;
 
+import java.awt.Color;
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -49,23 +55,7 @@ public class AndroidApp extends UI {
 
 
 	public void quit() {
-		try {
-			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
-			testSummaySheet.setFormat(10, true);
-			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
-			testSummaySheet.close();
-			TestngListener.classData.clear();
-			
-			
-			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
-			testClassSheet.setColumnView(1, 100);
-			testClassSheet.setColumnView(0, 40);
-			testClassSheet.setFormat(10, true);
-			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
-			testClassSheet.writeLogToExcel(logData);
-			testClassSheet.close();
-			logData.clear();
-			
+		try {	
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -75,14 +65,113 @@ public class AndroidApp extends UI {
 				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
 				testScriptData.clear();
 			}
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+			System.out.println(testReportDir + testReportName + ".xls");
+			System.out.println(testSummarySheetName);
+			testSummaySheet.setFormat(10, true);
+			System.out.println(TestngListener.classData);
+			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
+			System.out.println(22);
+			testSummaySheet.close();
+			TestngListener.classData.clear();
+		} catch (Exception e) {
+			System.err.println(e+"111");
+		}
+			try {			
+			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
+			testClassSheet.setColumnView(1, 100);
+			testClassSheet.setColumnView(0, 40);
+			testClassSheet.setFormat(10, true);
+			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+			testClassSheet.writeLogToExcel(logData);
+			testClassSheet.close();
+			logData.clear();
+			
+
 		} catch (Exception e) {
 			System.err.println(e);
 		}
 		driver.quit();
 	}
-	
+
+
 	public void quitWithoutTestData() {
 		driver.quit();
+	}
+	public void getScreen() {
+		getScreen("");
+	}
+	public void getScreen(String filename) {
+		File scrFile = null;
+
+        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        
+		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
+			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
+		}
+		try {
+			log("Get screen.");
+			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
+			FileUtils.copyFile(scrFile, new File(path));
+		} catch (Exception e) {
+			Assert.fail("Get screen failed.\n");
+		}
+	}
+	
+	private String getScreenReturnPath(String filename) {
+		File scrFile = null;
+
+        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        
+		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
+			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
+		}
+		try {
+			log("Get screen.");
+			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
+			FileUtils.copyFile(scrFile, new File(path));
+			return path;
+		} catch (Exception e) {
+			Assert.fail("Get screen failed.\n");
+
+		}
+		return null;
+
+	}
+	
+	private String getScreenReturnPath() {
+		return getScreenReturnPath("");
+	}
+	
+	public void getElementScreen(String page, String name) {
+		String srcImg = getScreenReturnPath();
+		File srcImg1 = new File(srcImg);
+		String destImg = screenDir;
+		String imgName = srcImg1.getName();
+		int x = getElementLocateX(page, name);
+		int y = getElementLocateY(page, name);
+		int elementX = getElementX(page, name);
+		int elementY = getElementY(page, name);
+		try {
+		ImageUtils.cutImage(srcImg, destImg + "cut by element_ " + name + " " + imgName, x, y, elementX, elementY);
+		} catch (Exception e) {
+			Assert.fail("Get element screen failed.\n");
+
+		}
+	}
+	
+	public void getScreenMarkedByText(String content) {
+
+		String srcImg = getScreenReturnPath();
+		File srcImg1 = new File(srcImg);
+		String destImg = screenDir;
+		String name = srcImg1.getName();
+		try {
+		ImageUtils.markImageByText(srcImg, destImg + "marked by text " + content + " " + name, content, Color.red, "黑体",
+				13);
+		} catch (Exception e) {
+			Assert.fail("Get element screen failed.\n");
+		}
 	}
 	public String getApkName() {
 		return apkName;

@@ -5,7 +5,7 @@ import java.util.List;
 import org.testng.annotations.AfterClass;
 
 import org.testng.annotations.BeforeClass;
-
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.AndroidApp;
@@ -13,7 +13,7 @@ import initial.npAndroid;
 import io.appium.java_client.android.AndroidElement;
 import utils.CommonTools;
 
-
+@Listeners(utils.TestngListener.class)
 public class ad {
 	npAndroid NPAndroid = new npAndroid();
 	@BeforeClass

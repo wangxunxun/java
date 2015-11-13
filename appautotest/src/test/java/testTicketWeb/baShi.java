@@ -56,7 +56,7 @@ public class baShi {
 		
 	@AfterClass
 	public void tearDown() {
-		testaaa.quit();
+		piaoWuWebApp.quit();
 	}
 
 	@Test
@@ -69,6 +69,7 @@ public class baShi {
 	public void test002login() {
 //		piaoWuWebApp.logTestDescription("test");
 		piaoWuWebApp.logSuccessMessage("34342342dfdfd3423");
+		piaoWuWebApp.getScreen();
 	}
 	
 	@Test
@@ -80,13 +81,9 @@ public class baShi {
 	@Test
 	public void test004login() {
 		piaoWuWebApp.logTestDescription("test");
-		piaoWuWebApp.quitWithoutTestData();
-		testaaa = new piaoWuWebTest();
-		testaaa.initialTestData();
-		testaaa.runChormeApp();
-		testaaa.waitDisplay("侧边栏", "巴士售票管理");
-		testaaa.clickElement("侧边栏", "巴士售票管理");
-		testaaa.logSuccessMessage("3434234234eeer23");
+		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");
+		piaoWuWebApp.clickElement("侧边栏", "巴士售票管理");
+		piaoWuWebApp.logSuccessMessage("3434234234eeer23");
 	}
 	
 //	@Test

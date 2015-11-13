@@ -23,8 +23,7 @@ import utils.ReadTestData;
 
 public class Initial {
 
-	public static WebDriver driver;
-	protected WebDriverWait wait;
+
 	protected int waitTime;
 	//测试项目配置文件
 	protected String configFileName;

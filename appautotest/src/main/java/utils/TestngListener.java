@@ -9,12 +9,15 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
+
+import base.AndroidApp;
 import utils.CommonTools;
 import core.Initial;
-
+import core.UI;
 
 public class TestngListener extends TestListenerAdapter {
 	private String className;
@@ -32,11 +35,7 @@ public class TestngListener extends TestListenerAdapter {
 		String screenPath = null;
 		try {
 			screenPath = takeScreenShot(tr);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		className = tr.getTestClass().getName();
@@ -65,7 +64,7 @@ public class TestngListener extends TestListenerAdapter {
 		methodData.put("status", status);
 		methodData.put("comment", "Failure info - " + comment);
 		methodData.put("screenPath", screenPath);
-		methodData.put("caseInfo",caseInfo);
+		methodData.put("caseInfo", caseInfo);
 		methodData.put("classInfo", classInfo);
 		classData.add(methodData);
 
@@ -114,7 +113,7 @@ public class TestngListener extends TestListenerAdapter {
 		methodData.put("status", status);
 		methodData.put("comment", "Success info - " + comment);
 		methodData.put("screenPath", screenPath);
-		methodData.put("caseInfo",caseInfo);
+		methodData.put("caseInfo", caseInfo);
 		methodData.put("classInfo", classInfo);
 		classData.add(methodData);
 
@@ -125,6 +124,12 @@ public class TestngListener extends TestListenerAdapter {
 		super.onTestSkipped(tr);
 		Map<String, String> methodData = new HashMap<String, String>();
 		String screenPath = null;
+		CommonTools.log(tr.getName() + " Skipped");
+		try {
+			screenPath = takeScreenShot(tr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		className = tr.getTestClass().getName();
 		String[] ddd = className.split("\\.");
 		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
@@ -150,14 +155,37 @@ public class TestngListener extends TestListenerAdapter {
 		methodData.put("status", status);
 		methodData.put("comment", "Skipped - " + comment);
 		methodData.put("screenPath", screenPath);
-		methodData.put("caseInfo",caseInfo);
+		methodData.put("caseInfo", caseInfo);
 		methodData.put("classInfo", classInfo);
 		classData.add(methodData);
 	}
 
+	@Override
+	public void onTestStart(ITestResult tr) {
+		super.onTestStart(tr);
+		System.out.println(tr.getName() + " Start");
+	}
+
+	@Override
+	public void onFinish(ITestContext testContext) {
+		super.onFinish(testContext);
+		System.out.println("The cases end on " + testContext.getEndDate());
+		System.out.println("The failed case counts is " + testContext.getFailedTests().size());
+		System.out.println("The skipped case counts is " + testContext.getSkippedTests().size());
+		System.out.println("The success case counts is " + testContext.getPassedTests().size());
+
+	}
+
+	@Override
+	public void onStart(ITestContext testContext) {
+		super.onStart(testContext);
+		System.out.println("The cases start on " + testContext.getStartDate());
+		System.out.println("Start to excute " + testContext.getAllTestMethods().length+" case");
+	}
+
 	private String takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
-		File scrFile = ((TakesScreenshot) Initial.driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = ((TakesScreenshot) AndroidApp.driver).getScreenshotAs(OutputType.FILE);
 		String dir_name = CommonTools.setPath("/failTestCaseScreenShot/");
 		if (!(new File(dir_name).isDirectory())) { // 判断是否存在该目录
 			new File(dir_name).mkdir(); // 如果不存在则新建一个目录
@@ -170,6 +198,5 @@ public class TestngListener extends TestListenerAdapter {
 		return filepath;
 
 	}
-
 
 }
