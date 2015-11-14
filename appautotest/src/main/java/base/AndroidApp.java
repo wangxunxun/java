@@ -2,23 +2,16 @@ package base;
 
 import io.appium.java_client.android.AndroidElement;
 import utils.CommonTools;
-import utils.ImageUtils;
+
 import utils.OperateExcel;
 import utils.TestngListener;
 import io.appium.java_client.android.AndroidDriver;
-
-import java.awt.Color;
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -46,22 +39,21 @@ public class AndroidApp extends UI {
 		try {
 			driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		wait = new WebDriverWait(driver, waitTime);
 
 	}
 
-
 	public void quit() {
 		try {
+			testAppType = null;
 			String excelPath = CommonTools.setPath(testDataExcelPath);
-			if(writeResult==true){
+			if (writeResult == true) {
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
 				testResultData.clear();
 			}
-			if(writeScript == true){
+			if (writeScript == true) {
 				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
 				testScriptData.clear();
 			}
@@ -74,98 +66,25 @@ public class AndroidApp extends UI {
 			testClassSheet.writeLogToExcel(logData);
 			testClassSheet.close();
 			logData.clear();
-			
-			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls",
+					testSummarySheetName);
 			testSummaySheet.setFormat(10, true);
 			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
 			testSummaySheet.close();
 			TestngListener.classData.clear();
-	
+
 		} catch (Exception e) {
 			System.err.println(e);
 		}
 		driver.quit();
 	}
 
-
 	public void quitWithoutTestData() {
+		testAppType = null;
 		driver.quit();
 	}
-	public void getScreen() {
-		getScreen("");
-	}
-	public void getScreen(String filename) {
-		File scrFile = null;
 
-        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        
-		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
-			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
-		}
-		try {
-			log("Get screen.");
-			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
-			FileUtils.copyFile(scrFile, new File(path));
-		} catch (Exception e) {
-			Assert.fail("Get screen failed.\n");
-		}
-	}
-	
-	private String getScreenReturnPath(String filename) {
-		File scrFile = null;
-
-        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        
-		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
-			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
-		}
-		try {
-			log("Get screen.");
-			String path = screenDir + CommonTools.getCurrentTime() + "_" + filename + ".png";
-			FileUtils.copyFile(scrFile, new File(path));
-			return path;
-		} catch (Exception e) {
-			Assert.fail("Get screen failed.\n");
-
-		}
-		return null;
-
-	}
-	
-	private String getScreenReturnPath() {
-		return getScreenReturnPath("");
-	}
-	
-	public void getElementScreen(String page, String name) {
-		String srcImg = getScreenReturnPath();
-		File srcImg1 = new File(srcImg);
-		String destImg = screenDir;
-		String imgName = srcImg1.getName();
-		int x = getElementLocateX(page, name);
-		int y = getElementLocateY(page, name);
-		int elementX = getElementX(page, name);
-		int elementY = getElementY(page, name);
-		try {
-		ImageUtils.cutImage(srcImg, destImg + "cut by element_ " + name + " " + imgName, x, y, elementX, elementY);
-		} catch (Exception e) {
-			Assert.fail("Get element screen failed.\n");
-
-		}
-	}
-	
-	public void getScreenMarkedByText(String content) {
-
-		String srcImg = getScreenReturnPath();
-		File srcImg1 = new File(srcImg);
-		String destImg = screenDir;
-		String name = srcImg1.getName();
-		try {
-		ImageUtils.markImageByText(srcImg, destImg + "marked by text " + content + " " + name, content, Color.red, "黑体",
-				13);
-		} catch (Exception e) {
-			Assert.fail("Get element screen failed.\n");
-		}
-	}
 	public String getApkName() {
 		return apkName;
 	}
@@ -241,42 +160,45 @@ public class AndroidApp extends UI {
 	}
 
 	public void swipeOfType(String type) {
-		int windowlenX = driver.manage().window().getSize().getWidth();
-		int windowlenY = driver.manage().window().getSize().getHeight();
-		String swipeLeft = "left";
+		try {
+			int windowlenX = driver.manage().window().getSize().getWidth();
+			int windowlenY = driver.manage().window().getSize().getHeight();
+			String swipeLeft = "left";
+			String swipeRight = "right";
 
-		String swipeRight = "right";
+			String swipeUp = "up";
 
-		String swipeUp = "up";
+			String swipeDown = "down";
 
-		String swipeDown = "down";
+			// Sliding screen to the left
+			if (type.equalsIgnoreCase(swipeLeft)) {
+				log("Swipe left.");
+				driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.1),
+						(int) (windowlenY * 0.5), 3000);
+			}
 
-		// Sliding screen to the left
-		if (type.equalsIgnoreCase(swipeLeft)) {
-			log("Swipe left.");
-			driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.1),
-					(int) (windowlenY * 0.5), 3000);
-		}
+			// Sliding screen to the right
+			if (type.equalsIgnoreCase(swipeRight)) {
+				log("Swipe right.");
+				driver.swipe((int) (windowlenX * 0.1), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9),
+						(int) (windowlenY * 0.5), 3000);
+			}
 
-		// Sliding screen to the right
-		if (type.equalsIgnoreCase(swipeRight)) {
-			log("Swipe right.");
-			driver.swipe((int) (windowlenX * 0.1), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9),
-					(int) (windowlenY * 0.5), 3000);
-		}
+			// Screen upward sliding
+			if (type.equalsIgnoreCase(swipeUp)) {
+				log("Swipe up.");
+				driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.8), (int) (windowlenX * 0.5),
+						(int) (windowlenY * 0.4), 3000);
+			}
 
-		// Screen upward sliding
-		if (type.equalsIgnoreCase(swipeUp)) {
-			log("Swipe up.");
-			driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.8), (int) (windowlenX * 0.5),
-					(int) (windowlenY * 0.4), 3000);
-		}
-
-		// Slide down the screen
-		if (type.equalsIgnoreCase(swipeDown)) {
-			log("Swipe down.");
-			driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5),
-					(int) (windowlenY * 0.8), 3000);
+			// Slide down the screen
+			if (type.equalsIgnoreCase(swipeDown)) {
+				log("Swipe down.");
+				driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5),
+						(int) (windowlenY * 0.8), 3000);
+			}
+		} catch (Exception e) {
+			Assert.fail("Fail to swip to " + type + ".");
 		}
 
 	}
@@ -305,80 +227,88 @@ public class AndroidApp extends UI {
 		try {
 			log("Execute adb Shell \"" + adbshell + "\".");
 			Runtime.getRuntime().exec(adbshell);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			Assert.fail("Fail to execute the script " + adbshell + ".");
 		}
 	}
 
 	public AndroidElement findElement(String page, String name) {
+		try {
+			String selecttype = elementData.get(page).get(name).get("SelectType");
+			String location = elementData.get(page).get(name).get("Location");
+			if (selecttype.equals("css")) {
+				return driver.findElement(By.cssSelector(location));
+			} else if (selecttype.equals("id")) {
+				return driver.findElement(By.id(location));
+			} else if (selecttype.equals("xpath")) {
+				return driver.findElement(By.xpath(location));
+			} else if (selecttype.equals("name")) {
+				return driver.findElement(By.name(location));
+			}
 
-		String selecttype = elementData.get(page).get(name).get("SelectType");
-		String location = elementData.get(page).get(name).get("Location");
-		if (selecttype.equals("css")) {
-			return driver.findElement(By.cssSelector(location));
-		} else if (selecttype.equals("id")) {
-			return driver.findElement(By.id(location));
-		} else if (selecttype.equals("xpath")) {
-			return driver.findElement(By.xpath(location));
-		} else if (selecttype.equals("name")) {
-			return driver.findElement(By.name(location));
-		}
-
-		else if (selecttype.equals("linktext")) {
-			return driver.findElement(By.linkText(location));
-		} else if (selecttype.equals("partiallinktext")) {
-			return driver.findElement(By.partialLinkText(location));
-		} else if (selecttype.equals("tagname")) {
-			return driver.findElement(By.tagName(location));
-		} else if (selecttype.equals("scrollname")) {
-			return driver.scrollTo(location);
-		} else if (selecttype.equals("index")) {
-			String[] sourceStrArray = location.split(",");
-			String classname = sourceStrArray[0];
-			String index = sourceStrArray[1];
-			int in = Integer.parseInt(index);
-			return findElementByClassNameIndex(classname, in);
-		} else {
-			log("Can not find the element.");
+			else if (selecttype.equals("linktext")) {
+				return driver.findElement(By.linkText(location));
+			} else if (selecttype.equals("partiallinktext")) {
+				return driver.findElement(By.partialLinkText(location));
+			} else if (selecttype.equals("tagname")) {
+				return driver.findElement(By.tagName(location));
+			} else if (selecttype.equals("scrollname")) {
+				return driver.scrollTo(location);
+			} else if (selecttype.equals("index")) {
+				String[] sourceStrArray = location.split(",");
+				String classname = sourceStrArray[0];
+				String index = sourceStrArray[1];
+				int in = Integer.parseInt(index);
+				return findElementByClassNameIndex(classname, in);
+			} else {
+				log("Can not find the element.");
+			}
+		} catch (Exception e) {
+			Assert.fail("Can not find the " + name + " element on the " + page + " page.\n");
 		}
 		return null;
 	}
 
 	public void tabElement(String page, String name) {
-
-		String selecttype = elementData.get(page).get(name).get("SelectType");
-		String location = elementData.get(page).get(name).get("Location");
-		if (selecttype.equals("tab")) {
-			String[] sourceStrArray = location.split(",");
-			String x = sourceStrArray[0];
-			String y = sourceStrArray[1];
-			int newx = Integer.parseInt(x);
-			int newy = Integer.parseInt(y);
-			tab(newx, newy);
-		} else {
-			log("Please provide the coordinate.");
+		try {
+			String selecttype = elementData.get(page).get(name).get("SelectType");
+			String location = elementData.get(page).get(name).get("Location");
+			if (selecttype.equals("tab")) {
+				String[] sourceStrArray = location.split(",");
+				String x = sourceStrArray[0];
+				String y = sourceStrArray[1];
+				int newx = Integer.parseInt(x);
+				int newy = Integer.parseInt(y);
+				tab(newx, newy);
+			} else {
+				log("Please provide the coordinate.");
+			}
+		} catch (Exception e) {
+			Assert.fail("Fail to tap the " + name + " element on the " + page + " page.\n");
 		}
 	}
 
 	public void longTabElement(String page, String name) {
-
-		String selecttype = elementData.get(page).get(name).get("SelectType");
-		String location = elementData.get(page).get(name).get("Location");
-		if (selecttype.equals("tab")) {
-			String[] sourceStrArray = location.split(",");
-			String x = sourceStrArray[0];
-			String y = sourceStrArray[1];
-			int newx = Integer.parseInt(x);
-			int newy = Integer.parseInt(y);
-			longTab(newx, newy);
-		} else {
-			log("Please provide the coordinate.");
+		try {
+			String selecttype = elementData.get(page).get(name).get("SelectType");
+			String location = elementData.get(page).get(name).get("Location");
+			if (selecttype.equals("tab")) {
+				String[] sourceStrArray = location.split(",");
+				String x = sourceStrArray[0];
+				String y = sourceStrArray[1];
+				int newx = Integer.parseInt(x);
+				int newy = Integer.parseInt(y);
+				longTab(newx, newy);
+			} else {
+				log("Please provide the coordinate.");
+			}
+		} catch (Exception e) {
+			Assert.fail("Fail to long tap the " + name + " element on the " + page + " page.\n");
 		}
 	}
 
 	public void swipeElement(String page, String name) {
-
+		try {
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("swipe")) {
@@ -395,8 +325,10 @@ public class AndroidApp extends UI {
 		} else {
 			log("Please provide the coordinate.");
 		}
+	} catch (Exception e) {
+		Assert.fail("Fail to swip to the " + name + " element on the " + page + " page.\n");
 	}
-
+	}
 
 	public void tab(int fingers, int x, int y, int duration) {
 		float a = (float) x / basicWindowX;

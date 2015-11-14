@@ -47,7 +47,7 @@ public class IOSApp extends UI {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
     
-        capabilities.setCapability("app", app);
+        capabilities.setCapability("app", iosApp);
         capabilities.setCapability("deviceName", iosDeviceName);
         capabilities.setCapability("platformVersion", platformVersion);
         capabilities.setCapability("platform", platform);
@@ -67,6 +67,7 @@ public class IOSApp extends UI {
   	public void quit(){
 
 		try {
+			testAppType = null;
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -103,6 +104,7 @@ public class IOSApp extends UI {
 	}
   	
 	public void quitWithoutTestData() {
+		testAppType = null;
 		driver.quit();
 	}
 	public IOSElement findElement(String page,String name){

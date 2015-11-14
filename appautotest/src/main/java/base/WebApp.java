@@ -55,6 +55,7 @@ public class WebApp extends UI {
 
 	public void quit() {
 		try {
+			testAppType = null;
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -90,6 +91,7 @@ public class WebApp extends UI {
 		driver.quit();
 	}
 	public void quitWithoutTestData() {
+		testAppType = null;
 		driver.quit();
 	}
 

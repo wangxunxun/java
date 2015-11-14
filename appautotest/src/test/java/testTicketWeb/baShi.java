@@ -63,6 +63,8 @@ public class baShi {
 	public void test000login(){
 		piaoWuWebApp.logTestDescription("login the ststem");
 		piaoWuWebApp.enterHomePage();
+		piaoWuWebApp.getScreen();
+		piaoWuWebApp.assertEquals("333", "333334");
 	}
 	
 //	@Test

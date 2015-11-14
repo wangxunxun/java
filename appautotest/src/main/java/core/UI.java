@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import base.AndroidApp;
+import base.IOSApp;
 import core.Initial;
 import utils.CommonTools;
 import utils.ImageUtils;
@@ -260,9 +262,16 @@ public class UI extends Initial {
 
 	public void getScreen(String filename) {
 		File scrFile = null;
+        if (testAppType =="web"){
+        	scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            
+        } else if(testAppType =="android"){
+        	scrFile = ((TakesScreenshot)AndroidApp.driver).getScreenshotAs(OutputType.FILE);       	
+        }
+        else if (testAppType =="ios"){
+        	scrFile = ((TakesScreenshot)IOSApp.driver).getScreenshotAs(OutputType.FILE);
+        }
 
-        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        
 		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
 			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
 		}
@@ -277,9 +286,15 @@ public class UI extends Initial {
 
 	private String getScreenReturnPath(String filename) {
 		File scrFile = null;
-
-        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        
+        if (testAppType =="web"){
+        	scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            
+        } else if(testAppType =="android"){
+        	scrFile = ((TakesScreenshot)AndroidApp.driver).getScreenshotAs(OutputType.FILE);       	
+        }
+        else if (testAppType =="ios"){
+        	scrFile = ((TakesScreenshot)IOSApp.driver).getScreenshotAs(OutputType.FILE);
+        }
 		if (!(new File(screenDir).isDirectory())) { // 判断是否存在该目录
 			new File(screenDir).mkdir(); // 如果不存在则新建一个目录
 		}

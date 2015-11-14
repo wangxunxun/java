@@ -15,9 +15,10 @@ import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
 import base.AndroidApp;
+import base.IOSApp;
+import base.WebApp;
 import utils.CommonTools;
 import core.Initial;
-import core.UI;
 
 public class TestngListener extends TestListenerAdapter {
 	private String className;
@@ -41,6 +42,7 @@ public class TestngListener extends TestListenerAdapter {
 		className = tr.getTestClass().getName();
 		String[] ddd = className.split("\\.");
 		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
+		className = CommonTools.getValidSheetName(className);
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "Failure";
@@ -78,6 +80,7 @@ public class TestngListener extends TestListenerAdapter {
 		className = tr.getTestClass().getName();
 		String[] ddd = className.split("\\.");
 		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
+		className = CommonTools.getValidSheetName(className);
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "Success";
@@ -133,6 +136,7 @@ public class TestngListener extends TestListenerAdapter {
 		className = tr.getTestClass().getName();
 		String[] ddd = className.split("\\.");
 		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
+		className = CommonTools.getValidSheetName(className);
 		method = tr.getName();
 		time = tr.getEndMillis() - tr.getStartMillis();
 		status = "Skipped";
@@ -185,7 +189,16 @@ public class TestngListener extends TestListenerAdapter {
 
 	private String takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
-		File scrFile = ((TakesScreenshot) AndroidApp.driver).getScreenshotAs(OutputType.FILE);
+		File scrFile = null;
+        if (Initial.testAppType =="web"){
+        	scrFile = ((TakesScreenshot)WebApp.driver).getScreenshotAs(OutputType.FILE);
+        } 
+        else if(Initial.testAppType =="android"){
+        	scrFile = ((TakesScreenshot)AndroidApp.driver).getScreenshotAs(OutputType.FILE);       	
+        }
+        else if (Initial.testAppType =="ios"){
+        	scrFile = ((TakesScreenshot)IOSApp.driver).getScreenshotAs(OutputType.FILE);
+        }
 		String dir_name = CommonTools.setPath("/failTestCaseScreenShot/");
 		if (!(new File(dir_name).isDirectory())) { // 判断是否存在该目录
 			new File(dir_name).mkdir(); // 如果不存在则新建一个目录

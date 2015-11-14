@@ -23,22 +23,32 @@ public class Initial {
 
 
 	protected int waitTime;
-	//测试项目配置文件
+	//测试项目配置文件（必填）
 	protected String configFileName;
-	// app存放文件夹
+	//测试数据存储路径（必填）
+	protected String testDataExcelPath;
+	//元素定位对应sheet名（必填）
+	protected String elementSheet;
+	//测试用例对应sheet名
+	protected String testCaseSheet;
+	// app存放文件夹（android项目必填）
 	protected String appDir;
 	// andorid配置信息
 	protected int basicWindowX;
 	protected int basicWindowY;
 	protected boolean unicodeKeyboard;
 	protected boolean resetKeyboard;
+	//android项目必填
 	protected String androidDeviceName;
+	//android项目必填
 	protected String apkName;
+	//android项目必填
 	protected String appPackage;
+	//android项目必填
 	protected String mainActivity;
 
-	// IOS配置信息
-	protected String app;
+	// IOS配置信息（必填）
+	protected String iosApp;
 	protected String platformVersion;
 	protected String platform;
 	protected String platformName;
@@ -56,19 +66,13 @@ public class Initial {
 	protected String testReportName;
 	//当前运行测试class的类名
 	protected String testClassName;
-	//测试数据存储路径
-	protected String testDataExcelPath;
-	//元素定位对应sheet名
-	protected String elementSheet;
-	//测试用例对应sheet名
-	protected String testCaseSheet;
+
 	//元素定位对象
 	protected Map<String, Map<String, Map<String, String>>> elementData;
 	//测试用例对象
 	protected Map<String, Object> testCaseData;
 	// 测试app的对象名
 	protected String appClass;
-
 	// 回写用例脚本开关
 	protected boolean writeScript;
 	// 回写测试结果开关
@@ -78,29 +82,32 @@ public class Initial {
 	// 每次运行时是否删除log.text文件开关
 	protected boolean deleteLogFileFirst;
 
-	//每个case执行成功后的message
-	public static String successMessage;
-	//每个case的介绍
-	public static String caseInfo;
-	//每个class的介绍
-	public static String classInfo;
 	//测试报告testsummary sheet名称
 	protected String testSummarySheetName;
-	//测试报告名称中转变量
-	public static List<String> reportName = new ArrayList<String>();
+
 	//测试项目名称
 	protected String projectName;
 	//测试项目简介
 	protected String projectInfo;
 	//测试范围
 	protected String testSpecification;
+		
+	//每个case执行成功后的message
+	public static String successMessage;
+	//每个case的介绍
+	public static String caseInfo;
+	//每个class的介绍
+	public static String classInfo;
+	//测试报告名称中转变量
+	public static List<String> reportName = new ArrayList<String>();
 	//测试脚本数据
 	public static List<List<String>> testScriptData = new ArrayList<List<String>>();
 	//测试结果数据
 	public static List<List<String>> testResultData = new ArrayList<List<String>>();
 	//log数据
 	public static List<List<String>> logData = new ArrayList<List<String>>();
-
+	//测试app类型
+	public static String testAppType;
 	
 	protected String getTestReportDir() {
 		testReportDir = getProperties("testReportDir");
@@ -108,7 +115,7 @@ public class Initial {
 			return CommonTools.setPath(testReportDir);
 		}
 
-		return CommonTools.setPath("/testResource/");
+		return CommonTools.setPath("/testReport/");
 	}
 	protected String getProjectName(){
 		projectName = getProperties("projectName");
@@ -448,7 +455,7 @@ public class Initial {
 	protected String getTestClassName() {
 		String className = getClassName();
 		String[] ddd = className.split("\\.");
-		return ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
+		return CommonTools.getValidSheetName(ddd[ddd.length - 2] + "." + ddd[ddd.length - 1]);
 
 	}
 
@@ -470,7 +477,7 @@ public class Initial {
 
 		writeScript = Boolean.parseBoolean(getProperties("writeScript"));
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
-		logSwitch = Boolean.parseBoolean(getProperties("log"));
+		logSwitch = Boolean.parseBoolean(getProperties("logSwitch"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
 		testClassName = getTestClassName();
 		appDir = getAppDir();
@@ -479,11 +486,13 @@ public class Initial {
 		testSummarySheetName = getTestSummarySheetName();
 		createWorkBook(testSummarySheetName, 0);
 		createSheet(999);
+		testAppType = "web";
 
 	}
 
 	protected void initialAndroidData() throws WriteException, BiffException, IOException {
 		initialData();
+		androidDeviceName = getProperties("deviceName");
 		apkName = getProperties("apkName");
 		appPackage = getProperties("appPackage");
 		mainActivity = getProperties("mainActivity");
@@ -491,16 +500,18 @@ public class Initial {
 		basicWindowY = getBasicWindowY();
 		unicodeKeyboard = Boolean.parseBoolean(getProperties("unicodeKeyboard"));
 		resetKeyboard = Boolean.parseBoolean(getProperties("resetKeyboard"));
+		testAppType = "android";
 	}
 
 	protected void initialIOSData() throws WriteException, BiffException, IOException {
 		initialData();
-		app = getProperties("app");
-		iosDeviceName = getProperties("deviceName");
+		iosApp = getProperties("iosApp");
+		iosDeviceName = getProperties("iosDeviceName");
 		platformVersion = getProperties("platformVersion");
 		platform = getProperties("platform");
 		platformName = getProperties("platformName");
 		browserName = getProperties("browserName");
+		testAppType = "ios";
 	}
 
 }

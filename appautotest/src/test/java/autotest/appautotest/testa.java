@@ -42,9 +42,9 @@ public class testa{
     	ticketApp.sleep(500);
     	ticketApp.swipeOfType("left");
     	ticketApp.logSuccessMessage("343434");
-//    	ticketApp.getScreen("");
-//    	ticketApp.getElementScreen("启动页", "开启直达车");
-//    	ticketApp.clickElement("启动页", "开启直达车");
+    	ticketApp.getScreen();
+    	ticketApp.getElementScreen("启动页", "开启直达车");
+    	ticketApp.clickElement("启动页", "开启直达车");
 //    	ticketApp.assertEquals("343", "444");
     	
     }

@@ -191,7 +191,9 @@ public class CommonTools {
 
 	public static void createWorkbook(String excelDir, String excelName, String className, int index,String projectName,String projectInfo,String testSpecification)
 			throws IOException, WriteException, BiffException {
-
+		if (!(new File(excelDir).isDirectory())) { // 判断是否存在该目录
+			new File(excelDir).mkdir(); // 如果不存在则新建一个目录
+		}
 		String navigation[] = { "Success", "Failure ", "Skipped", "Success Rate", "Time Consuming", "Total"};
 		String classNavigation[] = { "Test Suite", "Suite Summary","Success Rate", "Log", "Case Counts","Test Case", "Case Summary","Time Consuming",
 				"Error Screenshot", "Status", "Comment" };
