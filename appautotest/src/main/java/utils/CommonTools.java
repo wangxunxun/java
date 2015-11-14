@@ -227,6 +227,8 @@ public class CommonTools {
 		Label label2 = new Label(1, 4, "0", formatBody);
 		Label label3 = new Label(2, 4, "0", formatBody);
 		Label label4 = new Label(4, 4, "0s", formatBody);
+		Label label5 = new Label(3, 4, "0", formatBody);
+		Label label6 = new Label(5, 4, "0", formatBody);
 		homePageSheet.addCell(projectNameLabel);
 		homePageSheet.addCell(projectInfoLabel);
 		homePageSheet.addCell(testSpecificationLabel);
@@ -241,6 +243,8 @@ public class CommonTools {
 		homePageSheet.addCell(label2);
 		homePageSheet.addCell(label3);
 		homePageSheet.addCell(label4);
+		homePageSheet.addCell(label5);
+		homePageSheet.addCell(label6);
 
 
 

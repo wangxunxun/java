@@ -10,8 +10,6 @@ import java.util.Map;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
@@ -474,7 +472,7 @@ public class Initial {
 		writeResult = Boolean.parseBoolean(getProperties("writeResult"));
 		logSwitch = Boolean.parseBoolean(getProperties("log"));
 		deleteLogFileFirst = Boolean.parseBoolean(getProperties("deleteLogFileFirst"));
-		testClassName = getClassName();
+		testClassName = getTestClassName();
 		appDir = getAppDir();
 		testReportDir = getTestReportDir();
 		testReportName = getTestReportName();

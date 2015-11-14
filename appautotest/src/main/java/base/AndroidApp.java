@@ -80,11 +80,7 @@ public class AndroidApp extends UI {
 			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
 			testSummaySheet.close();
 			TestngListener.classData.clear();
-						
-
-			
-
-			
+	
 		} catch (Exception e) {
 			System.err.println(e);
 		}

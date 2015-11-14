@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="15274" started-at="2015-11-14T03:02:01Z" finished-at="2015-11-14T03:02:16Z">
+  <suite name="Default suite" duration-ms="31604" started-at="2015-11-14T06:31:28Z" finished-at="2015-11-14T06:32:00Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="15274" started-at="2015-11-14T03:02:01Z" finished-at="2015-11-14T03:02:16Z">
-      <class name="testTicketWeb.baShi">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@43a25848]" name="setUp" is-config="true" duration-ms="2965" started-at="2015-11-14T11:02:01Z" finished-at="2015-11-14T11:02:04Z">
+    <test name="Default test" duration-ms="31604" started-at="2015-11-14T06:31:28Z" finished-at="2015-11-14T06:32:00Z">
+      <class name="autotest.appautotest.testa">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:autotest.appautotest.testa@7c30a502]" name="setUp" is-config="true" duration-ms="17497" started-at="2015-11-14T14:31:28Z" finished-at="2015-11-14T14:31:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.baShi@43a25848]" name="test000login" duration-ms="10049" started-at="2015-11-14T11:02:04Z" finished-at="2015-11-14T11:02:14Z">
+        <test-method status="PASS" signature="enterMainPage()[pri:0, instance:autotest.appautotest.testa@7c30a502]" name="enterMainPage" duration-ms="8475" started-at="2015-11-14T14:31:46Z" finished-at="2015-11-14T14:31:54Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@43a25848]" name="tearDown" is-config="true" duration-ms="2203" started-at="2015-11-14T11:02:14Z" finished-at="2015-11-14T11:02:16Z">
+        </test-method> <!-- enterMainPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:autotest.appautotest.testa@7c30a502]" name="tearDown" is-config="true" duration-ms="5598" started-at="2015-11-14T14:31:54Z" finished-at="2015-11-14T14:32:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- testTicketWeb.baShi -->
+      </class> <!-- autotest.appautotest.testa -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

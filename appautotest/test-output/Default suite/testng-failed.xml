@@ -7,7 +7,6 @@
         <methods>
           <include name="enterMainPage"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
         </methods>
       </class> <!-- autotest.appautotest.testa -->
     </classes>
