@@ -55,7 +55,7 @@ public class AndroidApp extends UI {
 
 
 	public void quit() {
-		try {	
+		try {
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -65,29 +65,26 @@ public class AndroidApp extends UI {
 				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
 				testScriptData.clear();
 			}
-			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
-			System.out.println(testReportDir + testReportName + ".xls");
-			System.out.println(testSummarySheetName);
-			testSummaySheet.setFormat(10, true);
-			System.out.println(TestngListener.classData);
-			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
-			System.out.println(22);
-			testSummaySheet.close();
-			TestngListener.classData.clear();
-		} catch (Exception e) {
-			System.err.println(e+"111");
-		}
-			try {			
 			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
 			testClassSheet.setColumnView(1, 100);
 			testClassSheet.setColumnView(0, 40);
 			testClassSheet.setFormat(10, true);
 			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+			testClassSheet.setVerticalFreeze(1);
 			testClassSheet.writeLogToExcel(logData);
 			testClassSheet.close();
 			logData.clear();
 			
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+			testSummaySheet.setFormat(10, true);
+			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
+			testSummaySheet.close();
+			TestngListener.classData.clear();
+						
 
+			
+
+			
 		} catch (Exception e) {
 			System.err.println(e);
 		}

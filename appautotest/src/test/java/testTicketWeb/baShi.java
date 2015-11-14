@@ -65,20 +65,20 @@ public class baShi {
 		piaoWuWebApp.enterHomePage();
 	}
 	
-	@Test
+//	@Test
 	public void test002login() {
 //		piaoWuWebApp.logTestDescription("test");
 		piaoWuWebApp.logSuccessMessage("34342342dfdfd3423");
 		piaoWuWebApp.getScreen();
 	}
 	
-	@Test
+//	@Test
 	public void test003login() {
 		piaoWuWebApp.logTestDescription("test");
 		piaoWuWebApp.logSuccessMessage("3434234234edfdf23");
 	}
 	
-	@Test
+//	@Test
 	public void test004login() {
 		piaoWuWebApp.logTestDescription("test");
 		piaoWuWebApp.waitDisplay("侧边栏", "巴士售票管理");

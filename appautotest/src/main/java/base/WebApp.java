@@ -55,12 +55,15 @@ public class WebApp extends UI {
 
 	public void quit() {
 		try {
-			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
-			testSummaySheet.setFormat(10, true);
-			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
-			testSummaySheet.close();
-			TestngListener.classData.clear();
-						
+			String excelPath = CommonTools.setPath(testDataExcelPath);
+			if(writeResult==true){
+				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
+				testResultData.clear();
+			}
+			if(writeScript == true){
+				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
+				testScriptData.clear();
+			}
 			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
 			testClassSheet.setColumnView(1, 100);
 			testClassSheet.setColumnView(0, 40);
@@ -71,15 +74,15 @@ public class WebApp extends UI {
 			testClassSheet.close();
 			logData.clear();
 			
-			String excelPath = CommonTools.setPath(testDataExcelPath);
-			if(writeResult==true){
-				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
-				testResultData.clear();
-			}
-			if(writeScript == true){
-				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
-				testScriptData.clear();
-			}
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+			testSummaySheet.setFormat(10, true);
+			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
+			testSummaySheet.close();
+			TestngListener.classData.clear();
+						
+
+			
+
 			
 		} catch (Exception e) {
 			System.err.println(e);

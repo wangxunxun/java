@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 
-import org.openqa.selenium.By;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -66,24 +66,7 @@ public class IOSApp extends UI {
   	}
   	public void quit(){
 
-    	try{
-			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
-			testSummaySheet.setFormat(10, true);
-			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
-			testSummaySheet.close();
-			TestngListener.classData.clear();
-			
-			
-			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
-			testClassSheet.setColumnView(1, 100);
-			testClassSheet.setColumnView(0, 40);
-			testClassSheet.setFormat(10, true);
-			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
-			testClassSheet.writeLogToExcel(logData);
-			testClassSheet.close();
-			logData.clear();
-    		
-    		
+		try {
 			String excelPath = CommonTools.setPath(testDataExcelPath);
 			if(writeResult==true){
 				CommonTools.writeResultToExcel(excelPath, testCaseSheet, testResultData);
@@ -93,10 +76,29 @@ public class IOSApp extends UI {
 				CommonTools.writeScriptToExcel(excelPath, testCaseSheet, testScriptData);
 				testScriptData.clear();
 			}
-    	}
-    	catch(Exception e){
-    		System.err.println(e);
-    	}
+			OperateExcel testClassSheet = new OperateExcel(testReportDir + testReportName + ".xls", testClassName);
+			testClassSheet.setColumnView(1, 100);
+			testClassSheet.setColumnView(0, 40);
+			testClassSheet.setFormat(10, true);
+			testClassSheet.setHyperLinkForSheet(0, 0, "Back", testSummarySheetName, 0, 0);
+			testClassSheet.setVerticalFreeze(1);
+			testClassSheet.writeLogToExcel(logData);
+			testClassSheet.close();
+			logData.clear();
+			
+			OperateExcel testSummaySheet = new OperateExcel(testReportDir + testReportName + ".xls", testSummarySheetName);
+			testSummaySheet.setFormat(10, true);
+			testSummaySheet.writeTestSummaryToExcel(TestngListener.classData);
+			testSummaySheet.close();
+			TestngListener.classData.clear();
+						
+
+			
+
+			
+		} catch (Exception e) {
+			System.err.println(e);
+		}
     	driver.quit();
 	}
   	
