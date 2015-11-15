@@ -1,53 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="2" total="7" passed="5">
+<testng-results skipped="0" failed="2" total="9" passed="7">
   <reporter-output>
     <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213458-368_test005login.png]]>
+      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205851-276_test005login.png]]>
     </line>
     <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213458-368_test005login.png"/>]]>
+      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205851-276_test005login.png"/>]]>
     </line>
     <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213501-526_test005login.png]]>
+      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205929-479_test000login.png]]>
     </line>
     <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213501-526_test005login.png"/>]]>
-    </line>
-    <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213539-801_test000login.png]]>
-    </line>
-    <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213539-801_test000login.png"/>]]>
-    </line>
-    <line>
-      <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213542-960_test000login.png]]>
-    </line>
-    <line>
-      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213542-960_test000login.png"/>]]>
+      <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205929-479_test000login.png"/>]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="79732" started-at="2015-11-14T13:34:25Z" finished-at="2015-11-14T13:35:45Z">
+  <suite name="Default suite" duration-ms="73559" started-at="2015-11-15T12:58:18Z" finished-at="2015-11-15T12:59:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="79732" started-at="2015-11-14T13:34:25Z" finished-at="2015-11-14T13:35:45Z">
+    <test name="Default test" duration-ms="73559" started-at="2015-11-15T12:58:18Z" finished-at="2015-11-15T12:59:31Z">
       <class name="testTicketWeb.qiChe">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="setUp" is-config="true" duration-ms="2984" started-at="2015-11-14T21:34:25Z" finished-at="2015-11-14T21:34:28Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="setUp" is-config="true" duration-ms="2980" started-at="2015-11-15T20:58:18Z" finished-at="2015-11-15T20:58:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="test000login" duration-ms="4045" started-at="2015-11-14T21:34:28Z" finished-at="2015-11-14T21:34:32Z">
+        <test-method status="PASS" signature="test000login()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="test000login" duration-ms="4264" started-at="2015-11-15T20:58:21Z" finished-at="2015-11-15T20:58:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="test003login" duration-ms="1" started-at="2015-11-14T21:34:32Z" finished-at="2015-11-14T21:34:32Z">
+        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="test003login" duration-ms="1" started-at="2015-11-15T20:58:25Z" finished-at="2015-11-15T20:58:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test003login -->
-        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="test004login" duration-ms="1" started-at="2015-11-14T21:34:32Z" finished-at="2015-11-14T21:34:32Z">
+        <test-method status="PASS" signature="test004login()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="test004login" duration-ms="1" started-at="2015-11-15T20:58:25Z" finished-at="2015-11-15T20:58:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test004login -->
-        <test-method status="FAIL" signature="test005login()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="test005login" duration-ms="22682" started-at="2015-11-14T21:34:32Z" finished-at="2015-11-14T21:34:55Z">
+        <test-method status="FAIL" signature="test005login()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="test005login" duration-ms="22478" started-at="2015-11-15T20:58:25Z" finished-at="2015-11-15T20:58:47Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Can not find the µÇÂ¼ÊäÈë¿ò element on the µÇÂ¼Ò³ page.]]>
@@ -88,38 +76,32 @@
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213458-368_test005login.png]]>
+              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205851-276_test005login.png]]>
             </line>
             <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213458-368_test005login.png"/>]]>
-            </line>
-            <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213501-526_test005login.png]]>
-            </line>
-            <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213501-526_test005login.png"/>]]>
+              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205851-276_test005login.png"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- test005login -->
-        <test-method status="PASS" signature="test006login()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="test006login" duration-ms="1" started-at="2015-11-14T21:35:01Z" finished-at="2015-11-14T21:35:01Z">
+        <test-method status="PASS" signature="test006login()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="test006login" duration-ms="1" started-at="2015-11-15T20:58:51Z" finished-at="2015-11-15T20:58:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test006login -->
-        <test-method status="PASS" signature="test012editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="test012editQiChePiaoJia" duration-ms="24418" started-at="2015-11-14T21:35:01Z" finished-at="2015-11-14T21:35:25Z">
+        <test-method status="PASS" signature="test012editQiChePiaoJia()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="test012editQiChePiaoJia" duration-ms="23111" started-at="2015-11-15T20:58:51Z" finished-at="2015-11-15T20:59:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test012editQiChePiaoJia -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@3f3afe78]" name="tearDown" is-config="true" duration-ms="2402" started-at="2015-11-14T21:35:25Z" finished-at="2015-11-14T21:35:28Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.qiChe@34ce8af7]" name="tearDown" is-config="true" duration-ms="2313" started-at="2015-11-15T20:59:14Z" finished-at="2015-11-15T20:59:16Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testTicketWeb.qiChe -->
       <class name="testTicketWeb.baShi">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@71be98f5]" name="setUp" is-config="true" duration-ms="2329" started-at="2015-11-14T21:35:28Z" finished-at="2015-11-14T21:35:30Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@59a6e353]" name="setUp" is-config="true" duration-ms="2488" started-at="2015-11-15T20:59:16Z" finished-at="2015-11-15T20:59:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="test000login()[pri:0, instance:testTicketWeb.baShi@71be98f5]" name="test000login" duration-ms="5953" started-at="2015-11-14T21:35:30Z" finished-at="2015-11-14T21:35:36Z">
+        <test-method status="FAIL" signature="test000login()[pri:0, instance:testTicketWeb.baShi@59a6e353]" name="test000login" duration-ms="7064" started-at="2015-11-15T20:59:19Z" finished-at="2015-11-15T20:59:26Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [333334] but found [333]]]>
@@ -162,20 +144,22 @@
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213539-801_test000login.png]]>
+              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205929-479_test000login.png]]>
             </line>
             <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213539-801_test000login.png"/>]]>
-            </line>
-            <line>
-              <![CDATA[F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213542-960_test000login.png]]>
-            </line>
-            <line>
-              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151114-213542-960_test000login.png"/>]]>
+              <![CDATA[<img src="../F:\workspace\java\appautotest/failTestCaseScreenShot/20151115-205929-479_test000login.png"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- test000login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@71be98f5]" name="tearDown" is-config="true" duration-ms="2121" started-at="2015-11-14T21:35:42Z" finished-at="2015-11-14T21:35:45Z">
+        <test-method status="PASS" signature="test002login()[pri:0, instance:testTicketWeb.baShi@59a6e353]" name="test002login" duration-ms="121" started-at="2015-11-15T20:59:29Z" finished-at="2015-11-15T20:59:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test002login -->
+        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.baShi@59a6e353]" name="test003login" duration-ms="0" started-at="2015-11-15T20:59:29Z" finished-at="2015-11-15T20:59:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test003login -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@59a6e353]" name="tearDown" is-config="true" duration-ms="2186" started-at="2015-11-15T20:59:29Z" finished-at="2015-11-15T20:59:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

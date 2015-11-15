@@ -24,145 +24,82 @@ public class TestngListener extends TestListenerAdapter {
 	private String className;
 	private String method;
 	private Long time;
-	private String status;
 	private String comment;
+	private String screenPath;
+	private String successMessage;
+	private String caseInfo;
+	private String classInfo;
 	public static List<Map<String, String>> classData = new ArrayList<Map<String, String>>();
 
+	private void test(ITestResult tr,String status){
+		Map<String, String> methodData = new HashMap<String, String>();
+		className = tr.getTestClass().getName();
+		String[] ddd = className.split("\\.");
+		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
+		className = CommonTools.getValidSheetName(className);
+		method = tr.getName();
+		time = tr.getEndMillis() - tr.getStartMillis();
+		successMessage = Initial.successMessage;
+		caseInfo = Initial.caseInfo;
+		Initial.caseInfo = null;
+		classInfo = Initial.classInfo;
+		Initial.classInfo = null;
+		if(status == "Failure"){
+			CommonTools.log(method + " Failure");
+				try {
+					screenPath = takeScreenShot(tr);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			comment = "Failure info - " + tr.getThrowable().getMessage();
+
+		}
+		else if (status =="Success"){
+			screenPath = null;
+			if (successMessage == null) {
+				comment = "Success info - " + "No comment";
+			} else {
+				comment = "Success info - " + successMessage;
+				Initial.successMessage = null;
+			}			
+		}
+		else if (status == "Skipped"){
+			screenPath = null;
+			comment = "Skipped info - " + tr.getThrowable().getMessage();
+
+		}		
+		methodData.put("className", className);
+		methodData.put("classInfo", classInfo);
+		methodData.put("caseInfo", caseInfo);
+		methodData.put("method", method);
+		methodData.put("time", time + "");
+		methodData.put("status", status);
+		methodData.put("comment", comment);
+		methodData.put("screenPath", screenPath);		
+		classData.add(methodData);
+	}
+	
 	@Override
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
-		Map<String, String> methodData = new HashMap<String, String>();
-		CommonTools.log(tr.getName() + " Failure");
-		String screenPath = null;
-		try {
-			screenPath = takeScreenShot(tr);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		className = tr.getTestClass().getName();
-		String[] ddd = className.split("\\.");
-		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
-		className = CommonTools.getValidSheetName(className);
-		method = tr.getName();
-		time = tr.getEndMillis() - tr.getStartMillis();
-		status = "Failure";
-		String caseInfo = Initial.caseInfo;
-		Initial.caseInfo = null;
-		String classInfo = Initial.classInfo;
-		Initial.classInfo = null;
-		try {
-			comment = tr.getThrowable().getMessage();
-			if (comment == null) {
-				comment = "java.lang.NullPointerException";
-			}
-		} catch (Exception e) {
-			comment = e.toString();
-
-		}
-
-		methodData.put("className", className);
-		methodData.put("method", method);
-		methodData.put("time", time + "");
-		methodData.put("status", status);
-		methodData.put("comment", "Failure info - " + comment);
-		methodData.put("screenPath", screenPath);
-		methodData.put("caseInfo", caseInfo);
-		methodData.put("classInfo", classInfo);
-		classData.add(methodData);
-
+		test(tr, "Failure");
 	}
-
+	
 	@Override
 	public void onTestSuccess(ITestResult tr) {
 		super.onTestSuccess(tr);
-		Map<String, String> methodData = new HashMap<String, String>();
-		String screenPath = null;
-		className = tr.getTestClass().getName();
-		String[] ddd = className.split("\\.");
-		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
-		className = CommonTools.getValidSheetName(className);
-		method = tr.getName();
-		time = tr.getEndMillis() - tr.getStartMillis();
-		status = "Success";
-		String successMessage = Initial.successMessage;
-		String caseInfo = Initial.caseInfo;
-		Initial.caseInfo = null;
-		String classInfo = Initial.classInfo;
-		Initial.classInfo = null;
-		try {
-			comment = tr.getThrowable().getMessage();
-			if (comment.isEmpty()) {
-				if (successMessage == null) {
-					comment = "No comment";
-				} else {
-					comment = successMessage;
-					Initial.successMessage = null;
-				}
-			}
-		} catch (Exception e) {
-
-			if (successMessage == null) {
-				comment = "No comment";
-			} else {
-				comment = successMessage;
-				Initial.successMessage = null;
-			}
-
-		}
-
-		methodData.put("className", className);
-		methodData.put("method", method);
-		methodData.put("time", time + "");
-		methodData.put("status", status);
-		methodData.put("comment", "Success info - " + comment);
-		methodData.put("screenPath", screenPath);
-		methodData.put("caseInfo", caseInfo);
-		methodData.put("classInfo", classInfo);
-		classData.add(methodData);
-
+		test(tr, "Success");
 	}
-
 	@Override
 	public void onTestSkipped(ITestResult tr) {
 		super.onTestSkipped(tr);
-		Map<String, String> methodData = new HashMap<String, String>();
-		String screenPath = null;
-		CommonTools.log(tr.getName() + " Skipped");
-		try {
-			screenPath = takeScreenShot(tr);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		className = tr.getTestClass().getName();
-		String[] ddd = className.split("\\.");
-		className = ddd[ddd.length - 2] + "." + ddd[ddd.length - 1];
-		className = CommonTools.getValidSheetName(className);
-		method = tr.getName();
-		time = tr.getEndMillis() - tr.getStartMillis();
-		status = "Skipped";
-		String caseInfo = Initial.caseInfo;
-		Initial.caseInfo = null;
-		String classInfo = Initial.classInfo;
-		Initial.classInfo = null;
-		try {
-			comment = tr.getThrowable().getMessage();
-			if (comment == null) {
-				comment = "No comment";
-			}
-		} catch (Exception e) {
-			comment = "No comment";
-		}
-
-		methodData.put("className", className);
-		methodData.put("method", method);
-		methodData.put("time", time + "");
-		methodData.put("status", status);
-		methodData.put("comment", "Skipped - " + comment);
-		methodData.put("screenPath", screenPath);
-		methodData.put("caseInfo", caseInfo);
-		methodData.put("classInfo", classInfo);
-		classData.add(methodData);
+		test(tr, "Skipped");
 	}
+	
 
 	@Override
 	public void onTestStart(ITestResult tr) {
