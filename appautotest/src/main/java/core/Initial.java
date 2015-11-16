@@ -61,7 +61,7 @@ public class Initial {
 	protected String logDir;
 
 	//测试报告存储文件夹
-	protected String testReportDir;
+	public static String testReportDir;
 	//测试报告名称
 	protected String testReportName;
 	//当前运行测试class的类名

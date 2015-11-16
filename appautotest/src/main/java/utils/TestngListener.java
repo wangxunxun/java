@@ -136,7 +136,7 @@ public class TestngListener extends TestListenerAdapter {
         else if (Initial.testAppType =="ios"){
         	scrFile = ((TakesScreenshot)IOSApp.driver).getScreenshotAs(OutputType.FILE);
         }
-		String dir_name = CommonTools.setPath("/failTestCaseScreenShot/");
+		String dir_name = CommonTools.setPath(Initial.testReportDir);
 		if (!(new File(dir_name).isDirectory())) { // 判断是否存在该目录
 			new File(dir_name).mkdir(); // 如果不存在则新建一个目录
 		}
