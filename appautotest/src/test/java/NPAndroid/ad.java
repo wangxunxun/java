@@ -21,7 +21,7 @@ public class ad {
 		NPAndroid.initialTestData();
 		
 		NPAndroid.runAndroidApp();
-		NPAndroid.log("Start to run "+this.getClass().getName()+".");
+
 	}
 
     @AfterClass
@@ -36,12 +36,13 @@ public class ad {
     	NPAndroid.waitDisplay("启动页", "略过");
     	NPAndroid.clickElement("启动页", "略过");
     	NPAndroid.sleep(20000);
+/*    	NPAndroid.swipeOfType("up");
     	NPAndroid.swipeOfType("up");
-    	NPAndroid.swipeOfType("up");
-    	NPAndroid.swipeOfType("up");
+    	NPAndroid.swipeOfType("up");*/
     	NPAndroid.sleep(5000);
     	NPAndroid.waitDisplay("首页","广告");
     	NPAndroid.sleep(5000);
+    	NPAndroid.getElementScreen("首页","广告");
     	int x = NPAndroid.getElementX("首页","广告");
     	int y = NPAndroid.getElementY("首页","广告");
     	NPAndroid.log(x);

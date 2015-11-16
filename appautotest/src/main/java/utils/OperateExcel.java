@@ -15,6 +15,7 @@ import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
 import jxl.format.VerticalAlignment;
 import jxl.read.biff.BiffException;
+import jxl.write.Formula;
 import jxl.write.Label;
 import jxl.write.WritableCellFormat;
 import jxl.write.WritableFont;
@@ -184,6 +185,11 @@ public class OperateExcel {
 		WritableHyperlink link = new WritableHyperlink(col, row, desc,
 				desSheet, destCol, destRow);
 		sheet.addHyperlink(link);
+	}
+	
+	public void setHyperLinkByFormu(int col, int row,String formu) throws RowsExceededException, WriteException{
+		Formula formula = new Formula(col, row, formu);
+		sheet.addCell(formula);
 	}
 
 	public void setVerticalFreeze(int col){
@@ -365,6 +371,11 @@ public class OperateExcel {
 		 */
 		// excel.copySheet("/Users/wangxun/Documents/workspace/java/appautotest/ticketWeb.xls","/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls");
 		// excel.close();
+		OperateExcel ddd = new OperateExcel("D:/workplace/java/appautotest/testReport/TestReport(20151116-165706-162).xls", "TestSummary");
+		String formu = "HYPERLINK(\"../test/20151116_173843563.png\",\"查看图片\")";  
+		
+		ddd.setHyperLinkByFormu(6, 6, formu);
+		ddd.close();
 		int a = 3;
 		int b = 52;
 		float c = b;
