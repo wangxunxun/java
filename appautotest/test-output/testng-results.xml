@@ -2,35 +2,32 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
     <line>
-      <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png]]>
+      <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png]]>
     </line>
     <line>
-      <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png"/>]]>
+      <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png"/>]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="98523" started-at="2015-11-17T02:31:49Z" finished-at="2015-11-17T02:33:27Z">
+  <suite name="Default suite" duration-ms="108904" started-at="2015-11-17T10:16:12Z" finished-at="2015-11-17T10:18:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="98523" started-at="2015-11-17T02:31:49Z" finished-at="2015-11-17T02:33:27Z">
+    <test name="Default test" duration-ms="108904" started-at="2015-11-17T10:16:12Z" finished-at="2015-11-17T10:18:01Z">
       <class name="NPAndroid.ad">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:NPAndroid.ad@7c75222b]" name="setUp" is-config="true" duration-ms="48957" started-at="2015-11-17T10:31:49Z" finished-at="2015-11-17T10:32:38Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:NPAndroid.ad@27f674d]" name="setUp" is-config="true" duration-ms="49168" started-at="2015-11-17T18:16:12Z" finished-at="2015-11-17T18:17:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:NPAndroid.ad@7c75222b]" name="login" duration-ms="41672" started-at="2015-11-17T10:32:38Z" finished-at="2015-11-17T10:33:19Z">
+        <test-method status="FAIL" signature="login()[pri:0, instance:NPAndroid.ad@27f674d]" name="login" duration-ms="51610" started-at="2015-11-17T18:17:02Z" finished-at="2015-11-17T18:17:53Z">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[expected [44] but found [333]]]>
+              <![CDATA[Can not find the 广告 element on the 首页 page.]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [44] but found [333]
+              <![CDATA[java.lang.AssertionError: Can not find the 广告 element on the 首页 page.
 	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at core.UI.assertEquals(UI.java:89)
-	at NPAndroid.ad.login(ad.java:50)
+	at core.UI.waitDisplay(UI.java:157)
+	at core.UI.waitDisplay(UI.java:140)
+	at NPAndroid.ad.login(ad.java:43)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -60,14 +57,14 @@
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png]]>
+              <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png]]>
             </line>
             <line>
-              <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png"/>]]>
+              <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:NPAndroid.ad@7c75222b]" name="tearDown" is-config="true" duration-ms="2423" started-at="2015-11-17T10:33:25Z" finished-at="2015-11-17T10:33:27Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:NPAndroid.ad@27f674d]" name="tearDown" is-config="true" duration-ms="2570" started-at="2015-11-17T18:17:59Z" finished-at="2015-11-17T18:18:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

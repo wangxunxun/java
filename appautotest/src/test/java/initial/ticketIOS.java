@@ -4,7 +4,7 @@ import base.IOSApp;
 
 public class ticketIOS extends IOSApp {
 	public void initialTestData(){
-		configFileName = "/config/ticketSystem/configIOS.properties";
+		configFilePath = "/config/ticketSystem/configIOS.properties";
 
 	}
 }

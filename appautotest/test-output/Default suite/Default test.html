@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Nov 17 10:31:49 CST 2015</td>
+<td>Started on:</td><td>Tue Nov 17 18:16:12 CST 2015</td>
 </tr>
-<tr><td>Total time:</td><td>98 seconds (98523 ms)</td>
+<tr><td>Total time:</td><td>108 seconds (108904 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,22 +76,19 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='NPAndroid.ad.login()'><b>login</b><br>Test class: NPAndroid.ad<br/>
-<a href="#Output-223693919" onClick='toggleBox("Output-223693919", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-205721196" onClick='toggleBox("Output-205721196", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-223693919" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-223693919">
-D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png<br/>
-<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png"/><br/>
+<a href="#Output-205721196" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-205721196">
+D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png<br/>
+<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png"/><br/>
 </div>
 </td>
-<td><div><pre>java.lang.AssertionError: expected [44] but found [333]
+<td><div><pre>java.lang.AssertionError: Can not find the 广告 element on the 首页 page.
 	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at core.UI.assertEquals(UI.java:89)
-	at NPAndroid.ad.login(ad.java:50)
+	at core.UI.waitDisplay(UI.java:157)
+	at core.UI.waitDisplay(UI.java:140)
+	at NPAndroid.ad.login(ad.java:43)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -116,15 +113,12 @@ D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
-</pre></div><a href='#' onClick='toggleBox("stack-trace223693919", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace223693919'><pre>java.lang.AssertionError: expected [44] but found [333]
+</pre></div><a href='#' onClick='toggleBox("stack-trace205721196", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace205721196'><pre>java.lang.AssertionError: Can not find the 广告 element on the 首页 page.
 	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:496)
-	at org.testng.Assert.assertEquals(Assert.java:125)
-	at org.testng.Assert.assertEquals(Assert.java:178)
-	at org.testng.Assert.assertEquals(Assert.java:188)
-	at core.UI.assertEquals(UI.java:89)
-	at NPAndroid.ad.login(ad.java:50)
+	at core.UI.waitDisplay(UI.java:157)
+	at core.UI.waitDisplay(UI.java:140)
+	at NPAndroid.ad.login(ad.java:43)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -150,8 +144,8 @@ D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
 </pre></div></td>
-<td>41</td>
-<td>NPAndroid.ad@7c75222b</td></tr>
+<td>51</td>
+<td>NPAndroid.ad@27f674d</td></tr>
 </table><p>
 </body>
 </html>

@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.channels.FileChannel;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.lang.StringUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
@@ -107,7 +109,7 @@ public class CommonTools {
 		}
 	}
 
-	private static Properties getConfigFormatData(String configFileName) {
+	public static Properties getConfigFormatData(String configFileName) {
 		try {
 			Properties pro = new Properties();
 			FileInputStream fis = new FileInputStream(configFileName);
@@ -407,6 +409,36 @@ public class CommonTools {
 		return sheetName;
 	}
 
+    protected static void copyScreenShot(File screenShotFile, File outputFile) throws IOException {
+
+        FileInputStream imgIs = new FileInputStream(screenShotFile);
+        FileOutputStream imageOs = new FileOutputStream(outputFile);
+        FileChannel imgCin = imgIs.getChannel();
+        FileChannel imgCout = imageOs.getChannel();
+        imgCin.transferTo(0, imgCin.size(), imgCout);
+        imgCin.close();
+        imgCout.close();
+        imgIs.close();
+        imageOs.close();
+    }
+    
+    
+    public static String getConfigValue(Properties configProperties, String propertieName) {
+
+        // if the specified propertieName exist as an environment variable.
+        // if so , use it. otherwise , search the configJsonNode specified.
+        String returnValue = StringUtils.defaultString(System.getenv(propertieName));
+        if (StringUtils.isBlank(returnValue)) {
+            try {
+                returnValue = configProperties.getProperty(propertieName);
+            } catch (NullPointerException e) {
+                System.err.println("Cannot locate config file at " + propertieName + ". Will try continue without it.");
+                return "";
+            }
+        }
+        return returnValue;
+    }
+	
 	public void copyFile(String oldPath, String newPath) { 
 		try { 
 		int bytesum = 0; 

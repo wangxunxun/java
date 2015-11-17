@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
@@ -24,7 +25,7 @@ public class Initial {
 
 	protected int waitTime;
 	//测试项目配置文件（必填）
-	protected String configFileName;
+	protected String configFilePath;
 	//测试数据存储路径（必填）
 	protected String testDataExcelPath;
 	//元素定位对应sheet名（必填）
@@ -108,6 +109,8 @@ public class Initial {
 	public static List<List<String>> logData = new ArrayList<List<String>>();
 	//测试app类型
 	public static String testAppType;
+	protected String coreFilePath;
+	protected String envName;
 	
 	protected String getTestReportDir() {
 		testReportDir = getProperties("testReportDir");
@@ -280,8 +283,8 @@ public class Initial {
 
 
 	public String getProperties(String name) {
-		if (configFileName != null) {
-			return CommonTools.getProperties(configFileName, name);
+		if (configFilePath != null) {
+			return CommonTools.getProperties(configFilePath, name);
 		}
 		return null;
 	}
@@ -458,8 +461,22 @@ public class Initial {
 		return CommonTools.getValidSheetName(ddd[ddd.length - 2] + "." + ddd[ddd.length - 1]);
 
 	}
+	
+	protected String getInitialPropertiesPath(String coreFilePath,String key){
+		if (coreFilePath!= null){
+			coreFilePath = CommonTools.setPath(coreFilePath);
+			Properties corePro = CommonTools.getConfigFormatData(coreFilePath);
+			String newConfigFilePath = CommonTools.getConfigValue(corePro, key);
+			return newConfigFilePath;
+		}
+		else{
+			return configFilePath;
+		}
+	}
 
 	protected void initialData() throws WriteException, BiffException, IOException {
+
+		configFilePath = getInitialPropertiesPath(coreFilePath, envName);
 		testDataExcelPath = getProperties("testDataExcelPath");
 		elementSheet = getProperties("elementSheet");
 		testCaseSheet = getProperties("testCaseSheet");
@@ -487,6 +504,7 @@ public class Initial {
 		createWorkBook(testSummarySheetName, 0);
 		createSheet(999);
 		testAppType = "web";
+
 
 	}
 

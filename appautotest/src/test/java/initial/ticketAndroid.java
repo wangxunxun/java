@@ -9,7 +9,7 @@ public class ticketAndroid extends AndroidApp{
 	
 
 	public void initialTestData(){
-		configFileName = "/config/ticketSystem/configAndroid.properties";
+		configFilePath = "/config/ticketSystem/configAndroid.properties";
 	}
 
 }
