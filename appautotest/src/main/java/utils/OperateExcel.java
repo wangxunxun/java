@@ -383,8 +383,33 @@ public class OperateExcel {
 		 */
 		// excel.copySheet("/Users/wangxun/Documents/workspace/java/appautotest/ticketWeb.xls","/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls");
 		// excel.close();
-		OperateExcel ddd = new OperateExcel("D:/workplace/java/appautotest/testReport/TestReport(20151116-165706-162).xls", "TestSummary");
+		OperateExcel ddd = new OperateExcel("C:/Users/xun/Desktop/新建文件夹/TestReport_20151114_17_27_02.480.xls", "TestSummary");
+		String a1 = "20151118_093018766.png";
+		String a2 = "20151118_094219964.png";
+		String a3 = "20151118_095301378.png";
+		String a4 = "20151118_100147047.png";
+		String a5 = "20151118_100324596.png";
+		String a6 = "20151118_100558534.png";
+		String a7 = "20151118_100710031.png";
+		String a8 = "20151118_101406375.png";
+		String a9 = "20151118_103437497.png";
+		String a10 = "20151118_104436889.png";
+		
+		
+		
+		
+		
+		ddd.setHyperLinkByFormu(10, 9, "screenCaptures/Android/"+a1, a1);
+		ddd.setHyperLinkByFormu(10, 35, "screenCaptures/Android/"+a2, a2);
+		ddd.setHyperLinkByFormu(10, 51, "screenCaptures/Android/"+a3, a3);
 
+		ddd.setHyperLinkByFormu(10, 59, "screenCaptures/Android/"+a4, a4);
+		ddd.setHyperLinkByFormu(10, 61, "screenCaptures/Android/"+a5, a5);
+		ddd.setHyperLinkByFormu(10, 62, "screenCaptures/Android/"+a6, a6);
+		ddd.setHyperLinkByFormu(10, 65, "screenCaptures/Android/"+a7, a7);
+		ddd.setHyperLinkByFormu(10, 67, "screenCaptures/Android/"+a8, a8);
+		ddd.setHyperLinkByFormu(10, 78, "screenCaptures/Android/"+a9, a9);
+		ddd.setHyperLinkByFormu(10, 99, "screenCaptures/Android/"+a10, a10);
 		ddd.close();
 		int a = 3;
 		int b = 52;

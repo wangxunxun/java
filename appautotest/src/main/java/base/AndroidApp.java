@@ -19,7 +19,7 @@ import org.testng.Assert;
 import core.UI;
 
 public class AndroidApp extends UI {
-	public static AndroidDriver<AndroidElement> androidDriver;
+	protected AndroidDriver<AndroidElement> androidDriver;
 
 	public void runAndroidApp() {
 		// set up appium

@@ -213,7 +213,7 @@ public class Initial {
 
 	}
 
-	private String getAppClass() {
+	protected String getAppClass() {
 		appClass = getProperties("appClass");
 		if (appClass == null) {
 			return "defaultApp";
@@ -249,7 +249,7 @@ public class Initial {
 		return 10;
 	}
 
-	public String getScreenDir() {
+	protected String getScreenDir() {
 		screenDir = getProperties("screenDir");
 		if (screenDir != null) {
 			return CommonTools.setPath(screenDir);
@@ -307,14 +307,14 @@ public class Initial {
 
 
 
-	private void deleteFirstTime(String filePath) {
+	protected void deleteFirstTime(String filePath) {
 		if (deleteLogFileFirst == true) {
 			CommonTools.deleteFile(filePath);
 			deleteLogFileFirst = false;
 		}
 	}
 
-	private String getLogFilePath() {
+	protected String getLogFilePath() {
 		return logDir + getClassName() + ".txt";
 	}
 
@@ -323,7 +323,7 @@ public class Initial {
 		writeLog(getClassName() + ".txt", content);
 	}
 
-	public void writeLogToExcel(Object content) {
+	protected void writeLogToExcel(Object content) {
 
 		try {
 			putLogData("", (String) content);
@@ -332,7 +332,7 @@ public class Initial {
 		}
 	}
 
-	public String getClassName() {
+	protected String getClassName() {
 		try {
 			ITestResult it = Reporter.getCurrentTestResult();
 			String classNamePath = it.getTestClass().getName();
@@ -344,7 +344,7 @@ public class Initial {
 		return "";
 	}
 
-	public String getTestMethodName() {
+	protected String getTestMethodName() {
 		try {
 			ITestResult it = Reporter.getCurrentTestResult();
 			String testMethodName = it.getName();
@@ -356,7 +356,7 @@ public class Initial {
 		return "";
 	}
 	
-	public void putScriptData(Integer row,String script){
+	protected void putScriptData(Integer row,String script){
 		String rowString = String.valueOf(row);
 		List<String> result = new ArrayList<String>();
 		result.add(rowString);
@@ -364,7 +364,7 @@ public class Initial {
 		testScriptData.add(result);
 	}
 	
-	public void putResultData(Integer row,String result){
+	protected void putResultData(Integer row,String result){
 		String rowString = String.valueOf(row);
 		List<String> data = new ArrayList<String>();
 		data.add(rowString);
@@ -372,7 +372,7 @@ public class Initial {
 		testResultData.add(data);
 	}
 	
-	public void putLogData(String title,String info){
+	protected void putLogData(String title,String info){
 		List<String> data = new ArrayList<String>();
 		data.add(title);
 		data.add(info);
@@ -436,7 +436,7 @@ public class Initial {
 		}
 	}
 
-	private void writeLog(String fileName, Object content) {
+	protected void writeLog(String fileName, Object content) {
 		FileWriter writer;
 		try {
 			if (!(new File(logDir).isDirectory())) { // 判断是否存在该目录

@@ -27,7 +27,7 @@ import core.UI;
 
 public class IOSApp extends UI {
 
-	public static IOSDriver<IOSElement> iosDriver;
+	protected IOSDriver<IOSElement> iosDriver;
 
   	public void runIOSApp(){
 		    // set up appium

@@ -2,22 +2,22 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
     <line>
-      <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-101651-751_login.png]]>
+      <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png]]>
     </line>
     <line>
-      <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-101651-751_login.png"/>]]>
+      <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png"/>]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="100479" started-at="2015-11-17T02:15:13Z" finished-at="2015-11-17T02:16:54Z">
+  <suite name="Default suite" duration-ms="98523" started-at="2015-11-17T02:31:49Z" finished-at="2015-11-17T02:33:27Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="100479" started-at="2015-11-17T02:15:13Z" finished-at="2015-11-17T02:16:54Z">
+    <test name="Default test" duration-ms="98523" started-at="2015-11-17T02:31:49Z" finished-at="2015-11-17T02:33:27Z">
       <class name="NPAndroid.ad">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:NPAndroid.ad@7c75222b]" name="setUp" is-config="true" duration-ms="51399" started-at="2015-11-17T10:15:13Z" finished-at="2015-11-17T10:16:05Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:NPAndroid.ad@7c75222b]" name="setUp" is-config="true" duration-ms="48957" started-at="2015-11-17T10:31:49Z" finished-at="2015-11-17T10:32:38Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:NPAndroid.ad@7c75222b]" name="login" duration-ms="41562" started-at="2015-11-17T10:16:05Z" finished-at="2015-11-17T10:16:46Z">
+        <test-method status="FAIL" signature="login()[pri:0, instance:NPAndroid.ad@7c75222b]" name="login" duration-ms="41672" started-at="2015-11-17T10:32:38Z" finished-at="2015-11-17T10:33:19Z">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[expected [44] but found [333]]]>
@@ -60,14 +60,14 @@
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
             <line>
-              <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-101651-751_login.png]]>
+              <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png]]>
             </line>
             <line>
-              <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-101651-751_login.png"/>]]>
+              <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-103325-383_login.png"/>]]>
             </line>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:NPAndroid.ad@7c75222b]" name="tearDown" is-config="true" duration-ms="2438" started-at="2015-11-17T10:16:51Z" finished-at="2015-11-17T10:16:54Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:NPAndroid.ad@7c75222b]" name="tearDown" is-config="true" duration-ms="2423" started-at="2015-11-17T10:33:25Z" finished-at="2015-11-17T10:33:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
