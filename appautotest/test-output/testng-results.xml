@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="1" passed="0">
+<testng-results skipped="0" failed="1" total="3" passed="2">
   <reporter-output>
-    <line>
-      <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png]]>
-    </line>
-    <line>
-      <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png"/>]]>
-    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="108904" started-at="2015-11-17T10:16:12Z" finished-at="2015-11-17T10:18:01Z">
+  <suite name="Default suite" duration-ms="10878" started-at="2015-11-17T13:43:12Z" finished-at="2015-11-17T13:43:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="108904" started-at="2015-11-17T10:16:12Z" finished-at="2015-11-17T10:18:01Z">
-      <class name="NPAndroid.ad">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:NPAndroid.ad@27f674d]" name="setUp" is-config="true" duration-ms="49168" started-at="2015-11-17T18:16:12Z" finished-at="2015-11-17T18:17:02Z">
+    <test name="Default test" duration-ms="10878" started-at="2015-11-17T13:43:12Z" finished-at="2015-11-17T13:43:23Z">
+      <class name="testTicketWeb.baShi">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="setUp" is-config="true" duration-ms="2479" started-at="2015-11-17T21:43:12Z" finished-at="2015-11-17T21:43:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="login()[pri:0, instance:NPAndroid.ad@27f674d]" name="login" duration-ms="51610" started-at="2015-11-17T18:17:02Z" finished-at="2015-11-17T18:17:53Z">
+        <test-method status="FAIL" signature="test000login()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="test000login" duration-ms="6464" started-at="2015-11-17T21:43:14Z" finished-at="2015-11-17T21:43:21Z">
           <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[Can not find the 广告 element on the 首页 page.]]>
+              <![CDATA[expected [333334] but found [333]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: Can not find the 广告 element on the 首页 page.
+              <![CDATA[java.lang.AssertionError: expected [333334] but found [333]
 	at org.testng.Assert.fail(Assert.java:94)
-	at core.UI.waitDisplay(UI.java:157)
-	at core.UI.waitDisplay(UI.java:140)
-	at NPAndroid.ad.login(ad.java:43)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertEquals(Assert.java:125)
+	at org.testng.Assert.assertEquals(Assert.java:178)
+	at org.testng.Assert.assertEquals(Assert.java:188)
+	at core.UI.assertEquals(UI.java:89)
+	at testTicketWeb.baShi.test000login(baShi.java:67)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -56,19 +53,21 @@
             </full-stacktrace>
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
-            <line>
-              <![CDATA[D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png]]>
-            </line>
-            <line>
-              <![CDATA[<img src="../D:\workplace\java\appautotest/testReport/failScreen/android/20151117-181759-266_login.png"/>]]>
-            </line>
           </reporter-output>
-        </test-method> <!-- login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:NPAndroid.ad@27f674d]" name="tearDown" is-config="true" duration-ms="2570" started-at="2015-11-17T18:17:59Z" finished-at="2015-11-17T18:18:01Z">
+        </test-method> <!-- test000login -->
+        <test-method status="PASS" signature="test002login()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="test002login" duration-ms="135" started-at="2015-11-17T21:43:21Z" finished-at="2015-11-17T21:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test002login -->
+        <test-method status="PASS" signature="test003login()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="test003login" duration-ms="0" started-at="2015-11-17T21:43:21Z" finished-at="2015-11-17T21:43:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test003login -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testTicketWeb.baShi@3ac3fd8b]" name="tearDown" is-config="true" duration-ms="1778" started-at="2015-11-17T21:43:21Z" finished-at="2015-11-17T21:43:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- NPAndroid.ad -->
+      </class> <!-- testTicketWeb.baShi -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
