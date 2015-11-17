@@ -27,7 +27,7 @@ import core.UI;
 
 public class IOSApp extends UI {
 
-	public static IOSDriver<IOSElement> driver;
+	public static IOSDriver<IOSElement> iosDriver;
 
   	public void runIOSApp(){
 		    // set up appium
@@ -56,12 +56,13 @@ public class IOSApp extends UI {
         capabilities.setCapability("browserName", browserName);
 
         try {
-			driver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+			iosDriver = new IOSDriver<IOSElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        wait = new WebDriverWait(driver,waitTime);
+        wait = new WebDriverWait(iosDriver,waitTime);
+        driver = iosDriver;
 
   	}
   	public void quit(){
@@ -100,44 +101,44 @@ public class IOSApp extends UI {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
-    	driver.quit();
+    	iosDriver.quit();
 	}
   	
 	public void quitWithoutTestData() {
 		testAppType = null;
-		driver.quit();
+		iosDriver.quit();
 	}
 	public IOSElement findElement(String page,String name){
 
 		String selecttype = elementData.get(page).get(name).get("SelectType");
 		String location = elementData.get(page).get(name).get("Location");
 		if (selecttype.equals("css")){
-			return driver.findElement(By.cssSelector(location));
+			return iosDriver.findElement(By.cssSelector(location));
 		}
 		else if (selecttype.equals("id")){
-			return driver.findElement(By.id(location));
+			return iosDriver.findElement(By.id(location));
 		}
 		else if (selecttype.equals("xpath")){
-			return driver.findElement(By.xpath(location));
+			return iosDriver.findElement(By.xpath(location));
 		}
 		else if (selecttype.equals("name")){
-			return driver.findElement(By.name(location));
+			return iosDriver.findElement(By.name(location));
 		}
 		else if (selecttype.equals("UIA")){
-			return driver.findElementByIosUIAutomation(location);
+			return iosDriver.findElementByIosUIAutomation(location);
 		}
 
 		else if (selecttype.equals("linktext")){
-			return driver.findElement(By.linkText(location));
+			return iosDriver.findElement(By.linkText(location));
 		}
 		else if (selecttype.equals("partiallinktext")){
-			return driver.findElement(By.partialLinkText(location));
+			return iosDriver.findElement(By.partialLinkText(location));
 		}
 		else if (selecttype.equals("tagname")){
-			return driver.findElement(By.tagName(location));
+			return iosDriver.findElement(By.tagName(location));
 		}
 		else if (selecttype.equals("scrollname")){
-			return driver.scrollTo(location);
+			return iosDriver.scrollTo(location);
 		}
 	
 		else{
@@ -147,8 +148,8 @@ public class IOSApp extends UI {
 	}
 	
     public void swipeOfType(String type) {
-        int windowlenX = driver.manage().window().getSize().getWidth();
-        int windowlenY = driver.manage().window().getSize().getHeight();
+        int windowlenX = iosDriver.manage().window().getSize().getWidth();
+        int windowlenY = iosDriver.manage().window().getSize().getHeight();
         String swipeLeft = "left";
         String swipeLeftSide = "leftSide";
         String swipeRight = "right";
@@ -160,54 +161,54 @@ public class IOSApp extends UI {
 
         // Sliding screen to the left
         if (type.equalsIgnoreCase(swipeLeft)) {
-            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
+            iosDriver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
                     3000);
         }
 
         // From the left of screen to began to slip
         if (type.equalsIgnoreCase(swipeLeftSide)) {
 
-            driver.swipe(1, (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5), 3000);
+            iosDriver.swipe(1, (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5), 3000);
         }
 
         // Sliding screen to the right
         if (type.equalsIgnoreCase(swipeRight)) {
 
-            driver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5),
+            iosDriver.swipe((int) (windowlenX * 0.2), (int) (windowlenY * 0.5), (int) (windowlenX * 0.9), (int) (windowlenY * 0.5),
                     3000);
         }
 
         // From the right of screen to began to slip
         if (type.equalsIgnoreCase(swipeRightSide)) {
 
-            driver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
+            iosDriver.swipe((int) (windowlenX * 0.9), (int) (windowlenY * 0.5), (int) (windowlenX * 0.2), (int) (windowlenY * 0.5),
                     3000);
         }
 
         // Screen upward sliding
         if (type.equalsIgnoreCase(swipeUp)) {
 
-            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.4),
+            iosDriver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.4),
                     3000);
         }
 
         // From the top of screen to began to slip
         if (type.equalsIgnoreCase(swipeTop)) {
 
-            driver.swipe((int) (windowlenX * 0.5), 0, (int) (windowlenX * 0.5), (int) (windowlenY * 0.8), 3000);
+            iosDriver.swipe((int) (windowlenX * 0.5), 0, (int) (windowlenX * 0.5), (int) (windowlenY * 0.8), 3000);
         }
 
         // Slide down the screen
         if (type.equalsIgnoreCase(swipeDown)) {
 
-            driver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5), (int) (windowlenY * 0.9),
+            iosDriver.swipe((int) (windowlenX * 0.5), (int) (windowlenY * 0.4), (int) (windowlenX * 0.5), (int) (windowlenY * 0.9),
                     3000);
         }
 
         // From the bottom of screen to began to slip
         if (type.equalsIgnoreCase(swipeBottom)) {
 
-            driver.swipe((int) (windowlenX * 0.5), (int)(windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.1), 3000);
+            iosDriver.swipe((int) (windowlenX * 0.5), (int)(windowlenY * 0.9), (int) (windowlenX * 0.5), (int) (windowlenY * 0.1), 3000);
         }
 
     }

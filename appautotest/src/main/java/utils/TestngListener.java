@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,11 +15,9 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
-import base.AndroidApp;
-import base.IOSApp;
-import base.WebApp;
 import utils.CommonTools;
 import core.Initial;
+import core.UI;
 
 public class TestngListener extends TestListenerAdapter {
 	private String className;
@@ -127,16 +126,18 @@ public class TestngListener extends TestListenerAdapter {
 	private String takeScreenShot(ITestResult tr) throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		File scrFile = null;
+		String dir_name = null;
         if (Initial.testAppType =="web"){
-        	scrFile = ((TakesScreenshot)WebApp.driver).getScreenshotAs(OutputType.FILE);
+    		dir_name = Initial.testReportDir+"failScreen/web/";
         } 
         else if(Initial.testAppType =="android"){
-        	scrFile = ((TakesScreenshot)AndroidApp.driver).getScreenshotAs(OutputType.FILE);       	
+        	dir_name = Initial.testReportDir+"failScreen/android/";      	
         }
         else if (Initial.testAppType =="ios"){
-        	scrFile = ((TakesScreenshot)IOSApp.driver).getScreenshotAs(OutputType.FILE);
+        	dir_name = Initial.testReportDir+"failScreen/ios/";
         }
-		String dir_name = CommonTools.setPath(Initial.testReportDir);
+        scrFile = ((TakesScreenshot)UI.driver).getScreenshotAs(OutputType.FILE);
+
 		if (!(new File(dir_name).isDirectory())) { // 判断是否存在该目录
 			new File(dir_name).mkdir(); // 如果不存在则新建一个目录
 		}

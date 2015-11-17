@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import core.Initial;
 import jxl.Sheet;
 import jxl.SheetSettings;
 import jxl.Workbook;
 import jxl.format.Border;
 import jxl.format.BorderLineStyle;
 import jxl.format.Colour;
+import jxl.format.UnderlineStyle;
 import jxl.format.VerticalAlignment;
 import jxl.read.biff.BiffException;
 import jxl.write.Formula;
@@ -187,8 +189,14 @@ public class OperateExcel {
 		sheet.addHyperlink(link);
 	}
 	
-	public void setHyperLinkByFormu(int col, int row,String formu) throws RowsExceededException, WriteException{
-		Formula formula = new Formula(col, row, formu);
+	public void setHyperLinkByFormu(int col, int row,String path,String name) throws RowsExceededException, WriteException{
+		WritableFont font1 = new WritableFont(WritableFont.ARIAL,10,WritableFont.NO_BOLD,false,UnderlineStyle.SINGLE);
+		font1.setColour(Colour.BLUE);
+		WritableCellFormat format1 = new WritableCellFormat(font1);
+		format1.setWrap(true);
+		format1.setBorder(Border.ALL, BorderLineStyle.THIN);
+		String formu = "HYPERLINK(\""+path+"\",\""+name+"\")";  
+		Formula formula = new Formula(col, row, formu,format1);
 		sheet.addCell(formula);
 	}
 
@@ -300,7 +308,11 @@ public class OperateExcel {
 				
 				if (screenPath != null) {
 					writeSameRow(8, "");
-					setHyperLinkForFile(8, sheet.getRows() - 1, screenPath,method);
+					String[] newTestReportDir = Initial.testReportDir.split("/");
+					String lastReportDir = newTestReportDir[newTestReportDir.length-1];
+					String path = screenPath.split(lastReportDir)[1];
+					String newPath = path.substring(1, path.length());
+					setHyperLinkByFormu(8, sheet.getRows() - 1, newPath,method);
 				}
 				else{
 					writeSameRow(8, "");
@@ -372,9 +384,7 @@ public class OperateExcel {
 		// excel.copySheet("/Users/wangxun/Documents/workspace/java/appautotest/ticketWeb.xls","/Users/wangxun/Documents/workspace/java/appautotest/ticketIOS.xls");
 		// excel.close();
 		OperateExcel ddd = new OperateExcel("D:/workplace/java/appautotest/testReport/TestReport(20151116-165706-162).xls", "TestSummary");
-		String formu = "HYPERLINK(\"../test/20151116_173843563.png\",\"查看图片\")";  
-		
-		ddd.setHyperLinkByFormu(6, 6, formu);
+
 		ddd.close();
 		int a = 3;
 		int b = 52;

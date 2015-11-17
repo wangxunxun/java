@@ -47,11 +47,7 @@ public class ad {
     	int y = NPAndroid.getElementY("首页","广告");
     	NPAndroid.log(x);
     	NPAndroid.log(y);
-
-
-    	
-
-
+    	NPAndroid.assertEquals("333", "44");
 
     	NPAndroid.sleep(5000);
 
