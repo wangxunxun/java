@@ -477,7 +477,6 @@ public class Initial {
 	protected void initialData() throws WriteException, BiffException, IOException {
 
 		configFilePath = getInitialPropertiesPath(coreFilePath, envName);
-		System.out.println(configFilePath);
 		testDataExcelPath = getProperties("testDataExcelPath");
 		elementSheet = getProperties("elementSheet");
 		testCaseSheet = getProperties("testCaseSheet");
